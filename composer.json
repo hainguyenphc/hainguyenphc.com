@@ -16,6 +16,9 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "drupal/admin_toolbar": "^3.2",
+        "drupal/config_ignore": "^2.3",
+        "drupal/config_split": "^1.9",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
@@ -93,5 +96,8 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "require-dev": {
+        "drupal/coffee": "^1.2"
     }
 }
