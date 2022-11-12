@@ -1,0 +1,18 @@
+uuid: e471f363-06a6-4ac9-97ec-c57f0e53012b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Project Build Step'
+type: project_build_step
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

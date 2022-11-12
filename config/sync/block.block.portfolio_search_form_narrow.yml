@@ -1,0 +1,23 @@
+uuid: 6c92a419-68c2-43e7-b6fc-17b7c2d88a79
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - portfolio
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: portfolio_search_form_narrow
+theme: portfolio
+region: header
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }
