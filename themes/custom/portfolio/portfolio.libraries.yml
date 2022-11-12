@@ -1,0 +1,7 @@
+# Step 3: Defines the relevant files for the library.
+base:
+  css:
+    theme:
+      dist/css/portfolio.css: { }
+  js:
+    dist/scripts/js/script.js: { }

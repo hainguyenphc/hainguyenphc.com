@@ -1,0 +1,7 @@
+<?php
+
+/**
+ * @file themes/custom/portfolio/portfolio.theme
+ */
+
+// function portfolio(array &$variables) {}
