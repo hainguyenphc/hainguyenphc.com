@@ -1,0 +1,23 @@
+uuid: 186a87cf-a5c8-4967-b409-8e28292b6620
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+  theme:
+    - portfolio
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: portfolio_syndicate
+theme: portfolio
+region: header
+weight: 0
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS feed'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }
