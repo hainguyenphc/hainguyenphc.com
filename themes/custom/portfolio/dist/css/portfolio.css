@@ -1,3 +1,7 @@
 /**
 * @file themes/custom/portfolio/dist/css/portfolio.css
 */
+
+#page-wrapper {
+  max-width: 100%;
+}
