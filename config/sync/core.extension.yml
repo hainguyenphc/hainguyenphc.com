@@ -27,6 +27,8 @@ module:
   filter: 0
   help: 0
   history: 0
+  hnp_constants: 0
+  hnp_upper_menu: 0
   image: 0
   link: 0
   menu_link_content: 0
