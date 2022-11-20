@@ -1,23 +1,12 @@
+// _theme-commons.scss
+// bower components
+@import '../../bower_components/sass-toolkit/stylesheets/toolkit';
+@import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+@import '../../bower_components/singularity/stylesheets/singularitygs';
+@import '../../bower_components/modular-scale/stylesheets/modular-scale';
 
+// settings
+@import '../settings/00-index';
 
-// ++++++++++ Imports
-
-
-// ===== Fonts
-
-@import 'fonts';
-
-
-// ===== Breakpoint
-
-@import '../../../../node_modules/breakpoint-sass/stylesheets/breakpoint';
-
-
-// ===== Breakpoints
-
-@import '../settings/breakpoints';
-
-
-// ===== Bootstrap Imports
-
-@import 'bootstrap';
+// mixins
+@import '../mixins/00-index';

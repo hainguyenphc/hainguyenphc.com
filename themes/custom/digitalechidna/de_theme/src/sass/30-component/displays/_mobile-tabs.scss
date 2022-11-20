@@ -1,0 +1,59 @@
+
+
+.tabbed {
+  @include breakpoint(0 $narrow-screen) {
+    flex-direction: column;
+    background-colour: $light-grey;
+
+    // .tab-item {
+    //   height: 0;
+    //   overflow: hidden;
+    //   position: absolute !important;
+    //   top: -1000000px;
+    //   left: -1000000px;
+    //
+    //   .title-desktop {
+    //     display: none;
+    //   }
+    // }
+    //
+    // .tab-item.tab-on {
+    //   height: auto;
+    //   position: static !important;
+    //   // overflow: auto;
+    //   // display: block;
+    // }
+
+    .tab-item {
+      height: auto;
+      overflow: auto;
+    }
+  }
+}
+
+//TABS
+
+.mobile-tab-titles {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: ms(2);
+  margin-right: - ms(2);
+  margin-left: - ms(2);
+  border-top: 1px solid $ui-grey;
+  @include breakpoint($narrow-screen) {
+    display: none;
+  }
+
+  .title-tab {
+    padding: 1em .3em;
+    font-size: ms(1) !important;
+    background-color: $light-grey;
+    margin-bottom: 0 !important;
+    flex-grow: 1;
+    text-align: center;
+
+    &.tab-on {
+      background-color: transparent;
+    }
+  }
+}

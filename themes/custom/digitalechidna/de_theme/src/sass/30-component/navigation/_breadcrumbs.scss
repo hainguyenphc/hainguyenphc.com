@@ -1,0 +1,58 @@
+
+#block-breadcrumbs,
+#block-de-theme-breadcrumbs {
+  //@include layout-container;
+  background-color: #fff;
+
+  .breadcrumb {
+    margin-bottom: 1em;
+    padding-top: 1.5em;
+
+    ol {
+
+      li {
+        @include reset;
+        padding: .5em 0 .5em 0;
+        font-size: .7em;
+        text-transform: uppercase;
+
+        &:after {
+          content: '>';
+          margin-right: .2em;
+          padding-left: .2em;
+        }
+
+        &:last-child {
+          border-right: none;
+          padding-right: 0;
+          padding-left: 0;
+
+          &:after {
+            content: none;
+            margin-right: .5em;
+          }
+
+          a {
+            font-weight: $bold;
+            text-decoration: none;
+          }
+        }
+
+        &:before {
+          content: none;
+        }
+
+        a {
+          color: $dark-grey;
+          text-transform: uppercase;
+          text-decoration: none;
+
+          &:hover,&:focus,&:active {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+

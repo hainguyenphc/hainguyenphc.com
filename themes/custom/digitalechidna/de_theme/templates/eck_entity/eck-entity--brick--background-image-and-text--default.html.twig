@@ -1,0 +1,9 @@
+{%
+  set classes = [
+    'brick',
+    'background-image-text'
+  ]
+%}
+<div {{ attributes.addClass(classes) }} style="background-image: url('{% spaceless %}{{content.field_media_image|escape|striptags('<!-- -->')}}{% endspaceless %}')">
+  {{ content.field_text }}
+</div>

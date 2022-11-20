@@ -1,0 +1,18 @@
+@mixin red-shadow($color, $position) {
+  @include full-width-color($color, $position);
+  padding-bottom: 14px;
+  @include breakpoint($narrow-screen) {
+    padding-bottom: 21px;
+  }
+
+  &:#{$position} {
+    height: 14px;
+    top: auto;
+    bottom: 0;
+    background: $fp-warm-purple;
+    background: radial-gradient(circle, $hv-red 0%, $hv-red 16%, #000 105%, #000 100%);
+    @include breakpoint($narrow-screen) {
+      height: 21px;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+body.path-user {
+  .profile {
+    @include breakpoint($weird-screen) {
+      margin: 0 3.5em;
+    }
+    @include breakpoint($standard-screen) {
+      margin: 0 6em;
+    }
+    @include breakpoint($wide-screen-max) {
+      margin: 0 9em;
+    }
+    .field--name-user-picture {
+      width: 100%;
+      height: 16em;
+      @include breakpoint($weird-screen) {
+        width: 40%;
+        max-height: 16em;
+        max-width: 20em;
+        float: left;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .field--name-field-name {
+      font-size: 2em;
+      font-weight: 600;
+      text-transform: uppercase;
+      @include breakpoint($weird-screen) {
+        clear: both;
+        font-size: 3em;
+      }
+    }
+    .field--name-field-role {
+      font-weight: 600;
+      @include breakpoint($weird-screen) {
+        font-size: 1.4em;
+      }
+    }
+
+    .field--name-field-biography {
+      clear: both;
+      margin-top: 2em;
+      p {
+        font-size: 1.1em;
+      }
+    }
+  }
+}

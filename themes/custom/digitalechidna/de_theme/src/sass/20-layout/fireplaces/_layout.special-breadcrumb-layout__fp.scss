@@ -1,0 +1,14 @@
+
+//breadcrumb styles for node
+
+body:not(.user-logged-in).path-node.node--type-hvac-product .region--content .header-wrapper,
+body:not(.user-logged-in).path-node.node--type-fireplaces-product .region--content .header-wrapper,
+body:not(.user-logged-in).path-node.node--type-fireplaces-product-series .region--content .header-wrapper {
+  margin-top: 0;
+}
+
+body:not(.user-logged-in).path-node.node--type-hvac-product .section-content > .layout-container,
+body:not(.user-logged-in).path-node.node--type-fireplaces-product .section-content > .layout-container,
+body:not(.user-logged-in).path-node.node--type-fireplaces-product-series .section-content > .layout-container {
+  padding-top: 0;
+}

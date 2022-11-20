@@ -1,0 +1,11 @@
+
+
+//FIREPLACES ======================================================
+
+.division-fireplaces .btn-primary {
+  @include btn-primary-fp;
+}
+
+.division-fireplaces .btn-secondary {
+  @include btn-secondary-fp;
+}

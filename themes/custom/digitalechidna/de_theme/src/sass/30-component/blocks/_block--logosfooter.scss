@@ -1,0 +1,29 @@
+#block-basiccartcountblock {
+  a {
+    color: $dark-grey;
+    text-decoration: none;
+    text-transform: uppercase;
+    .cart-info {
+      .basic-cart-count {
+        color: red;
+      }
+      span.fab {
+        background-color: #fff;
+        border-radius: 30px;
+       // background-color: #eee;
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        margin-right: .5em;
+      }
+      span:before {
+        @include fontawesome-icon;
+        font-size: .9em;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        line-height: 24px;
+      }
+    }
+  }
+}

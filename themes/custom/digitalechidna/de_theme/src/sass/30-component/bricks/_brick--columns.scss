@@ -1,0 +1,47 @@
+
+.layout {
+	@include breakpoint(40em) {
+		margin-right: -1em;
+		margin-left: -1em;
+	}
+	.layout__region {
+		@include breakpoint(40em) {
+			padding: 0 1em;
+		}
+	}
+}
+
+.field--name-field-components .row {
+	padding-bottom: 0;
+}
+
+.components-column {
+	padding-bottom: 0;
+}
+
+
+//SIDEBAR RIGHT
+
+.layout.brick-two-column-right {
+	display: flex;
+	flex-direction: column;
+	@include breakpoint($weird-screen) {
+		flex-direction: row;	
+	}
+
+	.brick__region--main {
+		@include breakpoint($weird-screen) {
+			flex: 1 1 66.3333%;
+			padding-left: 1em;
+	    padding-right: 1em;
+  	}
+	}
+
+	.brick__region--sidebar {
+		@include breakpoint($weird-screen) {
+			flex: 1 0 33.3333%;
+			padding-left: 1em;
+	    padding-right: 1em;
+  	}
+	}
+}

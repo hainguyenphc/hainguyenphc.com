@@ -1,19 +1,22 @@
-
-// @breakpoints ==============================================
-// these can be updated to suit the site
-
-$xxxs-break: 23.4375em;     // 375px
-$xxs-break: 25em;           // 400px
-$xxs-break-max: 31.1875em;  // 499px max
-$xs-break: 31.25em;         // 500px
-$xs-break-max: 35.9375em;   // 575px max
-$s-break: 36em;             // 576px
-$s-break-max: 47.9375em;    // 767px max
-$m-break: 48em;             // 768px
-$m-break-max: 61.9375em;    // 991px max
-$l-break: 62em;             // 992px
-$l-break-max: 74.9375em;    // 1199px max
-$xl-break: 75em;            // 1200px
-
-$layout-container-pre: 76.8125em; // 1229px
-$layout-container: 76.875em; // 1230px
+$x-small-screen: 380px;
+$small-screen-min: 463px;
+$just-before-small-screen: 464px;
+$small-screen: 465px;
+$small-screen-max: 607px;
+$just-before-narrow-screen: 607px;
+$narrow-screen: 608px;
+$narrow-screen-max: 767px;
+$weird-screen: 768px;
+$just-before-in-between-screen: 849px;
+$in-between-screen: 850px;
+$just-before-weird-screen-max: 894px;
+$weird-screen-max: 895px;
+$medium-screen: 896px;
+$just-before-medium-screen-max: 990px;
+$medium-screen-max: 991px;
+$standard-screen: 992px;
+$just-after-standard-screen: 993px;
+$standard-screen-max: 1307px;
+$wide-screen: 1308px;
+$wide-screen-max: 1407px;
+$super-wide-screen: 1450px;

@@ -1,102 +1,59 @@
-fonts:
-  header: true
-  remote: https://google-webfonts-helper.herokuapp.com/
-  license:
-    name: MIT
-    url: https://majodev.mit-license.org/
-    gpl-compatible: true
+libre-baskerville-font:
   css:
-    base:
-      vender/fonts/nunito-sans-v12-latin/font.css: { preprocess: false, minified: true }
+    theme:
+      dist/fonts/libre-baskerville/libre-baskerville-font.css: {}
 
-fonts.cdn:
-  header: true
-  remote: https://fonts.google.com/
-  license:
-    name: Open Font License
-    version: "1.1"
-    url: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
-    gpl-compatible: true
+material-icons:
   css:
-    base:
-      'https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,700i,900,900i': { type: external, minified: true }
+    theme:
+      dist/fonts/material-icons-main/iconfont/material-icons.css: {}
+
+oswald-font:
+  css:
+    theme:
+      dist/fonts/oswald/oswald-font.css: {}
+
+source-sans-pro-font:
+  css:
+    theme:
+      dist/fonts/source-sans-pro/source-sans-pro-font.css: {}
 
 base:
   css:
     theme:
       dist/css/de_theme.css: {}
-      dist/css/print.css: {}
+      # dist/css/ie/ie.css: { browsers: {IE: 'IE 9', '!IE': false } }
+      # dist/css/ie/ie-lt9.css: { browsers: {IE: 'lte IE 9', '!IE': false } }
   js:
-    # dist/scripts/js/main.build.js: {}
-    dist/scripts/js/ui-togglers.min.js: {}
-    dist/scripts/js/de-search-toggle.min.js: {}
-    dist/scripts/js/de-search-facets.min.js: {}
-    dist/scripts/js/de-simple-menu.min.js: {}
-    dist/scripts/js/tab-site-nav-identifier.min.js: {}
-    dist/scripts/js/de-simple-sidebar-menu.min.js: {}
-    dist/scripts/js/table-wrap.min.js: {}
-    dist/scripts/js/details-accordion--animation.min.js: {}
-    dist/scripts/js/search-facets-accordion--handler.min.js: {}
-    dist/scripts/js/iframe-ratio--handler.min.js: {}
-    dist/scripts/js/accessibility-modifications.min.js: {}
+    dist/scripts/js/script.min.js: {}
   dependencies:
-    - core/modernizr
-    - core/jquery
-    - core/drupal
-    #- de_theme/accessible-slick
+  - de_theme/ssm
+  - de_theme/slick
+  - core/modernizr
+  - core/jquery
+  - core/drupal
+ssm:
+  js:
+    bower_components/SimpleStateManager/dist/ssm.min.js: {}
 
-layout_builder.media_library:
+slick:
+  js:
+    bower_components/slick-carousel/slick/slick.min.js: {}
   css:
     theme:
-      dist/css/modular/layout-builder--media-library/layout-builder--media-library.css: {}
-  dependencies:
-    - claro/media_library.theme
-
-mmenu:
-  version: VERSION
-  js:
-    src/libraries/mmenu/dist/mmenu.js: {}
-  css:
-    theme:
-      src/libraries/mmenu/dist/mmenu.css: {}
-  dependencies:
-    - core/jquery
-    - core/drupalSettings
-    - core/jquery.once
-    - core/drupal
-
-de_responsive_menu.config:
-  js:
-    dist/scripts/js/de-responsive-menu-config.min.js: {}
-  dependencies:
-    - core/jquery
-    - core/drupalSettings
-    - core/jquery.once
-    - core/drupal
-
-accessible-slick:
-  version: VERSION
-  js:
-    src/libraries/accessible-slick/slick/slick.min.js: {}
-  css:
-    theme:
-      src/libraries/accessible-slick/slick/slick.min.css: {}
-      src/libraries/accessible-slick/slick/accessible-slick-theme.min.css: {}
-
-featherlight:
-  version: VERSION
-  js:
-    //cdnjs.cloudflare.com/ajax/libs/detect_swipe/2.1.1/jquery.detect_swipe.min.js: {type: external}
-    src/libraries/featherlight-1.7.13/release/featherlight.min.js: {}
-    src/libraries/featherlight-1.7.13/release/featherlight.gallery.min.js: {}
-  css:
-    theme:
-      src/libraries/featherlight-1.7.13/release/featherlight.min.css: {}
-      src/libraries/featherlight-1.7.13/release/featherlight.gallery.min.css: {}
+      bower_components/slick-carousel/slick/slick.css: {}
+      bower_components/slick-carousel/slick/slick-theme.css: {}
   dependencies:
     - core/jquery
 
-email:
-  css:
-    theme:
-      dist/css/mail.css: {}
+# html5shiv:
+#   # Block the page from being loaded until html5shiv is initialized.
+#   header: true
+#   remote: https://github.com/aFarkas/html5shiv
+#   version: "3.7.3"
+#   license:
+#     name: GNU-GPL-2.0-or-later
+#     url: http://www.gnu.org/licenses/gpl-2.0.html
+#     gpl-compatible: true
+#   js:
+#     assets/vendor/html5shiv/html5shiv.min.js: { weight: -22, browsers: { IE: 'lte IE 8', '!IE': false }, minified: true }

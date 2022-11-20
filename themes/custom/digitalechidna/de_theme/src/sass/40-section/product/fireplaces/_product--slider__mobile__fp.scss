@@ -1,0 +1,12 @@
+
+//mobile slider
+
+.division-fireplaces {
+  .field--name-field-features-slider, .mobile-slider-wrapper {
+    @include breakpoint(max-width $medium-screen) {
+      @include orange-shadow($fp-warm-purple, 'after');
+    }
+  }
+}
+
+

@@ -1,0 +1,46 @@
+
+//main homepage
+
+.choose-region-form.choose-region-select-form.block.block-napoleon-region {
+	select {
+		width: 110px !important;
+	}
+
+	label {
+    text-transform: uppercase;
+    font-weight: $bold;
+    font-size: 1em;
+    margin-bottom: ms();
+  }
+}
+
+// in mobile
+
+.custom-blocks-wrapper .choose-region-form.choose-region-select-form.block.block-napoleon-region { 
+	margin-left: 0;
+
+	.form-item-choose-region  {
+		width: 100%;
+	}
+
+	form {
+		display: flex;
+	}
+
+	.select-wrapper {
+		display: flex;
+    flex-direction: row-reverse;
+		border: none;
+		&:after {
+			@include fontawesome-icon;
+			content: $fa-var-globe;
+			color: white;
+			margin-right: .3em;	
+		}
+	}
+	
+	select {
+		width: 100%;
+		border: none;
+	}
+}

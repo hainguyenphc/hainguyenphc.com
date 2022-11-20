@@ -1,0 +1,12 @@
+.choose-region-form.choose-region-select-form.block.block-napoleon-region,
+#block-languagedropdownswitcher {
+  .form-item.form-type-select {
+    margin: 0;
+  }
+  select {
+    width: auto !important;
+    padding-right: 1.1em;
+    height: 24px;
+    min-width: 110px;
+  }
+}

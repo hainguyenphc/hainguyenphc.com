@@ -1,0 +1,115 @@
+
+//Percentage Image and Text
+
+//20 80
+
+.col-20-80.image-text.image-left {
+  & > .field.field--name-field-media-image {
+    flex: 1 1 20%;
+    order: 1;
+  }
+  & > .field.field.field--name-field-text {
+    flex: 1 1 80%;
+    order: 2;
+  }
+}
+
+.col-20-80.image-text.image-right {
+  & > .field.field--name-field-media-image {
+    flex: 1 1 80%;
+    order: 2;
+  }
+  & > .field.field.field--name-field-text {
+    flex: 1 1 20%;
+    order: 1;
+  }
+}
+
+
+// 50 50
+
+.col-50-50 {
+  & > .field {
+    flex: 1 1 50%;
+  }
+
+  &.image-text.image-left {
+    & > .field.field--name-field-media-image {
+      order: 1;
+    }
+
+    & > .field.field.field--name-field-text {
+      order: 2;
+    }
+  }
+
+  &.image-text.image-right {
+    & > .field.field--name-field-media-image {
+      order: 2;
+    }
+
+    & > .field.field.field--name-field-text {
+      order: 1;
+    }
+  }
+}
+
+// 70 30
+
+.col-70-30.image-text.image-left {
+  & > .field.field--name-field-media-image {
+    flex: 0 70%;
+    order: 1;
+  }
+  & > .field.field.field--name-field-text {
+    flex: 0 30%;
+    order: 2;
+  }
+}
+
+.col-70-30.image-text.image-right {
+  & > .field.field--name-field-media-image {
+    flex: 0 70%;
+    order: 2;
+  }
+  & > .field.field.field--name-field-text {
+    flex: 0 30%;
+    order: 1;
+  }
+}
+
+
+//TEXT
+
+.text-text {
+  &.col-50-50, &.col-70-30 {
+    flex-wrap: nowrap;
+    @include breakpoint($brick-mobile-break) {
+      margin-right: -1em;
+      margin-left: -1em;
+    }
+
+    & > .field {
+      @include breakpoint($brick-mobile-break) {
+        margin: 1em;
+      }
+    }
+  }
+
+  &.col-50-50 {
+    & > .field {
+      flex: 1 1 50%;
+    }
+  }
+
+  &.col-70-30 {
+    & > .field:first-child {
+      flex: 1 1 70%;
+    }
+
+    & > .field:last-child {
+      flex: 1 1 30%;
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+// Fireplaces search tags
+
+.division-fireplaces {
+  .block-facets-summary {
+    a {
+      background: $fp-orange;
+
+      .js-facet-deactivate {
+        &:after {
+          color: $fp-orange;
+        }
+      }
+    }
+  }
+}

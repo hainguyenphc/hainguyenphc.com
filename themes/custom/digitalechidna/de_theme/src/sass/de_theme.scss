@@ -1,70 +1,72 @@
+//  Author: Digital Echidna
+//  Wiki: https://bitbucket.org/digitalechidna/digital-echidna-default-theme-v2/wiki/Home
+//  Trello board: https://trello.com/b/4M19sYXd/digital-echidna-default-theme
+//  Slack channel: #echidna-default-theme
 
-//     ____            __  __       ________                      
-//    / __ \___  _____/ /_/ /_     /_  __/ /_  ___  ____ ___  ___ 
-//   / /_/ / _ \/ ___/ __/ __ \     / / / __ \/ _ \/ __ `__ \/ _ \
-//  / ____/  __/ /  / /_/ / / /    / / / / / /  __/ / / / / /  __/
-// /_/    \___/_/   \__/_/ /_/    /_/ /_/ /_/\___/_/ /_/ /_/\___/ 
-//
-// ===== ┻━┻ ︵ ＼( °□° )／ ︵ ┻━┻ =====
+//  @Project Structure Overview«
+//  Imports are setup to help chunk different types of styles
+//  for projects but also resemble a single stylesheet layed
+//  out to take advantage of cascade.
 
+// If a specific install will not be
+// using certain functionlaity or styles
+// ensure that the partials are commented
+// out and not imported OR code is commented
+// out within individual files. This theme
+// has been built with the idea in mind that
+// items can be removed or added efficiently
 
-// ===== Reusable Functions
-
-@import '00-base/reusable/functions/**/*.scss';
-
-
-// ===== Reusable Mixins
-
-@import '00-base/reusable/mixins/**/*.scss';
-
-
-// ===== Reusable Animations
-
-@import '00-base/reusable/animations/**/*.scss';
-
-
-// ===== Theme Init (Third Party Imports)
-
+// @digital echidna default drupal theme base
+// _theme-init.scss contains 3rd party imports, custom mixins and settings
 @import '00-base/imports/theme-init';
 
-
-// ===== Settings (Variables)
-
-@import '00-base/settings/index';
-
-
-// ===== Master Settings (Settings to affect the theme appearance globally)
-
-@import '00-base/master-settings';
+// @authors do not edit. drupal overide styles of exisiting components.
+// _drupal.scss contains echidnas default drupal style overrides and baseline
+// styles for default CORE drupal functionlaity eg. webform overrides, basic search result styles.
+@import '10-drupal/00-drupal';
 
 
-// ===== Global Classes & Components
+@import '20-layout/00-layout';
 
-@import '00-base/global/**/*.scss';
+// @authors generic, underlying design patterns for component styling
+// _patterns.scss contains generic, underlying design patterns and their
+// extensions. eg. basic styles for all sidebar blocks, grid or list displays
+// of content, buttons or responsive tables. may also build upon styles set
+// in the drupal directory
+@import '25-patterns/00-patterns';
 
+// @authors specific component styling
+// _components.scss contains styles for components constructed from objects
+// and their extensions, or detailed page design. eg. a sidebar call to
+// action that is styled specifically for events
+@import '30-component/00-component';
 
-// ===== Misc 
+// @authors specific section styling
+// _sections.scss contains styles for main sections of a site, eg. the news or
+// events section. can contain specific components unique to that section
+@import '40-section/00-section';
 
-@import '05-misc/**/*.scss';
-
-
-// ===== Atoms
-
-@import '01-atoms/**/*.scss';
-
-
-// ===== Molecules
-
-@import '02-molecules/**/*.scss';
-
-
-// ===== Organisms
-
-@import '03-organisms/**/*.scss';
-
-
-// ===== Layouts
-
-@import '04-layouts/**/*.scss';
+// @print styles
+@import '50-misc/print';
 
 
+//                         .
+//                    ._`-\ )\,`-.-.
+//                   \'\` \)\ \)\ \|.)
+//                 \`)  |\)  )\ .)\ )\|
+//                 \ \)\ |)\  `   \ .')/|
+//                ``-.\ \    )\ `  . ., '(
+//                \\ -. `)\``- ._ .)` |\(,_
+//                `__  '\ `--  _\`. `    (/
+//                  `\,\       .\\        /
+//                    '` )  (`-.\\       `
+//                       /||\    `.  * _*|
+//                                 `-.( `\
+//                                     `. \
+//                                       `(c
+
+
+// body {
+  // background: url('#{$img}/cat.jpg') no-repeat top left;
+  // background: url('#{$img}cat.jpg') no-repeat top left;
+// }

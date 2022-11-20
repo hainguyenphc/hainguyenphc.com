@@ -1,0 +1,13 @@
+// ===== Fireplaces footer menu
+
+.division-fireplaces {
+  footer {
+    .menu-item--expanded > .menu {
+      display: none;
+
+      @include breakpoint($medium-screen) {
+        display: block;
+      }
+    }
+  }
+}

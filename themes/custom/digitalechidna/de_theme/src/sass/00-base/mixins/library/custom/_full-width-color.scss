@@ -1,0 +1,51 @@
+
+
+@mixin full-width-color($color, $position) {
+  //background-color: $color;
+  position: relative;
+  z-index: 10;
+
+  &:#{$position} {
+    content:"";
+    background-color: $color;
+    width: 100vw;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    top: 0;
+  }
+}
+
+
+// @mixin full-width-color($color) {
+//   background-color: $color;
+//   position: relative;
+//   z-index: 0;
+
+//   &:before, &:after {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     width: 5000px;
+//     background: $color;
+//   }
+
+//   &:before {
+//     right: 100%;
+//   }
+
+//   &:after {
+//     background: $color;
+//     left: 100%;
+//   }
+// }
+
+
+
+

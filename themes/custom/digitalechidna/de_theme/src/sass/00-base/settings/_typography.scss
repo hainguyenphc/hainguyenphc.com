@@ -1,29 +1,14 @@
+// @type settings    ==============================================
 
+// modular scale settings are located in typography/_modular-scale.scss
 
-// ++++++++++ Typography Variables
-
-// ===== Weights
-
-// $thin: 100;
-// $light: 300;
-$regular: 400;
-// $medium: 500;
-// $semi-bold: 600;
+$light: 300;
+$normal: 400;
+$semi-bold: 600;
 $bold: 700;
-$extra-bold: 900;
 
 
-// ===== Styles
+$font-set-1: 'Source Sans Pro', Helvetica, sans-serif;
+$font-set-2: 'Oswald', sans-serif;
 
-$italic: italic;
 
-
-// ===== Font Sets
-
-$base-font-size: 16px;
-$base-line-height: 24px;
-$base-font-weight: 400;
-$base-font-family: 'Nunito Sans', Arial, sans-serif; // All Text
-
-$title-font-weight: 700;
-$title-font-family: $base-font-family;

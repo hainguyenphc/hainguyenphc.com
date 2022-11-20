@@ -1,0 +1,164 @@
+
+//DESCRIPTION AND COOK TIME OVERVIEWS /////////////////////=====================
+
+.node--type-recipe {
+  .page-title {
+    @include hide;
+  }
+
+  &.user-logged-in {
+    .info-wrapper {
+      // margin-top: 0;
+    }
+  }
+
+  .section-content > .layout-container {
+    padding-top: 0;
+  }
+
+  .image-wrapper {
+    @include breakpoint(0 $mobile-break-recipes) {
+      margin-left: - ms(2);
+      margin-right: - ms(2);
+    }
+  }
+
+  .field--name-field-main-image {
+    line-height: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .info-wrapper {
+    background-color: $beige;
+    padding: ms();
+    padding-bottom: 0;
+    text-align: center;
+    margin-bottom: $bottom-spacing;
+    z-index: 10;
+    position: relative;
+    margin-top: -3em;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint($mobile-break-recipes) {
+      padding: ms(3) 9%;
+      margin-right: 2em;
+      margin-left: 2em;
+      margin-bottom: ms(7);
+    }
+    @include breakpoint($standard-screen-max) {
+      padding: ms(3) 15%;
+      margin-right: 6em;
+      margin-left: 6em;
+    }
+
+    .field--name-title {
+      color: $dark-grey;
+      font-size: ms(-2);
+      @include breakpoint($mobile-break-recipes) {
+        font-size: ms();
+      }
+    }
+
+    .author-name {
+      text-transform: uppercase;
+      margin-bottom: ms();
+    }
+
+    //ICON FIELDS
+
+    .overview {
+      margin: ms(2) 0;
+      display: flex;
+      flex-direction: column;
+      @include breakpoint(0 $mobile-break-recipes) {
+        order: 5;
+        background-color: #fff;
+        margin: 0 -1em;
+        padding: 2.5em 1.5em 1em;
+        margin-bottom: -2em;
+      }
+      @include breakpoint($mobile-break-recipes) {
+        flex-direction: row;
+      }
+
+      .field {
+        flex-grow: 1;
+        display: flex;
+        position: relative;
+        @include breakpoint($mobile-break-recipes) {
+          flex-direction: column;
+        }
+
+        &:before {
+          @include icomoon-icon;
+          color: #b1aa9c;
+          font-size: 1.4em;
+          margin-bottom: 10px;
+          margin-right: 20px;
+          @include breakpoint($mobile-break-recipes) {
+            margin-right: 0;
+            font-size: 2em;
+          }
+        }
+
+        &.field--name-field-difficulty:before {
+          @include icon-difficulty;
+        }
+        &.field--name-field-prep-time:before {
+          @include icon-prep-time;
+        }
+        &.field--name-field-cook-time:before {
+          @include icon-time;
+        }
+        &.field--name-field-yield:before {
+          @include icon-yield ;
+        }
+      }
+
+      .field__label {
+        @include small-label;
+        color: #000;
+        font-size: 1.2em;
+        letter-spacing: 1px;
+         @include breakpoint(0 $mobile-break-recipes) {
+          //width: 40%;
+          width: 90px;
+          font-size: .9em;
+          text-align: left;
+          margin-right: 1em;
+        }
+      }
+
+      .field__item {
+        font-style: italic;
+      }
+    }
+
+
+    //DIVIDER LINE
+
+    .divider-icon {
+      border-top: 1px solid $grey;
+      margin-top: 4.5em;
+      margin-bottom: 0;
+      display: flex;
+      justify-content: center;
+      @include breakpoint(0 $mobile-break-recipes) {
+        order: 4;
+      }
+
+      &:before {
+        @include icomoon-icon;
+        @include icon-hat;
+        font-size: 3em;
+        background-color: $beige;
+        top: -28px;
+        padding: 0 .5em;
+        color: #b1aa9c;
+      }
+    }
+  }
+}

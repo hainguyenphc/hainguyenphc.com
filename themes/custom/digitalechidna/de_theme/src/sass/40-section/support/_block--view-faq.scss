@@ -1,0 +1,238 @@
+@mixin placeholder-text {
+  color: $grey;
+  @include font-size(16);
+  font-weight: 500;
+  line-height: 17px;
+  position: relative;
+
+  @include breakpoint($medium-screen) {
+    line-height: 40px;
+  }
+}
+
+.view-faq {
+  position: unset;
+  .views-row {
+    border-bottom: 1px solid $dark-ui-grey;
+
+    &:first-child {
+      border-top: 1px solid $dark-ui-grey;
+    }
+
+    .views-field-title {
+      span {
+        display: block;
+        padding: .5em 0;
+        font-weight: $semi-bold;
+        font-size: ms(2);
+      }
+    }
+  }
+}
+
+#faq.block-views {
+  margin-bottom: ms(4);
+  margin-top: ms(5);
+  padding-top: ms(5);
+  border-top: 1px solid $dark-ui-grey;
+  position: relative;
+
+  &:lang(fr) {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .title-wrapper {
+    font-size: ms(-1);
+    font-weight: $bold;
+    margin-bottom: ms(2);
+    @include breakpoint($medium-screen) {
+      padding-right: 38%;
+      margin-bottom: 5em;
+    }
+  }
+
+  .view-filters {
+    @include breakpoint($medium-screen) {
+      position: absolute;
+      right: 0;
+      top: 14px;
+      width: 36%;
+      font-size: 1.8em;
+
+      &:lang(fr) {
+        top: -35px;
+      }
+    }
+  }
+
+  .views-exposed-form {
+    .form-item {
+      width: 100%;
+    }
+
+    .form--inline {
+      position: relative;
+    }
+
+    input:not(#edit-submit):not(#edit-actions-submit):not(.button).form-text {
+      width: 100%;
+      border: 2px solid #000;
+      height: 40px;
+      @include breakpoint($medium-screen) {
+        height: 50px;
+      }
+
+      &::placeholder {
+        @include placeholder-text;
+        @include breakpoint($medium-screen) {
+          top: -4px;
+        }
+      }
+      &::-webkit-input-placeholder {
+        @include placeholder-text;
+        @include breakpoint($medium-screen) {
+          top: -4px;
+        }
+      }
+      &::-moz-placeholder {
+        @include placeholder-text;
+        line-height: 34px;
+
+        @include breakpoint($medium-screen) {
+          line-height: 44px;
+          top: -4px;
+        }
+      }
+      &:-ms-input-placeholder {
+        @include placeholder-text;
+        @include breakpoint($medium-screen) {
+          top: -4px;
+        }
+      }
+      &:-moz-placeholder {
+        @include placeholder-text;
+        @include breakpoint($medium-screen) {
+          top: -4px;
+        }
+      }
+      &::-ms-clear {
+        @include placeholder-text;
+        @include breakpoint($medium-screen) {
+          top: -4px;
+        }
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        top: 0 !important;
+        padding-bottom: 0px !important;
+        line-height: 0.1em !important;
+      }
+    }
+
+  .form-item-submit-link {
+    position: absolute;
+    left: auto;
+    width: auto;
+    border-left: 1px solid #000;
+    height: 40px;
+    right: 0;
+    margin-right: 0;
+    @include breakpoint($medium-screen) {
+      height: 50px;
+    }
+      a {
+        display: block;
+        display: block;
+        width: 42px;
+        height: 42px;
+        @include breakpoint($medium-screen) {
+          width: 77px;
+          height: 42px;
+        }
+      }
+
+      span:before {
+        color: #000;
+        font-size: 16px;
+        padding-left: 1em;
+        top: 10px;
+        left: -4px;
+        position: relative;
+        @include breakpoint($narrow-screen) {
+         top: 7px;
+        }
+        @include breakpoint($medium-screen) {
+          top: 2px;
+          font-size: 27px;
+        }
+      }
+    }
+  }
+
+  .view-faq {
+
+    .view-filters {
+       .views-exposed-form {
+        #edit-submit-link a {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .view-content {
+      h3 {
+        text-transform: uppercase;
+        color: $blue;
+        font-weight: $semi-bold;
+        font-size: 1.5em;
+        margin-top: 2em;
+      }
+
+      .views-row {
+        .views-field-title {
+          padding-right: 30px;
+          position: relative;
+
+          .field-content {
+            cursor: pointer;
+          }
+          .field-content::after {
+            @include icomoon-icon;
+            @include icon-x;
+            float: right;
+            font-size: 1.2em;
+            color: $grey;
+            top: 12px;
+            right: 0px;
+            height: 30px;
+            position: absolute;
+          }
+          .field-content.accordion-open::after {
+            @include icomoon-icon;
+            @include icon-minus;
+            color: $grey;
+            font-size: 2.5px;
+            float: right;
+            top: 24px;
+            right: 3px;
+            height: 30px;
+            position: absolute;
+          }
+        }
+        .views-field-body {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.user-logged-in {
+  #faq.block-views {
+    .view-filters {
+      @include breakpoint($medium-screen) {
+       // top: -135px;
+      }
+    }
+  }
+}

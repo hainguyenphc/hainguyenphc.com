@@ -1,0 +1,54 @@
+
+.division-fireplaces h1 {
+  font-family: $font-set-3;
+  font-size: 2.2em;
+  color: #000;
+  letter-spacing: 6px;
+  font-weight: $normal;
+  @include breakpoint($narrow-screen) {
+    font-size: 2.8em;
+  }
+}
+
+.division-fireplaces h2 {
+  font-family: $font-set-3;
+  font-size: 2em;
+  color: #000;
+  letter-spacing: 6px;
+  line-height: 1.3em;
+  font-weight: normal;
+  color: $fp-grey;
+  @include breakpoint($narrow-screen) {
+    font-size: 2.5em;
+  }
+}
+
+.field--name-field-description-suffix h2 {
+  color: #000;
+}
+
+.division-fireplaces h3 {
+  color: $fp-dark-grey;
+}
+
+.division-fireplaces h4 {
+  color: $fp-dark-grey;
+}
+
+// .division-fireplaces a {
+//   color: $fp-orange;
+//   transition: color 0.3s ease-out;
+//   &:hover, &:focus, &:active {
+//    color: darken($fp-orange, 5%);
+//   }
+// }
+
+@mixin a-dark-link-fp {
+  color: #4b4c4d;
+  transition: color 0.3s ease-out;
+  text-decoration: none;
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+    color: darken(#4b4c4d, 20%);
+  }
+}

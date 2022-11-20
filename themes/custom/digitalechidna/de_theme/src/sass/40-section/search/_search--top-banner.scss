@@ -1,0 +1,216 @@
+
+@mixin placeholder-text {
+ color: $grey;
+ @include font-size(16);
+ font-weight: 500;
+ line-height: 30px;
+ position: relative;
+ color: lighten($dark-grey, 10%);
+ font-style: italic;
+ text-align: center;
+}
+
+@mixin negative-margin {
+  position: relative;
+  margin-left: - ms(2);
+  margin-right: - ms(2);
+  @include breakpoint($standard-screen) {
+    margin-left: - ms(4);
+    margin-right: - ms(4);
+  }
+}
+
+
+//BACKGROUND AND SEARCH FORM
+.region--banner {
+  background-color: $light-grey;
+}
+
+.region--banner .layout-container  {
+  position: relative;
+  background-color: #fff;
+  padding-bottom: ms(3);
+
+  .layout-wrapper {
+    @include breakpoint($standard-screen) {
+      margin: 0 ms(4);
+    }
+  }
+
+  .banner-wrapper-outter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .banner-wrapper {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#071123+0,0f5fab+100 */
+    background: #071123; /* Old browsers */
+    background: -moz-linear-gradient(top, #071123 0%, #0f5fab 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #071123 0%,#0f5fab 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #071123 0%,#0f5fab 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#071123', endColorstr='#0f5fab',GradientType=0 ); /* IE6-9 */
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding-top: ms(6);
+    padding-bottom: calc(37px + 40px);
+    @include negative-margin;
+    //min-height: 210px;
+
+    @include breakpoint($weird-screen) {
+      padding-bottom: calc(58px + 50px);
+    }
+    // @include breakpoint($narrow-screen) {
+    //   min-height: 250px;
+    // }
+    // @include breakpoint($medium-screen) {
+    //   min-height: 370px;
+    // }
+
+    #block-dealer-locator-subtitle-block {
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    div:nth-last-child(2):not(.block-page-title-block) {
+      flex-grow: 1;
+     // margin-bottom: 2em;
+    }
+
+    h1,
+    h2,
+    .field--name-title {
+      color: #fff;
+      text-align: center;
+      font-weight: $bold;
+    }
+
+    #block-pagetitle {
+      text-align: center;
+      padding: 0 ms();
+      font-size: ms(-1);
+    }
+
+    form {
+      font-weight: $semi-bold;
+      text-align: center;
+      padding: 0 ms();
+      width: 100%;
+      @include breakpoint($narrow-screen) {
+        font-size: ms(2);
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      input:not(#edit-submit):not(#edit-actions-submit):not(.button).form-text {
+        border-radius: 40px;
+        height: 34px;
+        padding: 0 .5em;
+        width: 100%;
+        @include breakpoint($medium-screen) {
+          height: 56px;
+          padding: 0.5em;
+        }
+
+        &::placeholder {
+          @include placeholder-text;
+        }
+        &::-webkit-input-placeholder {
+          @include placeholder-text;
+        }
+        &::-moz-placeholder {
+          @include placeholder-text;
+        }
+        &:-ms-input-placeholder {
+          @include placeholder-text;
+        }
+        &:-moz-placeholder {
+          @include placeholder-text;
+        }
+        &::-ms-clear {
+          @include placeholder-text;
+        }
+
+        @include breakpoint($medium-screen) {
+          &::placeholder {
+            @include placeholder-text;
+            @include font-size(24);
+          }
+          &::-webkit-input-placeholder {
+            @include placeholder-text;
+            @include font-size(24);
+          }
+          &::-moz-placeholder {
+            @include placeholder-text;
+            @include font-size(24);
+          }
+          &:-ms-input-placeholder {
+            @include placeholder-text;
+            @include font-size(24);
+          }
+          &:-moz-placeholder {
+            @include placeholder-text;
+            @include font-size(24);
+          }
+          &::-ms-clear {
+            @include placeholder-text;
+            @include font-size(24);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//TABS
+
+#block-dealertabsblock,
+#block-napoleonsearchtabs {
+  width: calc(100% + 1px);
+  margin-top: ms();
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.search-tab-wrapper {
+  .inner-wrapper {
+    display: flex;
+
+    a {
+      display: block;
+      flex: 1 1 50%;
+      text-align: center;
+      padding: .8em .5em;
+      text-transform: uppercase;
+      background-color: $search-grey;
+      @extend a.dark-link;
+      color: #000;
+      font-weight: $bold;
+      border-right: 1px solid lighten($dark-ui-grey, 5%);
+      border-bottom: 1px solid $ui-grey;
+      font-size: .8em;
+       @include breakpoint($weird-screen) {
+        font-size: ms(1);
+       }
+
+      &:hover {
+        color: $blue;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &.active {
+        background-color: transparent;
+        color: #fff;
+      }
+    }
+  }
+}

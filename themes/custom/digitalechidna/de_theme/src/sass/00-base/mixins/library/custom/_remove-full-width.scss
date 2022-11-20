@@ -1,0 +1,7 @@
+
+@mixin remove-full-width {
+  width: 100%;
+  left: 0;
+  right: auto;
+  margin: 0;	
+}

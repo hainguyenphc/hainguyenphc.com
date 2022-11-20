@@ -1,0 +1,18 @@
+// Fireplaces search icons
+
+.division-fireplaces {
+
+  .add-to-cart-wrapper {
+    span.fa-heart.item-added:before {
+      color: $fp-orange;
+    }
+  }
+
+  .offer {
+    background: $fp-orange;
+
+    &::after {
+      background-color: $fp-orange;
+    }
+  }
+}

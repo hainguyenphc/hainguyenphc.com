@@ -1,0 +1,49 @@
+
+#features #gallery {
+  position: relative;
+  @include negative-margin;
+
+  & > h4 {
+    position: absolute;
+    top: ms(2);
+    left: ms(3);
+    color: #fff;
+    z-index: 10;
+    font-weight: $bold;
+  }
+
+  //slick
+
+  .slick-slider .slick-list {
+    max-width: 100%;
+  }
+
+  //no side nav on this slider
+
+  .slick-slider button.slick-arrow {
+    @include hide;
+  }
+
+  .feature-gallery-item img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    margin-bottom: 1em;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .text h3 {
+    font-size: 1.2em;
+    font-weight: $semi-bold;
+    margin-bottom: .2em;
+    color: $dark-font;
+  }
+
+  .slick-dots {
+    position: relative;
+    margin-top: 1em;
+  }
+}

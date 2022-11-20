@@ -1,0 +1,70 @@
+.pager{
+  margin: ms() 0;
+
+  span{
+    display: flex;
+  }
+
+  .pager__items{
+    @include no-bullets;
+    @include reset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pager__item{
+    @include reset;
+    flex: 0 0 auto;
+    a{
+      line-height: ms();
+      padding: ms(-4) ms(-2);
+      margin-bottom: 1em;
+      display: block;
+      margin-right: ms();
+      text-decoration: none;
+      transition: background-color 0.3s ease-out;
+      border: 1px solid $blue;
+      &:hover{
+        background-color: $blue;
+        color: white;
+      }
+
+    }
+  }
+
+  .pager__item.is-active a{
+    background-color: $blue;
+    color: white;
+    padding: ms(-4) ms(-2);
+    // line-height: ms();
+  }
+
+  .pager__item--next{
+
+  }
+
+  .pager__item--last{
+
+  }
+
+  .pager__item--ellipsis{
+    margin-right: ms();
+  }
+}
+
+
+
+.js-pager__items.pager {
+  @include reset;
+  display: flex;
+  justify-content: center;
+
+  li {
+    @include no-bullet;
+  }
+  a {
+    @include btn-border ;
+  }
+}
+

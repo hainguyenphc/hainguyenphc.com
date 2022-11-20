@@ -1,0 +1,76 @@
+
+section#features .field--name-field-features-stack > .field__item > .feature-stack-product .feature-stack-product-item:nth-child(even),
+section#features .field--name-field-features-stack > .field__item > .feature-stack .feature-stack-item:nth-child(even) {
+
+  //style changes for every other view in stack
+
+  //header wrapper
+
+    .header-wrapper {
+      @include breakpoint($narrow-screen) {
+        background-position: left center;
+      }
+
+      //text
+
+      .feature-style-text {
+        @include breakpoint($narrow-screen) {
+          text-align: right;
+        }
+      }
+
+      .field--name-field-feature-link-data,
+      .field--name-field-feature-lead-region,
+      .field--name-field-feature-description-region,
+      .field--name-field-feature-lead,
+      .field--name-field-feature-description {
+        @include breakpoint($narrow-screen) {
+          margin-right: 0;
+          margin-left: $margin-stop1;
+        }
+        @include breakpoint($medium-screen) {
+          margin-left: $margin-stop2;
+        }
+      }
+
+      .field--name-field-feature-link-data {
+        @include breakpoint($narrow-screen) {
+          justify-content: flex-end;
+          margin-right: 0;
+          a {
+            margin-right: 0;
+          }
+        }
+      }
+
+      //Small inset images
+
+      .field--name-field-feature-inset {
+        @include breakpoint($narrow-screen) {
+          justify-content: flex-end;
+        }
+
+        & > .field__item {
+          @include breakpoint($narrow-screen) {
+            margin-right: 0;
+            margin-left: 25px;
+          }
+        }
+      }
+    }
+
+
+  //gradient overlay
+
+  & > article.media--type-image-feature > .media-content {
+    background-color: #1c1c1c;
+     &:before {
+      @include breakpoint($narrow-screen) {
+        @include medium-side-overlay;
+        transform: none;
+      }
+    }
+  }
+}
+
+

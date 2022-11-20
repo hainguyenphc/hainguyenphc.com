@@ -1,0 +1,58 @@
+
+.view-acquia-search {
+	.views-row {
+		article.node--type-blog-post {
+
+			.title-wrapper {
+				flex: 1 0 auto;
+				width: 100%;
+			}
+
+			.image-wrapper {
+				min-height: auto;
+				margin: 0;
+
+				img {
+					margin-bottom: 1em;
+				}
+			}
+
+			.link-wrapper {
+				flex-grow: initial;
+				-ms-flex-positive: 0 !important;
+			}
+
+			.bottom-info-wrapper {
+				margin:0;
+			}
+		}
+	}
+
+	.view-content.list-view article.node--type-blog-post {
+		.node__content {
+			align-items: flex-start;
+		}
+		.image-wrapper {
+			margin: 0 !important;
+			min-width: 0 !important;
+			margin-right: 1em !important;
+
+			img {
+				min-width: 0px !important;
+				@include breakpoint($narrow-screen) {
+					min-width: 220px !important;
+				}
+			}
+		}
+
+		.media {
+			margin-right:1em;
+		}
+
+		.title-wrapper {
+			display: block !important;
+		}
+	}
+}
+
+

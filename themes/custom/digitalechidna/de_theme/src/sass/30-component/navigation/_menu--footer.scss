@@ -1,0 +1,38 @@
+.menu--footer{
+  margin-top: ms();
+  border-top: 1px solid $dark-grey;
+  padding-top: ms(4);
+  @include breakpoint($narrow-screen) {
+    flex: 0 0 50%;
+    padding-top: 0;
+    border-top: none;
+    margin-top: 0;
+  }
+  @include breakpoint($medium-screen) {
+    margin-bottom: 0;
+    flex: 0 0 35%;
+  }
+  h2{
+    color: white;
+  }
+  .menu{
+    @include no-bullets;
+    @include reset;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .menu-item{
+    @include reset;
+    flex: 1 0 50%;
+    margin-bottom: ms();
+    a{
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}

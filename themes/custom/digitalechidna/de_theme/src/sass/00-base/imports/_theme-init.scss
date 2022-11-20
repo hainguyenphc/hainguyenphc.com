@@ -5,6 +5,10 @@
 
 // import once
 // box sizing
-@import "../../../../node_modules/inuitcss/generic/generic.box-sizing";
+@import '../../bower_components/inuit-box-sizing/generic.box-sizing';
+// normalize
+@import '../../bower_components/inuit-normalize.css/generic.normalize';
 
+// import commons
 @import 'theme-commons';
+

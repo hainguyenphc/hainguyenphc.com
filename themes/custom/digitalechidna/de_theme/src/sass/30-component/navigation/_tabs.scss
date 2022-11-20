@@ -1,0 +1,74 @@
+/* 10-drupal/system/_tabs.scss */
+// reset some default drupal styling
+
+#block-de-theme-local-tasks{
+  border-bottom: 2px solid $light-grey;
+  margin-bottom: ms(1);
+  position: relative;
+  z-index: 100;
+  @include breakpoint($standard-screen) {
+    border-bottom: 5px solid shade($light-grey, 10);
+  }
+}
+ul.tabs{
+  @include navigation-list;
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: - ms(-6);
+  margin-right: - ms(-6);
+  margin-bottom: ms();
+  margin-top: ms(1);
+  @include breakpoint($standard-screen) {
+    display: block;
+    margin-left: - ms(-8);
+    margin-right: - ms(-8);
+    margin-bottom: 0;
+  }
+
+  li{
+    @include reset;
+    flex: 0 0 33.333333333%;
+    max-width: 33.333333333%;
+    padding: ms(-3) ms(-6) 0 ms(-6);
+    @include breakpoint($narrow-screen) {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+    @include breakpoint($standard-screen) {
+      padding: 0 ms(-8);
+      max-width: auto;
+    }
+    &.is-active{
+      a{
+        background-color: shade($light-grey, 10);
+        color: black;
+      }
+    }
+  }
+  a{
+    width: 100%;
+    display: block;
+    float: left;
+    padding: ms(-5) ms(-2);
+    background-color: $light-grey;
+    color: $dark-grey;
+    // font-size: ms(-1);
+    line-height: ms(2);
+    font-weight: $bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease-out;
+    &.active{
+      background-color: black;
+      color: white;
+    }
+    &:hover{
+      background-color: shade($light-grey, 10);
+      color: $dark-grey;
+    }
+  }
+  li:last-child a{
+    margin-right: 0;
+  }
+}

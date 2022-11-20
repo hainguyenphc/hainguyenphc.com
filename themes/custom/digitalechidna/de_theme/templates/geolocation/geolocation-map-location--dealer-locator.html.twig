@@ -1,0 +1,12 @@
+{% if coordinates.lat and coordinates.lng %}
+  <div {{ attributes.addClass('geolocation').removeClass('js-hide') }} typeof="Place">
+    <span property="geo" typeof="GeoCoordinates">
+      <meta property="latitude" content="{{ coordinates.lat }}" />
+      <meta property="longitude" content="{{ coordinates.lng }}" />
+    </span>
+
+    {% if children is not empty %}
+      <div class="location-content">{{ children }}</div>
+    {% endif %}
+  </div>
+{% endif %}

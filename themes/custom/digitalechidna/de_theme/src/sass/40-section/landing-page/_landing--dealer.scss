@@ -1,0 +1,377 @@
+.node--type-landing-page {
+
+  .header-wrapper  {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-left: 0;
+
+    .field--name-field-header-image {
+      margin: 5.5em 2em 2em 2em;
+      max-width: 900px;
+      @media only screen and (min-width: 1220px) {
+        margin: 8em 2em 2em 2em;
+      }
+    }
+
+    .field--name-field-description {
+      padding: 0 1em 0 1em;
+      width: 100%;
+    }
+  }
+
+  .gradient-background-container {
+    overflow: visible;
+    max-width: 100%;
+    background: linear-gradient(0.25turn, #f2f5f7, #ffffff, #ffffff, #ffffff, #f2f5f7);
+    background: -webkit-gradient(0.25turn, #f2f5f7, #ffffff, #ffffff, #ffffff, #f2f5f7);
+
+    @include breakpoint(max-width $medium-screen-max) {
+      overflow: hidden;
+    }
+  }
+
+  .become-a-dealer {
+    margin-bottom: 0;
+    padding: 2.4em 1em 2em 1em;
+
+    @include breakpoint($weird-screen) {
+      padding: 2.4em 6em 2em 2em;
+    }
+    @include breakpoint($medium-screen) {
+      padding: 5em 2em 3em 0;
+    }
+    @include breakpoint($wide-screen) {
+      padding: 5em 12em 3em 8em;
+    }
+    @media only screen and (min-width: 1840px) {
+      padding: 5em 12em 3em 12em;
+    }
+  }
+
+  .remove-margin-top {
+    margin-top: 0;
+    padding: 0 1.2em 0 1.2em;
+
+    @include breakpoint($medium-screen) {
+      padding: 0 10% 0 10%;
+    }
+    @media only screen and (min-width: 1350px) {
+      padding: 0 12em 0 12em;
+    }
+    @media only screen and (min-width: 1565px) {
+      padding: 0 16em 0 16em;
+    }
+    @media only screen and (min-width: 1840px) {
+      padding: 0 20em 0 20em;
+    }
+    @media only screen and (min-width: 2250px) {
+      padding: 0 25em 0 25em;
+    }
+  }
+
+  .center-text-with-background {
+    padding-bottom: 1em;
+
+    .field--name-field-text {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include breakpoint($medium-screen) {
+      padding-bottom: 2em;
+    }
+  }
+
+  .seventy-thirty-text-image {
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 2em 2em 2em;
+
+    .field--name-field-text {
+      padding-top: 1em;
+    }
+
+    .field--name-field-media-image {
+      text-align: center;
+
+      img {
+        max-width: 80%;
+        padding: 1em 0 1em 0;
+      }
+    }
+
+    @include breakpoint($weird-screen) {
+      padding: 0 2em 2em 2em;
+
+      .field--name-field-media-image {
+        text-align: right;
+        padding: 0;
+
+        img {
+          max-width: 70%;
+          padding: 0;
+        }
+      }
+    }
+    @include breakpoint($wide-screen) {
+      padding: 0 2em 0 2em;
+      max-width: 1200px;
+    }
+    @include breakpoint($super-wide-screen) {
+      max-width: 1308px;
+    }
+  }
+
+  .seventy-thirty-image-text {
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 2em 2em 2em;
+
+    .field--name-field-text {
+      padding-top: 1em;
+    }
+
+    .field--name-field-media-image {
+      text-align: center;
+      padding: 1em 0 1em 0;
+
+      img {
+        max-width: 80%;
+      }
+    }
+
+    @include breakpoint($weird-screen) {
+      .field--name-field-text {
+        padding: 1em 0em 2em 0;
+      }
+
+      .field--name-field-media-image {
+        text-align: left;
+        padding: 0;
+
+        img {
+          max-width: 70%;
+        }
+      }
+    }
+
+    @include breakpoint($medium-screen) {
+      padding: 0 2em 3em 2em;
+    }
+    @include breakpoint($wide-screen) {
+      max-width: 1200px;
+      padding: 0 2em 0 2em;
+      .field--name-field-text {
+        padding: 12em 0em 5em 0;
+      }
+    }
+    @include breakpoint($super-wide-screen) {
+      max-width: 1308px;
+    }
+  }
+
+  .fifty-fifty-image-text {
+    padding: 2.8em 2em 1em 2em;
+
+    .field--name-field-media-image {
+      text-align: center;
+      margin-bottom: 0;
+
+      img {
+        max-width: 50%;
+      }
+    }
+
+    .field--name-field-text {
+      text-align: left;
+      margin: 2em 0 2em 0;
+    }
+
+    @include breakpoint($weird-screen) {
+      padding: 4em 0 3em 0;
+
+      .field--name-field-text {
+        text-align: left;
+
+        & > .inner-wrapper {
+          padding-left: 1em;
+          padding-right: 10em;
+        }
+      }
+    }
+
+    @include breakpoint($standard-screen) {
+      .field--name-field-text > .inner-wrapper {
+        padding-right: 16em;
+      }
+    }
+  }
+
+  .form-item label {
+    font-weight: bold;
+  }
+
+  .webform-submission-form label:not(.option) {
+    margin: 0 0 0.2em 0.8em;
+  }
+
+  .field--name-webform {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 2em 2em 2em 2em;
+
+    .webform-submission-form  {
+      padding: 0;
+    }
+
+    .mandatory-fields-message {
+      color: red;
+    }
+
+    #get-information::before {
+      display: block;
+      content: " ";
+      margin-top: -125px;
+      height: 125px;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #edit-header,
+    #edit-divisions--wrapper {
+      text-align: center;
+    }
+
+    #edit-divisions--wrapper {
+      margin-top: 2em;
+      margin-bottom: 2em;
+
+      legend {
+        margin-bottom: 1em;
+      }
+
+      .fieldset-wrapper {
+        display: flex;
+        justify-content: space-around;
+
+        #edit-divisions {
+          width: 100%;
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: center;
+          text-align: left;
+
+          div {
+            flex: 0.2 0.2 auto;
+          }
+
+          @include breakpoint($narrow-screen) {
+            width: 70%;
+          }
+
+          @include breakpoint($medium-screen) {
+            width: 48%;
+          }
+        }
+      }
+    }
+
+    @include breakpoint($weird-screen) {
+      .dealer-form-location .fieldset-wrapper {
+        display: flex;
+
+        .webform-flexbox .webform-flex:nth-child(2) .webform-flex--container {
+          margin-right: 1.5em;
+        }
+
+        .webform-flexbox:nth-child(2) {
+          margin-top: 0;
+        }
+      }
+    }
+
+    #edit-dealer-form-phone-email {
+      align-items: flex-end;
+
+      .dealer-form-phone {
+        flex-flow: column;
+        display: flex;
+      }
+    }
+
+    // ===== location
+    #edit-location--wrapper {
+      .fieldset-wrapper {
+        flex-wrap: wrap;
+
+        .webform-flexbox {
+          flex: 1;
+        }
+      }
+    }
+
+    #edit-processed-text .mandatory-fields-message {
+      margin-bottom: 2em;
+    }
+
+    #edit-actions {
+      text-align: center;
+      input {
+        @include btn-secondary;
+        margin-right: 0;
+      }
+    }
+  }
+
+  //keeping a max-width
+
+  .become-a-dealer,
+  .hot-spot {
+    margin: 0 auto;
+    max-width: 1380px;
+
+    &.gradient-background-container {
+      position: relative;
+      z-index: 0;
+      background: linear-gradient(0.25turn, #f2f5f7, #ffffff, #ffffff, #ffffff, #f2f5f7);
+      background: -webkit-gradient(0.25turn, #f2f5f7, #ffffff, #ffffff, #ffffff, #f2f5f7);
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 5000px;
+        background: linear-gradient(0.25turn, #f2f5f7, #ffffff, #ffffff, #ffffff, #f2f5f7);
+        background: -webkit-gradient(0.25turn, #f2f5f7, #ffffff, #ffffff, #ffffff, #f2f5f7);
+        right: 100%;
+        left: auto;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 5000px;
+        background: linear-gradient(0.25turn, #f2f5f7, #ffffff, #ffffff, #ffffff, #f2f5f7);
+        background: -webkit-gradient(0.25turn, #f2f5f7, #ffffff, #ffffff, #ffffff, #f2f5f7);
+        right: auto;
+        left: 100%;
+        display: block;
+      }
+    }
+
+    .field--name-field-text .inner-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

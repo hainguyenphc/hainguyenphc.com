@@ -1,0 +1,58 @@
+
+
+//homepage video
+
+.view-banner-blocks {
+	background: #fff;
+
+	.views-row {
+		position: relative;
+	}
+}
+
+.view-banner-blocks {
+	.field--name-field-video {
+		//display: none;
+		//@include breakpoint($narrow-screen) {
+			display: block;
+			.video-embed-field-responsive-video {
+				position: relative;
+		    position: relative;
+		    z-index: 10;
+			}
+		//}
+	}
+
+	.field--name-field-banner-image {
+		display: none;
+		@include breakpoint($narrow-screen) {
+      display: block;
+    }
+	}
+
+	.field--name-field-mobile-image {
+    //@include breakpoint($narrow-screen) {
+      display: none;
+    //}
+  }
+
+	.field--name-body {
+		@include layout-container;
+	}
+
+	.field--name-field-buttons {
+		@include layout-container;
+		display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+		.field__item {
+			margin: .5em .5em;
+			a {
+				@include btn-primary;
+				margin-right: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+}

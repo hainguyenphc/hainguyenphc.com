@@ -1,0 +1,23 @@
+uuid: 6b2925e7-e49e-4c09-9995-012e1aa77a0a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - de_theme
+id: sitebranding
+theme: de_theme
+region: masthead_primary
+weight: -9
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

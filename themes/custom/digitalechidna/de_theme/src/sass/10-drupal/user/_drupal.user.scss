@@ -1,0 +1,15 @@
+// 10-drupal/user/_drupal.user.scss
+
+.user-login-form{
+ // @extend .card;
+  padding: ms(2);
+  .form-actions{
+    margin-bottom: 0;
+  }
+  .form-submit{
+    @include btn;
+    @include btn-primary;
+    //background-color: white;
+    margin-bottom: 0;
+  }
+}

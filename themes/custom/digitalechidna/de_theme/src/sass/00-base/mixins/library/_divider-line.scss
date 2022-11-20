@@ -1,0 +1,12 @@
+// divider line
+@mixin divider-line($border-width: 1px, $border-style: solid, $border-color: $ui-borders-color, $spacing-top: ms(-2), $spacing-bottom: ms(-2)){
+  border-bottom: $border-width $border-style $border-color;
+  padding-top: $spacing-top;
+  padding-bottom: $spacing-bottom;
+  // &:first-child{
+  //   padding-top: 0;
+  // }
+  // &:last-child{
+  //   padding-bottom: 0;
+  // }
+}

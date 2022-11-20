@@ -1,0 +1,59 @@
+
+//HVAC SPECIFIC STYLES TIED TO BRICK CUSTOM CLASS
+
+.hv-homepage-component-bricks.brick {
+	margin-bottom: 2.1em;
+
+	& > .row {
+	  @include breakpoint(0 $just-before-in-between-screen) {
+	  	display: block;
+	  }
+
+	  & > .components-column:last-child > .brick {
+	  	 @include breakpoint(0 $just-before-in-between-screen) {
+	  	 	margin-bottom: 0 !important;
+	  	 }
+	  }
+	}
+}
+
+
+
+// //STYLES
+
+// @mixin smaller-heading-size {
+// 	@include breakpoint($narrow-screen) {
+// 		font-size: 1.8em;
+//     line-height: 1.2em;
+// 	}
+// }
+
+
+// //GENERAL
+
+// .hv-homepage-component-bricks {
+
+// 	.field--name-field-text {
+// 		a[class*="btn"]{
+// 			@include breakpoint($just-before-narrow-screen) {
+// 				font-size: 1.3em;
+// 				padding-left: 2em;
+//     		padding-right: 2em;
+// 			}
+// 		}
+// 	}
+
+// 	//BLOCK ONE
+
+// 	&.block-1 {
+// 		h2 {
+// 			@include smaller-heading-size;
+// 		}
+// 	}
+
+// 	&.block-4, &.block-5, &.block-6   {
+// 		h2 {
+// 			@include smaller-heading-size;
+// 		}
+// 	}
+// }

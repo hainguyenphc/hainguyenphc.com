@@ -1,0 +1,81 @@
+
+
+
+//SLIDER GENERAL
+
+.slick-slider {
+  .slick-dots {
+    bottom: 1em;
+
+    li button {
+      font-size: 1em;
+      margin: 0;
+    }
+
+    li button:before {
+      color: $dark-dots;
+      height: 23px;
+      width: 23px;
+      opacity: .7;
+      font-size: 16px;
+    }
+
+    li.slick-active button:before {
+      color: $blue;
+    }
+  }
+}
+
+.slick-slider {
+  .slick-list {
+    max-width: $wide-screen;
+  }
+}
+
+.slick-slider {
+  .slick-track {
+    display: flex;
+    width: 100%;
+   // max-width:  $wide-screen;
+
+    .slick-slide {
+      flex-grow: 1;
+      height: auto;
+
+      article {
+        height: 100%;
+
+        .node__content {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+
+.slick-prev, .slick-next {
+  height: 50px;
+  width: 50px;
+  z-index: 50;
+}
+
+.slick-next {
+  width: 42px;
+}
+
+.slick-prev:before, .slick-next:before {
+  @include fontawesome-icon;
+  color: $grey;
+  font-size: 42px;
+}
+
+.slick-next:before {
+  content: $fa-var-chevron-right;
+}
+
+.slick-prev:before {
+   content: $fa-var-chevron-left;
+}

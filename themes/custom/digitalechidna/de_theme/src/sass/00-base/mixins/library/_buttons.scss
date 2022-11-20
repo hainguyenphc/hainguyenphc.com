@@ -1,0 +1,378 @@
+@mixin btn {
+  border: 1px solid transparent;
+  font-weight: $bold;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: ms();
+  overflow: hidden;
+  padding: ms(-6) ms(1);
+  margin-bottom: 1em;
+  text-decoration: none;
+  transition: background-color .3s ease-out, border-color .3s ease-out;
+  margin-right: ms();
+  @include font-size(20);
+  @include transition;
+  @include reset-tap;
+  letter-spacing: 1px;
+  color: #fff;
+  @include breakpoint($narrow-screen) {
+    padding: ms(-5) ms(2);
+    @include font-size(24);
+  }
+}
+
+//blue
+
+@mixin btn-primary {
+  @include btn;
+  background-color: $blue;
+  &:hover,&:focus{
+   background-color: darken($blue, 6%);
+  }
+  &:active{
+    background-color: darken($blue, 6%);
+  }
+}
+
+
+//black
+
+@mixin btn-secondary {
+  @include btn;
+  background-color: #000;
+  &:hover,&:focus, &:active {
+    color: #fff;
+    background-color: lighten(#000, 10%);
+  }
+}
+
+//SIZES ======================================================
+
+@mixin btn-small {
+  font-size: 14px;
+  padding: ms(-6) ms(1);
+  line-height: normal;
+  @include breakpoint($narrow-screen) {
+    padding: ms(-4) ms(3);
+    font-size: 14px;
+  }
+}
+
+@mixin btn-large {
+  font-size: 1.4em;
+  font-weight: $bold;
+  padding: .4em 1.3em;
+  @include breakpoint($narrow-screen) {
+    font-size: 1.7em;
+  }
+}
+
+
+@mixin btn-narrow {
+  @include btn;
+  padding: ms(-6) ms(1);
+  line-height: normal;
+  @include breakpoint($narrow-screen) {
+    padding: ms(-4) ms(3);
+  }
+}
+
+@mixin btn-skinny {
+  @include btn;
+  padding: ms(-6) ms(1);
+  line-height: normal;
+  font-size: 1em;
+  @include breakpoint($narrow-screen) {
+    font-size: .9em;
+    padding: ms(-3) ms(6);
+  }
+}
+
+@mixin btn-medium {
+  font-size: 1.2em;
+  padding: ms(-6) ms(2);
+  @include breakpoint($narrow-screen) {
+    font-size: 1.6em;
+    padding: ms(-6) ms(2);
+  }
+}
+
+
+//BUTTONS W/ BORDERS ======================================================
+
+@mixin btn-border {
+  @include btn;
+  margin-right: 0;
+  border: 1px solid #000;
+  color: #000;
+  @include breakpoint($narrow-screen) {
+    padding: ms(-4) ms(5);
+  }
+  &:hover, &:focus {
+    border: 1px solid lighten(#000, 40%);
+    color: lighten(#000, 40%);
+  }
+}
+
+@mixin btn-border-blue {
+  @include btn;
+  color: #fff;
+  border: 1px solid $light-blue;
+  letter-spacing: 0;
+  font-weight: $semi-bold;
+  font-size: ms();
+  padding: ms(-2) ms(0);
+  @include breakpoint($narrow-screen) {
+    padding: ms(-4) ms();
+    font-size: ms(1);
+  }
+
+  &:hover {
+    color: #fff;
+    border: 1px solid $blue;
+  }
+}
+
+@mixin btn-border-w {
+  @include btn;
+  color: #fff;
+  border: 1px solid #fff;
+  letter-spacing: 0;
+  font-weight: $semi-bold;
+  font-size: ms();
+  padding: ms(-2) ms(0);
+  background: transparent;
+  @include breakpoint($narrow-screen) {
+    padding: ms(-4) ms();
+    font-size: ms(1);
+  }
+
+  &:hover {
+    color: #000;
+    border: 1px solid #fff;
+    background: #fff;
+  }
+}
+
+
+
+
+//BUTTONS ALT COLOURS ======================================================
+
+@mixin btn-red {
+  @include btn;
+  background-color: $red;
+  color: #fff;
+  letter-spacing: 0;
+  font-weight: $semi-bold;
+  font-size: 1em;
+  padding: ms(-2) ms(0);
+  @include breakpoint($narrow-screen) {
+    font-size: ms(1);
+    padding: ms(-4) ms();
+  }
+}
+
+
+@mixin btn-white {
+  @include btn;
+  background-color: #fff;
+  color: #000;
+  a{color: #000;}
+  &:hover,&:focus{
+   background-color: $light-grey;
+  }
+  &:active{
+    background-color: $light-grey;
+  }
+}
+
+@mixin btn-flat{
+  position: relative;
+  overflow: hidden;
+  @include reset-tap;
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+  padding: ms(-8) ms(-1);
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-right: ms(-1);
+  vertical-align: bottom;
+}
+
+
+@mixin default-color-btn($bck-color, $font-color, $bck-color-hover, $font-color-hover, $border: false) {
+  @include btn;
+  background-color: $bck-color;
+  color: $font-color;
+  a{color: $font-color;}
+  &:hover,&:focus,&:active{
+    color: $font-color-hover;
+    background-color: $bck-color-hover;
+  }
+}
+
+
+@mixin promo-button {
+  @include btn;
+  padding: .8em 1em;
+  @include breakpoint($narrow-screen) {
+    padding: .4em 1em;
+  }
+  background-color: $red;
+  border-radius: 50px;
+  font-family: $font-set-2;
+  -webkit-box-shadow: inset 0px 39px 0px -24px #be0f34;
+  box-shadow: inset 0px 39px 0px -24px #be0f34;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #be0f34), to(#850d26));
+  background: linear-gradient(to bottom, #be0f34 5%, #850d26 100%);
+  background-color: #850d26;
+  border:1px solid #fff;
+  display:inline-block;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+
+//SPECIAL BUTTONS ======================================================
+
+@mixin btn-promo-banner {
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.32768em 1.5625em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 1em;
+  &:hover {
+    color: #000;
+    background-color: #fff;
+  }
+}
+
+
+
+//FIREPLACES ======================================================
+
+@mixin btn-primary-fp {
+  @include btn-skinny;
+  background-color: $fp-orange;
+  padding: 0.2em 2.1em;
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  font-weight: $semi-bold;
+  @include breakpoint($narrow-screen) {
+    padding: 0.2em 2.2em;
+    font-size: 1.4em;
+  }
+  &:hover,&:focus{
+   background-color: darken($fp-orange, 6%);
+  }
+  &:active{
+    background-color: darken($fp-orange, 6%);
+  }
+}
+
+@mixin btn-secondary-fp {
+  @include btn-skinny;
+  border: 1px solid $dark-grey;
+  background-color: transparent;
+  color: $dark-grey !important;
+  font-size: 1em;
+  @include breakpoint($narrow-screen) {
+    padding: 0.512em 2em;
+  }
+
+  &:hover, &:focus {
+    color: #fff !important;
+  }
+}
+
+@mixin btn-secondary-fp-white {
+  @include btn-skinny;
+  border: 1px solid #fff;
+  background-color: transparent;
+  font-size: 1.2em;
+  color: #fff;
+  @include breakpoint($narrow-screen) {
+    padding: 0.3em 1.2em;
+    font-size: 1.3em;
+  }
+}
+
+@mixin btn-tertiary-fp {
+  @include btn-skinny;
+  border: 1px solid $dark-ui-grey;
+  background-color: $dark-ui-grey;
+  font-size: 1.2em;
+  color: $darkest-grey;
+  @include breakpoint($narrow-screen) {
+    padding: 0.3em 1.2em;
+    font-size: 1.3em;
+  }
+
+  &:hover, &:focus {
+    background-color: darken($dark-ui-grey, 2%);
+  }
+}
+
+
+@mixin btn-transparency($font-color, $background-color) {
+  @include btn;
+  color: $font-color;
+  position: relative;
+  padding: ms(-2) ms(0);
+  transition: background .3s;
+  @include breakpoint($narrow-screen) {
+    padding: ms(-4) ms();
+  }
+  &:after {
+    content:'';
+    position: absolute;
+    background: $background-color;
+    transition: background .3s;
+    opacity: .7;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  &:hover:after {
+    opacity: 1;
+    background: darken($background-color, 1%);
+    transition: background .3s;
+  }
+}
+
+
+//HVAC ======================================================
+
+@mixin btn-primary-color-hv {
+  color: white;
+  background-color: $hv-red !important;
+  &:hover,&:focus,&:active {
+    background-color: darken($hv-red, 5%) !important;
+    color: white !important;
+  }
+}
+
+@mixin btn-primary-hv {
+  @include btn;
+  @include btn-primary-color-hv;
+}
+
+@mixin btn-hv-narrow {
+  @include btn-primary-hv;
+  padding: 0.2em 2.1em;
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  font-weight: $semi-bold;
+  @include breakpoint($narrow-screen) {
+    padding: 0.2em 2.2em;
+    font-size: 1.3em;
+  }
+}

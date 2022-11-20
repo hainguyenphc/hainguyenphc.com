@@ -1,0 +1,61 @@
+
+.division-hvac {
+	.specs-wrapper.warranty {
+		.field--name-field-warranties > .field__item {
+			margin-bottom: .5em;
+		}
+		.field--name-field-warranties .field__item {
+			display: flex;
+			color: $off-black;
+			width: 100%;
+			align-items: flex-end;
+			& > div {
+				width: 100%;
+			}
+			.content-wrapper {
+				display: flex;
+				width: 100%;
+				flex-direction: column;
+				align-items: center;
+				@include breakpoint($narrow-screen) {
+					flex-direction: row;
+				}
+
+				.text-wrapper {
+					flex: 0 0 50%;
+					margin-bottom: 1em;
+					@include breakpoint($narrow-screen) {
+						margin-bottom: 1em;
+					}
+					.field {
+						display: block;
+						text-align: center;
+						@include breakpoint($narrow-screen) {
+							text-align: left;
+						}
+					}
+
+					.field--name-name {
+						text-transform: uppercase;
+					}
+
+					.field--name-field-long-warranty-title  {
+						font-weight: lighter;
+						font-style: italic;
+						font-family: $font-set-1;
+						font-size: .9em;
+					}
+				}
+
+				.image-wrapper {
+					flex: 0 0 50%;
+					// margin-bottom: .5em;
+					@include breakpoint($narrow-screen) {
+						padding-right: 2.2em;
+						// margin-bottom: 1em;
+					}
+				}
+			}
+		}
+	}
+}

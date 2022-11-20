@@ -1,0 +1,8 @@
+
+#block-views-block-promo-slider-promo-slider-hvac {
+	// margin-bottom: 2em;
+  @include red-shadow(black, 'before');
+  &:before {
+    @include remove-full-width;
+  }
+}

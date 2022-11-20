@@ -1,0 +1,76 @@
+
+//// DESKTOP ALIGNMENTS  =================================
+
+.brick.background-color-image-text {
+
+	//// OFFSET ========================================
+
+	&.align-horizontal-center-offset-left-desktop,
+	&.align-horizontal-center-offset-right-desktop {
+		.field--name-field-text {
+			@include breakpoint($narrow-screen) {
+				max-width: 47%;
+			}
+			@include breakpoint($medium-screen) {
+				max-width: 40%;
+			}
+		}
+	}
+
+	//offset center left
+
+	&.align-horizontal-center-offset-left-desktop {
+		.field--name-field-text {
+			@include breakpoint($narrow-screen) {
+				margin-left: 4em;
+			}
+			@include breakpoint($medium-screen) {
+
+			}
+		}
+	}
+
+	//offset center right
+
+	&.align-horizontal-center-offset-right-desktop {
+		@include breakpoint($narrow-screen) {
+			justify-content: flex-end;
+		}
+		.field--name-field-text {
+			@include breakpoint($narrow-screen) {
+				margin-right: 2em;
+			}
+			@include breakpoint($medium-screen) {
+				margin-right: 4em;
+			}
+		}
+	}
+
+	//// RIGHT / LEFT ========================================
+
+	&.align-horizontal-right-desktop,
+	&.align-horizontal-left-desktop {
+		.field--name-field-text {
+			@include breakpoint($narrow-screen) {
+				max-width: 70%;
+			}
+			@include breakpoint($medium-screen) {
+				max-width: 48%;
+			}
+		}
+	}
+
+	&.align-horizontal-right-desktop {
+		@include breakpoint($narrow-screen) {
+			justify-content: flex-end;
+		}
+	}
+
+	//// MIDDLE ========================================
+
+	&.align-horizontal-center-desktop {
+		.background-image {
+			opacity: .7;
+		}
+	}
+}	

@@ -1,0 +1,63 @@
+
+
+//TAGS
+
+.block-facets-summary {
+	position: relative;
+	margin-top: 0px;
+	margin-bottom: ms(-2);
+	@include breakpoint($medium-screen) {
+		margin-top: 40px;
+		margin-bottom: ms(2);
+	}
+
+	ul {
+		@include reset;
+
+		li {
+			@include no-bullet;
+			display: inline-block;
+		}
+	}
+	a {
+		background: $blue;
+		display: inline-block;
+		margin-right: .5em;
+		border-radius: 5px;
+		@extend a.light-link;
+		text-decoration: none;
+		text-transform: uppercase;
+		padding: .05em .8em;
+		font-size: .8em;
+		font-weight: $semi-bold;
+
+		.js-facet-deactivate {
+			background: #fff;
+			float: right;
+			display: inline-block;
+			height: 12px;
+	    border-radius: 2px;
+	    overflow: hidden;
+	    width: 13px;
+	    right: 0px;
+	    margin-left: .5em;
+	    text-align: center;
+	    top: 7px;
+	    position: relative;
+	    @include breakpoint(0 $narrow-screen) {
+	    	top: 5px;
+	    }
+
+			&:after {
+				@include icomoon-icon;
+				@include icon-x;
+				float: right;
+				color: $blue;
+				transform: rotate(45deg);
+				text-align: center;
+			}
+		}
+	}
+}
+
+

@@ -1,0 +1,11 @@
+{%
+  set classes = [
+    'brick',
+    'image-text',
+    'col-20-80',
+    'image-left'
+  ]
+%}
+<div {{ attributes.addClass(classes) }}>
+  {{ content }}
+</div>

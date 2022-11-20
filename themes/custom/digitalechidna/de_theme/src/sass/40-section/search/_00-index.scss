@@ -1,0 +1,57 @@
+$seriesmobilebreak : $weird-screen;
+
+@import 'search__view-main';
+@import 'search__view-support';
+@import 'search__view-recipies';
+@import 'search__view-support';
+@import 'search__view-learn';
+@import 'search__facet-accordion';
+@import 'search--top-banner';
+@import 'search--view-dealer-locator';
+@import 'search--view-dealer-locator__legend';
+@import 'search__facets';
+@import 'search__facets__slider';
+@import 'search__tags';
+@import 'search__filters';
+@import 'search__block-help';
+@import 'search--icons';
+@import 'search-page-promo-block';
+
+// ===== FIREPLACES
+
+@import 'fireplaces/search__view-main__fp';
+@import 'fireplaces/search--top-banner__fp';
+@import 'fireplaces/search--block-help__fp';
+@import 'fireplaces/search--view-inspiration__fp';
+@import 'fireplaces/search__facets__fp';
+@import 'fireplaces/search__filters-inspiration__fp';
+@import 'fireplaces/search__tags__fp';
+@import 'fireplaces/search--icons__fp';
+
+
+// ===== HVAC
+
+@import 'hvac/search__view-main__hv';
+@import 'hvac/search--top-banner__hv';
+@import 'hvac/search--view-dealer-locator__hv';
+@import 'hvac/search__tags__hv';
+@import 'hvac/search__facets__hv';
+
+
+
+//layout change just for search page
+
+.search-page.one_sidebar.sidebar_first {
+  .section-content > .layout-container {
+    flex-direction: column;
+     @include breakpoint($medium-screen) {
+      flex-direction: row;
+    }
+  }
+
+  #main.column {
+    @include breakpoint(0 $medium-screen) {
+      flex: 1 1 auto;
+    }
+  }
+}

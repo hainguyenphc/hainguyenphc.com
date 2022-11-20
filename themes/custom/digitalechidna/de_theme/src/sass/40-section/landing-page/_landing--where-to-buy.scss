@@ -1,0 +1,243 @@
+#block-views-block-banner-blocks-cta-blocks {
+  margin-top: 2em;
+}
+
+.view-cta-blocks .view-content {
+  display: flex;
+  // flex-flow: row wrap;
+  // justify-content: center;
+  // text-align: center;
+  flex-direction: column;
+  @include breakpoint($medium-screen) {
+    flex-direction: row;
+  }
+}
+
+.view-cta-blocks .cta-block-container {
+  // width: 100%;
+  padding: 10px;
+  // display: flex;
+  // flex-flow: column;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 2em;
+    @include breakpoint($medium-screen) {
+      width: 33.33%;
+      box-sizing: border-box;
+    }
+}
+
+.view-cta-blocks .cta-block-container:nth-child(1) {
+  @include breakpoint($medium-screen) {
+    border-right: solid 0.4em white;
+  }
+}
+
+.view-cta-blocks .cta-block-container:nth-child(2) {
+  @include breakpoint($medium-screen) {
+    border-left: solid 0.4em white;
+    border-right: solid 0.4em white;
+  }
+}
+
+.view-cta-blocks .cta-block-container:nth-child(3) {
+  @include breakpoint($medium-screen) {
+    border-left: solid 0.4em white;
+  }
+}
+
+#block-views-block-banner-blocks-cta-blocks .view-cta-blocks .cta-block-container h4 {
+  //position: relative;
+  display: flex;
+  // align-items: flex-start;
+  justify-content: center;
+  // width: 20%;
+  margin: 1em auto 1em auto;
+  line-height: 1em;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 1px;
+  // margin: 0 auto 1em auto;
+  // justify-content: center;
+  // display: flex;
+  max-width: 100px;
+    @include breakpoint($narrow-screen) {
+      max-width: 200px;
+      margin: 1em auto 1em auto;
+    }
+
+  &:after {
+    content: "";
+    background: url("/sites/default/files/images/2018-11/chevron-down-large.png") no-repeat;
+    width: 80%;
+    margin: 0 10%;
+    left: 0;
+    height: 60px;
+    position: absolute;
+    z-index: 1;
+    top: 55px;
+    background-position: center;
+    background-size: cover;
+    @include breakpoint($narrow-screen) {
+      width: 60%;
+      margin: 0 20%;
+      height: 75px;
+      top: 80px;
+    }
+    @include breakpoint($medium-screen) {
+      width: 80%;
+      margin: 0 10%;
+      height: 50px;
+      top: 90px;
+    }
+  }
+}
+
+#block-views-block-banner-blocks-cta-blocks .view-cta-blocks .cta-block-container .field--name-body {
+  @include breakpoint($medium-screen) {
+    height: 365px;
+  }
+  @media screen and (min-width: 1175px) {
+    height: 385px;
+  }
+  @media screen and (min-width: 1220px) {
+    height: 395px;
+  }
+  @include breakpoint($wide-screen) {
+    height: 425px
+  }
+}
+
+#block-views-block-banner-blocks-cta-blocks .view-cta-blocks .cta-block-container .field--type-image {
+  margin-top: 5.5em;
+  margin-bottom: 1em;
+  @include breakpoint($narrow-screen) {
+    margin-top: 8.5em;
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include breakpoint($medium-screen) {
+    margin-top: 6.5em;
+    max-width: 100%;
+  }
+}
+
+#block-views-block-banner-blocks-cta-blocks .view-cta-blocks .cta-block-container .field--type-link {
+  margin-top: auto;
+  padding: 0;
+  a {
+    @include btn-secondary;
+    margin-right: 0;
+
+    &:before {
+      content: "\f041";
+      font-family: FontAwesome;
+      margin-right: 20px;
+    }
+  }
+}
+
+
+
+//where to buy mobile look
+
+#block-views-block-cta-blocks-background {
+ background-color: red;
+
+ .view-cta-blocks .cta-block-container {
+    @include breakpoint(0 $medium-screen) {
+    background-size: 160px auto;
+    background-position: left center;
+    padding-left: 40%;
+     padding-right: 0;
+     position: relative;
+     z-index: 10;
+
+     &:after {
+       content: '';
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 101%;
+       position: absolute;
+       z-index: 1;
+       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+30,ffffff+39,ffffff+39,ffffff+100&0+0,0.94+29,1+39,1+100 */
+       background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.94) 43%, rgba(255,255,255,0.95) 43%, rgba(255,255,255,1) 48%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+       background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.94) 43%,rgba(255,255,255,0.95) 43%,rgba(255,255,255,1) 48%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+       background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.94) 43%,rgba(255,255,255,0.95) 43%,rgba(255,255,255,1) 48%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+     }
+
+     & > div {
+       position: relative;
+       z-index: 50;
+     }
+
+
+   .field--name-body {
+     padding: 0;
+
+     p {
+      display: block !important;
+      text-align: left;
+     }
+
+     h3 {
+      @include font-size(21);
+      text-align: left;
+      display: block;
+     }
+   }
+
+   .field--name-field-buttons {
+    display: block;
+
+     .field__item {
+       margin: 0;
+     }
+   }
+
+    .field--type-link {
+      overflow: visible !important;
+      padding: 0;
+    }
+  }
+    @include breakpoint(390px $medium-screen) {
+      background-size: 186px auto;
+      background-position: left bottom;
+
+       &:after {
+               /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+30,ffffff+39,ffffff+39,ffffff+100&0+0,0.94+29,1+39,1+100 */
+       background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.94) 40%, rgba(255,255,255,0.95) 18%, rgba(255,255,255,1) 42%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+       background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.94) 40%,rgba(255,255,255,0.95) 18%,rgba(255,255,255,1) 42%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+       background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.94) 40%,rgba(255,255,255,0.95) 18%,rgba(255,255,255,1) 42%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+       }
+    }
+
+    @include breakpoint(555px $narrow-screen) {
+      padding-left: 38%;
+
+      &:after {
+        content: none !important;
+      }
+    }
+    @include breakpoint($narrow-screen $medium-screen) {
+      background-size: 50% auto;
+      padding-left: 55%;
+
+      &:after {
+        content: none !important;
+      }
+    }
+
+    @include breakpoint(708px $medium-screen) {
+      background-position: left -220px;
+    }
+    @include breakpoint(820px $medium-screen) {
+      background-position: left -260px;
+    }
+  }
+}

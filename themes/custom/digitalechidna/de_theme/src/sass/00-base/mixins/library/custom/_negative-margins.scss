@@ -1,0 +1,10 @@
+
+@mixin negative-margin {
+  position: relative;
+  margin-left: - ms(2);
+  margin-right: - ms(2);
+  @include breakpoint($standard-screen) {
+    margin-left: - ms(4);
+    margin-right: - ms(4);
+  }
+}

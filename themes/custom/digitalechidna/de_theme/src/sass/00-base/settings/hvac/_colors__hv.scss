@@ -1,0 +1,22 @@
+
+//HVAC ==============================================
+
+// $hv-red: #C10404;
+
+$hv-red: $red;
+$hv-link: $red;
+$hv-link-hover: darken($red, 5%);
+$hv-link-visited: darken($red, 8%) ;
+$hv-red-on-black: #DC3238;
+
+$hv-dark-red: #B71F24;
+
+@mixin hv-link {
+	color: $hv-link;
+	&:hover {
+		color: $hv-link-hover;
+	}
+	&:visited {
+		color: $hv-link-visited;
+	}
+}

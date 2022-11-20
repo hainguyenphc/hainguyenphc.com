@@ -1,0 +1,27 @@
+
+.division-fireplaces .product-display-feature-grey {
+  background-color: $fp-off-grey-light;
+  @include negative-margin;
+
+  .view-content {
+    background-color: $fp-off-grey-light;
+    margin-left: 0;
+    margin-right: 0;
+    background: linear-gradient(to bottom, #f8f5f0 0%, #f8f5f0 10%, #f8f5f0 47%, #dbd4cf 48%, #dbd4cf 66%, #f5f4ee 100%);
+  }
+
+  .view-header h2 {
+    font-family: $font-set-1;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: $semi-bold;
+    color: $fp-dark-brown;
+    letter-spacing: 2px;
+    padding-top: ms(2);
+  }
+
+  .views-field-title {
+    text-transform: none;
+  }
+}
+

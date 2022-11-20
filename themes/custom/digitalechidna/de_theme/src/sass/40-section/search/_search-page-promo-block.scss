@@ -1,0 +1,13 @@
+// ++++++ Promo block for search pages
+
+.block-search-page-promo-block {
+  .header-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0 !important;
+
+    @include breakpoint($medium-screen) {
+      margin-top: -3.05176em;
+    }
+  }
+}

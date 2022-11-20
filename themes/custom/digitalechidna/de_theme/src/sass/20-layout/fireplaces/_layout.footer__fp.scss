@@ -1,0 +1,45 @@
+
+
+//first menu set
+
+.division-fireplaces #footer .region--footer-first .block-menu.navigation:first-child > ul.menu > li {
+  margin-bottom: ms(2);
+}
+
+
+//second menu set
+
+.division-fireplaces #footer .region--footer-first .block-menu.navigation:nth-child(2) > ul.menu {
+  @include breakpoint(max-width 725px) {
+    column-count: 1;
+    color: green;
+  }
+  @include breakpoint(725px) {
+    column-count: 2;
+  }
+  @include breakpoint(1024px) {
+    column-count: 3;
+  }
+  @include breakpoint(1250px) {
+    column-count: 4;
+  }
+
+  & > li {
+    width: 100%;
+  }
+}
+
+
+//special fix for Fireplaces specific menu to make columns wrap
+
+.division-fireplaces #footer .region--footer-first {
+  .block-menu.navigation:nth-child(2) > ul.menu > li:first-child {
+    display: block;
+  }
+}
+
+
+
+
+
+

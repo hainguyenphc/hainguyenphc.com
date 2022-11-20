@@ -1,0 +1,14 @@
+
+.hide-item-on-desktop {
+  display: block;
+  @include breakpoint($narrow-screen) {
+    display: none;
+  }
+}
+
+.hide-item-on-mobile {
+  display: none;
+  @include breakpoint($narrow-screen) {
+    display: block;
+  }	
+}

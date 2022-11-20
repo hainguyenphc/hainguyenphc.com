@@ -1,42 +1,40 @@
+// @colour palettte  ==============================================
+// using color names as variables is fine.
 
-// @theme palette  ==============================================
+// BASE THEME (GRILLS)  ==============================================
+
+$dark-blue: #002072;
+$blue: #016eb8;
+$light-blue: #32a5f3;
+$grey: #808285;
+$purple: #712b62;
+$olive: #898700;
+$stats-blue: #007abd;
+$secondary-stats-blue: #5096c9;
+$orange: #c44124;
+$red: #c32127;
+$gold: #936400;
+$green: #7d790d;
+$dark-green: #179b3b;
+$beige: #fdf3df;
+
+// greys
+
+$white: #fff;
+$light-grey: #f2f5f7;
+$off-black: #515151;
+$neutral-grey: #c8cacc;
+$dark-grey: #4b4c4d;
+$dark-grey-alt: #2b2b2b;
+$medium-grey: #272727;
+$grey-medium-font: #6E6E6E;
+$darkest-grey: #1b1c1c;
+$dark-font: #353535;
+$ui-grey: #eee;
+$dark-ui-grey: #b7b7b7;
+$dark-dots: #aaa;
+$search-grey: #d2d3d5;
+$dealer-list-grey: #f4f4f6;
 
 
-// Primary
-
-$brand-primary-1: #0C1E37; // Dark Navy
-$brand-primary-2: #D8232A; // Brand Red
-
-$brand-secondary-1: #3D456D; // Dark Neutral Violet
-$brand-secondary-2: #6672B0; // Neutral Violet
-$brand-secondary-3: #3B55D5; // Vibrant Violet
-$brand-secondary-4: #3B55D5; // Vibrant Violet Light
-
-
-// @greyscale palette  ==============================================
-
-$black:            #000000;
-$white:            #ffffff;
-$grey-dark:        #17171A;
-$grey-neutral:     #737487;
-$grey:             #8E919F;
-$grey-alt:         #BDBFC7;
-$grey-light:       #D0D2D9;
-$grey-xlight:      #E8E9ED;
-$grey-xxlight:     #F2F3F7;
-
-
-// Descriptive Colours
-
-$debug-red: rgb(160, 0, 0);
-$debug-yellow: #FFD424;
-$debug-green: rgb(0, 160, 0);
-$debug-blue: rgb(0, 0, 160);
-
-
-// Link Colour
-
-$link-colour: #337AB7; // Neutral blue
-
-// Shadow Color
-$shadow: rgba($black, 0.5);
+$corporate-highlight: #333;

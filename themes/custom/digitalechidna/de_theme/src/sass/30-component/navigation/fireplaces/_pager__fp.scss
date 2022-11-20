@@ -1,0 +1,26 @@
+// ==== Fireplaces pager
+.division-fireplaces {
+  .pager {
+
+    // All items
+    .pager__item {
+
+      a {
+        // border-color: $fp-orange;
+        border-color: $fp-orange-accessible;
+        color: $fp-orange;
+
+        &:hover {
+          background-color: $fp-orange;
+          color: #fff;
+        }
+      }
+    }
+
+    // Active item
+    .pager__item.is-active a {
+      color: #fff;
+      background-color: $fp-orange;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+
+// ==== HVAC pager
+.division-hvac {
+  .pager {
+
+    // All items
+    .pager__item {
+
+      a {
+        // border-color: $fp-orange;
+        border-color: $hv-red;
+        color: $hv-red;
+
+        &:hover {
+          background-color: $hv-red;
+          color: #fff;
+        }
+      }
+    }
+
+    // Active item
+    .pager__item.is-active a {
+      color: #fff;
+      background-color: $hv-red;
+    }
+  }
+}
+
+

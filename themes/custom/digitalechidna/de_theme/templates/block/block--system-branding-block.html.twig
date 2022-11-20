@@ -13,21 +13,23 @@
  * - site_slogan: Slogan for site as defined in Site information settings.
  */
 #}
-
 {% block content %}
   {% if site_logo %}
-    <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="site-logo">
-      <img src="{{ site_logo }}" alt="{{ site_name }} {{ 'Home'|t }}" class="logo logo--default" width="284" height="56" />
-      <img src="/themes/custom/de_theme/src/img/print/logo--print.png" alt="Print logo" class="logo logo--print" />
-
-      {% if site_name %}
-        <div class="site-name">
-          <p>{{ site_name }}</p>
-        </div>
-      {% endif %}
-    </a>
+    {% if logo_url %}
+      <a href="{{ logo_url }}" title="{{ 'Home'|t }}" rel="home" class="site-logo">
+        <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+      </a>
+    {% else %}
+      <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="site-logo">
+        <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+      </a>
+    {% endif %}
   {% endif %}
-
+  {% if site_name %}
+    <div class="site-name">
+      <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
+    </div>
+  {% endif %}
   {% if site_slogan %}
     <div class="site-slogan">{{ site_slogan }}</div>
   {% endif %}

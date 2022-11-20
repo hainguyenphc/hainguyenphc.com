@@ -1,0 +1,32 @@
+
+@mixin shadow-bottom {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  bottom: 0px;
+  height: 65px;
+  width: 100%;
+  background: radial-gradient(ellipse at center, rgba(160, 160, 160, 0.1) 0%, rgba(196, 196, 196, 0) 62%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#70a0a0a0', endColorstr='#00c4c4c4',GradientType=1 );
+}
+
+
+.shadow{
+  background-color: #fff;
+  height: 50px;
+  position: relative;
+  z-index: 50;
+
+  &:before {
+    @include shadow-bottom;
+  }
+
+  .shadow-inner {
+    position: relative;
+    z-index: 10;
+    top: -25px;
+    height: 50px;
+    background-color: #fff;
+  }
+}

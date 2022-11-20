@@ -1,0 +1,22 @@
+
+@mixin highlight-box {
+  background-color: $blue;
+  position: relative;
+  font-family: $font-set-2;
+  line-height: ms(2);
+  margin: ms(3) ms() ms(3) 0;
+  padding: ms(1) ms(-1) ms(1) ms(1);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: $bold;
+  // background-color: $blue;
+  display: flex;
+  z-index: 1;
+  a{
+
+  }
+  @include breakpoint($narrow-screen) {
+    margin: ms(3) ms(6) ms(3) ms(3);
+    padding: ms(3) ms() ms(3) ms(2);
+  }
+}

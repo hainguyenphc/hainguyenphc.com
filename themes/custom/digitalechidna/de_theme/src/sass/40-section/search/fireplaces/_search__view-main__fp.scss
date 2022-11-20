@@ -1,0 +1,44 @@
+// Main Product search
+
+.division-fireplaces {
+  .view-acquia-search {
+
+  	.views-row {
+
+      // view card
+      a.view-card, a.view-list {
+        @include btn-primary-fp;
+        @include btn-small;
+
+        margin: ms() 0 0;
+        padding-right:1em;
+        padding-left: 1em;
+
+        @include breakpoint($narrow-screen) {
+          padding-right:3.5em;
+          padding-left: 3.5em;
+        }
+      }
+
+  		//PRICE AND RATING WRAPPER
+  		.bottom-info-wrapper {
+  	    .field--name-field-msrp {
+  	    	color: $fp-dark-grey;
+          font-family: $font-set-1;
+          font-weight: $semi-bold;
+
+          span.value-special {
+            color: $fp-dark-grey;
+            font-weight: $semi-bold;
+          }
+  	    }
+
+        .field--name-field-bazaarvoice-rating {
+          color: $fp-dark-grey;
+          margin-left: auto;
+        }
+  		}
+  	}
+  }
+}
+

@@ -37,22 +37,32 @@
     <head-placeholder token="{{ placeholder_token|raw }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
 
+    <link href="../../../themes/custom/de_theme/src/fonts/material-icons-main/iconfont/material-icons.css" rel="stylesheet">
+
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/themes/custom/de_theme/src/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="/themes/custom/de_theme/src/img/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/themes/custom/de_theme/src/img/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="/themes/custom/de_theme/src/img/favicons/site.webmanifest">
-    <link rel="mask-icon" href="/themes/custom/de_theme/src/img/favicons/safari-pinned-tab.svg" color="#002a5c">
-    <meta name="msapplication-TileColor" content="#c3002b">
-    <meta name="theme-color" content="#ffffff">
+
+<link rel="apple-touch-icon" sizes="180x180" href="../../../themes/custom/de_theme/src/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../themes/custom/de_theme/src/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../themes/custom/de_theme/src/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="../../../themes/custom/de_theme/src/img/favicons/manifest.json">
+<link rel="mask-icon" href="../../../themes/custom/de_theme/src/img/favicons/safari-pinned-tab.svg" color="#c32127">
+<link rel="shortcut icon" href="../../../themes/custom/de_theme/src/img/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="../../../themes/custom/de_theme/src/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
 
   </head>
   <body{{ attributes.addClass(body_classes) }}>
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      {{ 'Skip to main content'|t }}
+    </a>
     {{ page_top }}
     {{ page }}
     {{ page_bottom }}
+    <!-- import font awesome icons -->
+    <script src="https://use.fontawesome.com/fd7b9d90d0.js"></script>
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
   </body>
 </html>

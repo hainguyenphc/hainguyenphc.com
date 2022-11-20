@@ -1,0 +1,18 @@
+
+#block-notranslationwarningblock-3 {
+  margin-top: ms(5);
+  padding-top: ms(5);
+  border-top: 1px solid $dark-ui-grey;
+}
+
+#block-notranslationwarningblock {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.user-logged-in {
+  #block-notranslationwarningblock {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+}

@@ -1,0 +1,52 @@
+// Inspiration search filters
+
+.napoleon-search-form-inspiration {
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0 .75em 0;
+
+    & > * {
+      flex: 0 0 100%;
+    }
+  }
+
+  // Search
+  .form-item-search-content {
+    flex: 0 0 194px;
+    margin: 0;
+
+    @include breakpoint($small-screen) {
+      flex: 0 0 288px;
+    }
+
+    @include breakpoint($narrow-screen) {
+      flex: 0 0 340px;
+    }
+
+    @include breakpoint($medium-screen) {
+      flex: 0 0 143px;
+    }
+
+    input:not(#edit-submit):not(#edit-actions-submit):not(.button) {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  input.form-submit {
+    @include btn-secondary;
+    flex: 0 0 auto;
+    margin: 0;
+
+    @include breakpoint($narrow-screen) {
+      font-size: 1rem;
+    }
+
+    @include breakpoint($medium-screen) {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  }
+}

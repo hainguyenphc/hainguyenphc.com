@@ -1,0 +1,297 @@
+
+.view-acquia-search {
+	.views-row {
+		article.node--type-recipe {
+			margin-right: -1em;
+			margin-left: -1em;
+			margin-top: -1em;
+			margin-bottom: -1em;
+			.node__content {
+				width: 100%;
+				position: relative;
+			}
+			
+			.image-wrapper {
+				min-height: 0%;
+				display: block;
+			}
+			
+			.field--name-field-main-image {
+				width: 100%;
+				position: relative;
+
+				img {
+					display: block;
+					width: 100%;
+					max-height: 100%;
+				}
+			}
+
+			.field--name-field-date {
+				font-style: italic;
+				color: #000;
+				margin-bottom: ms(1);
+				font-size: .9em;
+			}
+
+			.wrapper {
+				padding: 1em;
+		    margin-top: 1.3em;
+		    margin-bottom: -1em;
+		    width: 100%;
+			}
+
+			.info-wrapper {
+				padding: 0;
+				background-color: transparent;
+				margin: 0;
+
+				.overview {
+					margin: 0;
+					flex-wrap: wrap;
+					background-color: transparent;
+					padding: 0;
+					flex-direction: row; 
+				}
+			}
+
+			.stats {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				margin-top: .5em;
+
+				.field__label {
+					display: none;
+				}
+
+				.field__item {
+					line-height: 16px;
+				}
+
+				.field {
+					margin-right: .5em;
+					padding-right: .5em;
+					border-right: 1px solid $dark-ui-grey;
+					font-style: italic;
+					line-height: 15px;
+					margin-bottom: .2em;
+
+					&:before {
+						display: none;
+					}
+
+					&:last-child {
+						margin-right: 0;
+						padding-right: 0;
+						border-right: none;
+					}
+				}
+			}
+
+			a.view-card {
+				@include breakpoint($weird-screen 835px) {
+					padding-right: .2em;
+					padding-left: .2em;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+
+	//LIST VIEW
+
+	.view-content.list-view {
+		.views-row {
+			position: relative;
+			@include breakpoint($medium-screen) {
+				padding-bottom: 0;
+				min-height: 195.91px;
+			}
+		}
+		article.node--type-recipe {
+			margin: 0;
+			padding: 0;
+			position: initial;
+			@include breakpoint(700px) {
+				width: calc(100% - 170px);
+			}
+			// @include breakpoint($medium-screen) {
+		 //    width: calc(100% - 170px);
+	  // 	}
+	  	@include breakpoint($standard-screen) {
+		    width: calc(100% - 220px);
+	  	}
+
+	  	.node__content {
+	  		position: static;
+	  		@include breakpoint($narrow-screen) {
+	  			display: block;
+	  		}
+				@include breakpoint(700px) {
+					display: flex;
+				}
+	  	}
+
+	  	a.item-title {
+	  		display: flex;
+	  	}
+
+	  	.image-wrapper {
+	  		// margin-left: 0;
+	  		// max-width: 100%;
+	  		// width: 30%;
+	  		// margin-top: -1em;
+	  		// margin-left: -1em;
+	  		margin-left: 0;
+	  		@include breakpoint(770px) {
+		  		margin-left: 0;
+		  		max-width: 100%;
+		  		width: 30%;
+		  		margin-top: -1em;
+		  		margin-left: -1em;
+	  		}
+	  		@include breakpoint(1125px) {
+	  			flex:0 0 320px
+	  		}
+	  		@include breakpoint(1250px) {
+	  			margin-bottom: 0;
+	  		}
+	  		@include breakpoint(700px) {
+	  			width: 30%;
+	  			min-width: 0;
+	  		}
+	  		@include breakpoint(1210px) {
+	  			width: auto;
+	  		}
+
+	  		img {
+	  			@include breakpoint(1125px) {
+	  				//width: 320px;
+	  			}
+	  		}
+	  	}
+
+	  	.wrapper {
+	  		margin: 0;
+	  		padding: 0;
+	  		position: initial;
+	  		width: 100%;
+	  	}
+
+	    .stats {
+		   display: block;
+		    @include breakpoint(700px) {
+		    	background: darken($light-grey, 3%);
+		    	// height: calc(100% + 1em);
+			    // position: absolute;
+			    // right: -180px;
+			    width: 150px;
+			    // top: -1em;
+			    margin-top: 0;
+			    position: absolute;
+			    top: 0;
+			    left: auto;
+			    right: 0;
+			    height: 100%;
+		    }
+		    @include breakpoint($standard-screen) {
+			    width: 200px;
+		    }
+
+		    .info-wrapper {
+		    	width: 100%;
+		    	@include breakpoint(700px) {
+		    		height: calc(100%);
+		    	}
+		    }
+
+		    .overview {
+		    	display: flex;
+		    	flex-wrap: wrap;
+		    	padding: 1em;
+		    	margin: -1em;
+		    	margin-top: 1em;
+		    	background: darken($light-grey, 3%);
+		    	@include breakpoint($narrow-screen) {
+		    		display: flex;
+		    		flex-direction: row;
+		    	}
+		    	@include breakpoint(700px) {
+		    		padding: 0em 0;
+		    		margin-top: 0;
+		    		height: 100%;
+		    	}
+		    }
+
+		    .field {
+		    	margin: 0;
+		    	padding: .5em 0;
+		    	border: none;
+		    	text-align: center;
+		    	align-items: center;
+		    	flex: 0 0 100%;
+		    	@include breakpoint(700px) {
+						flex: 0 0 50%;
+		    	}
+		    	@include breakpoint(700px) {
+		    		flex-direction: column;
+		    		justify-content: center;
+		    		font-size:.9em;
+		    		top: -3px;
+		    	}
+
+		    	&:before {
+		    		display: block;
+		    		@include breakpoint(700px) {
+		    			margin-bottom: 5px;
+		    			margin-right: 0;
+		    			//font-size: 1.5em;
+		    			font-size: 20px;
+		    		}
+		    	}
+		    }
+
+		    .field__label {
+		    	display: block;
+		    	font-style: normal;
+		    	text-transform: uppercase;
+		    	font-size: .8em;
+		    	@include breakpoint(700px) {
+		    		text-align: center;
+		    		margin-right: 0;
+		    	}
+		    	@include breakpoint(0 700px) {
+		    		margin-bottom: 0;
+		    	}
+		    }
+
+		    .field__item {
+		    	color: $blue;
+		    }
+	  	}
+
+	  	a.view-list {
+	  		@include breakpoint(700px) {
+	  			margin-bottom: 1em;
+	  		}
+	  	}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

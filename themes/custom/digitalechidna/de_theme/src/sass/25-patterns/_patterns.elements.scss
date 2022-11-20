@@ -1,0 +1,493 @@
+/* 20-patterns/elements/_elements.scss */
+// contains authors unclassed HTML element styles such as h1, h2, table, etc
+
+*{
+  min-height: 0;
+  min-width: 0;
+}
+
+html{
+  font-size: 87.5%;
+  overflow: hidden;
+  @include breakpoint($narrow-screen) {
+    font-size: 100%;
+  }
+  color: #353535;
+  overflow-y: scroll; //inuit css
+  min-height: 100%; //inuit css
+  -moz-osx-font-smoothing: grayscale; //inuit css
+   -webkit-font-smoothing: antialiased; //inuit css
+}
+
+body.mm-wrapper {
+  overflow: visible;
+}
+
+.mm-slideout {
+  overflow-x: hidden;
+}
+
+html, button, input, select, textarea {
+  font-family: $font-set-1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+pre,
+table,
+fieldset,
+form
+details,
+blockquote,
+object,
+iframe,
+pre,
+address,
+code,
+dl,
+dt,
+dd,
+embed,
+audio,
+video{
+  font-size: ms();
+  line-height: ms(2);
+  margin: 0 0 ms() 0;
+}
+
+strong,b{
+  font-weight:  $bold;
+}
+
+em{
+  font-style: italic;
+}
+
+a{
+  color: $blue;
+  transition: color 0.3s ease-out;
+  //text-decoration: none;
+  &:hover, &:focus, &:active {
+    //text-decoration: none;
+  }
+}
+
+a.dark-link {
+  color: $dark-grey;
+  transition: color 0.3s ease-out;
+  text-decoration: none;
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+    color: darken($dark-grey, 20%);
+  }
+}
+
+a.light-link {
+  color: #fff;
+  transition: color 0.3s ease-out;
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+  }
+}
+
+/* Set consistent quote types. */
+
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight:  $normal;
+  b,strong{
+    font-weight: $normal;
+  }
+}
+
+h1{
+  font-size: ms(2);
+  margin-bottom: ms(-5);
+  line-height: 1em;
+  font-family: $font-set-1;
+  font-weight: $bold;
+  text-transform: uppercase;
+  color: $dark-grey;
+  font-size: ms(4);
+  @include breakpoint($narrow-screen) {
+    font-size: ms(5);
+  }
+  a{
+    color: black;
+  }
+
+  &.header {
+    font-size: ms(6);
+    @include breakpoint($narrow-screen) {
+      font-size: ms(7);
+    }
+  }
+  &.lower {
+    text-transform: none;
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $normal;
+    font-size: ms(4);
+    @include breakpoint($narrow-screen) {
+      font-size: ms(5);
+    }
+  }
+}
+
+h2{
+  margin-bottom: ms(-3);
+  line-height: 1.1em;
+  font-family: $font-set-1;
+  text-transform: uppercase;
+  font-weight: $semi-bold;
+  font-size: ms(3);
+  @include breakpoint($narrow-screen) {
+    font-size: ms(4);
+  }
+  a{
+    color: $dark-grey;
+  }
+  &.header {
+    text-transform: uppercase;
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $bold;
+    font-size: ms(5);
+    @include breakpoint($narrow-screen) {
+      font-size: ms(6);
+    }
+  }
+  &.lower {
+    text-transform: none;
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $normal;
+    font-size: ms(3);
+    @include breakpoint($narrow-screen) {
+      font-size: ms(4);
+    }
+  }
+}
+
+h3{
+  font-size: ms(2);
+  margin-bottom: ms(-2);
+  line-height: ms();
+  font-weight: $bold;
+  text-transform: uppercase;
+  @include breakpoint($narrow-screen) {
+    font-size: ms(3);
+  }
+  a{
+    color: $dark-grey;
+  }
+  &.header {
+    text-transform: uppercase;
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $bold;
+    font-size: 3.2em;
+    @include breakpoint($narrow-screen) {
+      font-size: 3.5em;
+    }
+  }
+  &.lower {
+    text-transform: none;
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $normal;
+    font-size: ms(1);
+    @include breakpoint($narrow-screen) {
+      font-size: ms(2);
+    }
+  }
+}
+
+h4{
+  font-size: ms();
+  margin-bottom: ms(-3);
+  font-weight: $semi-bold;
+  text-transform: uppercase;
+  font-size: ms(1);
+  @include breakpoint($narrow-screen) {
+    font-size: ms(2)
+  }
+  line-height: ms(1);
+  &.header {
+    text-transform: uppercase;
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $bold;
+    font-size: 3em;
+    @include breakpoint($narrow-screen) {
+      font-size: 3.2em;
+    }
+  }
+  &.lower {
+    text-transform: none;
+    @include font-size(20);
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $normal;
+    font-size: ms();
+    @include breakpoint($narrow-screen) {
+      font-size: ms(1);
+    }
+  }
+}
+
+h5{
+  font-weight: $semi-bold;
+  margin-bottom: ms();
+  text-transform: uppercase;
+  font-size: ms(-1);
+  @include breakpoint($narrow-screen) {
+  font-size: ms();
+  }
+  &.header {
+    text-transform: uppercase;
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $bold;
+    font-size: 2.8em;
+    @include breakpoint($narrow-screen) {
+      font-size: 3em;
+    }
+  }
+  &.lower {
+    text-transform: none;
+    @include font-size(18);
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $normal;
+    font-size: ms(-6);
+    @include breakpoint($narrow-screen) {
+      font-size: ms();
+    }
+  }
+}
+
+h6{
+  font-size: ms(-1);
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-weight: $bold;
+  &.no-js{
+    display: block;
+  }
+  &.header {
+    text-transform: uppercase;
+    line-height: normal;
+    line-height: 1em;
+    font-weight: $bold;
+    font-size: ms(-1);
+    @include breakpoint($narrow-screen) {
+     font-size: ms(-1);
+    }
+  }
+}
+
+sup,sub{
+  // vertical-align: super;
+  text-transform: uppercase;
+  font-weight: $bold;
+  @include breakpoint($narrow-screen) {
+    font-size: ms(-2);
+  }
+}
+
+// sub{
+//   font-size:  smaller;
+//   vertical-align: sub;
+// }
+
+blockquote{
+  padding: ms(3);
+  background-color: $light-grey;
+  p{
+    color: $dark-grey;
+    font-size: ms();
+    font-weight: $semi-bold;
+    @include breakpoint($narrow-screen) {
+      line-height: ms(3);
+      font-size: ms();
+    }
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+figure{
+  @include reset;
+  margin-bottom: ms();
+  img{
+    width: 100%;
+  }
+  figcaption{
+    margin-top: ms(-2);
+    @include breakpoint($narrow-screen) {
+      font-size: ms(-1);
+    }
+  }
+}
+
+label{
+  margin-bottom: ms(-2);
+  font-weight: $bold;
+}
+
+input,
+textarea{
+  margin: 0;
+  // vertical-align:bottom;
+}
+
+textarea{
+  vertical-align: top;
+}
+
+
+table{
+  width:  100%;
+  p,ul{
+    @include reset;
+  }
+  tbody{
+    border: none;
+  }
+
+  th,td{
+    padding: ms(-2) ms(-3);
+    border: none;
+    vertical-align: top;
+    font-size: ms(-1);
+    @include breakpoint($weird-screen)  {
+      font-size: ms();
+      line-height: ms(1);
+    }
+  }
+
+  // tr{
+
+  // }
+
+  tr.odd{
+    background-color: white;
+  }
+
+
+  tr:nth-child(odd) {
+    background-color: white;
+  }
+
+
+  tr.even{
+    background-color: tint($light-grey,75);
+  }
+
+  tr:nth-child(even) {
+    background-color: tint($light-grey,75);
+  }
+
+  // th{
+  // }
+
+  th,
+  thead th{
+    // background-color: white;
+    border-bottom: 1px solid $light-grey;
+    //line-height: ms(2);
+    font-family: $font-set-2;
+    background: $blue;
+    color: white;
+    padding: .5em;
+  }
+
+  caption{
+    caption-side: bottom;
+  }
+}
+
+// lists
+
+ul,ol{
+  li{
+    margin: 0 0 ms(-3) 0;
+  }
+}
+
+ul{
+  padding-left: ms();
+  li{
+    list-style: disc;
+  }
+}
+
+ol{
+  padding-left: ms(1);
+  li{
+    list-style: decimal;
+  }
+}
+
+iframe {
+  border: none;
+  width: 100%;
+}
+
+#block-purgethispage {
+  display: inline-block;
+  width: 100%;
+}
+
+img{
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+a img{
+  transform: rotate(0);
+  -webkit-backface-visibility: hidden;
+}
+
+a img:hover{
+  opacity: .75;
+}
+
+// from kickstart
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+// Needed for custom functionality
+.element-invisible {
+  display: none !important;
+}
+
+.element-hinvisible {
+  height: 0;
+  overflow: hidden;
+}
+
+.white {
+  color: #fff;
+  background-color: transparent;
+  padding: 0;
+}
+
+
+

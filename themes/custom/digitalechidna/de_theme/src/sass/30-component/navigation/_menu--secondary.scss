@@ -1,0 +1,103 @@
+
+.region--masthead-actions {
+  .region-inner {
+    justify-content: space-between;
+
+    // & > div {
+    //   flex-grow: 1;
+    // }
+
+    ul.menu, ul.links {
+      display: flex;
+      @include reset;
+
+      li {
+        @include no-bullet;
+        @include reset;
+
+        // a {
+        //   @extend a.dark-link;
+        //   font-weight: $bold;
+        //   text-transform: uppercase;
+        // }
+      }
+    }
+
+    a {
+      @extend a.dark-link;
+      font-weight: $bold;
+      text-transform: uppercase;
+      color: #000;
+      font-size: .9em;
+      &:lang(fr) {
+        font-size: .78em;
+      }
+    }
+  }
+}
+
+
+#block-uppermenublock {
+  @include breakpoint(1200px) {
+    margin-left: 1.7em;
+  }
+  flex-grow: 1;
+
+  a {
+    margin-right:2em;
+
+    // Active state
+    &.active {
+      position: relative;
+
+      &::after {
+        border-bottom: 7px solid #000;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        bottom: -17px;
+        content: '';
+        height: 0;
+        left: calc(50% - 7px);
+        position: absolute;
+        transform: translateY(-50%);
+        width: 0;
+      }
+    }
+  }
+}
+
+
+.choose-region-form.choose-region-select-form.block.block-napoleon-region,
+#block-languagedropdownswitcher,
+#block-basiccartcountblock--2,
+#block-productregistrationmenublock,
+#block-dealerlogin,
+.language-switcher-language-url,
+#block-basiccartcountblock {
+  ul.links a,
+  a {
+    font-weight: $semi-bold;
+  }
+  margin-left: 1.25em;
+
+  @include breakpoint($wide-screen) {
+    margin-left: 1.8em;
+  }
+}
+
+
+#block-productregistrationmenublock {
+  margin-left: 0;
+}
+
+#block-basiccartcountblock {
+  .basic-cart-count {
+    margin-right: .5em;
+  }
+  p {
+    margin: 0;
+  }
+  a {
+    color: #000;
+  }
+}
