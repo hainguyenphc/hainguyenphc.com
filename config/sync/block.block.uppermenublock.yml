@@ -9,7 +9,7 @@ dependencies:
 id: uppermenublock
 theme: de_theme
 region: masthead_actions
-weight: 0
+weight: -9
 provider: null
 plugin: upper_menu_block
 settings:
