@@ -1,0 +1,5 @@
+name: 'HNP Upper Menu'
+type: 'module'
+description: 'Provides the Upper menu block'
+package: 'HNP'
+core_version_requirement: ^9

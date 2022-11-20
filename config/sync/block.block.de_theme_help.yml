@@ -1,6 +1,6 @@
 uuid: 7e30b09f-3b87-4888-b09b-4853ef62586a
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - help
@@ -10,7 +10,7 @@ _core:
   default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
 id: de_theme_help
 theme: de_theme
-region: masthead_prefix
+region: top_alert
 weight: 0
 provider: null
 plugin: help_block
