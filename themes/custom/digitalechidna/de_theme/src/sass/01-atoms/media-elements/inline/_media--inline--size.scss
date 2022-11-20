@@ -1,0 +1,57 @@
+
+
+// ++++++++++ Inline Media Sizing
+
+.media {
+  width: 100%;
+  float: none;
+}
+
+// ===== Captioned Media
+
+.caption {
+  width: 100%;
+
+  & > .media,
+  & > figcaption {
+    width: 100%;
+  }
+}
+
+// ===== Media aligned parent class
+
+.media-aligned .embedded-entity {
+  width: 100%;
+}
+
+// ===== View Modes Applied
+
+.media--view-mode-inline-75 {
+  @include breakpoint($m-break) {
+    width: calc(75% - 25px);
+  }
+}
+
+.media--view-mode-inline-66 {
+  @include breakpoint($m-break) {
+    width: calc(66.666666% - 25px);
+  }
+}
+
+.media--view-mode-inline-50 {
+  @include breakpoint($m-break) {
+    width: calc(50% - 25px);
+  }
+}
+
+.media--view-mode-inline-33 {
+  @include breakpoint($m-break) {
+    width: calc(33.333333% - 25px);
+  }
+}
+
+.media--view-mode-inline-25 {
+  @include breakpoint($m-break) {
+    width: calc(25% - 25px);
+  }
+}

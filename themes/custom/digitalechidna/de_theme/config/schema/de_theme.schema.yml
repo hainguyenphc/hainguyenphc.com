@@ -1,0 +1,9 @@
+# Schema for the configuration files of the Perth - DE Theme.
+
+de_theme.settings:
+  type: theme_settings
+  label: 'Perth - DE Theme settings'
+  mapping:
+    fonts_cdn:
+      type: boolean
+      label: 'Include via Google Fonts API'

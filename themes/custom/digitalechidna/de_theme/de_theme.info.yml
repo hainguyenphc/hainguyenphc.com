@@ -1,0 +1,79 @@
+name: DE Theme - Perth
+type: theme
+base theme: classy
+description: A default theme focused on providing more fleshed out appearances for components like Webforms, Navigation, Search, and elements at the atomic level.
+version: 1.1.0
+core_version_requirement: ^8 || ^9
+libraries:
+  - de_theme/base
+#  - de_theme/accessible-slick
+
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/menu.css: false
+        css/components/tabs.css: false
+        css/components/pager.css: false
+        css/components/forms.css: false
+        css/components/form.css: false
+        css/components/breadcrumb.css: false
+        css/components/inline-form.css: false
+        css/components/button.css: false
+
+  classy/media_library: claro/media_library.theme
+
+  core/jquery.ui.dialog:
+    css:
+      component:
+        assets/vendor/jquery.ui/themes/base/dialog.css: false
+
+  classy/dialog: claro/claro.drupal.dialog
+
+  claro/global-styling:
+    css:
+      component:
+        css/components/form.css: {}
+        css/components/button.css: {}
+
+  responsive_menu/responsive_menu.mmenu: de_theme/mmenu
+  responsive_menu/responsive_menu.config: de_theme/de_responsive_menu.config
+  responsive_menu/responsive_menu.toolbar:
+    js:
+      js/views/ToolbarVisualView.js: false
+
+  # Social Media Links Module
+  social_media_links/social_media_links.theme: false
+  social_media_links/fontawesome.component: false
+
+libraries-extend:
+  media_library/ui:
+    - de_theme/layout_builder.media_library
+  core/jquery.ui:
+    - claro/claro.jquery.ui
+
+ckeditor_stylesheets:
+  - vender/fonts/nunito-sans-v12-latin/font.css
+  - dist/css/de_editor.css
+
+regions:
+    # Alert
+    top_alert: Top Alert
+    # Masthead
+    masthead_actions: Masthead Actions
+    masthead_primary: Masthead Primary
+    masthead_secondary: Masthead secondary
+    # Announcement
+    announcements: Announcements
+    # Content
+    content_prefix: Content Prefix
+    content: Content
+    content_suffix: Content Suffix
+    # Sidebar
+    sidebar_first: Sidebar First
+    sidebar_second: Sidebar Second
+    # Footer
+    footer_first: Footer First
+    footer_first_right: Footer first Right
+    footer_second: Footer Second
+    footer_second_right: Footer second Right

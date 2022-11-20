@@ -16,13 +16,15 @@ use Drupal\Core\Url;
  */
 class UpperMenuBlock extends BlockBase {
 
-  /** {@inheritDoc} */
+  /** 
+   * {@inheritDoc} 
+   */
   public function build() {
     $build = [];
 
     $build['drupal'] = [
       '#type' => 'link',
-      '#url' => Url::fromUri(''),
+      '#url' => Url::fromRoute('<front>'),
       '#title' => $this->t('Drupal'),
       '#attributes' => [
         'id' => '',
