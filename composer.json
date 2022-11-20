@@ -23,6 +23,7 @@
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/core-vendor-hardening": "^9.4",
+        "drupal/responsive_menu": "^4.4",
         "drupal/tb_megamenu": "^1.7",
         "drush/drush": "^11.3"
     },
