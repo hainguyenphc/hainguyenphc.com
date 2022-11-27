@@ -9,7 +9,7 @@ _core:
 id: de_theme_primary_local_tasks
 theme: de_theme
 region: content_prefix
-weight: -9
+weight: -8
 provider: null
 plugin: local_tasks_block
 settings:

@@ -1,6 +1,6 @@
 uuid: 567c5703-243f-4566-a8d2-70167dc6ee65
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - system
@@ -10,8 +10,8 @@ _core:
   default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
 id: de_theme_breadcrumbs
 theme: de_theme
-region: top_alert
-weight: 0
+region: content_prefix
+weight: -9
 provider: null
 plugin: system_breadcrumb_block
 settings:

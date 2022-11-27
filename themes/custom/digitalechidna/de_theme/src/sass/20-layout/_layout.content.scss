@@ -1,11 +1,26 @@
-.section-content{
+.section-content {
+  @media screen and (max-width: 1200px) {
+    padding-top: 50px;
+  }
+
+  @media screen and (max-width: 992px) {
+    padding-top: 30px;
+  }
+
+  @media screen and (min-width: 1200px) and (max-width: 1220px) {
+    padding-top: 50px;
+  }
+
+  width: 80vw;
+  margin: 0 auto;
+
   background-color: $light-grey;
-  > .layout-container{
+  > .layout-container {
     background-color: #fff;
     padding-top: ms(5);
     padding-bottom: ms(4);
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
     @include breakpoint($weird-screen) {
       flex-direction: row;
     }
@@ -19,12 +34,11 @@
 }
 
 body:not(.user-logged-in) .region--content .header-wrapper {
-  margin-top: - ms(5);
+  margin-top: -ms(5);
   position: relative;
 }
 
-
-#main.column{
+#main.column {
   order: 2;
   flex-grow: 1;
   flex-shrink: 0;
@@ -32,10 +46,9 @@ body:not(.user-logged-in) .region--content .header-wrapper {
     flex: 1;
   }
 
-
-  & > .layout-content{
+  & > .layout-content {
     @include breakpoint($weird-screen) {
-     flex: 1 1 0px;
+      flex: 1 1 0px;
     }
   }
 }
@@ -56,8 +69,7 @@ aside.layout-sidebar-first {
   }
 }
 
-.layout-sidebar-second{
-
+.layout-sidebar-second {
   border-top: 8px solid $light-grey;
   margin-top: ms(3);
   padding-top: ms(0);
@@ -87,19 +99,18 @@ aside.layout-sidebar-first {
   }
 }
 
-
 //50 50 regions
 
 .section-50-50 {
   &:after {
-    content: '';
+    content: "";
     clear: both;
     display: block;
   }
   @include breakpoint($narrow-screen) {
     display: flex;
-    margin-left: - ms();
-    margin-right: - ms();
+    margin-left: -ms();
+    margin-right: -ms();
 
     .layout-container {
       padding: 0;
@@ -115,7 +126,6 @@ aside.layout-sidebar-first {
   }
 }
 
-
 //annoucement region
 
 .region--announcements {
@@ -124,12 +134,3 @@ aside.layout-sidebar-first {
     background-color: #fff;
   }
 }
-
-
-
-
-
-
-
-
-

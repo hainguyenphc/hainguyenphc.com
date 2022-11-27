@@ -28,6 +28,7 @@ module:
   help: 0
   history: 0
   hnp_constants: 0
+  hnp_project_build_step: 0
   hnp_upper_menu: 0
   image: 0
   link: 0
@@ -43,6 +44,7 @@ module:
   responsive_menu: 0
   search: 0
   shortcut: 0
+  surgery: 0
   system: 0
   taxonomy: 0
   text: 0

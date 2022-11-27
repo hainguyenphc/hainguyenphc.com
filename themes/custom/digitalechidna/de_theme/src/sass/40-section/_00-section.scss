@@ -1,23 +1,9 @@
 
 @import "landing-page/00-index";
-@import "recipes/00-index";
 @import "search/00-index";
 @import "news/00-index";
-@import "product/00-index";
-@import "product-line/00-index";
-@import "product-series/00-index";
-@import "support/00-index";
 @import "accessories/00-index";
-@import "promo/00-index";
 @import "part/00-index";
 @import "blog/00-index";
-@import "wishlist/00-index";
 @import "author/00-index";
 @import "page/00-index";
-
-
-.division-grills.node--type-page {
-  #block-de-theme-page-title {
-    @include hide;
-  }
-}

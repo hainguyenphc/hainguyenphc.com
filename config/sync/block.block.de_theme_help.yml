@@ -11,7 +11,7 @@ _core:
 id: de_theme_help
 theme: de_theme
 region: top_alert
-weight: 0
+weight: -4
 provider: null
 plugin: help_block
 settings:

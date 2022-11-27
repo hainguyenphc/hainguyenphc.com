@@ -1,0 +1,21 @@
+<?php
+
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function hnp_project_build_step_preprocess_field(array &$variables) {
+  if (isset($variables['element']['#object'])) {
+    $node = $variables['element']['#object'];
+    if ($node instanceof Node 
+      && $node->bundle() === 'project_build_step' 
+      && isset($variables['field_name']) 
+      && $variables['field_name'] === 'created'
+    ) {
+      $variables['items'][0]['content']['#markup'] = !$node->changed->isEmpty() 
+        ? date('F d, Y', $node->changed->value) 
+        : date('F d, Y', $node->created->value);
+    }
+  }
+}

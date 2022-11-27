@@ -1,0 +1,5 @@
+name: 'HNP Project Build Step'
+type: 'module'
+description: 'Custom logic for Project Build Step content type.'
+package: 'hNP'
+core_version_requirement: ^9

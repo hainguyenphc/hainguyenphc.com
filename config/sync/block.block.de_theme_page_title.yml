@@ -1,6 +1,6 @@
 uuid: 9e6e77f5-361c-48b1-a09d-de7fe4eb5cd3
 langcode: en
-status: false
+status: true
 dependencies:
   theme:
     - de_theme
@@ -8,8 +8,8 @@ _core:
   default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
 id: de_theme_page_title
 theme: de_theme
-region: top_alert
-weight: -5
+region: content
+weight: -9
 provider: null
 plugin: page_title_block
 settings:

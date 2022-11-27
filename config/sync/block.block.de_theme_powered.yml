@@ -11,7 +11,7 @@ _core:
 id: de_theme_powered
 theme: de_theme
 region: top_alert
-weight: 0
+weight: -2
 provider: null
 plugin: system_powered_by_block
 settings:

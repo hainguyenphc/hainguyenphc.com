@@ -9,7 +9,7 @@ _core:
 id: de_theme_secondary_local_tasks
 theme: de_theme
 region: top_alert
-weight: -2
+weight: -5
 provider: null
 plugin: local_tasks_block
 settings:
