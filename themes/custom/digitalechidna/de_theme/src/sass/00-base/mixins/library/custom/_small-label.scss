@@ -1,0 +1,10 @@
+//SMALL LABEL
+
+@mixin small-label {
+  font-family: $font-set-1;
+  font-weight: $bold;
+  text-transform: uppercase;
+  font-size: .75em;
+  margin-bottom: .8em;
+  color: $dark-grey;
+}

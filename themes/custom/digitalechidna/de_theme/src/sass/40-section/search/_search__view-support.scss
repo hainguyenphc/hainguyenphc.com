@@ -1,0 +1,76 @@
+
+
+.view-acquia-search {
+	.views-row {
+		article.node--type-supporting-material {
+			h3 {
+				line-height: normal;
+				font-size: ms(1);
+				color: #000;
+				margin-bottom: .5em;
+				font-weight: $semi-bold;
+				word-break: break-all;
+				width: 100%;
+			}
+
+			.field--name-title {
+				word-break: break-all;
+				width: 100%;
+			}
+
+			.field--type-image {
+				margin-bottom: ms();
+			}
+
+			.image-wrapper {
+				min-height: auto;
+        cursor:pointer;
+			}
+
+			.support-item {
+				flex-grow: 1;
+				font-size: 1.1em;
+			}
+
+			.field--name-field-video,
+			.field--name-field-attachment {
+				flex-grow: 0;
+			}
+
+			.video-embed-field-responsive-video, .field--type-video-embed-field {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.view-content.list-view article.node--type-supporting-material {
+		.field--name-field-video-type,
+		.field--name-field-support-item-type {
+			display: none;
+		}
+
+		.field--name-field-description {
+			margin-bottom: 1em;
+		}
+
+		.field--name-title {
+			padding-top:.5em;
+			display: flex;
+		}
+
+		.field--type-image {
+			margin-bottom: 0;
+		}
+
+		a.view-list-video {
+			margin-top: 0;
+		}
+
+		.link-wrapper {
+			@include breakpoint(0 $narrow-screen) {
+				display: flex;
+    		justify-content: center;
+			}
+		}
+	}
+}

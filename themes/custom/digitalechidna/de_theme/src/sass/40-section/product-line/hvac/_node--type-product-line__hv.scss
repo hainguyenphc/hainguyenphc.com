@@ -1,0 +1,36 @@
+.node--type-hvac-product-line {
+	article.node--type-hvac-product-line .field--name-field-description-suffix {
+    margin-top: 2.5em;
+  }
+	
+	& > .node__content > .field--name-field-description {
+		.hv-product-line-into-buttons {
+			@include breakpoint(max-width $just-before-weird-screen-max) {
+				display: flex;
+				flex-wrap: wrap;
+
+				a {
+					text-align: center;
+					flex: 0 0 calc(50% - .5em);
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+		a[class*="btn"] {
+			@include btn-hv-narrow;
+		}
+	}
+
+
+  .block-connect-with-dealer-block .block {
+    @include breakpoint(max-width $just-before-in-between-screen) {
+      margin-top: 1rem;
+    }
+
+    @include breakpoint($in-between-screen) {
+      margin-bottom: 5%;
+    }
+  }
+}

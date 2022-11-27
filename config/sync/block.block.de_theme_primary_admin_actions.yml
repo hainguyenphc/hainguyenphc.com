@@ -1,6 +1,6 @@
 uuid: 9e9e5170-2d9f-43ca-ad5b-71b2df237326
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - de_theme
@@ -8,7 +8,7 @@ _core:
   default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
 id: de_theme_primary_admin_actions
 theme: de_theme
-region: masthead_prefix
+region: top_alert
 weight: -5
 provider: null
 plugin: local_actions_block

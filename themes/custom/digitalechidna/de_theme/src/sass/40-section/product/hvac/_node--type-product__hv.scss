@@ -1,0 +1,31 @@
+
+.path-node.node--type-hvac-product {
+	.block-connect-with-dealer-block .block {
+		margin-bottom: 6em;
+		@include breakpoint($in-between-screen $medium-screen-max) {
+			margin: 2em 0;
+		}
+		@include breakpoint($standard-screen) {
+			margin-bottom: 6%;
+   	  margin-top: 11%;
+		}
+	}
+
+	.product-description button[aria-label*="Product description"] {
+		@include btn-secondary;
+	}
+
+  // Buy now
+  #colorbox.brandify-cbox .view-dealer-locator {
+    .view-filters {
+      background-color: transparent;
+    }
+    .view-content {
+      margin-top: 3rem;
+
+      @include breakpoint($standard-screen) {
+        margin-top: 2rem;
+      }
+    }
+  }
+}

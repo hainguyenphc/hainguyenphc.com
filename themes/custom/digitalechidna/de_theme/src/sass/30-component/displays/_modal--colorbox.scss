@@ -1,0 +1,66 @@
+
+#cboxWrapper * {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+#cboxWrapper iframe {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+#cboxWrapper #cboxClose {
+  bottom: 0;
+  //top: 5px;
+  top: -7px;
+  //right: -18px;
+  right: -7px;
+  background-image: none;
+  height: 30px;
+  width: 30px;
+  text-indent: 200px;
+  display: block;
+  position: absolute;
+  background: transparent;
+  z-index: 900;
+  padding: 20px;
+
+  &:after {
+    @include icomoon-icon;
+    @include icon-x;
+    color: #000;
+    transform: rotate(45deg);
+    font-size: 30px;
+    top: 0;
+    right: 0px;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    text-indent: 0px;
+  }
+}
+
+#colorbox, #cboxOverlay, #cboxWrapper {
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#cboxOverlay {
+  background: #000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#colorbox {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+#cboxWrapper .disclaimer {
+  height: auto;
+}

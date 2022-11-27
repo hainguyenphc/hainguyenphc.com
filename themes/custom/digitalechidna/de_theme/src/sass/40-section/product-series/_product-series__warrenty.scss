@@ -1,0 +1,137 @@
+
+//WARRANTY
+
+.field--name-field-warranty {
+  a, a:hover {
+    text-decoration: none;
+  }
+}
+
+
+.warranty {
+  max-width: 865px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// ====== Main wrapper
+
+.field--name-field-warranty {
+  text-align: center;
+  a, a:hover {
+    text-decoration: none;
+  }
+
+  & > * {
+    @include breakpoint($narrow-screen) {
+      text-align:left;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  // ===== Image
+
+  .field--name-field-image {
+    @include breakpoint($narrow-screen) {
+      flex: 0 0 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @include breakpoint($weird-screen) {
+      flex: 0 0 15%;
+    }
+
+    .field--name-field-media-image {
+      @include breakpoint($narrow-screen) {
+        width: 90%;
+      }
+
+
+      img {
+        margin: 0 auto;
+        display: block;
+
+        @include breakpoint($narrow-screen) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // ===== Content wrapper
+  .content-wrapper {
+    @include breakpoint($narrow-screen) {
+      flex: 1;
+    }
+    // ===== Title
+    .field--name-name,
+    .field--name-field-long-warranty-title {
+      text-transform: uppercase;
+      font-weight: $semi-bold;
+      letter-spacing: 1px;
+      font-size: ms(1);
+      margin-bottom: .5em;
+      padding-top: .5em;
+    }
+
+    // ===== Description
+    .field--name-description {
+
+    }
+
+    // ===== Button
+    a.btn {
+      @include btn-secondary;
+      @include btn-narrow;
+
+      margin-right:  0;
+      @include breakpoint($narrow-screen) {
+        font-size: .8em;
+      }
+    }
+  }
+}
+
+
+.product-warranties-listing {
+  margin-top: 2em;
+
+  .embedded-entity {
+    margin: 0;
+  }
+
+  table {
+    margin-top: 2em;
+  }
+
+  img {
+    width: auto;
+    max-width: none;
+    height: 243px;
+    padding: 0 1em 0 1em;
+  }
+
+  hr {
+    margin: 2em 0 2.5em 0;
+  }
+
+  h4 {
+    line-height: 0.95em;
+  }
+}
+
+.field--name-field-series .node--type-product-series {
+  .field--name-field-warranty .field--name-field-image {
+    @include breakpoint($narrow-screen) {
+      flex: 0 0 100%;
+    }
+
+    @include breakpoint($weird-screen) {
+      flex: 0 0 100%;
+    }
+  }
+}

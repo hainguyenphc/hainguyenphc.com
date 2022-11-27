@@ -1,0 +1,381 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?8kjcjw');
+  src:  url('fonts/icomoon.eot?8kjcjw#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?8kjcjw') format('truetype'),
+    url('fonts/icomoon.woff?8kjcjw') format('woff'),
+    url('fonts/icomoon.svg?8kjcjw#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-messenger:before {
+  content: "\e955";
+  color: #00b2ff;
+}
+.icon-heart-full1:before {
+  content: "\e954";
+  color: #f37d7c;
+}
+.icon-star5:before {
+  content: "\e93e";
+  color: #ffd912;
+}
+.icon-star4 .path1:before {
+  content: "\e93f";
+  color: rgb(255, 217, 18);
+}
+.icon-star4 .path2:before {
+  content: "\e940";
+  margin-left: -6.060546875em;
+  color: rgb(255, 217, 18);
+}
+.icon-star4 .path3:before {
+  content: "\e941";
+  margin-left: -6.060546875em;
+  color: rgb(255, 217, 18);
+}
+.icon-star4 .path4:before {
+  content: "\e942";
+  margin-left: -6.060546875em;
+  color: rgb(255, 217, 18);
+}
+.icon-star4 .path5:before {
+  content: "\e943";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star3 .path1:before {
+  content: "\e944";
+  color: rgb(255, 217, 18);
+}
+.icon-star3 .path2:before {
+  content: "\e945";
+  margin-left: -6.060546875em;
+  color: rgb(255, 217, 18);
+}
+.icon-star3 .path3:before {
+  content: "\e946";
+  margin-left: -6.060546875em;
+  color: rgb(255, 217, 18);
+}
+.icon-star3 .path4:before {
+  content: "\e947";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star3 .path5:before {
+  content: "\e948";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star2 .path1:before {
+  content: "\e949";
+  color: rgb(255, 217, 18);
+}
+.icon-star2 .path2:before {
+  content: "\e94a";
+  margin-left: -6.060546875em;
+  color: rgb(255, 217, 18);
+}
+.icon-star2 .path3:before {
+  content: "\e94b";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star2 .path4:before {
+  content: "\e94c";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star2 .path5:before {
+  content: "\e94d";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star1 .path1:before {
+  content: "\e94e";
+  color: rgb(255, 217, 18);
+}
+.icon-star1 .path2:before {
+  content: "\e94f";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star1 .path3:before {
+  content: "\e950";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star1 .path4:before {
+  content: "\e951";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star1 .path5:before {
+  content: "\e952";
+  margin-left: -6.060546875em;
+  color: rgb(216, 216, 216);
+}
+.icon-star:before {
+  content: "\e953";
+  color: #d8d8d8;
+}
+.icon-recipes-prep-time-2:before {
+  content: "\e93c";
+}
+.icon-recipes-prep-time-1:before {
+  content: "\e93d";
+}
+.icon-parts-search:before {
+  content: "\e93b";
+}
+.icon-minus:before {
+  content: "\e93a";
+}
+.icon-search1:before {
+  content: "\e92e";
+}
+.icon-support-mobile-call1:before {
+  content: "\e92f";
+}
+.icon-dimensions-depth:before {
+  content: "\e930";
+}
+.icon-dimensions-height:before {
+  content: "\e933";
+}
+.icon-dimensions-width:before {
+  content: "\e934";
+}
+.icon-support-mobile-call:before {
+  content: "\e935";
+}
+.icon-support-mobile-email .path1:before {
+  content: "\e936";
+  color: rgb(64, 64, 64);
+}
+.icon-support-mobile-email .path2:before {
+  content: "\e937";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.icon-support-mobile-email .path3:before {
+  content: "\e938";
+  margin-left: -1em;
+  color: rgb(64, 64, 64);
+}
+.icon-support-mobile-warranty-claim:before {
+  content: "\e939";
+}
+.icon-list-1:before {
+  content: "\e91a";
+}
+.icon-dropdown:before {
+  content: "\e920";
+}
+.icon-grid-1:before {
+  content: "\e923";
+}
+.icon-flag-example-new:before {
+  content: "\e903";
+  color: #77c14c;
+}
+.icon-flag-example-promo:before {
+  content: "\e904";
+  color: #e04828;
+}
+.icon-flag-example-upgraded:before {
+  content: "\e905";
+  color: #005185;
+}
+.icon-flag-angle-blue:before {
+  content: "\e906";
+  color: #005185;
+}
+.icon-flag-angle-green:before {
+  content: "\e907";
+  color: #77c14c;
+}
+.icon-flag-angle-red:before {
+  content: "\e908";
+  color: #e04828;
+}
+.icon-support-parts-search .path1:before {
+  content: "\e909";
+  color: rgb(64, 64, 64);
+}
+.icon-support-parts-search .path2:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(64, 64, 64);
+}
+.icon-support-parts-search .path3:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(64, 64, 64);
+}
+.icon-support-parts-search .path4:before {
+  content: "\e90c";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-support-parts-search .path5:before {
+  content: "\e90d";
+  margin-left: -1em;
+  color: rgb(64, 64, 64);
+}
+.icon-support-parts-search .path6:before {
+  content: "\e90e";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-support-parts-search .path7:before {
+  content: "\e90f";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-support-parts-search .path8:before {
+  content: "\e910";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-support-parts-search .path9:before {
+  content: "\e911";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-support-register:before {
+  content: "\e912";
+}
+.icon-support-search .path1:before {
+  content: "\e913";
+  color: rgb(61, 61, 61);
+}
+.icon-support-search .path2:before {
+  content: "\e914";
+  margin-left: -1em;
+  color: rgb(64, 64, 64);
+}
+.icon-support-warranty-claim:before {
+  content: "\e915";
+}
+.icon-support-warranty-info:before {
+  content: "\e916";
+}
+.icon-wish-list-star:before {
+  content: "\e917";
+  color: #fcb540;
+}
+.icon-recipes-marinating-time .path1:before {
+  content: "\e918";
+  color: rgb(99, 100, 102);
+}
+.icon-recipes-marinating-time .path2:before {
+  content: "\e919";
+  margin-left: -1em;
+  color: rgb(109, 110, 113);
+}
+.icon-recipes-time:before {
+  content: "\e91b";
+  color: #636466;
+}
+.icon-recipes-yield:before {
+  content: "\e91c";
+  color: #636466;
+}
+.icon-support-assembly:before {
+  content: "\e91d";
+}
+.icon-support-faq:before {
+  content: "\e91e";
+}
+.icon-support-maintanance:before {
+  content: "\e91f";
+}
+.icon-recipes-hat:before {
+  content: "\e922";
+  color: #636466;
+}
+.icon-btu .path1:before {
+  content: "\e924";
+  color: rgb(99, 100, 102);
+}
+.icon-btu .path2:before {
+  content: "\e925";
+  margin-left: -1em;
+  color: rgb(111, 113, 115);
+}
+.icon-cooking-area:before {
+  content: "\e926";
+}
+.icon-difficulty-1 .path1:before {
+  content: "\e927";
+  color: rgb(99, 100, 102);
+}
+.icon-difficulty-1 .path2:before {
+  content: "\e928";
+  margin-left: -1em;
+  color: rgb(95, 96, 98);
+}
+.icon-difficulty-1 .path3:before {
+  content: "\e929";
+  margin-left: -1em;
+  color: rgb(95, 96, 98);
+}
+.icon-difficulty-2 .path1:before {
+  content: "\e92a";
+  color: rgb(99, 100, 102);
+}
+.icon-difficulty-2 .path2:before {
+  content: "\e92b";
+  margin-left: -1em;
+  color: rgb(99, 100, 102);
+}
+.icon-difficulty-2 .path3:before {
+  content: "\e92c";
+  margin-left: -1em;
+  color: rgb(95, 96, 98);
+}
+.icon-difficulty-3:before {
+  content: "\e92d";
+  color: #636466;
+}
+.icon-heart-full:before {
+  content: "\e931";
+  color: #f37d7c;
+}
+.icon-heart-outline:before {
+  content: "\e932";
+}
+.icon-difficulty:before {
+  content: "\e900";
+}
+.icon-plus:before {
+  content: "\e901";
+}
+.icon-list1:before {
+  content: "\e921";
+}
+.icon-home3:before {
+  content: "\e902";
+}
+.icon-search:before {
+  content: "\e986";
+}

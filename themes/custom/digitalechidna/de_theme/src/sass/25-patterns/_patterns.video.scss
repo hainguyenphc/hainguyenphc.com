@@ -1,0 +1,166 @@
+
+
+.views-row-video-banner #video-embed {
+  @include breakpoint($weird-screen) {
+    pointer-events: none;
+  }
+
+}
+// PLEASE adjust: the goal is not to show vide info on loading.
+// .node--type-page {
+//   .field--type-video-embed-field {
+//     position: relative;
+//     height: 100vh;
+//     width: 100%;
+//   }
+//   .video-embed-field-provider-youtube {
+//     position: absolute;
+//     width: 100%;
+//     overflow: hidden;
+//   }
+//   @media (min-aspect-ratio: 16/9) {
+//     .video-embed-field-provider-youtube { height: 310%; top: -100%; }
+//   }
+//   @media (max-aspect-ratio: 16/9) {
+//     .video-embed-field-provider-youtub { width: 300%; left: -100%; }
+//   }
+// }
+
+.video-embed-field-responsive-video,
+.field--type-video-embed-field{
+  margin-bottom: 0;
+
+  .video-embed-field-launch-modal {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: ms(2);
+
+    &:before {
+      @include fontawesome-icon;
+      content: $fa-var-play;
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      line-height: 55px;
+      font-size: ms(3);
+      z-index: 20;
+      margin-left: 3px;
+      transition: all .3s ease;
+      text-align: center;
+      color: $blue;
+      transition: all .2s ease;
+      margin: 0 auto;
+      display: block;
+      top: calc(50% - 27px);
+      left: calc(50% - 27px);
+      right: auto;
+      bottom: auto;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      background-color: white;
+      width: 55px;
+      height: 55px;
+      line-height: 55px;
+      font-size: ms(3);
+      border-radius: 100%;
+      z-index: 10;
+      @include z-depth-1; 
+      margin: 0 auto;
+      display: block;
+      left: calc(50% - 27px);
+      right: auto;
+      top: calc(50% - 27px);
+      bottom: auto;
+    }
+
+    &:hover {
+      &:before {
+        opacity: .8;
+      }
+    }
+  }
+}
+
+/* The views-row-video-banner class comes from the custom napoleon_video module via a pre_render */
+.view-banner-block .views-row-video-banner {
+
+  .field--type-video-embed-field {
+    overflow: hidden;
+    max-height: 550px;
+  }
+
+  .field--name-body {
+    @include breakpoint($weird-screen) {
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      width: 80%;
+    }
+    @include breakpoint($standard-screen) {
+      width: 70%
+    }
+
+    h2 {
+      color: #000;
+      height: auto;
+      padding-bottom: 0;
+      margin-bottom: 0.2em;
+
+      @include breakpoint($narrow-screen) {
+        height: 125px;
+        margin-bottom: 0em;
+      }
+      @include breakpoint($weird-screen) {
+        position: absolute;
+        height: 342px;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        padding: 0 2em 1.5em 2em;
+        color: #fff;
+        margin-left: -25px;
+      }
+      @include breakpoint($medium-screen) {
+        height: 415px;
+        padding: 0 2.5em 1.5em 2.5em;
+      }
+      @include breakpoint($standard-screen) {
+        height: 450px;
+        margin-left: -40px;
+        padding: 0 0em 1.5em 0em;
+      }
+      @media screen and (min-width: 1150px) {
+        height: 550px;
+        padding: 0 1em 1.5em 1em;
+      }
+      @include breakpoint($wide-screen) {
+        padding: 0 2em 1.5em 2em;
+      }
+    }
+  }
+}
+
+.brick .field--type-video-embed-field,
+section .field--type-video-embed-field {
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//when video is in modal
+
+#cboxLoadedContent {
+  .video-embed-field-responsive-modal {
+    margin: 2em 0 0 0;
+    overflow: hidden;
+  }
+}

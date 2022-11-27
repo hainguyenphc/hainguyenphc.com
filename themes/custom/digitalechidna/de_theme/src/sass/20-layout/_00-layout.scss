@@ -1,0 +1,9 @@
+.layout-container {
+  @include layout-container;
+}
+
+@import "hide-and-show-content";
+@import "layout.header";
+@import "layout.content";
+@import "layout.footer";
+@import "layout.equal-col";

@@ -1,0 +1,130 @@
+
+
+#block-customersupportmenublock,
+#block-customer-support-menu-block-fireplaces {
+  margin-top: ms(3);
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -.5%;
+  margin-left: -.5%;
+  justify-content: space-between;
+
+  @include breakpoint($medium-screen) {
+    justify-content: space-between;
+  }
+
+  // ===== Individual items
+  .support-menu-item {
+    flex: 0 0 100%;
+    margin-bottom: ms();
+
+    @include breakpoint($narrow-screen) {
+      flex: 1 0 45%;
+      margin: 0.5em;
+    }
+
+    @include breakpoint($medium-screen) {
+      flex: 1 0 22.5%;
+      margin: 0.5em;
+    }
+  }
+
+  a {
+    height: 100%;
+    background-color: $light-grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: .5em 1em;
+    @extend a.dark-link;
+    font-weight: $bold;
+    text-transform: uppercase;
+    font-size: ms(1);
+    text-align: center;
+    @include breakpoint($narrow-screen) {
+      padding: 2em 1em;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 220px;
+      font-size: ms(3);
+    }
+    @include breakpoint($medium-screen) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+
+    &:before {
+      @include icomoon-icon;
+      font-size: 1.8em;
+      margin-right: .3em;
+      @include breakpoint($narrow-screen) {
+         margin-bottom: .3em;
+         margin-right: 0;
+        font-size: 2.7em;
+      }
+    }
+
+    &.link-item > span {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      @include breakpoint($narrow-screen) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &::before {
+        font-size: 1.8em;
+        margin-right: .3em;
+
+        @include breakpoint($narrow-screen) {
+          margin-bottom: .3em;
+          margin-right: 0;
+          font-size: 2.7em;
+        }
+      }
+    }
+
+    &#btn-search:before {
+      @include icon-search;
+    }
+
+    &#btn-maintenance:before {
+      @include icon-maintain;
+    }
+
+    &#btn-videos:before {
+      @include icon-support;
+    }
+
+    &#btn-parts:before {
+      @include icon-parts;
+    }
+
+    &#btn-warranty:before {
+      @include icon-warrenty;
+    }
+
+    &#btn-claim:before {
+      @include icon-support-parts;
+    }
+
+    &#btn-register:before {
+      @include icon-register;
+    }
+
+    &#btn-faq:before {
+      @include icon-faq;
+    }
+
+    &#btn-rebate:before {
+      @include fontawesome-icon-base;
+      content: $fa-var-tag;
+      font-size: 3.2em;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in de_theme.
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ *
+ * Adds body classes if certain regions have content.
+ */
+// function de_theme_preprocess_html(&$variables) {
+//   // Add information about the number of sidebars.
+//   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_secondary'])) {
+//     $variables['attributes']['class'][] = 'layout-two-sidebars-display';
+//   }
+//   elseif (!empty($variables['page']['sidebar_first'])) {
+//     $variables['attributes']['class'][] = 'layout-one-sidebar-display';
+//     $variables['attributes']['class'][] = 'layout-sidebar-first-display';
+//   }
+//   elseif (!empty($variables['page']['sidebar_second'])) {
+//     $variables['attributes']['class'][] = 'layout-one-sidebar-display';
+//     $variables['attributes']['class'][] = 'layout-sidebar-second-display';
+//   }
+//   else {
+//     $variables['attributes']['class'][] = 'layout-no-sidebars-display';
+//   }
+// }
+
+
+/**
+ * Implement hook_preprocess_html()
+ */
+
+ function de_theme_preprocess_html(&$variables){
+    if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+        $variables['attributes']['class'][] = 'two_sidebars';
+    }
+    elseif (!empty($variables['page']['sidebar_first'])) {
+        $variables['attributes']['class'][] = 'one_sidebar sidebar_first';
+    }
+    elseif (!empty($variables['page']['sidebar_second'])) {
+        $variables['attributes']['class'][] = 'one_sidebar sidebar_second';
+    }
+    else {
+        $variables['attributes']['class'][] = 'no_sidebars';
+    }
+ }
+
+ /**
+  * Implement hook_preprocess_page()
+  */
+function de_theme_preprocess_page(&$variables) {
+   // fix Main page content block order issue
+  if (isset($variables['page']['content']['system_main'])) {
+    $main_content = $variables['page']['content']['system_main'];
+    unset($variables['page']['content']['system_main']);
+    $pos = array_search('de_theme_content', array_keys($variables['page']['content']));
+    $content_ordered = array_slice($variables['page']['content'], 0, $pos, true) +
+              ['system_main' => $main_content] +
+              array_slice($variables['page']['content'], $pos, NULL, true);
+    $variables['page']['content'] = $content_ordered;
+  }
+}
+
+
+

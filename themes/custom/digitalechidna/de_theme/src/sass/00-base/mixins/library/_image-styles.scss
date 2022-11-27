@@ -1,0 +1,24 @@
+// basic styles, padding. detect ie variable and do fixes plus border
+
+@mixin image-style{
+  max-width:  (100%/2.7);
+  margin-top: ms();
+  margin-bottom: ms();
+  table-layout:fixed;
+}
+
+@mixin image-style-left{
+  float:  left;
+  margin-right: ms(3);
+}
+
+@mixin image-style-right{
+  float:  right;
+  margin-left: ms(3);
+}
+
+@mixin image-style-center{
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}

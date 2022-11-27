@@ -1,0 +1,70 @@
+// 10-drupal/search/_drupal.search.block-search.scss
+
+.search-form.block{
+  flex: 0 0 100%;
+  @include breakpoint($narrow-screen) {
+    padding: 0 ms(-1);
+  }
+  @include breakpoint($medium-screen) {
+    flex: 1;
+  }
+  .path-frontpage &{
+    order: 1;
+    @include breakpoint($weird-screen) {
+      flex: 1;
+    }
+    @include breakpoint($medium-screen) {
+      flex: 0 0 56%;
+    }
+  }
+  label{
+    position: absolute;
+    @include squish-text;
+  }
+
+  form{
+    .form--inline{
+      display: flex;
+      padding: ms(-1) ms(2);
+      border: 1px solid $neutral-grey;
+      .form-item-search{
+        flex: 1;
+      }
+      .form-actions{
+        text-align: right;
+        flex: 0 0 40px;
+      }
+      input.form-text{
+        outline: none;
+        border: none;
+        width: 100%;
+      }
+      button[type="submit"]{
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+        .button-label{
+          @include squish-text;
+        }
+      }
+    }
+  }
+
+  .form-item{
+    @include reset;
+  }
+
+
+  .form-actions{
+    @include reset;
+  }
+
+    // .form-search{
+
+    // }
+
+    // .form-submit{
+
+    // }
+}

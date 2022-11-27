@@ -1,0 +1,109 @@
+
+
+.product-display-feature-grey {
+  .slick-prev {
+    left: 0;
+  }
+  .slick-next {
+    right: 0;
+  }
+  @include breakpoint($narrow-screen) {
+    margin-bottom: ms(6);
+  }
+
+  .view-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: ms(2);
+    background-color: #f2f5f7;
+    background: linear-gradient(to bottom,#d6d6d6 0%,#f2f2f2 10%,#fff 47%,#dddddd 48%, #f6f6f6 66%, #fff 100%);
+    justify-content: center;
+    @include negative-margin;
+    padding-left: ms(2);
+    padding-right: ms(2);
+    @include breakpoint($narrow-screen) {
+      padding-top: ms(4);
+      padding-left: ms(4);
+      padding-right: ms(4);
+    }
+
+    .views-row {
+      flex: 0 0 auto;
+      //margin: ms() .1%;
+      margin-bottom: ms();
+      //padding: 0 .5em;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      align-content: space-around;
+
+      @include breakpoint($narrow-screen) {
+        flex: 0 0 16.4%;
+        justify-content: flex-start;
+      }
+
+      & > .views-field {
+        padding: 0.5em 0.5em 0.5em 0.5em;
+        margin: 0 auto;
+        justify-content: center;
+        flex: 0 0 auto;
+
+        @include breakpoint($narrow-screen) {
+          padding: 0 0.5em 2em 0.5em;
+          margin-right: .5em;
+          margin-left: .5em;
+        }
+
+        .field-content {
+          text-align: center;
+        }
+      }
+    }
+
+    .views-field-field-thumbnail-image {
+      margin-bottom: ms();
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-end;
+
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    .views-field-title {
+      padding: 1em 0.5em 1em 0.5em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-bottom: 1em !important;
+
+      a {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        @extend a.dark-link;
+        @include breakpoint(0 $narrow-screen) {
+          font-size: ms(1);
+        }
+      }
+    }
+
+    .views-field-field-tagline,
+    .views-field-field-subtitle {
+      letter-spacing: 1px;
+      color: $grey-medium-font;
+
+      p {
+        line-height: 1.4em;
+      }
+    }
+  }
+
+  .slick-dots {
+    position: relative;
+    margin-top: 2em;
+  }
+}
+

@@ -1,0 +1,136 @@
+
+#colorbox .choose-region-select-form {
+	form#choose-region-modal-form {
+		padding: 1.5em;
+		text-align: center;
+		background: #fff;
+		border-radius: 5px;
+		padding-bottom: 2em;
+
+		img {
+			margin-bottom: 1em;
+			width: auto !important;
+		}
+
+		h4 {
+			text-transform: none;
+			font-weight: normal;
+		}
+
+		//choose
+
+		.form-item-choose-region {
+			align-items: center;
+    	display: flex;
+    	justify-content: center;
+    	margin-top: 1.8em;
+		  margin-bottom: 4em;
+
+    	label {
+    		font-weight: $bold;
+		    text-transform: uppercase;
+		    margin-right: 1.3em;
+		    font-size: 1em;
+    	}
+		}
+
+		input.button--primary.form-submit {
+			@include btn-small;
+			position: relative;
+	    right: auto;
+	    bottom: auto;
+	    margin-bottom: .2em;
+	    display: block;
+	    margin-left: auto;
+		}
+	}
+
+	#cboxClose  {
+		top: 7px;
+    right: -18px;
+	}
+}
+
+//remove focus effect
+
+#colorbox.region-cbox {
+  &:focus {
+    outline: none;
+  }
+
+  #cboxClose  {
+    top: 7px;
+    right: -17px;
+	}
+}
+
+
+// make stlyes the exact same by overriding styles that get added one certain pages
+
+
+//this property is as below for inner pages
+//this same propery is 'inherit' for others
+//this causes it to not have an overflow effect on mobile
+// #colorbox, #cboxContent, #cboxLoadedContent {
+// 	 box-sizing: content-box;
+// }
+
+#colorbox.region-cbox {
+	outline: 0;
+}
+
+#colorbox.region-cbox {
+	box-sizing: inherit;
+
+	#cboxOverlay, #cboxWrapper {
+		position: relative;
+	}
+
+	#cboxContent, #cboxLoadedContent {
+	//box-sizing: inherit;
+	}
+
+	#cboxWrapper {
+		background: initial;
+    border-radius: 0;
+	}
+
+	#cboxTitle {
+		display: none;
+	}
+
+	#cboxTopLeft, 
+	#cboxTopRight, 
+	#cboxMiddleLeft, 
+	#cboxMiddleRight, 
+	#cboxBottomLeft,
+	#cboxBottomCenter,
+	#cboxBottomRight {
+		width: 0;
+    height: 0;
+	}
+
+	#cboxMiddleLeft, #cboxBottomLeft {
+		clear: none;
+	}
+
+	#cboxTopCenter {
+		height: 0;
+	}
+
+	#cboxContent {
+		background: initial;
+		overflow: visible;
+	}
+
+	#cboxLoadedContent {
+		margin-bottom: 0;
+	}
+
+	#cboxClose {
+		margin-right: 1em;
+		margin-bottom: 1em;
+	}
+} 
+
+

@@ -1,0 +1,147 @@
+// Inspiration search view
+
+.division-fireplaces {
+  .search-inspiration {
+    padding-top: 0;
+
+    @include breakpoint(max-width $weird-screen-max) {
+      flex-wrap: wrap;
+    }
+
+    #main.column {
+      @include breakpoint(max-width $weird-screen-max) {
+        flex:0 0 100%;
+      }
+    }
+
+
+    .node--type-landing-page {
+      display: none;
+    }
+  }
+}
+
+.block-views-blockacquia-search-inspiration-media-search {
+  img {
+    width: 100%;
+  }
+
+  // filter button
+  #filter-button {
+    flex: 0 0 auto;
+  }
+
+  // === row
+  .views-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    width: 100%;
+
+    @include breakpoint($narrow-screen) {
+      width: 48%;
+    }
+
+    //show and hide buttons in row
+
+    .action-button-wrapper {
+      display: none;
+    }
+
+
+    &:not(.active) {
+      .action-button-wrapper {
+        display: flex;
+      }
+    }
+
+    &.active {
+      .views-field-name a::after {
+        content: $fa-var-chevron-up;
+      }
+    }
+  }
+
+  // ===== Name
+  .views-field-name {
+    background-color: #000;
+    flex: 0 0 auto;
+    margin-top: -4px;
+
+    span {
+      display: block;
+
+      a {
+        color: #fff;
+        display: block;
+        font-family: $font-set-3;
+        padding: .5em 2em .5em 1.5em;
+        position: relative;
+        text-align: left;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &::after {
+          @include fontawesome-icon;
+          color: #fff;
+          content: $fa-var-chevron-down;
+          display: inline-block;
+          float: none;
+          font-size: 1em;
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: auto;
+        }
+      }
+    }
+  }
+
+  // Image and button
+
+  .button-wrapper-outter {
+    position: relative;
+  }
+
+  .action-button-wrapper {
+    background-color: rgba(0,0,0,.7);
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: 0;
+    padding: 1em 1.5em;
+    width: 100%;
+
+    a:first-child {
+      margin-right: 1em;
+    }
+
+    a:only-child {
+      margin-right: 0;
+    }
+
+    a {
+      @include btn-secondary-fp-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      font-size: .9em;
+      margin: 0;
+      padding: .5em .25em;
+      max-width: 48%;
+      @include breakpoint($small-screen-max) {
+        font-size: 1em;
+      }
+      @include breakpoint(1120px) {
+        font-size: 1.3em;
+      }
+    }
+  }
+}

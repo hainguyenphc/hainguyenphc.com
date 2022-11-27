@@ -1,0 +1,355 @@
+
+//GENERAL
+
+.search-page {
+	.region--sidebar-first {
+		display: none;
+	}
+	@include breakpoint($medium-screen) {
+    .region--sidebar-first {
+      display: block;
+    }
+  }
+}
+
+//Main facet heading - default - logged out
+#block-resetallfacetslink {
+	background: #fff;
+	width: 100%;
+	z-index: 100;
+	position: relative;
+
+	&:before {
+		@include breakpoint(0 $medium-screen) {
+		content: '';
+		  top: 0;
+		  left: -100%;
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  z-index: 1;
+		  background: #fff;
+		}
+  }
+
+	.note {
+		margin-bottom : .2em;
+	}
+
+  h2 {
+		font-weight: $bold;
+    color: #000;
+    @include font-size(28);
+    @include breakpoint($narrow-screen) {
+    	@include font-size(37);
+  	}
+	}
+
+	// not logged in, no banner
+	&.sticky {
+		@include breakpoint(0 $medium-screen) {
+			top:0;
+			position: fixed;
+			z-index: 100;
+		}
+	}
+}
+
+.user-logged-in.has-top-banner #block-resetallfacetslink.sticky {
+	@include breakpoint(0 $medium-screen) {
+	  top: 39px;
+	  @include breakpoint(576px) {
+	    top: 78px;
+	  }
+	  @include breakpoint(706px) {
+	    top: 65px;
+	  }
+	  @include breakpoint(741px) {
+	    top: 39px;
+	  }
+	}
+}
+
+#block-resetallfacetslink {
+	h2 {
+		font-weight: $bold;
+    color: #000;
+	}
+}
+
+
+//LEVEL STYLING
+
+@mixin facet-title-lv-1 {
+	text-transform: uppercase;
+	font-size: ms(2);
+	@include font-size(28);
+	border-top: 1px solid $grey;
+	//background: #eee;
+	font-weight: $bold;
+	//padding-left: 0;
+	padding-top: 10px;
+	color: #000;
+	margin-bottom: 10px;
+
+	&:before {
+		content: none;
+	}
+}
+
+@mixin facet-title-lv-2 {
+	color: $dark-grey;
+	@include font-size(18);
+	//color: red;
+	text-transform: uppercase;
+	margin-bottom: 14px;
+}
+
+@mixin facet-title-lv-3 {
+	border-top: none;
+	padding-top: 0;
+	margin-bottom: 0;
+	text-transform: none;
+	color: $dark-grey;
+	font-weight: $normal;
+	@include font-size(16);
+	margin-bottom: 12px;
+}
+
+//FACETS
+
+.block-facets {
+	ul {
+		@include reset;
+
+		li {
+			@include reset;
+			@include no-bullet;
+		}
+	}
+}
+
+
+//general
+
+.facets-widget-checkbox {
+
+	li {
+		margin-bottom: .5em;
+		padding-left: 0;
+	}
+
+	label {
+		display: block;
+	}
+
+	//level 1
+
+	//level 2
+
+	& > ul > li > .facets-widget- > ul {
+		margin-left: 0;
+
+		& > li {
+			margin-left: 0;
+		}
+
+		& > li > label {
+			@include facet-title-lv-2 ;
+		}
+	}
+
+	//level 3
+
+	& > ul > li > .facets-widget- > ul > li > .facets-widget- > ul {
+		margin-left: .5em;
+
+		& > li > label {
+			@include facet-title-lv-3 ;
+		}
+	}
+}
+
+//RESET
+
+a.reset-link {
+  @include btn-secondary;
+  line-height: 1.25;
+  @include breakpoint($narrow-screen) {
+    font-size: 1.2rem;
+  }
+}
+
+//PRICE
+
+#block-msrp-2 {
+	& > h2 {
+		@include facet-title-lv-2;
+		border-top: none;
+	}
+}
+
+
+//SHOW MORE PRICES
+
+a.facets-soft-limit-link {
+	display: block;
+	@extend a.dark-link;
+	display: flex;
+	justify-content: center;
+	text-decoration: none;
+	font-weight: $semi-bold;
+	font-size: .9em;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 2em;
+	margin-top: .3em;
+	padding-top: .5em;
+	padding-bottom: .5em;
+	border-top: 1px solid $ui-grey;
+	border-bottom: 1px solid $ui-grey;
+
+	&:after {
+		@include icomoon-icon;
+		@include icon-x;
+		font-size: .7em;
+		color: #000;
+    position: relative;
+    top: 4px;
+    margin-left: .5em;
+    float: right;
+    font-weight: bold;
+	}
+
+	&.open {
+		&:after {
+			@include icon-minus;
+			top: 9px;
+	    margin-left: 6px;
+	    float: right;
+	    font-weight: bold;
+	    font-size: 1px;
+		}
+	}
+}
+
+
+//OTHER
+
+.block-facets {
+	& > h2 {
+		@include facet-title-lv-1;
+	}
+
+	.facets-widget-checkbox {
+		& > h3 {
+			@include facet-title-lv-2 ;
+		}
+
+		& > ul {
+			& > li > label {
+				@include facet-title-lv-3;
+			}
+		}
+	}
+}
+
+
+// inline for fuel type
+
+.block-facet-blockfuel-type .facets-widget-checkbox,
+.block-facet-blockfuel-type-va .facets-widget-checkbox {
+	.item-list__checkbox {
+		display: flex;
+		flex-wrap: wrap;
+
+		li {
+			margin-right: 1.5em;
+		}
+	}
+}
+
+
+#block-msrp,
+#block-fueltype {
+	margin-top: 1em;
+}
+
+
+//specifc of first level style
+
+#block-relatedproductscontentproducttype,
+.block-facet-blockaccessories-va,
+.block-facet-blockproducts-va,
+.block-facet-blockparts-va,
+#block-parts-2,
+#block-accessories-2,
+#block-products,
+.block-facet-blockparts,
+.block-facet-blockaccessories,
+.block-facet-blockproduct-type,
+.block-facet-blockrelated-products-content-product-type,
+.js-facet-block-id-facet-block--products-va,
+.js-facet-block-id-facet-block--product-type,
+.js-facet-block-id-facet-block--related-products-content-product-type,
+.js-facet-block-id-facet-block--accessories-va,
+.js-facet-block-id-facet-block--accessories,
+.js-facet-block-id-facet-block--parts-va,
+.js-facet-block-id-facet-block--parts {
+
+	& > .facets-widget-checkbox > ul > li > label {
+		@include facet-title-lv-1;
+		border-top: none;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 15px;
+		}
+	}
+}
+
+
+//form fix
+
+#napoleon-search-form-content {
+	input:not(#edit-submit):not(#edit-actions-submit):not(.button) {
+		width: 100%;
+	}
+}
+
+
+//burner style
+
+#block-numberofburners ul.item-list__checkbox,
+#block-burners ul.item-list__checkbox {
+	display: flex;
+	flex-wrap: wrap;
+
+	span.facet-item__value {
+		display: block;
+    line-height: .7em;
+	}
+
+	label {
+		margin-right: 1em;
+		display: block;
+	}
+
+	input[type=checkbox] + label {
+		padding-left: 25px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

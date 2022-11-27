@@ -1,0 +1,145 @@
+
+
+//FILTER
+.view-acquia-search {
+	.view-header {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: .5em;
+	}
+	.view-filters, .view-header {
+		display: flex;
+		justify-content: flex-end;
+		.views-exposed-form {
+			margin-bottom: ms(2);
+			width: 100%;
+		}
+		.form--inline {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			@include breakpoint(0 400px) {
+				justify-content: space-between;
+			}
+
+			& > .form-type-textfield {
+				@include breakpoint(0 400px) {
+					display: none;
+				}
+			}
+		}
+
+		input[type="submit"] {
+			margin-bottom: 0;
+    	font-size: 1em;
+    	margin-left: 1em;
+    	margin-right: 0;
+		}
+
+		#filter-button {
+			background-color: #000000;
+			align-self: flex-end;
+			margin-bottom: 0;
+			order: -2;
+			@include breakpoint($medium-screen) {
+				display: none;
+		  }
+		}
+
+		.form-type-select {
+			display: flex;
+			align-items: center;
+			order: -1;
+
+
+			label {
+				text-transform: none;
+				margin-right: .5em;
+			}
+
+			select {
+				width: 100px;
+				padding-right: 1.2em;
+				@include breakpoint(400px) {
+					width: 130px;
+				}
+			}
+		}
+
+		a, .form-type-select {
+			margin-left: ms();
+			margin-right: 0;
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+
+		.form-type-select {
+			@include breakpoint(0 400px) {
+				margin-left: 0;
+				flex-grow: 1;
+    		justify-content: flex-end;
+			}
+		}
+
+		a {
+			display: inline-block;
+			overflow: hidden;
+			padding-left: 20px;
+			width: 29px;
+			height: 20px;
+			@include breakpoint(0 400px) {
+				display: none;
+			}
+
+			&:before {
+				@include icomoon-icon;
+				position: relative;
+				left: -17px;
+				color: $grey;
+				font-size: 1.3em;
+			}
+
+			&.switch-cards:before {
+				@include icon-grid;
+			}
+
+			&.switch-list:before {
+				@include icon-list;
+			}
+		}
+	}
+}
+
+
+.close-filters-btn {
+  @include btn-secondary;
+  line-height: 1.25;
+  @include breakpoint(0 500px) {
+	margin-left: .5em !important;
+  }
+  @include breakpoint($narrow-screen) {
+    font-size: 1.2rem;
+  }
+}
+
+.close-filters-btn, a.reset-link {
+	@include breakpoint(0 500px) {
+		font-size: 1.07em;
+    margin: 0 0 .8em 0;
+    padding: .2em .6em;
+	}
+}
+
+.close-filters-btn, .note {
+  @include breakpoint($medium-screen) {
+    display: none;
+  }
+}
+
+.note {
+  margin-top: - ms();
+  font-size: ms(-1);
+  color: $darkest-grey;
+}
+
+

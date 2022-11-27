@@ -1,0 +1,20 @@
+uuid: 2355ef15-1ba0-4cbb-a929-bc8810bcf148
+langcode: en
+status: true
+dependencies:
+  module:
+    - hnp_upper_menu
+  theme:
+    - de_theme
+id: uppermenublock
+theme: de_theme
+region: masthead_actions
+weight: -9
+provider: null
+plugin: upper_menu_block
+settings:
+  id: upper_menu_block
+  label: 'Upper Menu Block'
+  label_display: '0'
+  provider: hnp_upper_menu
+visibility: {  }

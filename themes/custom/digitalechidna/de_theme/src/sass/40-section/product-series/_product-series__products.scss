@@ -1,0 +1,199 @@
+
+
+//PRODUCT REFERENCE
+
+//filter
+
+.node--type-product-series {
+  .switch-fuel-form {
+    @include breakpoint($narrow-screen) {
+      margin: ms(5) 0 0;
+    }
+  }
+
+  .switch-fuel-form .form-item-choose-fuel-type {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+
+    label {
+      margin-right: .5em;
+      @include small-label;
+      margin-bottom: 0;
+      margin-bottom: .5em;
+    }
+    .select-wrapper,
+    select {
+      width: 100%;
+      @include breakpoint($narrow-screen) {
+        max-width: 200px;
+      }
+    }
+  }
+
+  //items
+
+  .natural-gas-items,
+  .propane-items,
+  .no-fuel-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    & > article {
+      text-align: center;
+      flex: 0 0 100%;
+      margin-bottom: 2em;
+      display: flex;
+      flex-direction: column;
+
+      & > h2 {
+        line-height: .6em;
+        padding-right: ms();
+        padding-left: ms();
+        margin-bottom: .2em;
+      }
+
+      .field--name-field-tagline {
+        font-size: 1.15em;
+      }
+
+      &:after {
+        @include shadow-bottom;
+        bottom: -10px;
+        display: block;
+        @include breakpoint($narrow-screen) {
+          display: none;
+        }
+      }
+
+      @include breakpoint($narrow-screen) {
+        flex: 0 0 33.333%;
+      }
+
+      .node__content {
+        display: flex;
+        flex-direction: column;
+        padding: ms();
+        padding-top: 0;
+        flex-grow: 1;
+        @include breakpoint(0 $narrow-screen) {
+          padding-bottom: 30px;
+          background-color: #fff;
+          position: relative;
+          position: relative;
+          z-index: 50;
+          margin-bottom: 10px;
+        }
+
+        .field--name-field-fuel-type {
+          font-size: 1.05em;
+        }
+
+        .field--name-field-thumbnail-image {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin: ms(2) 0;
+          flex-grow: 1;
+          align-items: center;
+        }
+      }
+
+      img {
+        margin: 0 auto;
+        display: block;
+        max-height: 250px;
+        width: auto;
+        margin: 1em auto;
+
+        @include breakpoint($narrow-screen) {
+          max-width: 100%;
+        }
+
+        @include breakpoint($standard-screen) {
+          max-width: 85%;
+        }
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .field--name-title {
+        text-decoration: none;
+        font-size: ms(-2);
+      }
+
+      .field--type-image {
+        // margin-bottom: ms(3);
+      }
+
+      .field--name-field-msrp {
+        color: $grey;
+        @include breakpoint($narrow-screen) {
+          font-family: $font-set-2;
+          color: $dark-grey;
+        }
+        span {
+          display: inline-block;
+          font-size: 1.2em;
+          text-transform: uppercase;
+          color: $grey;
+          @include breakpoint($narrow-screen) {
+            font-family: $font-set-2;
+            display: block;
+            color: $dark-grey;
+          }
+        }
+
+        span.start {
+          @include breakpoint(0 $narrow-screen) {
+            font-family: $font-set-1;
+            font-size: 1em;
+          }
+        }
+
+        span.value-special {
+          font-size: 1.6em;
+          color: $blue;
+          margin-left: .2em;
+          @include breakpoint($narrow-screen) {
+            font-size: 1.8em;
+          }
+        }
+      }
+
+      .field--name-field-summary-features {
+        margin-top: ms();
+        display: none;
+        @include breakpoint($narrow-screen) {
+          display: block;
+        }
+
+        .field__item {
+          text-transform: uppercase;
+          margin-bottom: .4em;
+          color: $grey;
+        }
+      }
+
+      .btn-primary {
+        margin-right: 0;
+        margin-bottom: .5em;
+        order: 8;
+        margin-top: 1em;
+        align-self: center;
+        font-style: italic;
+        @include breakpoint($narrow-screen) {
+          order: initial;
+          // margin-top: 0;
+        }
+      }
+    }
+  }
+}
+

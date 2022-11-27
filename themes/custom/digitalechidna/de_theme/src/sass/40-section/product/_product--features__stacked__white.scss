@@ -1,0 +1,68 @@
+
+section#features .field--name-field-features-stack > .field__item > .feature-stack-product > .feature-stack-product-item,
+section#features .field--name-field-features-stack > .field__item > .feature-stack > .feature-stack-item{
+
+  //style change for white background
+
+  .theme-color-white .header-wrapper {
+
+    //white theme is for desktop only
+
+    //text
+
+    .feature-style-text {
+      @include breakpoint(max-width $narrow-screen) {
+        color: #fff !important;
+      }
+      @include breakpoint($narrow-screen) {
+        color: $dark-grey;
+      }
+    }
+
+    p.feature-name {
+      // @include breakpoint(max-width $narrow-screen) {
+      //   color: $neutral-grey !important;
+      // }
+      @include breakpoint($narrow-screen) {
+        color: $medium-grey;
+      }
+    }
+
+    h3 .field--name-field-feature-lead-region,
+    h3 .field--name-field-feature-lead {
+      @include breakpoint($narrow-screen) {
+        color: $dark-grey;
+      }
+    }
+
+
+  }
+
+  //gradients
+
+  //gradient from bottom for mobile
+
+  .theme-color-white > .media-content {
+    @include breakpoint($narrow-screen) {
+      background-color: #fff;
+    }
+  }
+
+  //gradients switching sides
+
+  &:nth-child(odd) > article.media--type-image-feature.theme-color-white > .media-content:before {
+    @include breakpoint($narrow-screen) {
+      @include light-side-overlay;
+      transform: scaleX(-1);
+      filter: FlipH;
+    }
+  }
+
+  &:nth-child(even) > article.media--type-image-feature.theme-color-white > .media-content:before {
+    @include breakpoint($narrow-screen) {
+      @include light-side-overlay;
+    }
+  }
+}
+
+

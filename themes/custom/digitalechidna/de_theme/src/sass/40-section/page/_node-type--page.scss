@@ -1,0 +1,8 @@
+
+
+.division-grills.node--type-page,
+.division-fireplaces.node--type-page {
+  #block-de-theme-page-title {
+    @include hide;
+  }
+}

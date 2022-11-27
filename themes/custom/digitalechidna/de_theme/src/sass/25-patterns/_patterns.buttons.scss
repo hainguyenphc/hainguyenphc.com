@@ -1,0 +1,49 @@
+/* 25-patterns/_patterns.buttons.scss */
+
+// global button styles
+
+.btn {
+  @include btn;
+}
+
+.btn-primary {
+  @include btn-primary;
+}
+
+.btn-secondary {
+  @include btn-secondary;
+}
+
+.btn-flat{
+  @include btn-flat;
+}
+
+.btn-promo-banner {
+  @include btn-promo-banner;
+}
+
+.btn-small {
+  @include btn-primary;
+  @include btn-small;
+}
+
+.btn-skinny {
+  @include btn-skinny;
+}
+
+.btn-white {
+  @include btn-skinny;
+  @include btn-white;
+}
+
+.btn-disabled {
+  @include btn;
+  background-color: darken($grey, 5%) !important;
+  &:hover {
+    cursor: not-allowed !important;
+  }
+}
+
+.btn-red {
+  @include default-color-btn($red, white, darken($red, 5%), white);
+}

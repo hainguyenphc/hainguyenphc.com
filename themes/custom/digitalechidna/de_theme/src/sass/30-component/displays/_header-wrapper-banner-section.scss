@@ -1,0 +1,8 @@
+
+  .header-wrapper  {
+    @include background-cover;
+    @include negative-margin;
+    padding: ms();
+    position: relative;
+    margin-bottom: ms(6);
+  }

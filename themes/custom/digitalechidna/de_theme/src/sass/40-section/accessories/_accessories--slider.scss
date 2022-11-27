@@ -1,0 +1,102 @@
+
+.accersories-grid-wrapper {
+  &.basic-grid-style .field.item-intorudctory-text {
+    font-family: $font-set-1;
+    font-size: ms();
+    @include breakpoint($narrow-screen) {
+      font-family: $font-set-2;
+    }
+  }
+  .field--name-field-msrp {
+    color: #000;
+    @include breakpoint($narrow-screen) {
+      color: $grey;
+    }
+  }
+  .field--name-field-product-reference {
+    flex-direction: column;
+  }
+}
+
+.accessories.basic-grid-style {
+  .slick-dots {
+    position: relative;
+    margin-top: 1em;
+  }
+
+  .view-all-link {
+    display: none;
+    @include breakpoint($narrow-screen) {
+      display: inline-block;
+    }
+  }
+
+  .view-all-link.mobile {
+    display: block;
+    display: flex;
+    justify-content: center;
+
+    a {
+      margin-right: 0;
+      margin: 0 auto;
+      background-color: #000;
+    }
+
+    @include breakpoint($narrow-screen) {
+      display: none;
+    }
+  }
+}
+
+
+.field--name-field-accessories.slick-slider {
+  .field--name-field-main-image img {
+    max-height: 300px;
+    width: auto;
+    margin: 0 auto;
+  }
+}
+
+// ===== Slider overrides
+.acc-slider .node--type-accessory > .node__content {
+  justify-content: space-between !important;
+  display: flex !important;
+
+  .item-image {
+    flex: 1 0 auto;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .item-wrapper {
+    flex: 0 0 auto;
+
+    .item-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      a {
+        margin: 0;
+      }
+    }
+  }
+
+  .shopify-buy__btn-wrapper button {
+    @include btn-primary;
+    @include default-color-btn($red, #fff, darken($red, 5%), #fff);
+    margin-top: 0 !important;
+    margin-right: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+

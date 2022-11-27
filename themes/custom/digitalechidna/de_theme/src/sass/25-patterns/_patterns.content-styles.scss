@@ -1,0 +1,1083 @@
+/* 25-patterns/_patterns.content-styles.scss */
+// contains styles for the editor experience. eg. float images left or right,
+// headline and highlight typography.
+// this file gets imported by wysiwyg/wysiwyg-editor.scss.
+
+//GENERAL / BASE STLYES =======================================================================================================
+
+.lead{
+  @include headline-type;
+}
+
+.lead-secondary {
+  font-weight: $semi-bold;
+  font-size: ms(2);
+}
+
+.small-type{
+  margin-bottom: ms(2);
+  color: $dark-grey;
+  font-size: ms(-1);
+}
+
+.highlight-type{
+  @include highlight-type;
+}
+
+.libre-baskerville {
+  font-family: $font-set-3;
+}
+
+.oswald {
+  font-family: $font-set-2;
+}
+
+.source-sans-pro {
+  font-family: $font-set-1;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.light-weight-font {
+  font-weight: lighter;
+}
+
+.light-blue-txt {
+  color: $light-blue;
+}
+
+.blue-txt {
+  color: $blue;
+}
+
+.blue-light-txt {
+  color: $light-blue;
+}
+
+.red-txt {
+  color: $red;
+}
+
+.orange-txt {
+  color: $fp-orange;
+}
+
+.grey-txt {
+  color: #757575;
+}
+
+.white-txt {
+  color: #fff;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+
+.align-left,
+.align-right,
+.align-center{
+  @include image-style;
+}
+
+.align-left{
+  @include image-style-left;
+}
+
+.align-right{
+  @include image-style-right;
+}
+
+.align-center{
+  @include image-style-center;
+}
+
+.highlight-box{
+  @include highlight-box;
+}
+
+.styleguide-header{
+  clear: both;
+  margin-top: ms(5);
+  margin-bottom: ms();
+  font-size: ms(-1);
+  text-transform: uppercase;
+  color: $dark-grey;
+  border-bottom: 1px solid $dark-grey;
+  &:nth-child(1){
+    margin-top: 0;
+  }
+}
+
+.field--name-body h2 strong {
+  font-weight: $bold;
+}
+
+
+// FONT SIZES =================================================================================================
+
+
+.text-size-x-small {
+ @include font-size(12);
+  @include breakpoint($narrow-screen) {
+   @include font-size(12);
+ }
+}
+
+.text-size-small {
+ @include font-size(14);
+  @include breakpoint($narrow-screen) {
+    @include font-size(14);
+ }
+}
+
+.text-size-medium {
+ @include font-size(25);
+  @include breakpoint($narrow-screen) {
+    @include font-size(25);
+ }
+}
+
+.text-size-large {
+ @include font-size(30);
+ line-height: .9em;
+  @include breakpoint($narrow-screen) {
+    @include font-size(40);
+    line-height: .9em;
+ }
+}
+
+.text-size-x-large {
+ @include font-size(40);
+ line-height: .9em;
+  @include breakpoint($narrow-screen) {
+   @include font-size(53);
+   line-height: .9em;
+ }
+}
+
+.text-size-xx-large {
+ @include font-size(50);
+ line-height: 1em;
+ @include breakpoint($narrow-screen) {
+   @include font-size(75);
+   line-height: 1.1em;
+ }
+}
+
+
+// BACKGROUND COLOURS =================================================================================================
+
+.black-default-bck, .blue-default-bck, .orange-default-bck, .grey-default-bck {
+  padding: ms();
+  margin-bottom: ms();
+  display: block;
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.black-default-bck {
+  background-color: #000;
+}
+
+.blue-default-bck {
+  background-color: $blue;
+}
+
+.orange-default-bck {
+  background-color: $fp-orange;
+}
+
+.grey-default-bck {
+   background-color: $light-grey;
+}
+
+.black-default-bck, .blue-default-bck, .orange-default-bck {
+  color: #fff !important;
+}
+
+
+
+// FLOAT STLYES =======================================================================================================
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+// MARGIN STYLES =======================================================================================================
+
+.remove-margin-button a {
+  margin: 0 !important;
+}
+
+.remove-margin {
+  margin: 0 !important;
+}
+
+.add-margin-right {
+  margin-right: 1em;
+}
+
+.add-margin-left {
+  margin-left: 1em;
+}
+
+.add-margin-bottom {
+  margin-bottom: 1em;
+}
+
+.add-margin-top {
+  margin-top: 1em;
+}
+
+// ALIGN FLEX STYLES =======================================================================================================
+
+.vertical-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.horiztonal-align-center {
+  display: flex;
+  justify-content: center;
+}
+
+// WIDTH STLYES =======================================================================================================
+
+.width-thirty, .width-fifty, .width-seventy {
+  display: block;
+
+  &.center-width {
+    margin: 0 auto;
+  }
+
+  &.right-align-width {
+    margin-left: auto;
+  }
+
+  * {
+    //width: 100%;
+  }
+}
+
+.width-thirty {
+  @include breakpoint($narrow-screen) {
+    width: 50%;
+  }
+  @include breakpoint($medium-screen) {
+    width: 30%;
+  }
+}
+
+.width-fifty {
+  @include breakpoint($narrow-screen) {
+    width: 50%;
+  }
+}
+
+.width-seventy {
+  @include breakpoint($narrow-screen) {
+    width: 70%;
+  }
+}
+
+
+
+
+// BUTTONS =======================================================================================================
+
+//BLUE BUTTON
+
+.cke_panel_listItem a[title*="Blue Button"],
+a.btn-primary {
+  @include btn-primary;
+  color: #fff !important;
+}
+
+//menu
+.region--masthead-primary a.btn-default-blue-menu {
+  background-color: $blue !important;
+  color: #fff !important;
+  &:hover,&:focus,&:active{
+    background-color: darken($blue, 6%) !important;
+  }
+}
+
+
+//BLACK BUTTON
+
+.cke_panel_listItem a[title*="Black Button"],
+a.btn-secondary {
+  @include btn-secondary;
+  color: #fff !important;
+}
+
+
+//ORANGE BUTTON
+
+.cke_panel_listItem a[title*="Orange FP Button"],
+a.btn-default-orange {
+  @include default-color-btn($fp-orange, #fff, darken($fp-orange,6%), #fff);
+}
+
+.cke_panel_listItem a[title*="Orange FP Button"] {
+  color: #fff !important;
+}
+
+//menu
+.region--masthead-primary a.btn-default-orange-menu {
+  background-color: $fp-orange !important;
+  color: #fff !important;
+  &:hover,&:focus,&:active{
+    background-color: darken($fp-orange,6%) !important;
+  }
+}
+
+
+//WHITE BUTTON
+
+a.btn-white {
+  @include btn-white;
+}
+
+.cke_panel_listItem a[title="White Button"] {
+  @include btn-white;
+}
+
+
+//RED BUTTON
+
+//old
+a.btn-red {
+  @include btn-red;
+  color: #fff !important;
+}
+
+//new
+.cke_panel_listItem a[title="Red Button"],
+.btn-default-red {
+  @include default-color-btn($red, #fff, darken($red,6%), #fff);
+  color: #fff !important;
+}
+
+
+//BORDER WHITE
+
+//old
+a.btn-border-white {
+  @include btn-border-w;
+  background-color: #000;
+}
+
+//new
+.cke_panel_listItem a[title="White Border Button"],
+.btn-default-border-white {
+  @include default-color-btn(transparent, #fff, transparent, #fff);
+  border: 1px solid #fff;
+}
+
+
+//BORDER BLACK
+
+//old
+a.btn-border-black {
+  @include btn-border;
+}
+
+//new
+.cke_panel_listItem a[title="Black Border Button"],
+.btn-default-border-black {
+  @include default-color-btn(transparent, #000, transparent, #000);
+  border: 1px solid #000;
+}
+
+
+//BORDER GREY
+
+//old
+a.btn-border-black {
+  @include btn-border;
+}
+
+//new
+.cke_panel_listItem a[title="Grey Border Button"],
+.btn-default-border-grey {
+  @include default-color-btn(transparent, #000, transparent, #000);
+  border: 1px solid $neutral-grey;
+}
+
+
+//BORDER BLUE
+
+//old
+a.border-button-blue-white {
+  @include btn-border-blue;
+}
+
+//new
+.cke_panel_listItem a[title="Blue Border Button"],
+.btn-default-border-blue {
+  @include default-color-btn(transparent, #fff, transparent, #fff);
+  border: 1px solid $light-blue;
+}
+
+//TRANSPARENT BUTTON
+
+a.btn-transparency {
+  @include btn-transparency(white, #5b4040);
+}
+
+.cke_panel_listItem a[title*="Transparency Button"] {
+   @include btn-transparency(white, #5b4040);
+   color: white !important;
+}
+
+
+//SPECIAL PROMO
+
+//old
+.btn-promo-banner {
+  @include btn-promo-banner;
+}
+
+//new
+.cke_panel_listItem a[title="Special Promo Button"],
+a.btn-special-promo-banner {
+  @include promo-button;
+}
+
+.cke_panel_listItem a[title="Special Promo Button"] {
+  color: #fff !important;
+}
+
+
+//CKeditor
+
+.cke_panel_listItem a {
+  margin-bottom: .15em !important;
+}
+
+
+//CUSTOMIZABLE BUTTON =======================================================================================================
+
+//sizes
+
+.btn-small-size {
+  @include btn;
+  @include btn-small;
+  display: inline-block;
+}
+
+.btn-large-size {
+  @include btn;
+  display: inline-block;
+}
+
+.btn-large {
+  display: inline-block;
+}
+
+.btn-large a {
+  font-size: 1.4em;
+  font-weight: $bold;
+  padding: .4em 1.3em;
+  @include breakpoint($narrow-screen) {
+    font-size: 1.7em;
+  }
+}
+
+//new
+
+.btn-default-skinny, .btn-default-small, .btn-default-large {
+  display: inline-block;
+}
+
+.btn-default-skinny a {
+  @include btn-skinny;
+}
+
+.btn-default-small a {
+  @include breakpoint($narrow-screen) {
+    font-size: .9em;
+  }
+}
+
+.btn-default-large a {
+  @include breakpoint($narrow-screen) {
+    font-size: 2em;
+    padding: .6em .8em;
+  }
+}
+
+//colors (old)
+
+a.btn-red {
+  @include btn-red;
+}
+
+.red-bck {
+   display: inline-block;
+  a {
+    background-color: $red;
+    &:hover,&:focus, &:active {
+     background-color: darken($red, 5%);
+    }
+  }
+}
+
+.blue-bck {
+   display: inline-block;
+  a {
+    background-color: $blue;
+    &:hover,&:focus,&:active {
+      background-color: darken($blue, 6%);
+    }
+  }
+}
+
+.black-bck {
+   display: inline-block;
+  a {
+    background-color: #000;
+    &:hover,&:focus, &:active {
+     background-color: lighten(#000, 10%);
+    }
+  }
+}
+
+.white-bck {
+   display: inline-block;
+  a {
+    background-color: #FFF;
+    color: #000;
+    &:hover,&:focus, &:active {
+     background-color: darken(#FFF, 5%);
+    }
+  }
+}
+
+.cke_panel_listItem {
+  .white-bck {
+    color: #000;
+    border: 1px solid #000;
+  }
+  .black-bck {
+    background: #000;
+    color: #fff;
+  }
+  .blue-bck {
+    background: $blue;
+    color: #fff;
+  }
+  .red-bck {
+    background: $red;
+    color: #fff;
+  }
+}
+
+.white,
+.white-link {
+  color: #fff;
+  background-color: #000;
+  padding: .5em;
+}
+
+.light-blue {
+  color: $light-blue;
+}
+
+.black {
+  color: #000;
+
+  a {
+    color: #000;
+  }
+}
+
+
+// LINK STYLES =======================================================================================================
+
+.cke_panel_listItem a[title="No Underline Link"],
+a.title-link-no-underline {
+  text-decoration: none;
+}
+
+.cke_panel_listItem a[title="Italic Underline Link"],
+a.italic-underline-link {
+  font-style: italic;
+  @extend a.dark-link;
+}
+
+
+// HEADING STYLES =======================================================================================================
+
+h1 {
+  @extend h1;
+}
+
+h2 {
+  @extend h2;
+}
+
+h3 {
+  @extend h3;
+}
+
+h4 {
+  @extend h4;
+}
+
+h5 {
+  @extend h5;
+}
+
+h6 {
+  @extend h6;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  strong {
+    font-weight: $bold !important;
+  }
+}
+
+
+// TEXT STYLES =======================================================================================================
+
+.cke_panel_listItem a[title="Baskervville Font"],
+.font-set-3 {
+  font-family: $font-set-3;
+}
+
+.medium-type {
+  color: #000;
+  font-size: 2.5rem;
+  line-height: 35px;
+}
+
+.large-type {
+  color: #000;
+  font-size: 3rem;
+  line-height: 45px;
+
+  @include breakpoint($weird-screen) {
+    line-height: 40px;
+    font-size: 2.5rem;
+  }
+  @include breakpoint($medium-screen) {
+    line-height: 45px;
+    font-size: 3rem;
+  }
+  @include breakpoint($standard-screen) {
+    line-height: 60px;
+    font-size: 4rem;
+  }
+}
+
+.extra-large-type {
+  color: #000;
+  font-size: 5rem;
+  line-height: 60px;
+}
+
+.cke_panel_listItem a[title="Uppercase Font"],
+.uppercase {
+  text-transform: uppercase;
+}
+
+.intro {
+  font-size: 1.7em;
+}
+
+.padding-special {
+  @include breakpoint($standard-screen) {
+    padding: 0 15%;
+  }
+}
+
+//.cke_panel_listItem a[title="Grills Text"],
+.listed-items-title {
+  font-weight: 600;
+  font-size: 1.5625em;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.column-listed-items {
+  padding-left: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 1.1em;
+  margin-bottom: 2.5em;
+
+  li {
+    flex: 1 0 100%;
+    text-align: left;
+    font-style: italic;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+
+    @include breakpoint($narrow-screen) {
+      flex: 1 0 50%;
+      padding-right: 25px;
+    }
+    @include breakpoint($standard-screen) {
+      padding-right: 30px;
+    }
+    @include breakpoint($wide-screen) {
+      font-size: 1.25rem;
+    }
+  }
+
+  @include breakpoint($wide-screen) {
+    max-width: 825px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include breakpoint($wide-screen-max) {
+    max-width: 850px;
+  }
+}
+
+
+// CUSTOM BANNER STYLES =======================================================================================================
+
+.extra-padding-left {
+  @include breakpoint($narrow-screen) {
+    padding-left: 55px;
+  }
+  @include breakpoint($standard-screen) {
+    padding-left: 125px;
+  }
+  @include breakpoint($wide-screen-max) {
+    padding-left: 160px;
+  }
+}
+
+.banner-text-left {
+  color: #ffffff;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1em;
+  width: 90%;
+  margin: auto;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include breakpoint($weird-screen) {
+    width: 45%;
+    margin: 0;
+  }
+  @media only screen and (min-width: 1080px) {
+    font-size: 3.4em;
+  }
+  @include breakpoint($wide-screen) {
+    width: 35%;
+  }
+}
+
+.banner-title-left-center {
+  line-height: 1em;
+  margin-bottom: 0;
+  margin: 15px 0 15px 0;
+}
+
+//.cke_panel_listItem a[title="Banner Hashtag"],
+.banner-hashtag {
+  font-size: 0.5em;
+  text-transform: none;
+  font-weight: normal;
+  border-top: 1px solid #fff;
+  padding-top: 10px;
+  width: 80%;
+  margin: 15px  auto 15px  auto;
+}
+
+.banner-text-center {
+  margin: auto;
+  width: 80%;
+
+  @include breakpoint($medium-screen) {
+    width: 70%;
+  }
+  @include breakpoint($wide-screen) {
+    width: 50%;
+  }
+
+  p {
+    line-height: 1.5625em;
+  }
+}
+
+.promo-banner-title {
+  font-size: 2em;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1em;
+  text-transform: uppercase;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  @include breakpoint($weird-screen) {
+    font-size: 3.05em;
+  }
+}
+
+.promo-banner-text-right {
+  padding-right: 1em;
+  width: 100%;
+  margin-top: -50px;
+
+  @include breakpoint($narrow-screen) {
+    padding-right: 2em;
+  }
+  @include breakpoint($medium-screen) {
+    padding-right: 3em;
+    width: 80%;
+    float: right;
+  }
+  @include breakpoint($standard-screen) {
+    width: 74%;
+
+  }
+  @include breakpoint($wide-screen) {
+    width: 55%;
+  }
+  @include breakpoint($super-wide-screen) {
+    width: 53%;
+    margin-top: 0;
+  }
+}
+
+.promo-banner-text-left {
+  padding-left: 1em;
+  margin-top: 1em;
+
+  @include breakpoint($narrow-screen) {
+    padding-left: 2em;
+  }
+  @include breakpoint($narrow-screen) {
+    margin-top: 2em;
+  }
+  @include breakpoint($medium-screen) {
+    padding-left: 3em;
+  }
+  @include breakpoint($wide-screen) {
+    margin-top: 4em;
+  }
+}
+
+//.cke_panel_listItem a[title="Light Weight Text"],
+.light-weight-text {
+  font-weight: 100;
+  color: #fff;
+}
+
+//.cke_panel_listItem a[title="Large Body Text"],
+.large-body-text {
+  font-size: 1.1rem;
+  @include breakpoint($medium-screen) {
+    font-size: 1.25rem;
+  }
+}
+
+//.cke_panel_listItem a[title="Landing Header Content Box"],
+.landing-header-content-box {
+  h2 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #000;
+    letter-spacing: 1px;
+    @include breakpoint($medium-screen) {
+      font-size: 2.6rem;
+    }
+    @include breakpoint($standard-screen) {
+      font-size: 2.8rem;
+      width: 95%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media only screen and (min-width: 1220px) {
+      width: 75%;
+    }
+    @include breakpoint($wide-screen) {
+      font-size: 2.8rem;
+      width: auto;
+      max-width: 800px;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 2em;
+    @include breakpoint($wide-screen) {
+      font-size: 1.25rem;
+      max-width: 850px;
+      margin: auto;
+    }
+  }
+
+  h3 {
+    font-weight: bold;
+    color: #000;
+    letter-spacing: 1px;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-size: 1.25rem;
+    @include breakpoint($wide-screen) {
+      margin-top: 2.5em;
+    }
+  }
+
+  ul li {
+    @include breakpoint($wide-screen) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .btn-secondary {
+    margin-right: 0;
+  }
+
+  @include breakpoint($weird-screen) {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @include breakpoint($medium-screen) {
+    width: 75%;
+  }
+  @include breakpoint($standard-screen) {
+    width: 75%;
+  }
+  @include breakpoint($wide-screen) {
+    width: 65%;
+  }
+  @media only screen and (min-width: 1840px) {
+    width: 50%;
+  }
+  @media only screen and (min-width: 2390px) {
+    width: 38%;
+  }
+}
+
+//.cke_panel_listItem a[title="Grills Title"],
+.grills-home-title {
+  line-height: 1em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+
+//.cke_panel_listItem a[title="Grills Text"],
+.grills-home-text {
+  width: 75%;
+  margin: auto;
+  font-size: 1.25rem;
+  opacity: 0.75;
+  letter-spacing: 0.5px;
+  @include breakpoint($medium-screen) {
+    font-size: 1.5rem;
+    width: 65%;
+  }
+  @include breakpoint($wide-screen) {
+    width: 55%;
+  }
+}
+
+.cta-block--title-background-box {
+  background: rgba(0,0,0,0.4);
+  padding: 1em 1.5em 1em 1.5em !important;
+  margin-bottom: -1.25em !important;
+  @include breakpoint($standard-screen) {
+    padding: 1em 2.5em 1em 2.5em !important;
+  }
+}
+
+.slight-padding-right {
+  padding-right: 3em;
+}
+
+.slight-padding-left {
+  padding-left: 3em;
+}
+
+//CK EDITOR STYLE OVERRIDES =======================================================================================================
+
+.cke_panel_listItem {
+  .slight-padding-left {
+    padding: 0 !important;
+  }
+
+  .remove-margin,
+  .add-margin-right,
+  .add-margin-left,
+  .vertical-align-center,
+  .horiztonal-align-center,
+  .nowrap,
+  .display-inline,
+  .float-right,
+  .listed-items-title,
+  .grills-home-title,
+  .light-weight-text,
+  .promo-banner-title,
+  .landing-header-content-box,
+  .banner-hashtag,
+  .grills-home-text,
+  .promo-banner-text-left,
+  .promo-banner-text-right,
+  .left-banner,
+  .banner-title-left-center,
+  .banner-text-left,
+  .banner-text-center,
+  .extra-large-type,
+  .large-type,
+  .medium-type {
+    all: unset;
+  }
+}
+
+.icon-text-hidden{
+  @include squish-text;
+}
+
+.styleguide-header {
+  clear: both;
+  margin-top: ms(5);
+  margin-bottom: ms();
+  font-size: ms(-1);
+  text-transform: uppercase;
+  color: $dark-grey;
+  border-bottom: 1px solid $neutral-grey;
+  &:nth-child(1){
+    margin-top: 0;
+  }
+}
+
+
+
+

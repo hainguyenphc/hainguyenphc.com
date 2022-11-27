@@ -1,0 +1,259 @@
+
+$product-break-mobile: $weird-screen;
+
+// New PDP Specific styles 
+.pdp-grills {
+  .node--type-hvac-product,
+  .node--type-fireplaces-product-series,
+  .node--type-fireplaces-product,
+  .node--type-accessory,
+  .node--type-product {
+    // ==== Finish and Fuel Type
+    #options {
+      display: flex;
+      flex-direction: column;
+
+      & > .field {
+        padding-bottom: 1em;
+      }
+
+      .field__label {
+        color: $medium-grey;
+        font-weight: $semi-bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        display: block;
+        width: 100%;
+        padding-bottom: 1em;
+      }
+
+      // ==== Fuel Type
+      .field--name-field-fuel-type {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        & > .field__item {
+          display: inline-block;
+          margin-right: 0.500em;
+          margin-bottom: 1em;
+        }
+
+        .vocabulary-fuel-type a {
+          color: $darkest-grey;
+          text-decoration: none;
+
+          .field--name-name {
+            box-shadow: inset 0px 0px 0px 2px $blue;
+            border-color: $blue;
+          }
+        }
+
+        .field--name-name {
+          border: 1px solid $search-grey;
+          padding: 0.625em 1em;
+          box-sizing: border-box;
+          min-width: 160px;
+          text-align: center;
+          text-transform: none;
+          font-size: 16px;
+          letter-spacing: initial;
+        }
+      }
+
+      // === Finish Type
+      .field--name-field-finish {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &::after {
+          display: none;
+        }
+
+        & > .field__item {
+          display: inline-block;
+          margin-right: 0.500em;
+          margin-bottom: 1em;
+        }
+
+        .field--name-field-image {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 1px solid $search-grey;;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            border-radius: 50%;
+            width: 27px;
+            height: 27px;
+            object-fit: cover;
+            border:1px solid white;
+          }
+        }
+
+        .vocabulary-finish-type > span,
+        .vocabulary-finish-type > span > a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-right: .5em;
+        }
+
+        .vocabulary-finish-type a {
+          color: $darkest-grey;
+          text-decoration: none;
+
+          .field--name-field-image {
+            border: 2px solid $blue;
+          }
+
+          .field--name-field-image img {
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            object-fit: cover;
+          }
+        }
+
+        .field--name-name {
+          font-size: 1em;
+          text-transform: none;
+          padding-left: 0.375em;
+          font-weight: $bold;
+        }
+      }
+    }
+  }
+}
+
+.node--type-hvac-product,
+.node--type-fireplaces-product-series,
+.node--type-fireplaces-product,
+.node--type-accessory,
+.node--type-product {
+
+  .section-content {
+    position: relative;
+
+    > .layout-container {
+      padding-top: 0;
+      position: static;
+    }
+  }
+
+  #block-breadcrumbs {
+    position: relative;
+    margin-top: 0px;
+    z-index: 20;
+    background: transparent;
+    bottom: -50px;
+    margin-top: -27px;
+
+    .breadcrumb {
+      @include reset;
+    }
+  }
+}
+
+.node--type-hvac-product,
+.node--type-fireplaces-product,
+.node--type-accessory,
+.node--type-product {
+
+  #block-de-theme-local-tasks {
+    position: relative;
+    margin-top: 68px;
+  }
+
+  & > section, .grouping-wrapper {
+    margin-bottom: ms(2);
+    @include breakpoint(0 $narrow-screen) {
+      &.slider, &.specs, &.series-wrapper {
+        margin-bottom: 0;
+      }
+    }
+    @include breakpoint($standard-screen) {
+      margin-bottom: ms(4);
+    }
+    @include breakpoint($standard-screen) {
+      margin-bottom: 60px;
+    }
+  }
+
+  section.promo-wrapper {
+    margin-bottom: 0;
+  }
+
+  //full width sections
+
+  section.video {
+    margin-left: - ms(2);
+    margin-right: - ms(2);
+  }
+
+  section.specs,
+  section.video {
+    @include breakpoint($narrow-screen) {
+      margin-left: -1.5625em;
+      margin-right: -1.5625em;
+    }
+    @include breakpoint($standard-screen) {
+      margin-left: - ms(4);
+      margin-right: - ms(4);
+    }
+  }
+
+  //sliders
+
+  .accersories-grid-wrapper,
+  section.series-wrapper,
+  section.accessories {
+    .slick-dots {
+      margin-bottom: 0;
+      position: relative;
+      margin-top: ms(2);
+      margin-bottom: ms();
+    }
+
+    .view-all-link.top {
+      display: none;
+      @include breakpoint($narrow-screen) {
+        display: block;
+      }
+    }
+
+    .view-all-link.bottom {
+      display: block;
+      display: flex;
+      justify-content: center;
+
+      a {
+        @include btn-secondary;
+        margin-right: 0;
+      }
+      @include breakpoint($narrow-screen) {
+        display: none;
+      }
+    }
+  }
+
+  //turns to tabs
+
+  section.dealers ,
+  section.support ,
+  section.specs {
+    display: flex;
+
+    div .inner-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      @include breakpoint(max-width $standard-screen) {
+        align-items: center;
+      }
+    }
+  }
+}

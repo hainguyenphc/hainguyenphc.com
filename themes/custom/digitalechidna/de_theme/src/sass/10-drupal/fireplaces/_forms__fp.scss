@@ -1,0 +1,17 @@
+// Fireplaces forms
+
+.division-fireplaces {
+
+  input[type="submit"] {
+    @include btn-primary-fp;
+  }
+
+  // Checkboxes
+
+  input[type=checkbox] {
+
+   &:checked + label:before {
+      background-color: $fp-orange;
+    }
+  }
+}

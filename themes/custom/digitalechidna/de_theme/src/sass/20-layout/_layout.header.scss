@@ -1,0 +1,217 @@
+//Fixed Header
+
+#header {
+  background-color: white;
+  position: fixed;
+  z-index: 400;
+  width: 100%;
+  top: 0;
+}
+
+//since header is fixed, add margin or padding to the content so it starts below the fixed header and doesn't get cut off
+//padding to compensate on container when header is set to fixed
+.responsive-menu-page-wrapper {
+  margin-top: 48px;
+  @include breakpoint($standard-screen) {
+    margin-top: 94px;
+  }
+}
+
+//with fixed menu, the tool bar needs to leave space for it, since it is also fixed
+//padding to move the nav past the admin toolbar when logged in
+.user-logged-in #header {
+  top: 38px;
+  @include breakpoint(722px) {
+    top: 38px;
+  }
+}
+
+//padding to move the nav past the admin toolbar when open and when logged in
+//open toolbar padding
+.user-logged-in.toolbar-tray-open #header {
+  //horizontal header only impacts on desktop
+  @include breakpoint(976px) {
+    top: 118px;
+  }
+  @include breakpoint(1084px) {
+    top: 78px;
+  }
+}
+
+.user-logged-in.toolbar-tray-open {
+  @include breakpoint(976px 1084px) {
+    #header {
+      top: 78px;
+    }
+
+    .responsive-menu-page-wrapper {
+      margin-top: 56px;
+    }
+  }
+}
+
+//padding to move content wrapper down so banner doesn't start's above content
+//Banner // logged out
+.has-top-banner .responsive-menu-page-wrapper {
+  margin-top: 208px;
+  @include breakpoint(305px) {
+    margin-top: 182px;
+  }
+  @include breakpoint(373px) {
+    margin-top: 155px;
+  }
+  @include breakpoint(485px) {
+    margin-top: 128px;
+  }
+  @include breakpoint($narrow-screen) {
+    margin-top: 142px;
+  }
+  @include breakpoint(985px) {
+    margin-top: 111px;
+  }
+  // @include breakpoint($medium-screen) {
+  //  margin-top: 142px;
+  // }
+  @include breakpoint($standard-screen) {
+    margin-top: 153px;
+  }
+  @include breakpoint(1013px) {
+    margin-top: 185px;
+  }
+  @include breakpoint(1015px) {
+    margin-top: 156px;
+  }
+}
+
+//the admin menu is only fixed past a certain point. It will leave a weird space if it isnt always fixed becasue the main nav is.
+#toolbar-bar {
+  position: fixed;
+}
+
+.acquia-lift-toolbar-tab button {
+  margin-bottom: 0;
+}
+
+#masthead > .layout-container {
+  display: flex;
+  align-items: center;
+  background-color: #000;
+
+  position: relative;
+  // z-index: 0;
+
+  &:before,
+  &:after {
+    @include breakpoint($standard-screen) {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 5000px;
+      background: #000;
+      display: block;
+    }
+  }
+
+  &:before {
+    right: 100%;
+  }
+
+  &:after {
+    background: #000;
+    left: 100%;
+  }
+}
+
+// masthead actions
+
+.region--masthead-actions,
+.region--top-alert {
+  display: none;
+  @include breakpoint($standard-screen) {
+    display: block;
+  }
+
+  .region-inner {
+    flex-wrap: wrap;
+    padding-top: ms(-2);
+    padding-bottom: ms(-6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    @include breakpoint($standard-screen) {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+    @include breakpoint(1220px) {
+      padding-left: 190px;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.region--top-alert {
+  display: block;
+  padding: 0;
+  margin: 0;
+  .region-inner {
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    @include breakpoint($standard-screen) {
+      //padding-bottom: .25em;
+      padding-bottom: 0;
+    }
+  }
+}
+
+// masthead primary
+
+.region--masthead-primary {
+  width: 100%;
+
+  &:after {
+    content: none;
+  }
+  .region-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include breakpoint(0 $medium-screen-max) {
+      padding: 0.5em 0;
+      min-height: 50.53px;
+    }
+
+    &:after {
+      content: none;
+    }
+
+    @include breakpoint(0 $medium-screen-max) {
+      #block-de-theme-branding,
+      #block-sitebranding {
+        order: 2;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        //  height: 41% !important;
+      }
+
+      #block-responsivemenumobileicon {
+        order: 1;
+      }
+
+      .napoleon-search-header-form {
+        order: 3;
+      }
+    }
+  }
+}
+
+.page-404 {
+  .responsive-menu-block-wrapper {
+    display: none;
+  }
+}

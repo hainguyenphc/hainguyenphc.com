@@ -1,0 +1,222 @@
+$mobile-breakpoint-sticky-menu: 700px;
+
+section.sticky-jump-menu {
+  @include negative-margin;
+  margin-bottom: 0;
+  z-index: 40;
+  @include breakpoint($narrow-screen) {
+    margin-bottom: 2em;
+  }
+
+  //this is to compensate for margin for how different regions will be laid out
+
+  .has-product-features & {
+    margin-bottom: 0;
+    @include full-width-color($dark-grey-alt, 'before');
+  }
+
+  //when menus goes fixed
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    left: 0;
+    @include full-width-color($dark-grey-alt, 'before');
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 40;
+
+    .sticky-jump-outter-wrapper {
+      @include layout-container;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+  }
+
+  .sticky-jump-outter-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: $dark-grey-alt;
+    color: #fff;
+    margin-bottom: 0;
+    z-index: 200;
+
+    //title
+
+    h3.product-title {
+      background-color: $blue;
+      margin-bottom: 0;
+      font-size: 1em;
+      font-weight: $bold;
+      padding: 1em;
+      * {display: inline-block;}
+      @include breakpoint(max-width $narrow-screen) {
+        @include full-width-color($blue, 'before');
+
+        &:after {
+          @include fontawesome-icon;
+          content: $fa-var-chevron-down;
+          position: absolute;
+          right: 1em;
+          font-size: 1em;
+        }
+      }
+      @include breakpoint($narrow-screen $mobile-breakpoint-sticky-menu) {
+        max-width: 110px;
+      }
+      @include breakpoint($narrow-screen) {
+        background-color: transparent;
+        margin-right: ms(2);
+        margin-left: ms(1);
+        padding: 0;
+      }
+      @include breakpoint($medium-screen) {
+        padding-left: 2.44141em;
+        margin-left: 0;
+      }
+    }
+
+    &.open h3.product-title:after {
+      transform: rotate(180deg);
+    }
+
+    //menu
+
+    &.closed {
+      .sticky-jump-menu-wrapper-mobile {
+        max-height: 0;
+        transition: max-height .3s ease-out;
+      }
+
+      .menu-wrapper {
+        height: 0;
+        overflow: hidden;
+      }
+    }
+
+    &.open {
+      .sticky-jump-menu-wrapper-mobile {
+        display: flex;
+        max-height: 900px;
+        transition: max-height .3s ease-in;
+      }
+    }
+
+    .menu-wrapper {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .menu-wrapper ul {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      flex-grow: 1;
+      @include reset;
+      padding: 1em 0;
+      @include breakpoint($narrow-screen) {
+        flex-direction: row;
+        align-items: initial;
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+        @include reset;
+        flex: 1 1 auto;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        @include breakpoint($narrow-screen) {
+          width: auto;
+        }
+        @include breakpoint($narrow-screen $mobile-breakpoint-sticky-menu) {
+          font-size: .8em
+        }
+
+        &:last-child a:not(.buy-now) {
+          padding-right: ms(2) !important;
+        }
+      }
+
+      li a, li button.shopify-buy__btn {
+        transition: background-color .2s ease;
+        text-transform: uppercase;
+        color: #fff;
+        text-decoration: none;
+        padding: ms(-5) 1em;
+        display: inline-block;
+        font-weight: $semi-bold;
+        display: block;
+        text-align: left;
+        @include breakpoint($narrow-screen) {
+          padding: ms(-1) .5em;
+          text-align: center;
+        }
+
+        &:hover,
+        &:focus {
+          background-color: $dark-grey;
+        }
+      }
+
+      li.buy-button-container.shopify-buy-frame {
+        background-color: $red;
+        margin-top: 2px;
+        button.shopify-buy__btn  {
+          text-align: left;
+          background-color: transparent;
+          padding-bottom: 0;
+          font-size: 14px;
+          letter-spacing: 0;
+          margin-bottom: 0;
+          width: 100%;
+        }
+      }
+
+      //button
+
+      li a.jump-link.buy-now {
+        @include breakpoint($narrow-screen) {
+          @include btn-primary;
+          margin: 0;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          display: flex;
+          align-content: center;
+          align-items: center;
+          justify-content: center;
+          font-size: 1em;
+        }
+        @include breakpoint($narrow-screen) {
+          font-size: 1em;
+        }
+      }
+    }
+
+    &.desktop {
+      display: none;
+      @include breakpoint($narrow-screen) {
+        display: flex;
+      }
+    }
+
+    &.mobile {
+      display: block;
+      @include breakpoint($narrow-screen) {
+        display: none;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+

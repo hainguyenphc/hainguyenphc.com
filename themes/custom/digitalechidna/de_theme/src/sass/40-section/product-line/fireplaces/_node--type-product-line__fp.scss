@@ -1,0 +1,21 @@
+
+.path-node.node--type-fireplaces-product-line {
+  #block-de-theme-page-title {
+    display: inline-block;
+  }
+
+  article.node.node--type-fireplaces-product-line.node--view-mode-full {
+    float: right;
+    width: 100%;
+
+    .field--name-field-description {
+      width: 100%;
+      display: flex;
+    }
+
+    .field--name-field-description-suffix {
+      margin-top: 2.5em;
+    }
+  }
+}
+

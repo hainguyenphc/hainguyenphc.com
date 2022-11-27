@@ -1,0 +1,131 @@
+
+.field--name-field-fireplaces-products {
+  margin-top: ms(4);
+  @include breakpoint($narrow-screen) {
+    margin-top: ms(8);
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: -2%;
+    margin-right: -2%;
+
+    @include breakpoint($weird-screen) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  .content-wrapper > article {
+    flex: 0 0 100%;
+    margin: ms() 2%;
+    @include breakpoint($narrow-screen) {
+      flex: 0 0 46%;
+    }
+    @include breakpoint($weird-screen) {
+      flex: 0 0 29.3%;
+    }
+  }
+
+  .btn-view-more {
+    display: block;
+    margin: 0 auto 1.4rem;
+    padding: 0.4335em 1.5625em;
+  }
+
+  article.node--type-fireplaces-product.node--view-mode-teaser {
+    margin-bottom: ms(4);
+    @include breakpoint($narrow-screen) {
+      margin-bottom: 3rem;
+    }
+    .node__content {
+      text-align: center;
+    }
+
+    h2 {
+      font-family: $font-set-3;
+      font-size: 1.4em;
+      letter-spacing: 0;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    .field--name-field-thumbnail-image {
+      margin: 0 2em ms(3);
+
+      .field--name-field-media-image {
+        display: block;
+
+        img {
+          width: 100%;
+        }
+      }
+
+
+    }
+
+    .field--name-field-tagline {
+      font-size: 1.25em;
+      font-style: italic;
+      color: $fp-dark-grey;
+      @include breakpoint($narrow-screen) {
+        font-size: 1.4em;
+      }
+
+      p {
+        line-height: 1.1em;
+      }
+
+      p:last-child {
+        margin-bottom: .8em;
+      }
+    }
+
+    .field--name-field-fuel-type {
+      font-size: 1.1em;
+      color: $fp-dark-grey;
+    }
+
+    a.read-more {
+      @include btn-border;
+      @include btn-medium;
+      margin-top: ms();
+      @include breakpoint(max-width $narrow-screen) {
+        padding: .2em ms(5);
+      }
+    }
+
+    .shopify-buy__btn {
+      background-color: $fp-orange;
+      border: 1px solid $fp-orange;
+      margin-right: 0;
+      margin-top: 1.6rem;
+      padding: 0.3005em 1.5625em;
+
+      @include breakpoint($weird-screen) {
+        padding: 0.3005em 1.3em
+      }
+
+      @include breakpoint($weird-screen-max) {
+        padding: 0.3005em 1.5625em
+      }
+
+      &:hover,&:focus,&:active{
+        background-color: darken($fp-orange, 6%);
+        border-color: darken($fp-orange, 6%);
+      }
+
+      .fa-shopping-cart {
+        display: none;
+      }
+    }
+  }
+}
+
+.field--name-field-fireplaces-products .content-wrapper .node--type-fireplaces-product:nth-child(n+4) {
+  display: none;
+}

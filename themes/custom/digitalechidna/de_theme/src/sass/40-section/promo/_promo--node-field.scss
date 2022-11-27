@@ -1,0 +1,75 @@
+
+
+//INSIDE OF PRODUCT CONTENT TYPE
+
+.node--view-mode-full section.sticky-jump-menu + section.promo-wrapper {
+  @include breakpoint($narrow-screen) {
+   margin-bottom: ms(2);
+  }
+
+  .field--name-field-promo {
+    @include breakpoint($narrow-screen $medium-screen-max) {
+      margin-top: -2em;
+    }
+  }
+}
+
+.field--name-field-promo {
+  background-color: #000122;
+  position: relative;
+  z-index: 10;
+  @include breakpoint(0 $medium-screen-max) {
+    @include negative-margin;
+  }
+
+  .header-wrapper {
+    padding: ms(2) 0;
+    margin: 0;
+  }
+
+  .node__content {
+    @include breakpoint($weird-screen) {
+      text-align: left;
+    }
+
+    .field {
+      margin-bottom: ms();
+    }
+
+    .field--name-field-header-image {
+      @include breakpoint($weird-screen) {
+        float: left;
+        margin-right: ms(2);
+        width: 35%;
+      }
+
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    h2 {
+      text-align: center;
+      @include breakpoint($weird-screen) {
+        text-align: left;
+      }
+    }
+
+    h2 a {
+      @extend a.dark-link;
+      text-decoration: none;
+    }
+
+    .field--name-title, .field--name-field-description {
+      color: #fff;
+    }
+
+    .field--name-field-description {
+      text-align: center;
+      @include breakpoint($weird-screen) {
+        text-align: left;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+
+.de-bits-accordion-item{
+  // border-bottom: 1px solid $neutral-grey;
+  // border-bottom: 1px solid red;
+}
+
+.card--accordion{
+  .card__actions{
+    // border-bottom: 1px solid red;
+    border-bottom: 1px solid $neutral-grey;
+    padding: 0;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  .card__toggle{
+    @include reset;
+    @include reset-tap;
+    border: none;
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding: ms(-2);
+    transition: background-color 0.3s ease-out;
+    &:hover{
+      background-color: $light-grey;
+      // &:before{
+        // transform: rotate(180deg); // this might be wonky for users
+      // }
+    }
+    &:before{
+      transition: transform 0.3s ease-out;
+      @include material-icons;
+    }
+    .material-icons{
+      display: none !important;
+      position: absolute;
+    }
+
+    &--inactive{
+      background-color: white;
+      &:before{
+        content: "expand_more";
+      }
+    }
+
+    &--active{
+      background-color: $blue;
+      color: white;
+      &:before{
+        content: "expand_less";
+        color: white;
+      }
+      &:hover{
+        background-color: black;
+      }
+    }
+  }
+}

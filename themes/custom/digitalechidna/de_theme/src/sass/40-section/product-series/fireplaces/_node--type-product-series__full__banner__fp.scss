@@ -1,0 +1,160 @@
+// Mixin new flag
+@mixin new-flag {
+  background-color: $fp-orange;
+  font-size: 1.2rem;
+  font-weight: $bold;
+  padding: 0.4rem 1rem;
+  text-transform: uppercase;
+}
+
+
+article.node--type-fireplaces-product-series.node--view-mode-full {
+  display: flex;
+  flex-direction: column;
+
+  //BANNER ==========================================================================
+
+  //header wrapper
+
+  & > section.header-wrapper {
+    margin-bottom: 0;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: ms() ms(2) ms(2) ms();
+    @include breakpoint($narrow-screen) {
+      padding: ms() ms(4) ms(3) ms();
+      min-height: 500px;
+    }
+    @include breakpoint($medium-screen) {
+      padding: ms() ms(7) ms(5) ms();
+      min-height: 690px;
+    }
+
+    //info fields
+
+    .info-wrapper {
+      color: #fff;
+      font-weight: $bold;
+      text-align: right;
+
+      .available-in {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        margin-bottom: .3em;
+
+        .avail {
+          letter-spacing: .5px;
+          text-transform: none;
+          margin-right: .2em;
+        }
+      }
+
+      //size
+
+      .field--name-field-size-select {
+        display: flex;
+        margin-right: -.3em;
+        font-weight: $normal;
+        @include breakpoint($narrow-screen) {
+          margin-right: .3em;
+          font-weight: $semi-bold;
+        }
+
+        .field__item {
+          margin: 0 .3em;
+        }
+      }
+
+      //divider
+
+      .divider {
+        display: none;
+        @include breakpoint($narrow-screen) {
+          display: block;
+        }
+      }
+
+      //fuel
+
+      .field--name-field-fuel-types {
+        font-size: 1.1em;
+        margin-left: .5em;
+        line-height: 24px;
+        margin-bottom: .7em;
+        font-weight: $semi-bold;
+        display: none;
+        @include breakpoint($narrow-screen) {
+          display: block;
+        }
+        @include breakpoint($medium-screen) {
+          margin-bottom: 1.3em;
+        }
+      }
+
+      .field--name-field-fuel-types .field__item {
+        display: inline-block;
+      }
+
+      //main title
+      .title-wrapper {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 1rem;
+
+        @include breakpoint($weird-screen) {
+          gap: 2rem;
+        }
+
+        .hide-item-on-mobile {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      .hide-item-on-desktop {
+        margin-bottom: 1rem;
+      }
+
+      .field--name-field-is-new .new-offer {
+        @include new-flag;
+      }
+
+      .field--name-title {
+        width: 100%;
+      }
+
+      h1 {
+        color: #fff;
+        margin-bottom: .1em;
+        font-size: 1.7em;
+        letter-spacing: 1px;
+        @include breakpoint($narrow-screen) {
+          font-size: 2.4em;
+        }
+        @include breakpoint($medium-screen) {
+          font-size: 2.8em;
+        }
+      }
+
+      //tagline
+
+      .field--name-field-tagline {
+        font-style: italic;
+        font-weight: $semi-bold;
+        font-size: 1.5em;
+        display: none;
+        @include breakpoint($narrow-screen) {
+          display: block;
+        }
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

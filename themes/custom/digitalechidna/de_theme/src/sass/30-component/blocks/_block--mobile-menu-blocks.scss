@@ -1,0 +1,70 @@
+
+.custom-blocks-wrapper {
+	position: absolute;
+	bottom: 0;
+	//padding: 1em;
+	background: $blue;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+
+  & > div {
+  	padding: 1em 1em .7em;
+  	flex-grow: 1;
+  }
+
+	a {
+		color: #fff;
+		font-weight: $bold;
+		text-transform: uppercase;
+	}
+
+	#block-basiccartcountblock--2 {
+		margin-bottom: .3em;
+		margin-left: 0;
+	}
+
+  .language-switcher-language-url {
+  	border-left: 1px solid #fff;
+  	margin-left: 0;
+  	ul.links {
+  		@include reset;
+  		display: flex;
+  		flex-wrap: wrap;
+  		justify-content: center;
+
+  		li {
+  			@include no-bullet;
+  			margin-bottom: .3em;
+        margin-right: .3em;
+
+  			&:last-child {
+  				margin-right: 0;
+  			}
+
+  			a {
+  				color: #fff;
+  				font-weight: $bold;
+  				text-transform: uppercase;
+  				text-decoration: underline;
+  			}
+
+  			&.is-active {
+  				a {
+  					text-decoration: none;
+  				}
+  			}
+  		}
+  	}
+  }
+}
+
+
+//Coporte highlight only
+
+body:not([class*="division"]) .custom-blocks-wrapper {
+  background: #333;
+}
+

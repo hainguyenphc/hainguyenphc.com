@@ -1,0 +1,69 @@
+
+//GENERAL
+
+.path-node.node--type-promo {
+  #block-de-theme-page-title {
+    @include hide;
+  }
+
+  article.node--type-promo {
+    margin-top: -3.05176em;
+  }
+}
+
+.user-logged-in.path-node.node--type-promo {
+  article.node--type-promo {
+    margin-top: 0;
+   }
+}
+
+
+article.node--type-promo {
+  .field--name-field-links {
+    @include breakpoint($weird-screen) {
+      margin-bottom: ms(2);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .field__item {
+      @include breakpoint(0 $weird-screen) {
+        flex-grow: 1;
+      }
+
+      a {
+        @include btn-primary;
+        display: inline-block;
+        margin-right: 0;
+        margin-left: 1em;
+        @include breakpoint(0 $weird-screen) {
+          margin: 0 0 .5em 0;
+          display: block;
+          text-align: center;
+        }
+        @include breakpoint($weird-screen) {
+          margin-bottom: 0;
+        }
+        @include breakpoint($narrow-screen $medium-screen) {
+          font-size: 1.6em;
+        }
+      }
+    }
+
+    .field__item:nth-child(1) {
+      a {
+        @include breakpoint(0 $weird-screen) {
+          margin-right: 1px;
+        }
+        @include breakpoint($weird-screen) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

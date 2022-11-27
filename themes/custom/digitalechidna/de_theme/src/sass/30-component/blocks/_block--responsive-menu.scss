@@ -1,0 +1,17 @@
+
+.responsive-menu-toggle-icon {
+  width: auto;
+  height: 27px;
+}
+
+.responsive-menu-toggle-icon:before,
+.responsive-menu-toggle-icon:after,
+.responsive-menu-toggle-icon span.icon {
+  height: 1px;
+}
+
+#block-responsivemenumobileicon {
+  .label {
+    @include hide;
+  }
+}

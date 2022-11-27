@@ -1,0 +1,55 @@
+
+//FEATURES
+
+.series-features-wrapper {
+  margin: 2em 0 0em;
+  display: none;
+  @include breakpoint($seriesmobilebreak) {
+    display: block;
+  }
+
+  .field {
+    margin-bottom: 0;
+  }
+
+  .field--name-field-parent-search-features {
+    > .field__item {
+      margin-bottom: 1rem;
+      @include breakpoint($seriesmobilebreak) {
+        display: inline-block;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .field--name-field-product-features {
+    display: flex;
+
+
+    article {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1.5em;
+      margin-bottom: ms();
+
+      .field--name-title {
+        font-size: 1em;
+        line-height: 1.2em;
+      }
+
+      h3 {
+        order: 3;
+        color: $blue;
+        font-family: $font-set-2;
+        font-size: ms();
+        font-weight: $normal;
+        text-transform: none;
+        margin-top: ms();
+        max-width: 106px;
+        text-align: center;
+        line-height: ms();
+      }
+    }
+  }
+}

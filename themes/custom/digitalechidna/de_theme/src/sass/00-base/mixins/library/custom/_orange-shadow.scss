@@ -1,0 +1,19 @@
+
+@mixin orange-shadow($color, $position) {
+  @include full-width-color($color, $position);
+  padding-bottom: 14px;
+  @include breakpoint($narrow-screen) {
+    padding-bottom: 21px;
+  }
+
+  &:#{$position} {
+    height: 14px;
+    top: auto;
+    bottom: 0;
+    background: $fp-warm-purple;
+    background: radial-gradient(circle, $fp-orange 0%, $fp-orange 16%, $fp-warm-purple 105%, $fp-warm-purple 100%);
+    @include breakpoint($narrow-screen) {
+      height: 21px;
+    }
+  }
+}

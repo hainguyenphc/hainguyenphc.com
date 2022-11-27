@@ -1,0 +1,86 @@
+
+//Grills only
+
+.division-grills {
+	.brick.psc-item .field--name-field-link a {
+		background-color: $blue;
+		&:hover, &:focus, &:active {
+			background-color: darken($blue, 5%);
+		}
+	}
+}
+
+// Landing page headers Banner
+
+.node--type-landing-page.node--view-mode-full > .node__content > .header-wrapper {
+  @include negative-margin;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0;
+  background-position-y: top;
+
+  @include breakpoint($just-before-medium-screen-max) {
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+    min-height: 420px;
+  }
+
+  &.header-empty {
+    @include breakpoint($just-before-medium-screen-max) {
+      margin: 0;
+      min-height: 0;
+    }
+  }
+
+
+  .field--name-field-header-image {
+    margin: 0 0 1em 0;
+
+    @include breakpoint($medium-screen) {
+      margin-bottom: 0;
+    }
+  }
+
+  .field--name-field-header-content {
+    background-color: rgba(0, 0, 0, .90);
+    color: #fff;
+    height: fit-content;
+    margin: 1.5625em;
+    padding: 2.5em;
+
+    @include breakpoint($narrow-screen) {
+      margin: 4em 2.5em 4em;
+    }
+
+    @include breakpoint($medium-screen) {
+      width: 50%;
+    }
+
+    h2 {
+      color: #fff;
+      // font-size: 1.25em;
+      letter-spacing: 1px;
+
+      @include breakpoint($medium-screen) {
+        // font-size: 1.75em;
+      }
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.header-nobg-img {
+    min-height: 0;
+    .field--name-field-header-content {
+      margin-top: 2em;
+      margin-bottom: 1em;
+      @include breakpoint($standard-screen) {
+      	margin-left: 0;
+      }
+    }
+  }
+}
+

@@ -27,6 +27,8 @@ module:
   filter: 0
   help: 0
   history: 0
+  hnp_constants: 0
+  hnp_upper_menu: 0
   image: 0
   link: 0
   menu_link_content: 0
@@ -38,11 +40,11 @@ module:
   path: 0
   path_alias: 0
   rdf: 0
+  responsive_menu: 0
   search: 0
   shortcut: 0
   system: 0
   taxonomy: 0
-  tb_megamenu: 0
   text: 0
   toolbar: 0
   tour: 0

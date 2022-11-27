@@ -1,0 +1,22 @@
+
+
+
+@mixin blue-shadow($color, $position) {
+  @include full-width-color($color, $position);
+  padding-bottom: 14px;
+  @include breakpoint($narrow-screen) {
+    padding-bottom: 21px;
+  }
+
+  &:#{$position} {
+    height: 14px;
+    top: auto;
+    bottom: 0;
+    background: rgb(1,110,184);
+    background: radial-gradient(circle, rgba(1,110,184,1) 0%, rgba(1,110,184,1) 6%, rgba(37,37,37,1) 35%, rgba(0,0,0,1) 100%);
+    @include breakpoint($narrow-screen) {
+      height: 21px;
+    }
+  }
+}
+

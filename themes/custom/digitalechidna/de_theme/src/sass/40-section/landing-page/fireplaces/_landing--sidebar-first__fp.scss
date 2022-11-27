@@ -1,0 +1,11 @@
+// Fireplaces sidebar first (inspiration search facets)
+
+.division-fireplaces.node--type-landing-page {
+  .region--sidebar-first {
+    display: none;
+
+    @include breakpoint($medium-screen) {
+      display: block !important;
+    }
+  }
+}

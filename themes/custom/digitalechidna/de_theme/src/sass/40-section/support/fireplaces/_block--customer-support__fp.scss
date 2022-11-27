@@ -1,0 +1,10 @@
+// Customer support icons
+.division-fireplaces {
+  #block-customer-support-menu-block-fireplaces {
+    a {
+      &#btn-claim:before {
+        @include icon-support;
+      }
+    }
+  }
+}

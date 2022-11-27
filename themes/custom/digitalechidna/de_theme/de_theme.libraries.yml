@@ -1,0 +1,59 @@
+libre-baskerville-font:
+  css:
+    theme:
+      dist/fonts/libre-baskerville/libre-baskerville-font.css: {}
+
+material-icons:
+  css:
+    theme:
+      dist/fonts/material-icons-main/iconfont/material-icons.css: {}
+
+oswald-font:
+  css:
+    theme:
+      dist/fonts/oswald/oswald-font.css: {}
+
+source-sans-pro-font:
+  css:
+    theme:
+      dist/fonts/source-sans-pro/source-sans-pro-font.css: {}
+
+base:
+  css:
+    theme:
+      dist/css/de_theme.css: {}
+      # dist/css/ie/ie.css: { browsers: {IE: 'IE 9', '!IE': false } }
+      # dist/css/ie/ie-lt9.css: { browsers: {IE: 'lte IE 9', '!IE': false } }
+  js:
+    dist/scripts/js/script.min.js: {}
+  dependencies:
+  - de_theme/ssm
+  - de_theme/slick
+  - core/modernizr
+  - core/jquery
+  - core/drupal
+ssm:
+  js:
+    bower_components/SimpleStateManager/dist/ssm.min.js: {}
+
+slick:
+  js:
+    bower_components/slick-carousel/slick/slick.min.js: {}
+  css:
+    theme:
+      bower_components/slick-carousel/slick/slick.css: {}
+      bower_components/slick-carousel/slick/slick-theme.css: {}
+  dependencies:
+    - core/jquery
+
+# html5shiv:
+#   # Block the page from being loaded until html5shiv is initialized.
+#   header: true
+#   remote: https://github.com/aFarkas/html5shiv
+#   version: "3.7.3"
+#   license:
+#     name: GNU-GPL-2.0-or-later
+#     url: http://www.gnu.org/licenses/gpl-2.0.html
+#     gpl-compatible: true
+#   js:
+#     assets/vendor/html5shiv/html5shiv.min.js: { weight: -22, browsers: { IE: 'lte IE 8', '!IE': false }, minified: true }

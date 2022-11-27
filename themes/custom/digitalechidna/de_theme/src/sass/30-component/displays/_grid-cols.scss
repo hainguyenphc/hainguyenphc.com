@@ -1,0 +1,25 @@
+
+.views-view-grid.horizontal.cols-3  {
+  width: 100%;
+  position: relative;
+
+  .views-row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    @include breakpoint($narrow-screen) {
+      margin-left: -1%;
+      margin-right: -1%;
+    }
+
+    .views-col {
+      flex: 0 0 48%;
+      margin: 1%;
+      @include breakpoint($narrow-screen) {
+        flex: 0 0 31.3%;
+      }
+    }
+  }
+}
+
+

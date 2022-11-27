@@ -1,0 +1,110 @@
+
+//PRODCT SERIES GENERAL
+
+.node--type-product-line {
+  #block-de-theme-breadcrumbs,
+  .page-title {
+    @include hide;
+  }
+}
+
+.product-series {
+  .field--name-field-series {
+    & > .field__item {
+      background-color: #fff;
+      position: relative;
+      padding-bottom: 1.5em;
+      @include breakpoint($seriesmobilebreak) {
+         padding-bottom: ms(6);
+      }
+
+      &:before {
+        @include shadow-bottom;
+        @include breakpoint($seriesmobilebreak) {
+          bottom: 39px;
+        }
+      }
+
+      article.node--type-product-series {
+        background-color: #fff;
+        position: relative;
+        z-index: 20;
+         @include breakpoint($seriesmobilebreak) {
+          padding-bottom: 2em;
+        }
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+        &:before {
+          content: none;
+        }
+        article {
+          padding-bottom: 0;
+        }
+
+        // .imagery-content {
+        //   .field--name-field-thumbnail-image {
+        //     max-width: 30% !important;
+        //   }
+        // }
+      }
+    }
+  }
+  .product-series-teaser-wrapper {
+    display: flex;
+
+    & > section {
+      @include breakpoint($seriesmobilebreak) {
+        flex: 1;
+      }
+
+      &.text-content {
+        flex-shrink: 0;
+        width: 36%;
+        .field--name-body {
+          @include breakpoint(0 $seriesmobilebreak) {
+            @include hide;
+          }
+        }
+      }
+
+      &.imagery-content {
+        margin-right: - ms(2);
+        margin-bottom: 2em;
+        @include breakpoint($seriesmobilebreak) {
+          margin-left: ms(2);
+          margin-right: 0;
+        }
+
+        @include breakpoint($standard-screen) {
+          margin-bottom: 0;
+        }
+
+        .field--name-field-thumbnail-image {
+          //max-width: 65% !important;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+
+  .field {
+    margin-bottom: ms();
+  }
+}
+
+
+.path-node.node--type-product-line article.node--type-product-line.node--view-mode-full {
+  .product-series, .field--name-field-description {
+    margin-top: 2em;
+    @include breakpoint($seriesmobilebreak) {
+      margin-top: 3em
+    }
+  }
+}
+
+
+
+

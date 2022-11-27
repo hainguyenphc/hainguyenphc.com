@@ -1,0 +1,166 @@
+//slider
+
+.basic-grid-style {
+  @include breakpoint($narrow-screen $medium-screen) {
+    font-size: .9em;
+  }
+
+  .grid-wrapper {
+    margin-top: ms(5);
+    //display: flex;
+  }
+
+  .field--name-field-product-reference {
+    // display: flex;
+    // flex-direction: column;
+    .field__item {
+      //flex: 0 0 33.333%;
+    }
+  }
+
+  //title
+
+  .grid-title {
+    margin-bottom: .2em;
+    letter-spacing: 1px;
+    @include font-size(30);
+    font-weight: $bold;
+
+    a {
+      @extend a.dark-link;
+    }
+  }
+
+  //view all
+
+  .view-all-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .view-all-link a {
+      @include btn-secondary;
+      @include btn-narrow;
+      margin: 0;
+      @include breakpoint($narrow-screen) {
+        padding: .15em 1.5em;
+      }
+    }
+  }
+
+  //sub text
+
+  .sub-title-description {
+    font-size: 1.4em;
+  }
+
+  //general
+
+  article {
+    //height: 100%;
+  }
+
+  .node__content {
+    text-align: center;
+    // height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    display: block;
+    @include breakpoint($narrow-screen) {
+      padding: 1em;
+    }
+  }
+
+  .slick-slider .slick-track .slick-slide article .node__content {
+    display: block;
+  }
+
+  .item-wrapper{
+    padding: 0 ms();
+    // flex-grow: 1;
+    // display: flex;
+    // flex-direction: column;
+  }
+
+  .field {
+    margin-bottom: ms(-4);
+    @include breakpoint($narrow-screen) {
+      margin-bottom: ms();
+    }
+    p {
+      margin: 0;
+    }
+  }
+
+  //image
+
+  .item-image {
+    margin-bottom: ms(2);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  //item title
+
+  .item-title {
+    margin-bottom: .2em;
+    line-height: .7em;
+
+    a {
+      font-size: ms(-2);
+      @extend a.dark-link;
+      font-weight: $normal;
+      @include breakpoint($narrow-screen) {
+        font-weight: $bold;
+      }
+
+    }
+  }
+
+  //intro text
+
+  .field.item-intorudctory-text {
+    font-family: $font-set-2;
+    text-transform: uppercase;
+    font-weight: $semi-bold;
+    margin-bottom: 0em;
+    font-size: .8em;
+    margin-top: ms();
+  }
+
+  .field--name-field-msrp {
+    color: $grey;
+  }
+
+  //desc
+
+  .item-value {
+    font-family: $font-set-2;
+    font-weight: $bold;
+    font-size: ms(0);
+    flex-grow: 1;
+    color: $grey;
+    margin-bottom: 0;
+    @include breakpoint($narrow-screen) {
+      font-size: ms(1);
+    }
+  }
+
+  //link
+
+  .item-link {
+    a.btn-primary {
+      margin-right: 0;
+      margin-top: .3em;
+      @include breakpoint($narrow-screen) {
+        font-size: 1em;
+        padding: .5em 2em;
+      }
+      @include breakpoint($medium-screen) {
+        font-size: 1.3em;
+        padding: .3em 2em;
+      }
+    }
+  }
+}

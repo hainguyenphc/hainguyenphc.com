@@ -1,0 +1,6 @@
+
+.division-hvac {
+	input[type=checkbox]:checked + label:before {
+		background-color: $hv-red;
+	}
+}

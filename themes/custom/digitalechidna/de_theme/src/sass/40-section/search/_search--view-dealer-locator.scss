@@ -1,0 +1,816 @@
+$dealer-stacked-layout: 896px;
+$just-before-dealer-stacked-layout: 895px;
+
+$form-height: 575px;
+$form-height-2: 300px;
+
+
+//IN STORE ================================================================
+
+.view-dealer-locator {
+  position: relative;
+  margin-top: calc((3.05176em + 1.95312em) * -1);
+
+
+  .hide-item-on-desktop {
+    display: block;
+    @include breakpoint($dealer-stacked-layout) {
+      display: none;
+    }
+  }
+
+  .hide-item-on-mobile {
+    display: none;
+    @include breakpoint($dealer-stacked-layout) {
+      display: block;
+    }
+  }
+
+
+  //PAGER
+  .pager {
+    margin-top: ms(3);
+  }
+  .pager .pager__items {
+    justify-content: start;
+  }
+
+
+  //STRUCTURE
+
+  .views-form > form {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    @include breakpoint($weird-screen) {
+      flex-direction: row;
+    }
+  }
+  .locations-list {
+    margin-bottom: ms();
+    @include breakpoint($weird-screen) {
+      flex-grow: 1;
+      margin-bottom: 0;
+    }
+  }
+  .no-results {
+    font-weight: bold;
+    margin-bottom: 3em;
+  }
+
+
+  //MAP ================================================================
+
+  .view-filters-map-wrapper {
+    display: flex;
+    margin-bottom: 1.5em;
+  }
+
+  .view-map {
+    display: none;
+    @include breakpoint($dealer-stacked-layout) {
+      display: block;
+      width: 60%;
+    }
+
+    .views-form,
+    form {
+      height: 100%;
+    }
+
+    .geolocation-common-map {
+      width: 100%;
+      height: 100%;
+
+      .views-field-links {
+        > .views-field:last-child {
+          a {
+            margin-top: 0;
+          }
+        }
+
+        a {
+          font-size: .875rem;
+          margin: .5rem 0;
+        }
+      }
+    }
+
+    .geolocation-common-map-container {
+      height: 100% !important;
+      width: 100% !important;
+    }
+
+    .info-text {
+      margin-left: 2em;
+      margin-top: 1rem
+    }
+
+    .no-results {
+      margin-left: 2em;
+      margin-top: 1rem
+    }
+
+    //popup for location
+
+    button.gm-ui-hover-effect {
+      top: 0 !important;
+      right: 0 !important;
+    }
+
+    .location-content {
+      font-family: $font-set-1;
+      font-size: 16px;
+      .type-icon {
+        position: relative;
+      }
+      .title {
+        font-weight: $bold;
+        font-size: 18px;
+        margin-top: .5em;
+      }
+      .views-field {
+       font-weight: normal;
+      }
+      .views-field.views-field-links {
+        a {
+          @include btn-skinny;
+          margin: 0;
+          margin-top: 1em;
+        }
+      }
+    }
+  }
+
+
+  //FILTER SECTION ================================================================
+
+  .view-filters {
+    width: 100%;
+    background-color: $dealer-list-grey;
+    padding: ms(1);
+    @include breakpoint($dealer-stacked-layout) {
+      width: 40%;
+      padding: ms(3) ms(6) ms(2) ms(2);
+    }
+
+    .exposed-form-heading {
+      .heading-main {
+        font-size: 1.3em;
+        font-weight: $bold;
+        text-transform: uppercase;
+        margin-bottom: .3em;
+        @include breakpoint($dealer-stacked-layout) {
+          font-size: 1.9em;
+        }
+      }
+
+      p {
+        font-size: 1.2em;
+      }
+    }
+
+    form.views-exposed-form {
+      label {
+        text-transform: none;
+        font-size: 1em;
+      }
+
+      .form-item-combine {
+        width: 100%;
+        float: none;
+        margin-right: 0;
+        margin: 0;
+        input {
+          width: 100%;
+          // height:45px !important;
+          font-size: 1.2em !important;
+          @include breakpoint($dealer-stacked-layout) {
+            height:45px !important;
+          }
+        }
+      }
+
+      .country-distance-wrapper {
+        display: flex;
+        margin-bottom: .3em;
+        & > .form-item {
+          flex: 0 0 49%;
+          margin-right: 2%;
+          select {
+            width: 100%;
+          }
+        }
+        & > .form-item:nth-child(last) {
+          margin-right: 0;
+        }
+      }
+
+      .form-item-proximity,
+      .form-item-proximity-lng,
+      .form-item-proximity-lat {
+        @include hide;
+      }
+
+      fieldset {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 1em;
+
+        legend {
+          font-weight: normal;
+          font-size: 1.2em;
+        }
+
+        .form-radios {
+          & > div:first-child {
+            margin-right: 2em;
+          }
+        }
+
+        input[type=radio] + label:before {
+          border-radius: 0;
+          top: 0;
+          margin: 0;
+        }
+      }
+
+      .form-actions.form-wrapper {
+        input {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  //list title
+
+  .locations-list-wrapper {
+    .location-list-heading-intro {
+      font-weight: $bold;
+      text-transform: uppercase;
+      font-size: 1.1em;
+      margin-bottom: .3em;
+    }
+  }
+
+  //LIST HEADING ================================================================
+
+  .locations-list-heading {
+    margin-bottom: .35em;
+    margin-left: -.05em;
+    margin-right: -.05em;
+    @include breakpoint($dealer-stacked-layout) {
+      display: flex;
+    }
+
+    &.sticky {
+      display: none;
+      @include breakpoint($medium-screen) {
+        @include layout-container();
+        border-bottom: 1px solid $white;
+        display: flex;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 50;
+      }
+    }
+
+    .list-heading {
+      background-color: darken($dealer-list-grey, 5%);
+      margin: 0 .05em;
+      padding: .5em;
+      font-weight: $bold;
+      text-transform: uppercase;
+      @include breakpoint($dealer-stacked-layout) {
+        width: 11.25%;
+      }
+
+      &.location {
+        //flex: 40% 0 0;
+        @include breakpoint($dealer-stacked-layout) {
+          width: 40%;
+        }
+      }
+      &.links {
+        //flex: 15% 0 0;
+        @include breakpoint($dealer-stacked-layout) {
+          width: 15%;
+        }
+      }
+
+      &.services {
+        a.services-link {
+          .fa-question-circle::before {
+            color: $red;
+            font-size: 17px;
+            vertical-align: baseline;
+            padding-left: 5px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  //when there is no services or showroom columns
+
+  .locations-list-wrapper.no-showroom-display.no-services-display {
+   .list-heading {
+      @include breakpoint($dealer-stacked-layout) {
+        width: 18.3%;
+      }
+
+      &.location {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 45%;
+        }
+      }
+      &.links {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 18.3%;
+        }
+      }
+    }
+  }
+
+  //when there is no showroom columns
+  //when there is no services columns
+
+  .locations-list-wrapper.no-services-display,
+  .locations-list-wrapper.no-showroom-display {
+   .list-heading {
+      @include breakpoint($dealer-stacked-layout) {
+        width: 14%;
+      }
+
+      &.location {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 41%;
+        }
+      }
+      &.links {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 17%;
+        }
+      }
+    }
+  }
+
+
+  //LIST ================================================================
+
+  .locations-list-wrapper {
+    flex-grow: 1;
+  }
+
+  .locations-list {
+    position: relative;
+
+    //alternating row colours and borders
+
+    & > .geolocation  {
+      &:nth-child(odd) {
+        background: $dealer-list-grey;
+      }
+      @include breakpoint(0 $just-before-dealer-stacked-layout) {
+        &:nth-child(even) {
+          background: $dealer-list-grey;
+        }
+      }
+
+      .location-content > .views-field.views-field-dealer-level-distance > .views-field-dealer-level:after,
+      .location-content > .views-field:not(:last-child):after {
+        @include breakpoint($dealer-stacked-layout) {
+          content: "";
+          height: 100%;
+          width: 1px;
+          position: absolute;
+          right: 0;
+          background: darken($dealer-list-grey, 5%);
+          top: 0;
+        }
+      }
+    }
+
+    //LIST ITEMS ================================================================
+
+    .geolocation {
+      margin-bottom: 1em;
+      @include breakpoint($dealer-stacked-layout) {
+        margin-bottom: .3em;
+      }
+
+      //layout
+
+      .location-content {
+        @include breakpoint($dealer-stacked-layout) {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          align-items: stretch;
+        }
+
+        //general items
+
+        & > .views-field {
+          padding: .5em .6em;
+          position: relative;
+          @include breakpoint($dealer-stacked-layout) {
+            width: 11.25%;
+          }
+
+          //special length items
+
+          &.views-field-dealer-level-distance {
+            display: flex;
+            @include breakpoint($dealer-stacked-layout) {
+              width: 22.5%;
+            }
+
+            .views-field {
+              @include breakpoint($dealer-stacked-layout) {
+                width: 50%;
+              }
+            }
+          }
+
+          &.views-field-dealer-details {
+            @include breakpoint($dealer-stacked-layout) {
+              width: 40%;
+            }
+          }
+
+          &.views-field-links {
+            @include breakpoint($dealer-stacked-layout) {
+              width: 15%;
+            }
+          }
+        }
+      }
+
+
+      //fields that are bold with centered text
+
+      .views-field-dealer-level,
+      .views-field-field-dealer-location-proximity,
+      .views-field-field-dealer-showroom,
+      .views-field-field-dealer-services {
+        font-weight: $semi-bold;
+        padding: .5em .8em;
+        @include breakpoint($dealer-stacked-layout) {
+          font-size: 1em;
+          text-align: center;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+        }
+        @include breakpoint(1200px) {
+          font-size: 1.2em;
+        }
+
+        & > .field-content {
+          @include breakpoint(0 $just-before-dealer-stacked-layout) {
+            font-weight: $bold;
+          }
+        }
+
+        & > * {
+          @include breakpoint(0 $just-before-dealer-stacked-layout) {
+            display: inline;
+          }
+        }
+      }
+
+      .views-field-field-dealer-showroom,
+      .views-field-field-dealer-services {
+        @include breakpoint(0 $just-before-dealer-stacked-layout) {
+          padding-bottom: 0 !important;
+          padding-top: 0 !important;
+        }
+      }
+
+      //proximity and level
+
+      .views-field-dealer-level-distance {
+        position: relative;
+        padding: 0 !important;
+        @include breakpoint(0 $just-before-dealer-stacked-layout) {
+          background: darken($dealer-list-grey, 5%);
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .views-field-dealer-level {
+        position: relative;
+        background: darken($dealer-list-grey, 5%);
+        @include breakpoint($dealer-stacked-layout) {
+          padding-top:1.3em;
+          padding-bottom: 1.3em;
+        }
+
+        & > .views-field {
+          padding: .5em .55em;
+        }
+
+        .wrapper {
+          display: flex;
+          justify-content: center;
+          justify-content: center;
+          align-items: center;
+          flex-direction: row;
+          @include breakpoint($dealer-stacked-layout) {
+            flex-direction: column;
+          }
+
+          .type-icon {
+            display: flex;
+          }
+
+          .type-icon img {
+            height: 25px;
+            width: auto;
+            margin-bottom: 0;
+            @include breakpoint(0 $just-before-dealer-stacked-layout) {
+              margin-right: .5em;
+            }
+            @include breakpoint($dealer-stacked-layout) {
+              height: 45px;
+               margin-bottom: .3em;
+            }
+          }
+
+          .type-name {
+            text-transform: uppercase;
+            font-weight: $bold;
+            font-size: 1.1em;
+            @include breakpoint($dealer-stacked-layout) {
+              font-size: .8em;
+              line-height: 1.1em;
+            }
+          }
+        }
+      }
+
+      .views-field-field-dealer-location-proximity {
+        display: flex;
+        align-items: center;
+        font-style: italic;
+      }
+
+      //location
+
+      .views-field-dealer-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .wrapper {
+          @include breakpoint(0 $just-before-dealer-stacked-layout) {
+            padding: .3em;
+          }
+        }
+
+        .title {
+          font-weight: $bold;
+          text-transform: uppercase;
+          margin-bottom: .3em;
+        }
+
+        .notes {
+          font-style: italic;
+          margin-top: .4em;
+          font-size: .9em;
+          &:before {
+            content: '*';
+          }
+        }
+      }
+
+      .views-field-field-dealer-services,
+      .views-field-field-dealer-showroom {
+        @include breakpoint(0 $just-before-dealer-stacked-layout) {
+          padding-left: 1em !important;
+          padding-right: 1em !important;
+        }
+      }
+
+      //showroom
+
+      .views-field-field-dealer-showroom {
+        .showroom-value {
+          @include breakpoint($dealer-stacked-layout) {
+            display: block;
+          }
+        }
+      }
+
+
+      // Services
+      .views-field-field-dealer-services {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        > .field-content {
+          display: flex;
+
+          .fa-question-circle::before {
+            color: $red;
+            font-size: 17px;
+            vertical-align: baseline;
+            padding-left: 5px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      //links
+
+      .location-content .views-field.views-field-links {
+        @include breakpoint(0 $just-before-dealer-stacked-layout) {
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: .5em;
+          margin-left: -.6em;
+          margin-right: -.6em;
+          & > .views-field {
+            margin: 0 0.1em 0.1em;
+            flex-grow: 1;
+          }
+        }
+        @include breakpoint($dealer-stacked-layout) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        a.btn-primary {
+          @include btn-small;
+          margin: 0 0 .02em 0;
+          text-align: center;
+          width: 100%;
+          @include breakpoint($dealer-stacked-layout) {
+            padding-right: 0;
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+
+  //layout when there is no service or showroom col
+
+  .locations-list-wrapper.no-showroom-display.no-services-display .geolocation .location-content {
+    & > .views-field {
+      @include breakpoint($dealer-stacked-layout) {
+        width: 18.3%;
+      }
+
+      //special length items
+
+      &.views-field-dealer-level-distance {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 36.66667%;
+        }
+      }
+
+      &.views-field-dealer-details {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 45%;
+        }
+      }
+
+      &.views-field-links {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 18.3%;
+        }
+      }
+    }
+  }
+
+  //when there is no showroom columns
+  //when there is no services columns
+
+  .locations-list-wrapper.no-services-display .geolocation .location-content,
+  .locations-list-wrapper.no-showroom-display .geolocation .location-content {
+    & > .views-field {
+      @include breakpoint($dealer-stacked-layout) {
+        width: 14%;
+      }
+
+      //special length items
+
+      &.views-field-dealer-level-distance {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 28%;
+        }
+      }
+
+      &.views-field-dealer-details {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 41%;
+        }
+      }
+
+      &.views-field-links {
+        @include breakpoint($dealer-stacked-layout) {
+          width: 17%;
+        }
+      }
+    }
+  }
+}
+
+// CONTTACT FORM ================================================================
+
+.contact-dealer-form  {
+  .dealer-info-wrapper {
+    background-color: $light-grey;
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+
+//ONLINE ================================================================
+
+.view-online-dealers {
+  .view-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -.5%;
+    margin-right: -.5%;
+    .views-row {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      padding: ms();
+      margin: .5%;
+      margin-bottom: ms();
+      border: 1px solid $dark-ui-grey;
+      min-height: 250px;
+      justify-content: space-around;
+      @include breakpoint($narrow-screen) {
+        justify-content: space-between;
+        min-height: 290px;
+        width: 49%;
+        margin-bottom: .5%;
+      }
+      @include breakpoint(1070px) {
+        width: 24%;
+      }
+    }
+    .views-field-field-buy-online-view-more {
+      a {
+        @include btn-primary;
+        margin: 0;
+      }
+    }
+    .views-field-field-image {
+      margin-top: ms(2);
+    }
+  }
+}
+
+//extra
+
+span[class^="country"] {
+  display: none;
+}
+
+span.country-111, span.country-146{
+  display: inline;
+}
+
+span[class^="non-country"] {
+  display: inline;
+}
+
+span.non-country-111, span.non-country-146 {
+  display: none;
+}
+
+
+
+//FIX for how inivisble elements are acting on these pages
+
+.block-views-blockdealer-locator-product-page-dealers .element-visible,
+.block-views-blockdealer-locator-fireplaces-dealer-locator-block .element-visible,
+.block-views-blockdealer-locator-hvac-dealer-locator-block .element-visible {
+  display: block !important;
+}
+
+.block-views-blockdealer-locator-product-page-dealers .empty-message,
+.block-views-blockdealer-locator-fireplaces-dealer-locator-block .empty-message,
+.block-views-blockdealer-locator-hvac-dealer-locator-block .empty-message {
+  display: none;
+}

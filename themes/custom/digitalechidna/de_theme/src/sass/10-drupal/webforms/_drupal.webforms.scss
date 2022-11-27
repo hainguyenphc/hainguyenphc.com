@@ -1,0 +1,43 @@
+// 10-drupal/webforms/_drupal.webforms.scss
+
+.webform-submission-form{
+  @extend .card;
+  padding: ms(2);
+  @include breakpoint($narrow-screen) {
+    padding: ms(4);
+  }
+  @include breakpoint($standard-screen) {
+    max-width: 70%;
+  }
+  label:not(.option) {
+    display: inline-block;
+    @include reset;
+  }
+
+  .form-text, .form-email, .form-tel{
+    width: 100%;
+  }
+
+  #edit-email--description{
+    display: inline-block;
+  }
+
+  .form-item-subscribe{
+    line-height: ms(1);
+  }
+
+  .description{
+    @include reset;
+    margin-top: ms();
+  }
+
+  .form-actions{
+    margin-bottom: 0;
+  }
+
+  .form-submit{
+    @include btn;
+    @include btn-primary;
+    //background-color: white
+  }
+}

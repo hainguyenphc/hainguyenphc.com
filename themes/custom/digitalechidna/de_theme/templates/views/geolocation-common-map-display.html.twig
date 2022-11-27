@@ -1,0 +1,31 @@
+<div id="{{ id }}" class="geolocation-common-map hide-item-on-mobile"  {% if centre.lat_north_east is not empty and centre.lng_north_east is not empty and centre.lat_south_west is not empty and centre.lng_south_west is not empty %} data-centre-lat-north-east="{{ centre.lat_north_east }}" data-centre-lng-north-east="{{ centre.lng_north_east }}" data-centre-lat-south-west="{{ centre.lat_south_west }}" data-centre-lng-south-west="{{ centre.lng_south_west }}" {% endif %} {% if centre.lat is not empty and centre.lng is not empty %} data-centre-lat="{{ centre.lat }}" data-centre-lng="{{ centre.lng }}" {% endif %} {% if fitbounds is not empty %} data-fitbounds="{{ fitbounds }}" {% endif %} {% if clientlocation is not empty %} data-clientlocation="{{ clientlocation }}" {% endif %}>
+    <div class="geolocation-common-map-locations">
+    {%  for location in locations %}
+        {{ location }}
+    {% endfor %}
+    </div>
+    <div class="geolocation-common-map-container"></div>
+</div>
+
+{% if locations is not empty %}
+<div class="locations-list-wrapper">
+  <p class="location-list-heading-intro">{% trans %}Your local authorized dealers{% endtrans %}</p>
+  <div class="locations-list-heading hide-item-on-mobile">
+    <div class="list-heading level">{% trans %}Level{% endtrans %}:</div>
+    <div class="list-heading distance">{% trans %}Distance{% endtrans %}:</div>
+    <div class="list-heading location">{% trans %}Location{% endtrans %}:</div>
+    {% if display_showroom %}
+      <div class="list-heading showroom">{% trans %}Showroom{% endtrans %}:</div>
+    {% endif %}
+    {% if display_services %}
+      <div class="list-heading services">{% trans %}Services{% endtrans %}:</div>
+    {% endif %}
+    <div class="list-heading links">{% trans %}Links{% endtrans %}:</div>
+  </div>
+  {% endif %}
+  <div class="locations-list">
+    {%  for location in locations %}
+      {{ location }}
+    {% endfor %}
+  </div>
+</div>

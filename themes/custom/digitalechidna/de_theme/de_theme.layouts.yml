@@ -1,0 +1,20 @@
+equal_columns:
+  label: 'Equal Columns'
+  category: 'Napoleon Layouts'
+  template: templates/layout/equal-columns
+  regions:
+    col1: { label: Column 1 }
+    col2: { label: Column 2 }
+    col3: { label: Column 3 }
+    col4: { label: Column 4 }
+    col5: { label: Column 5 }
+two_column_right:
+  label: 'Two columns - Sidebar Right'
+  category: 'Napoleon Layouts'
+  template: templates/layout/two-column-right
+  default_region: main
+  regions:
+    main:
+      label: Main content
+    sidebar:
+      label: Sidebar

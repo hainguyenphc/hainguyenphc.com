@@ -1,0 +1,21 @@
+{%
+  set classes = [
+    'layout',
+    'brick-two-column-right',
+  ]
+%}
+{% if content %}
+  <div{{ attributes.addClass(classes) }}>
+    {% if content.main %}
+      <div {{ region_attributes.main.addClass('brick__region', 'brick__region--main') }}>
+        {{ content.main }}
+      </div>
+    {% endif %}
+
+    {% if content.sidebar %}
+      <div {{ region_attributes.sidebar.addClass('brick__region', 'brick__region--sidebar') }}>
+        {{ content.sidebar }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

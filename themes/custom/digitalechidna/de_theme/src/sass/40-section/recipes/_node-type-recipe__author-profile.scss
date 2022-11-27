@@ -1,0 +1,114 @@
+//AUTHOR /////////////////////=====================
+
+.author-wrapper {
+  .photo-wrapper {
+    float: left;
+    @include breakpoint(0 $mobile-break-recipes) {
+      float: none;
+    }
+
+    img {
+      border-radius: 50%;
+      margin-right: ms(2);
+      display: block;
+      margin-bottom: 1em;
+      @include breakpoint(0 $mobile-break-recipes) {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .profile-wrapper {
+    min-height: 220px;
+    .author {
+      font-weight: $semi-bold;
+      font-style: italic;
+      font-size: ms(2);
+      margin-bottom: ms();
+      display: inline-block;
+      @include breakpoint(0 $mobile-break-recipes) {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5em;
+      }
+    }
+
+    .field--name-field-biography {
+      &:after {
+        content: none;
+      }
+    }
+
+    .read-more {
+      a {
+        @extend a.dark-link;
+        text-decoration: underline;
+        font-style: italic;
+        font-family: $semi-bold;
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+
+//AUTHOR LANDING PAGE
+
+.author-wrapper.brick {
+  display: block;
+  background-color: $light-grey;
+  padding: ms();
+
+  &:after {
+      content: '';
+      clear: both;
+      display: block;
+    }
+
+  .field--name-field-text {
+    margin-bottom: 0;
+    @include breakpoint($narrow-screen) {
+      margin-left: 240px;
+    }
+    .inner-wrapper {
+      .profile-wrapper {
+        .author {
+          width: 100%;
+          @include breakpoint($narrow-screen) {
+            width: auto;
+          }
+        }
+      }
+    }
+
+    &:after {
+      content: none;
+    }
+  }
+
+  .field--name-field-media-image {
+    float: left;
+    margin-right: ms();
+    margin-bottom: 0;
+    @include breakpoint(0 $narrow-screen) {
+      float: none;
+      margin: 0;
+    }
+    .inner-wrapper {
+      @include breakpoint(0 $narrow-screen) {
+        text-align: center;
+      }
+      img {
+        width: 220px;
+        height: 220px;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  a {
+    @extend a.dark-link;
+    font-style: italic;
+    text-decoration: underline;
+  }
+}

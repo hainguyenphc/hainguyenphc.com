@@ -1,0 +1,131 @@
+
+$special-break: 750px;
+$special-break-2: 950px;
+
+//custom slider with inline classes
+
+#block-views-block-promo-slider-promo-slider-hvac {
+	.banner-text-wrapper {
+		position: relative;
+    margin-left: auto;
+    border: 1px solid #000;
+    padding: 1.5em 1em;
+    color: #000;
+    @include breakpoint(0 $special-break-2) {
+    	margin-top: 10em;
+    }
+    @include breakpoint($special-break-2) {
+    	max-width: 580px;
+    	margin-right: -1em;
+    	padding: 2em 1.5em;
+    	margin: 2em -1.5em 3em 0;
+    }
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			opacity: .7;
+			z-index: 10;
+		}
+
+		* {
+			position: relative;
+			z-index: 20;
+		}
+
+		& > h2 {
+			line-height: .8em;
+			font-size: 22px;
+	    font-weight: bold;
+	    margin-bottom: .4em;
+	    @include breakpoint($special-break) {
+	    	font-size: 1.2em;
+	    }
+		}
+
+		& > .intro-text {
+			font-size: 16px;
+			line-height: 1.3em;
+			@include breakpoint(0 $special-break) {
+				br {
+					display: none;
+				}
+			}
+			@include breakpoint($special-break) {
+				font-size: .8em;
+			}
+		}
+
+		//buttons
+
+		.button-wrapper {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 1em -.2em .8em;
+			a.btn-grey {
+				@include default-color-btn($neutral-grey, black, lighten($neutral-grey, 5%), black);
+			}
+			a, a.btn-grey {
+				flex: 0 0 calc(50% - .4em);
+				margin: 0 .2em .4em .2em;
+				padding-right:.3em;
+				padding-left:.3em;
+			}
+		}
+
+		//emergency
+
+		.emergency-wrapper {
+			font-size: 14px;
+			display: flex;
+    	justify-content: center;
+    	@include breakpoint($special-break) {
+    		font-size: .7em;
+    	}
+
+
+			a {
+				display: flex;
+    		align-items: center;
+				color: #000;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+			.icon {
+				margin-right: .35em;
+				svg {
+					height: 25px;
+					width: 25px;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

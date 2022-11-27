@@ -1,0 +1,118 @@
+
+article.node--type-fireplaces-product-series.node--view-mode-full {
+
+  //SPECS ==========================================================================
+
+  .specs-and-features #overview {
+    @include negative-margin;
+    border-top: 3px solid $light-grey;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint($narrow-screen) {
+      background-color: $fp-bck-grey-shade-1;
+      flex-direction: row;
+      border-top: none;
+    }
+
+    .tab-item {
+      padding: ms() ms(3) ms(3);
+      font-size: 1.2em;
+      @include breakpoint($narrow-screen) {
+        padding: ms(2) ms();
+        flex: 1 1 50%;
+      }
+      @include breakpoint($medium-screen) {
+        padding: ms(5);
+      }
+
+      & > h3 {
+        font-size: 1.3em;
+        color: #58595b;
+        display: none;
+        @include breakpoint($narrow-screen) {
+          display: block;
+        }
+      }
+    }
+
+    .field--name-field-media-image {
+      margin: ms(2) 0;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    //SPECIFICATIONS
+
+    .available-size,
+    .view-type,
+    .fuel-type,
+    .btu-range {
+      display: flex;
+      margin-bottom: .4em;
+      @include breakpoint($narrow-screen 800px) {
+        display: block;
+        margin-bottom: 1em;
+      }
+
+      & > p {
+        margin: 0;
+        width: 180px;
+        font-weight: $semi-bold;
+      }
+    }
+
+    //available sizes
+
+    .available-size {
+      .field--name-field-size-select {
+        display: flex;
+        flex-wrap: wrap;
+
+        .field__item:not(:last-child) {
+          &:after {
+            content: ",";
+            margin-right: .3em;
+          }
+        }
+      }
+    }
+
+    .field--name-field-view-type {
+      display: flex;
+      flex-wrap: wrap;
+
+      .field__item:not(:last-child) {
+        margin-right: .45em;
+        &:after {
+          content: "|";
+          margin-left: .45em;
+        }
+      }
+    }
+
+    //KEY SERIES FEATURES
+
+    .key-series-features {
+      @include breakpoint($narrow-screen) {
+        background-color: $fp-bck-grey-shade-2;
+      }
+    }
+
+    .field--name-field-summary-features {
+      .field__item {
+        margin-bottom: .3em;
+        &:before {
+          content: '';
+          width: 5px;
+          height: 5px;
+          display: inline-block;
+          border-radius: 5px;
+          background-color: #000;
+          margin-right: .5em;
+          top: -4px;
+          position: relative;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+
+//HELP
+
+#block-supportsearchprompt {
+	border: 2px solid #000;
+	padding: ms(2);
+	text-align: center;
+	margin-top: ms();
+
+	.bold-prompt {
+		font-size: ms(2);
+		font-weight: $semi-bold;
+		margin-bottom: .1em;
+		color: #000;
+	}
+
+	a {
+		@include btn-secondary;
+		@include btn-small;
+	}
+}

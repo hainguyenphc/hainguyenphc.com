@@ -1,0 +1,59 @@
+// Fireplaces promo slider banner (inspiration-search)
+
+.division-fireplaces .block-views-blockpromo-slider-promo-slider-fireplaces-banner {
+  width: 100%;
+
+  & > div:not(.contextual) {
+    @include negative-margin;
+  }
+
+  .node--type-promo  .header-wrapper {
+
+    @include breakpoint($narrow-screen) {
+      display: flex;
+      min-height: 450px;
+    }
+
+    .header-content {
+      @include breakpoint($narrow-screen) {
+        align-items: flex-end;
+        display: flex;
+      }
+
+      @include breakpoint($medium-screen) {
+        align-items: center;
+      }
+    }
+
+    // Banner content
+    .field--name-field-description {
+      background-color: rgba(0, 0, 0, .90);
+      color: #fff;
+      height: fit-content;
+      padding: 2.5em;
+
+      @include breakpoint($medium-screen) {
+        width: 60%;
+      }
+
+      @include breakpoint($wide-screen) {
+        width: 40%;
+      }
+
+      h2 {
+        color: #fff;
+        font-size: 1.25em;
+        letter-spacing: 3px;
+        text-align: left;
+
+        @include breakpoint($medium-screen) {
+          font-size: 1.75em;
+        }
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+#block-views-block-banner-blocks-banner-block .view-banner-block {
+  margin: auto;
+  border-left: 22.5px solid #fff;
+  border-right: 22.5px solid #fff;
+  padding-bottom: 1em;
+    @include breakpoint($medium-screen) {
+      padding-bottom: 0em;
+    }
+    @include breakpoint($medium-screen-max) {
+      border-left: 40px solid #fff;
+      border-right: 40px solid #fff;
+    }
+    @include breakpoint($wide-screen) {
+      width: 1308px;
+      border-left: 38px solid transparent;
+      border-left: 38px solid transparent;
+    }
+    @include breakpoint($super-wide-screen) {
+      width: 1380px;
+      border-left: 39px solid #fff;
+      border-right: 39px solid #fff;
+    }
+}
+
+#block-views-block-cta-blocks-background {
+  margin-top: -2em;
+}
+
+.view-banner-block .banner-block-container {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.view-banner-block .banner-block-container h2 {
+  color: #fff;
+  text-align: center;
+  height: 330px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 2.2em;
+  font-weight: bold;
+  margin: auto;
+  padding-bottom: 1.5em;
+
+  @include breakpoint($narrow-screen) {
+    width: 82%;
+    font-size: 2.5em;
+    height: 430px;
+  }
+  @media screen and (min-width: 775px) {
+    width: 60%;
+  }
+  @include breakpoint($medium-screen) {
+    width: 62%;
+  }
+  @include breakpoint($standard-screen) {
+    width: 68%;
+    font-size: 3.4em;
+    height: 550px;
+  }
+  @media screen and (min-width: 1275px) {
+    width: 60%;
+  }
+
+  a.btn-promo-banner {
+    @include breakpoint(max-width $narrow-screen-max) {
+      border-color: #4b4c4d;
+      color: #4b4c4d;
+    }
+  }
+}
+
+#block-views-block-cta-blocks-background .view-cta-blocks .cta-block-container h3,
+#block-views-block-cta-blocks-background .view-cta-blocks .cta-block-container p {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 1em auto 1em auto;
+
+  @include breakpoint($medium-screen) {
+    width: 95%;
+  }
+  @include breakpoint($standard-screen) {
+    width: 90%;
+  }
+  @include breakpoint($wide-screen) {
+    width: 75%;
+  }
+}
+
+#block-views-block-cta-blocks-background .view-cta-blocks .cta-block-container p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.3em;
+}
+
+#block-views-block-cta-blocks-background .view-cta-blocks .cta-block-container .field--type-link {
+  margin-top: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .field__item {
+    flex: 0 0 auto;
+    // width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  a {
+    @include btn-secondary;
+    margin-right: 0;
+    text-align: center;
+
+    @include breakpoint($medium-screen) {
+      font-size: 1.25rem !important;
+    }
+    @media screen and (min-width: 1080px) {
+      font-size: 1.5rem !important;
+    }
+
+    &:lang(fr) {
+      font-size: 0.85rem !important;
+      @include breakpoint($standard-screen) {
+        font-size: 0.95rem !important;
+      }
+      @media screen and (min-width: 1080px) {
+        font-size: 1.1rem !important;
+      }
+      @include breakpoint($wide-screen) {
+        font-size: 1.25rem !important;
+      }
+    }
+  }
+}
+
+#block-views-block-cta-blocks-background .view-cta-blocks .cta-block-container div {
+  @include breakpoint($medium-screen) {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    height: 600px;
+  }
+
+  @media screen and (min-width: 945px) {
+    height: 550px;
+  }
+
+  @include breakpoint($wide-screen) {
+    height: 550px;
+  }
+
+  .field--name-body {
+    @include breakpoint($medium-screen) {
+      height: 350px;
+    }
+
+    p {
+      display: none;
+      @include breakpoint($narrow-screen) {
+        display: flex;
+        margin-top: auto;
+      }
+    }
+  }
+}

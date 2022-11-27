@@ -1,0 +1,102 @@
+
+.view-dealer-pin-marker-legend {
+  box-shadow: 5px 5px 7px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
+
+  .view-filters {
+    display: none;
+  }
+}
+
+.info-request {
+  max-width: 100%;
+  padding-bottom: 10em;
+  @include breakpoint($weird-screen) {
+    max-width: 35%;
+  }
+  @include breakpoint($wide-screen) {
+    max-width: 100%;
+  }
+
+}
+
+.view-display-id-dealer_marker_legend {
+  margin-top: -5em;
+  // background-color: $dealer-list-grey;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em 0;
+
+  @include breakpoint($narrow-screen) {
+    flex-wrap: nowrap;
+  }
+
+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    // margin-top: 5em;
+  }
+
+  // title
+  .view-header {
+    flex: 0 0 auto;
+    align-items: center;
+    display: flex;
+    // ==== Legend title
+    .dealer-type-legend {
+      margin: .5em 2em .5em 1em;
+      font-weight: $bold;
+    }
+  }
+
+  // content
+  .view-content {
+    flex: 0 0 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: .5em 2em .5em 1em;
+    height: fit-content;
+    padding-left: 1.5em;
+    @include breakpoint(500px) {
+      flex-direction: row;
+    }
+
+    .views-row {
+      height: fit-content;
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      margin-right: ms(2);
+      @include breakpoint(0 500px) {
+        justify-content: flex-end;
+        margin-left: 1em;
+      }
+    }
+
+    .views-field-name {
+      font-weight: 600;
+      padding-left: 5px;
+    }
+
+    .views-field-field-dealer-icon {
+      margin-right: .2em;
+
+      img {
+        height: 35px;
+        width: auto;
+        line-height: 0;
+      }
+    }
+  }
+}
+
+.user-logged-in {
+  .section-content {
+    .view-dealer-pin-marker-legend {
+        margin-top: 1em;
+    }
+  }
+}
+
+

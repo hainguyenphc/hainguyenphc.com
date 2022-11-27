@@ -1,0 +1,56 @@
+
+//the main styles come from product section. These are only specfic changes
+
+.path-node.node--type-accessory {
+  .main-slider-wrapper {
+    overflow: hidden;
+  }
+  
+  .main-slider {
+    display: flex;
+
+    .node__content {
+      flex-grow: 1;
+      height: auto;
+      min-height: 1px;
+    }
+  }
+
+  .text {
+    text-align: left;
+
+    .field--name-field-summary-features {
+      .field__item {
+        margin-bottom: .5em;
+        margin-left: 1em;
+
+        &:before {
+          content: '';
+          width: 3px;
+          height: 3px;
+          display: block;
+          background: #fff;
+          //float: left;
+          margin-right: .5em;
+          top: 14px;
+          position: relative;
+          left: -1em;
+        }
+      }
+    }
+  }
+
+  .field--name-field-description {
+    .field__label {
+      @extend h3;
+    }
+    .field__item {
+      p {
+        display: none;
+      }
+      p:first-of-type {
+        display: block;
+      }
+    }
+  }
+}

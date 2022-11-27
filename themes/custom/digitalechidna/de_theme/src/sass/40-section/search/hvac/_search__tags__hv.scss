@@ -1,0 +1,17 @@
+// HVAC search tags
+
+.division-hvac {
+  .block-facets-summary {
+    a {
+      @include btn-primary-color-hv;
+
+      .js-facet-deactivate {
+        &:after {
+          color: $hv-red;
+        }
+      }
+    }
+  }
+}
+
+

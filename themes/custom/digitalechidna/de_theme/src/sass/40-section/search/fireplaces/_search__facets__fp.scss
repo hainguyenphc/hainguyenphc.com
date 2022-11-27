@@ -1,0 +1,100 @@
+// Inspiration search facets
+.division-fireplaces {
+
+  // Style facet
+  .block-facet-blockstyle,
+  .block-facets {
+    h2 {
+      border-top: 0;
+      font-family: $font-set-1;
+      font-size: 2rem;
+      letter-spacing: initial;
+      line-height: initial;
+      margin-bottom: .875rem;
+      padding-top: 0;
+    }
+  }
+
+
+  .block-napoleon-search.block-reset-all-link {
+
+    h2 {
+      font-family: $font-set-1;
+      letter-spacing: initial;
+      line-height: initial;
+      white-space: nowrap;
+    }
+
+    .reset-link,
+    .close-filters-btn {
+      margin-bottom: .875em;
+    }
+
+    .note {
+      margin-bottom: .75em;
+    }
+  }
+
+  // Meain search
+  .block-facet-blockstyle-fp,
+  .block-facet-blocksupport-items {
+    h2 {
+      font-family: $font-set-1;
+      letter-spacing: initial;
+      line-height: initial;
+      margin-bottom: .875rem;
+    }
+  }
+
+  .block-facets .facets-widget-checkbox {
+    input[type=checkbox] + label::before {
+      top: -1px;
+    }
+
+    & > h3 {
+      color: #000;
+    }
+  }
+
+  .block-facets .facets-widget-checkbox > ul > li > label[for="fp_product_type-1546"] {
+    color: #000;
+    font-size: 1.75rem;
+    font-weight: $bold;
+    margin-top: .25em;
+    text-transform: uppercase;
+
+    &:before {
+      top: 4px;
+    }
+  }
+
+  //products facet
+
+  .block-facet-blockfp-product-type-va,
+  .js-facet-block-id-facet-block--fp-product-type-va,
+  .js-facet-block-id-facet-block--fp-product-type,
+  .block-facet-blockfp-product-type {
+    & > .facets-widget-checkbox > .item-list__checkbox > li.facet-item > label {
+      @include facet-title-lv-2;
+      font-weight: $semi-bold;
+    }
+
+    & > .facets-widget-checkbox > .item-list__checkbox > li.facet-item > .facets-widget- > ul {
+      margin-left: 16px;
+
+      & > li.facet-item > label {
+        font-weight: $normal;
+        text-transform: none;
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+

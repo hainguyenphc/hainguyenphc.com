@@ -1,0 +1,31 @@
+
+$larger-break: 1130px;
+
+.node--type-hvac-product {
+	section.sticky-jump-menu .sticky-jump-outter-wrapper {
+		.menu-wrapper ul li a.jump-link.buy-now {
+			background-color: $hv-red;
+
+			&:hover, &:focus {
+				background-color: darken($hv-red, 5%);
+			}
+		}
+
+		.menu-wrapper ul li a {
+			@include breakpoint($larger-break) {
+				//font-size: 20px;
+				//padding: 0.7em 0.5em;
+			}
+		}
+
+		h3.product-title {
+			//@include breakpoint($larger-break) {
+			//	font-weight: bolder;
+			//	font-size: 20px;
+			//}
+			&:before {
+				background-color: $hv-red;
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+
+section.warranty {
+  max-width: 1065px;
+  .field--name-field-warranty {
+    .field--name-field-fp-image,
+    .field--name-field-image {
+      justify-content: flex-start;
+      flex: 0 0 auto;
+      @include breakpoint($weird-screen) {
+        margin-right: ms(1);
+      }
+    }
+
+    .field--name-field-media-image {
+      width: auto;
+    }
+
+    .field--name-field-media-image img {
+      width: auto;
+    }
+
+    .content-wrapper {
+      .field--name-name,
+      .field--name-field-long-warranty-title {
+        color: $fp-dark-grey;
+        font-size: 1.6em;
+        padding-top: 0;
+      }
+    }
+  }
+}

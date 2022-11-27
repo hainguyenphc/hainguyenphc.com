@@ -1,0 +1,150 @@
+
+$margin-stop1: 40%;
+$margin-stop2: 60%;
+
+//negative margin for feature stack items so they take up the white side padding
+
+section#features .field--name-field-features-slider,
+section#features > .field--name-field-features-stack > .field__item > .feature-stack-product > .feature-stack-product-item,
+section#features > .field--name-field-features-stack > .field__item > .feature-stack > .feature-stack-item {
+  @include negative-margin;
+}
+
+//parent containers for feature stack. flexbox helps with centering in IE
+
+section#features .field--name-field-features-slider,
+section#features > .field--name-field-features-stack > .field__item > .feature-stack-product,
+section#features > .field--name-field-features-stack > .field__item > .feature-stack {
+
+  .feature-slider-item,
+  & > .feature-stack-product-item,
+  & > .feature-stack-item { 
+    display: flex;
+
+    & > article.media--type-image-feature {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    & > article.media--type-image-feature > .media-content {
+      flex-grow: 1;
+      overflow: hidden;
+      position: relative;
+      background-color: #1c1c1c;
+
+      //side gradient for desktop, gradient comes up from bottom on mobile
+
+      &:before {
+        @include dark-bottom-overlay;
+        @include breakpoint($narrow-screen) {
+          @include dark-side-overlay;
+          transform: scaleX(-1);
+        }
+        // @include breakpoint($narrow-screen $weird-screen-max) {
+        //   @include dark-side-overlay-2;
+        // }
+        @include breakpoint($medium-screen) {
+          @include dark-side-overlay;
+          // transform: scaleX(-1);
+        }
+      }
+    }
+  }
+}
+
+
+//alternating stacked blocks inner styles
+
+section#features {
+  .feature-stack-product,
+	.feature-stack {
+		.header-wrapper {
+      height: 100%;
+      min-height: 490px;
+      position: relative;
+      align-content: center;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 !important;
+			margin-bottom: 0;
+			background-position: top center;
+    	background-size: contain;
+    	background-repeat: no-repeat;
+      padding-top: 20em;
+
+			@include breakpoint($narrow-screen) {
+				padding: ms(6) ms(4);
+        background-position: right center;
+        background-size: auto 100%;
+        min-height: 490px;
+			}
+		}
+
+    //videos feature
+
+    .media--view-mode-feature-stack .field--type-video-embed-field {
+      max-width: 100%;
+      z-index: 10;
+      position: relative;
+
+      .video-embed-field-responsive-video {
+        max-height: 600px;
+      }
+    }
+
+		//text
+
+		.feature-style-text {
+      flex: 1 1 100%;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      order: 1;
+      margin: 0 auto;
+			width: 100%;
+      text-align: center;
+
+      @include breakpoint(max-width $narrow-screen) {
+        margin: ms() 0;
+      }
+      @include breakpoint($narrow-screen) {
+        text-align: left;
+      }
+		}
+
+    .field--name-field-feature-link-data,
+    .field--name-field-feature-lead-region,
+    .field--name-field-feature-description-region,
+		.field--name-field-feature-lead,
+		.field--name-field-feature-description {
+      @include breakpoint($narrow-screen) {
+			  margin-right: $margin-stop1;
+      }
+      @include breakpoint($medium-screen) {
+        margin-right: $margin-stop2;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+		}
+
+    .field--name-field-feature-link-data {
+      @include breakpoint($narrow-screen) {
+        display: flex;    
+      }
+      a {
+         margin-right: 0;
+         @include btn-secondary-fp-white;
+      }
+    }
+	}
+}
+
+
+
+
+

@@ -1,0 +1,13 @@
+
+//PHOTO BRICKS /////////////////////=====================
+
+.col.images {
+  .brick {
+    margin-bottom: ms(2);
+
+
+    & > .field {
+      margin-bottom: ms();
+    }
+  }
+}

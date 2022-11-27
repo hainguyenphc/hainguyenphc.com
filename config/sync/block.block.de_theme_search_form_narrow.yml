@@ -1,6 +1,6 @@
 uuid: 5a7a1a69-00da-49af-9c53-41541cfe4add
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - search
@@ -10,7 +10,7 @@ _core:
   default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
 id: de_theme_search_form_narrow
 theme: de_theme
-region: masthead_prefix
+region: top_alert
 weight: -4
 provider: null
 plugin: search_form_block

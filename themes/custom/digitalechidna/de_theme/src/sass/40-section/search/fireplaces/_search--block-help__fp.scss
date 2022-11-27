@@ -1,0 +1,55 @@
+// Help block fireplaces
+
+.division-fireplaces {
+  #block-supportsearchprompt {
+    clear: both;
+
+    p {
+      @include breakpoint($standard-screen) {
+        margin-left: 5%;
+        text-align: left;
+        width: 50%;
+      }
+
+      @include breakpoint($wide-screen) {
+        margin-left: 15%;
+      }
+
+      &.prompt {
+        @include breakpoint($standard-screen) {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    a {
+      @include breakpoint($standard-screen) {
+        float: right;
+        font-size: 1.125em;
+        margin-right: 5%;
+        margin-top: -50px;
+      }
+
+      @include breakpoint($wide-screen) {
+        margin-right: 15%;
+      }
+    }
+  }
+
+
+  &.sidebar_first {
+    #block-supportsearchprompt {
+      p {
+        @include breakpoint($wide-screen) {
+          margin-left: 5%;
+        }
+      }
+
+      a {
+        @include breakpoint($wide-screen) {
+          margin-right: 5%;
+        }
+      }
+    }
+  }
+}

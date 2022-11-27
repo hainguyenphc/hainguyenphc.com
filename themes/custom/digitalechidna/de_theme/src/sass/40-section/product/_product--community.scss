@@ -1,0 +1,73 @@
+// Community section
+
+.ugc-gallery {
+  background-color: $medium-grey;
+  color: $white;
+  padding: 2.5rem 2rem;
+
+  .ugc-header-wrapper {
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    @include breakpoint($narrow-screen) {
+      display: flex;
+    }
+
+    //Description
+    .ugc-description {
+      margin-bottom: 1.5rem;
+
+      @include breakpoint($narrow-screen) {
+        margin-bottom: 0;
+      }
+
+      .text-size-medium {
+        font-weight: $bold;
+        margin-bottom: .75rem;
+        text-transform: uppercase;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    // View Gallery button
+    .ugc-gallery-btn {
+      align-self: end;
+      margin-top: 1rem;
+
+      a {
+        @include btn-white;
+        margin: 0;
+
+        @include breakpoint($narrow-screen) {
+          font-size: ms();
+        }
+      }
+    }
+  }
+
+  //Slider
+  #crl8-product-carousel {
+    button {
+      svg {
+        width: 22px;
+
+        polygon {
+          fill: $white;
+        }
+      }
+
+      //Left arrow
+      .sc-4p2pym-2 {
+        justify-content: left;
+      }
+
+      //Right arrow
+      .zsa45s-2 {
+        justify-content: right;
+      }
+    }
+  }
+}

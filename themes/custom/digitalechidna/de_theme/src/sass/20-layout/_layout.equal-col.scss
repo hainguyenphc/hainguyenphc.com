@@ -1,0 +1,234 @@
+
+// ++++++++++ Layout styles for Equal Columns Layout
+// ===== See equal-columns.html.twig for markup
+
+.field--name-field-components {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: ms(3);
+    margin-left: - ms();
+    margin-right: - ms();
+    flex-grow: 1;
+  }
+}
+
+
+// ===== General Column Component
+
+.components-column {
+  flex: 1;
+  padding-left: ms();
+  padding-right: ms();
+  padding-bottom: ms();
+}
+
+
+// ===== 1 Column Layout
+
+.components-columns-1 {
+  flex: 1 1 100%;
+}
+
+
+// ===== 2 Column Layout
+
+.components-columns-2 {
+  flex: 1 1 100%;
+
+  //@include breakpoint($small-screen) {
+    @include breakpoint($in-between-screen) {
+      flex: 1 1 50%;
+    }
+ // }
+}
+
+
+// ===== 3 Column Layout
+
+.components-columns-3 {
+  flex: 1 1 100%;
+
+  @include breakpoint($small-screen) {
+    flex: 1 1 50%;
+  }
+
+  @include breakpoint($narrow-screen) {
+    flex: 1 1 33.3333333%;
+  }
+}
+
+
+// ===== 4 Column Layout
+
+.components-columns-4 {
+  flex: 1 1 100%;
+
+  @include breakpoint($small-screen) {
+    flex: 1 1 50%;
+  }
+
+  @include breakpoint($medium-screen) {
+    flex: 1 1 25%;
+  }
+}
+
+
+// ===== 5 Column Layout
+
+.components-columns-5 {
+  flex: 1 1 100%;
+
+  @include breakpoint($small-screen) {
+    flex: 1 1 50%;
+  }
+
+  @include breakpoint($narrow-screen) {
+    flex: 1 1 20%;
+  }
+
+  @include breakpoint($standard-screen) {
+    flex: 1 1 20%;
+  }
+
+  &:nth-last-child(-n+2) {
+    flex: 1 1 100%;
+
+    @include breakpoint($small-screen) {
+      flex: 1 1 50%;
+    }
+
+    @include breakpoint($standard-screen) {
+      flex: 1 1 20%;
+    }
+  }
+}
+
+
+// ===== 6 Column Layout
+
+.components-columns-6 {
+  flex: 1 1 100%;
+
+  @include breakpoint($small-screen) {
+    flex: 1 1 50%;
+  }
+
+  @include breakpoint($narrow-screen) {
+    flex: 1 1 33.3333333%;
+  }
+
+  @include breakpoint($wide-screen) {
+    flex: 1 1 16.6666666%;
+  }
+}
+
+
+
+// ++++++++++ Equal Columns in Content Region (with sidebar)
+
+
+
+.brick__region--main {
+
+
+  // ===== 2 Column Layout
+
+  .components-columns-2 {
+    flex: 1 1 100%;
+
+    @include breakpoint($small-screen) {
+      flex: 1 1 50%;
+    }
+
+    @include breakpoint($narrow-screen) {
+      flex: 1 1 100%;
+    }
+
+    @include breakpoint($weird-screen) {
+      flex: 1 1 50%;
+    }
+  }
+
+
+  // ===== 3 Column Layout
+
+  .components-columns-3 {
+    flex: 1 1 100%;
+
+    @include breakpoint($small-screen) {
+      flex: 1 1 50%;
+    }
+
+    @include breakpoint($narrow-screen) {
+      flex: 1 1 100%;
+    }
+
+    @include breakpoint($weird-screen) {
+      flex: 1 1 50%;
+    }
+
+    @include breakpoint($medium-screen) {
+      flex: 1 1 33.3333333%;
+    }
+  }
+
+
+  // ===== 4 & 5 Column Layout
+
+  .components-columns-4,
+  .components-columns-5 {
+    flex: 1 1 100%;
+
+    @include breakpoint($small-screen) {
+      flex: 1 1 50%;
+    }
+
+    @include breakpoint($narrow-screen) {
+      flex: 1 1 100%;
+    }
+
+    @include breakpoint($weird-screen) {
+      flex: 1 1 50%;
+    }
+  }
+
+
+  // ===== 6 Column Layout
+
+  .components-columns-6 {
+    flex: 1 1 100%;
+
+    @include breakpoint($small-screen) {
+      flex: 1 1 50%;
+    }
+
+    @include breakpoint($narrow-screen) {
+      flex: 1 1 100%;
+    }
+
+    @include breakpoint($weird-screen) {
+      flex: 1 1 50%;
+    }
+
+    @include breakpoint($medium-screen) {
+      flex: 1 1 33.3333333%;
+    }
+  }
+}
+
+
+
+// ++++++++++ Equal Columns in Content Region (with sidebar)
+
+
+
+.brick__region--sidebar {
+  .components-columns-2,
+  .components-columns-3,
+  .components-columns-4,
+  .components-columns-5,
+  .components-columns-6 {
+    flex: 1 1 100%;
+  }
+}
