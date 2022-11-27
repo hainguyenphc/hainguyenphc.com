@@ -1,21 +1,9 @@
-
-.layout-container{
-  @include layout-container ;
+.layout-container {
+  @include layout-container;
 }
 
-@import 'hide-and-show-content';
-@import 'layout.header';
-@import 'layout.content';
-@import 'layout.footer';
-@import 'layout.equal-col';
-
-
-//FIREPLACES
-
-@import 'fireplaces/layout.content__fp';
-@import 'fireplaces/layout.footer__fp';
-@import 'fireplaces/layout.special-breadcrumb-layout__fp';
-
-//HVAC
-
-@import 'hvac/layout.footer__hv';
+@import "hide-and-show-content";
+@import "layout.header";
+@import "layout.content";
+@import "layout.footer";
+@import "layout.equal-col";

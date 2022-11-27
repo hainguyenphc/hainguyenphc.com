@@ -1,34 +1,3 @@
-// 30-component/blocks/_component-blocks.scss
-
-@import 'block--de-branding';
-@import 'block--cookie-compliance';
-@import 'block--logosfooter';
-@import 'block--socialicons';
-@import 'block--napoleon-search-header-form';
-@import 'block--responsive-menu';
-@import 'block--language';
-@import 'block--mobile-menu-blocks';
-@import 'block--wishlist';
-@import 'block--chat';
-@import 'block--node-block-fields';
-@import 'block--no-translation';
-@import 'block--region-detect';
-@import 'block--fuel-type-links-block-tabs';
-@import 'block--choose-region';
-@import 'block--header-cart-block';
-@import 'block--shopify-shopping-cart';
-
-//FIREPLACES
-
-@import 'fireplaces/block--dealer-locator__fp';
-@import 'fireplaces/block--home-page-header__fp';
-@import 'fireplaces/block--node-block-fields__fp';
-@import 'fireplaces/block--napoleon-search-header-form__fp';
-@import 'fireplaces/block--mobile-menu-blocks__fp';
-
-//HVAC
-
-@import 'hvac/block--napoleon-search-header-form__hv';
-@import 'hvac/block--connect-with-dealer-block-homepage__hv';
-@import 'hvac/block--dealer-locator__hv';
-@import 'hvac/block--welcome-home__hv';
+@import "block--de-branding";
+@import "block--mobile-menu-blocks";
+@import "block--responsive-menu";

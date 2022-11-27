@@ -1,45 +1,35 @@
-#block-de-theme-branding,
 #block-sitebranding {
-  .site-name {
-    @include hide;
-  }
 
-  @include breakpoint(1220px) {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2c2c2c+0,000000+100 */
-    background: rgb(44, 44, 44); /* Old browsers */
-    background: -moz-linear-gradient(-45deg, rgba(44, 44, 44, 1) 0%, rgba(0, 0, 0, 1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(
-      -45deg,
-      rgba(44, 44, 44, 1) 0%,
-      rgba(0, 0, 0, 1) 100%
-    ); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(
-      135deg,
-      rgba(44, 44, 44, 1) 0%,
-      rgba(0, 0, 0, 1) 100%
-    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2c2c2c', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-    width: 190px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-top: -48px;
-    z-index: 100;
-    display: flex;
-    padding: 19px 0 18px;
-  }
-
-  img {
-    margin: 0 auto;
-    display: block;
-    width: 85px;
-    @include breakpoint(1220px) {
-      width: 80%;
-      height: 40%;
+  @media screen and (max-width: 992px) {
+    padding: 0;
+    
+    .site-slogan {
+      display: none;
     }
+  }
+  
+  @media screen and (min-width: 1220px) {
+    margin-top: -48px;
+  }
+
+  background-color: black;
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+  z-index: 100;
+  padding: 19px 0 18px;
+
+  .site-name {
+    a {
+      color: white !important;
+      text-decoration: none;
+      font-size: 30px !important;
+    }
+  }
+
+  .site-slogan {
+    color: white;
   }
 }

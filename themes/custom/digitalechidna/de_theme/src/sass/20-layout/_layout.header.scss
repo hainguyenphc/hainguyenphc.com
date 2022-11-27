@@ -1,11 +1,11 @@
 //Fixed Header
 
-#header{
+#header {
   background-color: white;
   position: fixed;
   z-index: 400;
   width: 100%;
-  top:0;
+  top: 0;
 }
 
 //since header is fixed, add margin or padding to the content so it starts below the fixed header and doesn't get cut off
@@ -21,17 +21,8 @@
 //padding to move the nav past the admin toolbar when logged in
 .user-logged-in #header {
   top: 38px;
-  @include breakpoint(576px) {
-    top: 77px;
-  }
-  @include breakpoint(706px) {
-    //top: 65px;
-  }
   @include breakpoint(722px) {
     top: 38px;
-  }
-  @include breakpoint(741px) {
-    //top: 39px;
   }
 }
 
@@ -64,31 +55,31 @@
 .has-top-banner .responsive-menu-page-wrapper {
   margin-top: 208px;
   @include breakpoint(305px) {
-   margin-top: 182px;
+    margin-top: 182px;
   }
   @include breakpoint(373px) {
-   margin-top: 155px;
+    margin-top: 155px;
   }
   @include breakpoint(485px) {
-   margin-top: 128px;
+    margin-top: 128px;
   }
   @include breakpoint($narrow-screen) {
-   margin-top: 142px;
+    margin-top: 142px;
   }
   @include breakpoint(985px) {
-   margin-top: 111px;
+    margin-top: 111px;
   }
   // @include breakpoint($medium-screen) {
   //  margin-top: 142px;
   // }
   @include breakpoint($standard-screen) {
-   margin-top: 153px;
+    margin-top: 153px;
   }
   @include breakpoint(1013px) {
-   margin-top: 185px;
+    margin-top: 185px;
   }
   @include breakpoint(1015px) {
-   margin-top: 156px;
+    margin-top: 156px;
   }
 }
 
@@ -101,16 +92,16 @@
   margin-bottom: 0;
 }
 
-
-#masthead > .layout-container{
+#masthead > .layout-container {
   display: flex;
   align-items: center;
   background-color: #000;
 
   position: relative;
- // z-index: 0;
+  // z-index: 0;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     @include breakpoint($standard-screen) {
       content: "";
       position: absolute;
@@ -132,7 +123,6 @@
   }
 }
 
-
 // masthead actions
 
 .region--masthead-actions,
@@ -151,8 +141,8 @@
     justify-content: center;
     padding: 0;
     @include breakpoint($standard-screen) {
-      padding-top: .5em;
-      padding-bottom: .5em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
     }
     @include breakpoint(1220px) {
       padding-left: 190px;
@@ -173,26 +163,24 @@
       //padding-bottom: .25em;
       padding-bottom: 0;
     }
-
   }
 }
 
-
 // masthead primary
 
-.region--masthead-primary{
+.region--masthead-primary {
   width: 100%;
 
   &:after {
     content: none;
   }
-  .region-inner{
+  .region-inner {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     @include breakpoint(0 $medium-screen-max) {
-      padding: .5em 0;
+      padding: 0.5em 0;
       min-height: 50.53px;
     }
 
@@ -201,13 +189,14 @@
     }
 
     @include breakpoint(0 $medium-screen-max) {
-      #block-de-theme-branding, #block-sitebranding {
-       order: 2;
-       position: absolute;
-       left: 50%;
-       top: 50%;
-       transform: translate(-50%, -50%);
-      //  height: 41% !important;
+      #block-de-theme-branding,
+      #block-sitebranding {
+        order: 2;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        //  height: 41% !important;
       }
 
       #block-responsivemenumobileicon {
@@ -226,8 +215,3 @@
     display: none;
   }
 }
-
-
-
-
-
