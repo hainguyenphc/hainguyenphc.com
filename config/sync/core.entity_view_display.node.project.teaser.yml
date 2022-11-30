@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.project.body
+    - field.field.node.project.field_banner_image
     - field.field.node.project.field_project_categories
     - node.type.project
   module:
@@ -29,4 +30,5 @@ content:
     weight: 100
     region: content
 hidden:
+  field_banner_image: true
   field_project_categories: true

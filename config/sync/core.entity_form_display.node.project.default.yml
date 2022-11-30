@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.project.body
+    - field.field.node.project.field_banner_image
     - field.field.node.project.field_project_categories
+    - image.style.thumbnail
     - node.type.project
   module:
+    - image
     - path
     - text
 id: node.project.default
@@ -29,6 +32,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_banner_image:
+    type: image_image
+    weight: 123
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_project_categories:
     type: entity_reference_autocomplete
