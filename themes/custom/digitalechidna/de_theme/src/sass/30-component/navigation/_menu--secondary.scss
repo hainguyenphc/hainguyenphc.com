@@ -16,7 +16,7 @@
       @extend a.dark-link;
       font-weight: $bold;
       text-transform: uppercase;
-      color: #000;
+      color: var(--text-color);
       font-size: 0.9em;
       &:lang(fr) {
         font-size: 0.78em;
@@ -74,16 +74,4 @@
 
 #block-productregistrationmenublock {
   margin-left: 0;
-}
-
-#block-basiccartcountblock {
-  .basic-cart-count {
-    margin-right: 0.5em;
-  }
-  p {
-    margin: 0;
-  }
-  a {
-    color: #000;
-  }
 }
