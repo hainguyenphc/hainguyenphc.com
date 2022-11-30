@@ -1,0 +1,17 @@
+hr {
+  box-sizing: content-box;
+  overflow: visible;
+  border: 0;
+
+  &.colored {
+    max-width: 300px;
+    border-top: 1px solid #ef4035;
+    border-bottom: 1px solid #ef4035;
+    height: 2px;
+    margin: 20px auto;
+  }
+
+  &.text-centered {
+    text-align: center !important;
+  }
+}

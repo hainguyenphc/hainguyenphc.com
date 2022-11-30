@@ -1,0 +1,12 @@
+.node.node--type-project {
+  &.node--view-mode-full {
+    > .node__content {
+      > .field--name-body {
+        h2 {
+          text-align: center;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

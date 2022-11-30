@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* de_editor.scss */
 /*------------------------------------*\
     #BOX-SIZING
@@ -475,7 +476,11 @@ body.mm-wrapper {
 .mm-slideout {
   overflow-x: hidden; }
 
-html, button, input, select, textarea {
+html,
+button,
+input,
+select,
+textarea {
   font-family: "Source Sans Pro", Helvetica, sans-serif; }
 
 h1,
@@ -508,7 +513,8 @@ video {
   line-height: 1.5625em;
   margin: 0 0 1em 0; }
 
-strong, b {
+strong,
+b {
   font-weight: 700; }
 
 em {
@@ -541,7 +547,7 @@ a.light-link {
 
 /* Set consistent quote types. */
 q {
-  quotes: "\201C" "\201D" "\2018" "\2019"; }
+  quotes: "“" "”" "‘" "’"; }
 
 h1,
 h2,
@@ -550,7 +556,18 @@ h4,
 h5,
 h6 {
   font-weight: 400; }
-  h1 b, h1 strong, h2 b, h2 strong, h3 b, h3 strong, h4 b, h4 strong, h5 b, h5 strong, h6 b, h6 strong {
+  h1 b,
+  h1 strong,
+  h2 b,
+  h2 strong,
+  h3 b,
+  h3 strong,
+  h4 b,
+  h4 strong,
+  h5 b,
+  h5 strong,
+  h6 b,
+  h6 strong {
     font-weight: 400; }
 
 h1 {
@@ -582,16 +599,13 @@ h1 {
       h1.lower {
         font-size: 3.05176em; } }
 
-
 h2 {
   margin-bottom: 0.512em;
   line-height: 1.1em;
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 1.95312em; }
   @media (min-width: 38em) {
-    
     h2 {
       font-size: 2.44141em; } }
   h2 a {
@@ -615,7 +629,6 @@ h2 {
       h2.lower {
         font-size: 2.44141em; } }
 
-
 h3 {
   font-size: 1.5625em;
   margin-bottom: 0.64em;
@@ -623,7 +636,6 @@ h3 {
   font-weight: 700;
   text-transform: uppercase; }
   @media (min-width: 38em) {
-    
     h3 {
       font-size: 1.95312em; } }
   h3 a {
@@ -647,7 +659,6 @@ h3 {
       h3.lower {
         font-size: 1.5625em; } }
 
-
 h4 {
   font-size: 1em;
   margin-bottom: 0.512em;
@@ -656,7 +667,6 @@ h4 {
   font-size: 1.25em;
   line-height: 1.25em; }
   @media (min-width: 38em) {
-    
     h4 {
       font-size: 1.5625em; } }
   h4.header {
@@ -680,14 +690,12 @@ h4 {
       h4.lower {
         font-size: 1.25em; } }
 
-
 h5 {
   font-weight: 600;
   margin-bottom: 1em;
   text-transform: uppercase;
   font-size: 0.8em; }
   @media (min-width: 38em) {
-    
     h5 {
       font-size: 1em; } }
   h5.header {
@@ -711,7 +719,6 @@ h5 {
       h5.lower {
         font-size: 1em; } }
 
-
 h6 {
   font-size: 0.8em;
   margin-bottom: 0;
@@ -729,11 +736,13 @@ h6 {
       h6.header {
         font-size: 0.8em; } }
 
-sup, sub {
+sup,
+sub {
   text-transform: uppercase;
   font-weight: 700; }
   @media (min-width: 38em) {
-    sup, sub {
+    sup,
+    sub {
       font-size: 0.64em; } }
 
 blockquote {
@@ -775,18 +784,21 @@ textarea {
 
 table {
   width: 100%; }
-  table p, table ul {
+  table p,
+  table ul {
     margin: 0;
     padding: 0; }
   table tbody {
     border: none; }
-  table th, table td {
+  table th,
+  table td {
     padding: 0.64em 0.512em;
     border: none;
     vertical-align: top;
     font-size: 0.8em; }
     @media (min-width: 48em) {
-      table th, table td {
+      table th,
+      table td {
         font-size: 1em;
         line-height: 1.25em; } }
   table tr.odd {
@@ -803,11 +815,12 @@ table {
     font-family: "Oswald", sans-serif;
     background: #016eb8;
     color: white;
-    padding: .5em; }
+    padding: 0.5em; }
   table caption {
     caption-side: bottom; }
 
-ul li, ol li {
+ul li,
+ol li {
   margin: 0 0 0.512em 0; }
 
 ul {
@@ -839,9 +852,10 @@ a img {
   -webkit-backface-visibility: hidden; }
 
 a img:hover {
-  opacity: .75; }
+  opacity: 0.75; }
 
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto; }
 
@@ -1006,22 +1020,22 @@ img, video {
 .text-size-large {
   font-size: 30px;
   font-size: 1.875rem;
-  line-height: .9em; }
+  line-height: 0.9em; }
   @media (min-width: 38em) {
     .text-size-large {
       font-size: 40px;
       font-size: 2.5rem;
-      line-height: .9em; } }
+      line-height: 0.9em; } }
 
 .text-size-x-large {
   font-size: 40px;
   font-size: 2.5rem;
-  line-height: .9em; }
+  line-height: 0.9em; }
   @media (min-width: 38em) {
     .text-size-x-large {
       font-size: 53px;
       font-size: 3.3125rem;
-      line-height: .9em; } }
+      line-height: 0.9em; } }
 
 .text-size-xx-large {
   font-size: 50px;
@@ -1033,11 +1047,17 @@ img, video {
       font-size: 4.6875rem;
       line-height: 1.1em; } }
 
-.black-default-bck, .blue-default-bck, .orange-default-bck, .grey-default-bck {
+.black-default-bck,
+.blue-default-bck,
+.orange-default-bck,
+.grey-default-bck {
   padding: 1em;
   margin-bottom: 1em;
   display: block; }
-  .black-default-bck p:last-child, .blue-default-bck p:last-child, .orange-default-bck p:last-child, .grey-default-bck p:last-child {
+  .black-default-bck p:last-child,
+  .blue-default-bck p:last-child,
+  .orange-default-bck p:last-child,
+  .grey-default-bck p:last-child {
     margin-bottom: 0; }
 
 .black-default-bck {
@@ -1052,7 +1072,9 @@ img, video {
 .grey-default-bck {
   background-color: #f2f5f7; }
 
-.black-default-bck, .blue-default-bck, .orange-default-bck {
+.black-default-bck,
+.blue-default-bck,
+.orange-default-bck {
   color: #fff !important; }
 
 .float-left {
@@ -1101,11 +1123,17 @@ img, video {
       -ms-flex-pack: center;
           justify-content: center; }
 
-.width-thirty, .width-fifty, .width-seventy {
+.width-thirty,
+.width-fifty,
+.width-seventy {
   display: block; }
-  .width-thirty.center-width, .width-fifty.center-width, .width-seventy.center-width {
+  .width-thirty.center-width,
+  .width-fifty.center-width,
+  .width-seventy.center-width {
     margin: 0 auto; }
-  .width-thirty.right-align-width, .width-fifty.right-align-width, .width-seventy.right-align-width {
+  .width-thirty.right-align-width,
+  .width-fifty.right-align-width,
+  .width-seventy.right-align-width {
     margin-left: auto; }
 
 @media (min-width: 38em) {
@@ -1943,7 +1971,7 @@ a.btn-special-promo-banner {
   color: #fff !important; }
 
 .cke_panel_listItem a {
-  margin-bottom: .15em !important; }
+  margin-bottom: 0.15em !important; }
 
 .btn-small-size {
   border: 1px solid transparent;
@@ -2020,12 +2048,14 @@ a.btn-special-promo-banner {
 .btn-large a {
   font-size: 1.4em;
   font-weight: 700;
-  padding: .4em 1.3em; }
+  padding: 0.4em 1.3em; }
   @media (min-width: 38em) {
     .btn-large a {
       font-size: 1.7em; } }
 
-.btn-default-skinny, .btn-default-small, .btn-default-large {
+.btn-default-skinny,
+.btn-default-small,
+.btn-default-large {
   display: inline-block; }
 
 .btn-default-skinny a {
@@ -2067,12 +2097,12 @@ a.btn-special-promo-banner {
 
 @media (min-width: 38em) {
   .btn-default-small a {
-    font-size: .9em; } }
+    font-size: 0.9em; } }
 
 @media (min-width: 38em) {
   .btn-default-large a {
     font-size: 2em;
-    padding: .6em .8em; } }
+    padding: 0.6em 0.8em; } }
 
 a.btn-red {
   border: 1px solid transparent;
@@ -2138,7 +2168,7 @@ a.btn-red {
 .white-bck {
   display: inline-block; }
   .white-bck a {
-    background-color: #FFF;
+    background-color: #fff;
     color: #000; }
     .white-bck a:hover, .white-bck a:focus, .white-bck a:active {
       background-color: #f2f2f2; }
@@ -2163,7 +2193,7 @@ a.btn-red {
 .white-link {
   color: #fff;
   background-color: #000;
-  padding: .5em; }
+  padding: 0.5em; }
 
 .light-blue {
   color: #32a5f3; }
@@ -2181,7 +2211,12 @@ a.title-link-no-underline {
 a.italic-underline-link {
   font-style: italic; }
 
-h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong,
+h5 strong,
+h6 strong {
   font-weight: 700 !important; }
 
 .cke_panel_listItem a[title="Baskervville Font"],
@@ -2327,7 +2362,7 @@ h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
   border-top: 1px solid #fff;
   padding-top: 10px;
   width: 80%;
-  margin: 15px  auto 15px  auto; }
+  margin: 15px auto 15px auto; }
 
 .banner-text-center {
   margin: auto;
@@ -2402,29 +2437,6 @@ h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
   @media (min-width: 56em) {
     .large-body-text {
       font-size: 1.25rem; } }
-
-.landing-header-content-box h2 {
-  font-size: 2.4rem;
-  font-weight: bold;
-  color: #000;
-  letter-spacing: 1px; }
-  @media (min-width: 56em) {
-    .landing-header-content-box h2 {
-      font-size: 2.6rem; } }
-  @media (min-width: 62em) {
-    .landing-header-content-box h2 {
-      font-size: 2.8rem;
-      width: 95%;
-      margin-left: auto;
-      margin-right: auto; } }
-  @media only screen and (min-width: 1220px) {
-    .landing-header-content-box h2 {
-      width: 75%; } }
-  @media (min-width: 81.75em) {
-    .landing-header-content-box h2 {
-      font-size: 2.8rem;
-      width: auto;
-      max-width: 800px; } }
 
 .landing-header-content-box p {
   font-size: 1.2rem;
