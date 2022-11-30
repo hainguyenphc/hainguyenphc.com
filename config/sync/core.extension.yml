@@ -53,6 +53,9 @@ module:
   update: 0
   user: 0
   views_ui: 0
+  fontyourface: 1
+  google_fonts_api: 10
+  local_fonts: 10
   views: 10
   standard: 1000
 theme:
