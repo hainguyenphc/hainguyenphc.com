@@ -35,25 +35,25 @@ use Drupal\node\Entity\Node;
  * Implement hook_preprocess_html()
  */
 
- function de_theme_preprocess_html(&$variables){
-    if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
-        $variables['attributes']['class'][] = 'two_sidebars';
-    }
-    elseif (!empty($variables['page']['sidebar_first'])) {
-        $variables['attributes']['class'][] = 'one_sidebar sidebar_first';
-    }
-    elseif (!empty($variables['page']['sidebar_second'])) {
-        $variables['attributes']['class'][] = 'one_sidebar sidebar_second';
-    }
-    else {
-        $variables['attributes']['class'][] = 'no_sidebars';
-    }
+ function de_theme_preprocess_html(array &$variables){
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'two_sidebars';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'one_sidebar sidebar_first';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'one_sidebar sidebar_second';
+  }
+  else {
+    $variables['attributes']['class'][] = 'no_sidebars';
+  }
  }
 
 /**
   * Implement hook_preprocess_page()
   */
-function de_theme_preprocess_page(&$variables) {
+function de_theme_preprocess_page(array &$variables) {
    // fix Main page content block order issue
   if (isset($variables['page']['content']['system_main'])) {
     $main_content = $variables['page']['content']['system_main'];
@@ -76,14 +76,27 @@ function de_theme_preprocess_block(array &$variables) {
     if ($node instanceof Node) {
       /** @var string $bundle */
       $bundle = $node->bundle();
+      $id = $variables['attributes']['id'];
+      $variables['attributes']['id'] = "{$id}--node-{$bundle}";
       if ($bundle === 'project') {
-        $id = $variables['attributes']['id'];
-        $variables['attributes']['id'] = "{$id}--node-{$bundle}";
+        
         // Pass the whole node into template.
         // Use Twig file_url function to get the URL of the banner image.
         // @see themes/custom/digitalechidna/de_theme/templates/block/block--page-title-block.html.twig
         $variables['node'] = $node;
       }
+    }
+  }
+
+  if ($variables['plugin_id'] === 'system_main_block') {
+    /** @var \Drupal\node\Entity\Node $node  */
+    $node = \Drupal::request()->attributes->get('node');
+    if ($node && $node instanceof Node && $node->hasField('field_project_categories')) {
+      /** @var \Drupal\Core\Field\EntityReferenceFieldItemList */
+      $categories = $node->field_project_categories;
+      /** @var array $render */
+      $render = $categories->view('full');
+      $variables['content__left_sidebar'] = $render;
     }
   }
 }

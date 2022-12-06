@@ -34,9 +34,14 @@
   a {
     margin-right: 2em;
 
+    &:hover {
+      color: var(--color-red);
+    }
+
     // Active state
     &.active {
       position: relative;
+      color: var(--color-red);
 
       &::after {
         border-bottom: 7px solid #000;

@@ -32,19 +32,20 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
-{% if node %}
-  {# z-index only works on positioned element; Hence, make the div relatively positioned. #}
-  {# z-index = 1 to make it appear on top of table of content and categories blocks. #}
-  <div{{ attributes.addClass(classes) }} style="position: relative; z-index: 1; background-image: url({{ file_url(node.field_banner_image.entity.fileuri) }});">
-{% else %}
-  <div{{ attributes.addClass(classes) }}>
-{% endif %}
-    {{ title_prefix }}
-    {% if label %}
-      <h2{{ title_attributes }}>{{ label }}</h2>
-    {% endif %}
-    {{ title_suffix }}
-    {% block content %}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {# @see themes/custom/digitalechidna/de_theme/src/sass/30-component/blocks/_block--de-theme-content.scss #}
+  {% block content %}
+    {% if content__left_sidebar %}
+      <div id="content--node-wrapper">{{ content }}</div>
+      {# @see themes/custom/digitalechidna/de_theme/de_theme.theme #}
+      <div id="content--left-sidebar">{{ content__left_sidebar }}</div>
+    {% else %}
       {{ content }}
-    {% endblock %}
-  </div>
+    {% endif %}
+  {% endblock %}
+</div>

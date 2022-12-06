@@ -99,6 +99,8 @@
   {% endif %}
 
   <div{{ content_attributes.addClass('node__content') }}>
-    {{ content }}
+    {# We set up a div#content--left-sidebar to house the Categories field; Hence, no need to render it here. #}
+    {# @see themes/custom/digitalechidna/de_theme/templates/block/block--de-theme-content.html.twig #}
+    {{ content|without('field_project_categories') }}
   </div>
 </article>

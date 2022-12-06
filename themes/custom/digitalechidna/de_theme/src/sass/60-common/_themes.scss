@@ -3,10 +3,6 @@
   background-color: var(--background-color);
 }
 
-// .region.region--masthead-actions {
-//   background-color: var(--background-color);
-// }
-
 #masthead {
   > div {
     background-color: var(--background-color) !important;
@@ -16,4 +12,14 @@
 
 #block-de-theme-breadcrumbs {
   background-color: var(--background-color);
+  > nav {
+    > ol {
+      > li {
+        > a:hover {
+          color: var(--color-red);
+          text-decoration: none !important;
+        }
+      }
+    }
+  }
 }
