@@ -24,17 +24,17 @@
   @include highlight-type;
 }
 
-.libre-baskerville {
-  font-family: $font-set-3;
-}
+// .libre-baskerville {
+//   font-family: $font-set-3;
+// }
 
-.oswald {
-  font-family: $font-set-2;
-}
+// .oswald {
+//   font-family: $font-set-2;
+// }
 
-.source-sans-pro {
-  font-family: $font-set-1;
-}
+// .source-sans-pro {
+//   font-family: $font-set-1;
+// }
 
 .uppercase {
   text-transform: uppercase;
@@ -44,25 +44,25 @@
   font-weight: lighter;
 }
 
-.light-blue-txt {
-  color: $light-blue;
-}
+// .light-blue-txt {
+//   color: $light-blue;
+// }
 
 .blue-txt {
   color: $blue;
 }
 
-.blue-light-txt {
-  color: $light-blue;
-}
+// .blue-light-txt {
+//   color: $light-blue;
+// }
 
-.red-txt {
-  color: $red;
-}
+// .red-txt {
+//   color: $red;
+// }
 
-.orange-txt {
-  color: $fp-orange;
-}
+// .orange-txt {
+//   color: $fp-orange;
+// }
 
 .grey-txt {
   color: #757575;
@@ -187,13 +187,13 @@
   background-color: $blue;
 }
 
-.orange-default-bck {
-  background-color: $fp-orange;
-}
+// .orange-default-bck {
+//   background-color: $fp-orange;
+// }
 
-.grey-default-bck {
-  background-color: $light-grey;
-}
+// .grey-default-bck {
+//   background-color: $light-grey;
+// }
 
 .black-default-bck,
 .blue-default-bck,
@@ -329,25 +329,20 @@ a.btn-secondary {
 
 //ORANGE BUTTON
 
-.cke_panel_listItem a[title*="Orange FP Button"],
-a.btn-default-orange {
-  @include default-color-btn($fp-orange, #fff, darken($fp-orange, 6%), #fff);
-}
+// .cke_panel_listItem a[title*="Orange FP Button"],
+// a.btn-default-orange {
+//   @include default-color-btn($fp-orange, #fff, darken($fp-orange, 6%), #fff);
+// }
 
 .cke_panel_listItem a[title*="Orange FP Button"] {
   color: #fff !important;
 }
 
-//menu
-.region--masthead-primary a.btn-default-orange-menu {
-  background-color: $fp-orange !important;
-  color: #fff !important;
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: darken($fp-orange, 6%) !important;
-  }
-}
+// //menu
+// .region--masthead-primary a.btn-default-orange-menu {
+//   background-color: $fp-orange !important;
+//   color: #fff !important;
+// }
 
 //WHITE BUTTON
 

@@ -2272,35 +2272,14 @@ aside.layout-sidebar-second {
   font-family: "Oswald", sans-serif;
   font-weight: 700; }
 
-.libre-baskerville {
-  font-family: "Libre Baskerville", serif; }
-
-.oswald {
-  font-family: "Oswald", sans-serif; }
-
-.source-sans-pro {
-  font-family: "Source Sans Pro", Helvetica, sans-serif; }
-
 .uppercase {
   text-transform: uppercase; }
 
 .light-weight-font {
   font-weight: lighter; }
 
-.light-blue-txt {
-  color: #32a5f3; }
-
 .blue-txt {
   color: #016eb8; }
-
-.blue-light-txt {
-  color: #32a5f3; }
-
-.red-txt {
-  color: #c32127; }
-
-.orange-txt {
-  color: #b55f26; }
 
 .grey-txt {
   color: #757575; }
@@ -2437,12 +2416,6 @@ aside.layout-sidebar-second {
 
 .blue-default-bck {
   background-color: #016eb8; }
-
-.orange-default-bck {
-  background-color: #b55f26; }
-
-.grey-default-bck {
-  background-color: #f2f5f7; }
 
 .black-default-bck,
 .blue-default-bck,
@@ -2611,57 +2584,8 @@ a.btn-secondary {
     color: #fff;
     background-color: #1a1a1a; }
 
-.cke_panel_listItem a[title*="Orange FP Button"],
-a.btn-default-orange {
-  border: 1px solid transparent;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  font-size: 1em;
-  overflow: hidden;
-  padding: 0.26214em 1.25em;
-  margin-bottom: 1em;
-  text-decoration: none;
-  -webkit-transition: background-color .3s ease-out, border-color .3s ease-out;
-  transition: background-color .3s ease-out, border-color .3s ease-out;
-  margin-right: 1em;
-  font-size: 20px;
-  font-size: 1.25rem;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  outline: none;
-  letter-spacing: 1px;
-  color: #fff;
-  background-color: #b55f26;
-  color: #fff; }
-  @media (min-width: 38em) {
-    .cke_panel_listItem a[title*="Orange FP Button"],
-    a.btn-default-orange {
-      padding: 0.32768em 1.5625em;
-      font-size: 24px;
-      font-size: 1.5rem; } }
-  .cke_panel_listItem a[title*="Orange FP Button"] a,
-  a.btn-default-orange a {
-    color: #fff; }
-  .cke_panel_listItem a[title*="Orange FP Button"]:hover, .cke_panel_listItem a[title*="Orange FP Button"]:focus, .cke_panel_listItem a[title*="Orange FP Button"]:active,
-  a.btn-default-orange:hover,
-  a.btn-default-orange:focus,
-  a.btn-default-orange:active {
-    color: #fff;
-    background-color: #9c5221; }
-
 .cke_panel_listItem a[title*="Orange FP Button"] {
   color: #fff !important; }
-
-.region--masthead-primary a.btn-default-orange-menu {
-  background-color: #b55f26 !important;
-  color: #fff !important; }
-  .region--masthead-primary a.btn-default-orange-menu:hover, .region--masthead-primary a.btn-default-orange-menu:focus, .region--masthead-primary a.btn-default-orange-menu:active {
-    background-color: #9c5221 !important; }
 
 a.btn-white {
   border: 1px solid transparent;
@@ -4011,7 +3935,8 @@ em {
   font-style: italic; }
 
 a {
-  color: #016eb8;
+  color: var(--color-red);
+  text-decoration: none;
   -webkit-transition: color 0.3s ease-out;
   transition: color 0.3s ease-out; }
 
@@ -4069,7 +3994,6 @@ h1 {
   line-height: 1em;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-weight: 700;
-  text-transform: uppercase;
   color: #4b4c4d;
   font-size: 2.44141em; }
   @media (min-width: 38em) {
@@ -4095,7 +4019,6 @@ h1 {
 h2 {
   margin-bottom: 0.512em;
   line-height: 1.1em;
-  text-transform: uppercase;
   font-weight: 600;
   font-size: 1.95312em; }
   @media (min-width: 38em) {
@@ -4104,7 +4027,6 @@ h2 {
   h2 a {
     color: #4b4c4d; }
   h2.header {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
     font-weight: 700;
@@ -4128,8 +4050,7 @@ h3,
   font-size: 1.5625em;
   margin-bottom: 0.64em;
   line-height: 1em;
-  font-weight: 700;
-  text-transform: uppercase; }
+  font-weight: 600; }
   @media (min-width: 38em) {
     
     h3,
@@ -4138,11 +4059,10 @@ h3,
   h3 a, .path-node.node--type-accessory .field--name-field-description .field__label a {
     color: #4b4c4d; }
   h3.header, .path-node.node--type-accessory .field--name-field-description .header.field__label {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
-    font-weight: 700;
-    font-size: 3.2em; }
+    font-size: 3.2em;
+    font-weight: 600; }
     @media (min-width: 38em) {
       h3.header, .path-node.node--type-accessory .field--name-field-description .header.field__label {
         font-size: 3.5em; } }
@@ -4160,14 +4080,12 @@ h4 {
   font-size: 1em;
   margin-bottom: 0.512em;
   font-weight: 600;
-  text-transform: uppercase;
   font-size: 1.25em;
   line-height: 1.25em; }
   @media (min-width: 38em) {
     h4 {
       font-size: 1.5625em; } }
   h4.header {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
     font-weight: 700;
@@ -4190,13 +4108,11 @@ h4 {
 h5 {
   font-weight: 600;
   margin-bottom: 1em;
-  text-transform: uppercase;
   font-size: 0.8em; }
   @media (min-width: 38em) {
     h5 {
       font-size: 1em; } }
   h5.header {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
     font-weight: 700;
@@ -4219,12 +4135,10 @@ h5 {
 h6 {
   font-size: 0.8em;
   margin-bottom: 0;
-  text-transform: uppercase;
   font-weight: 700; }
   h6.no-js {
     display: block; }
   h6.header {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
     font-weight: 700;
@@ -4235,7 +4149,6 @@ h6 {
 
 sup,
 sub {
-  text-transform: uppercase;
   font-weight: 700; }
   @media (min-width: 38em) {
     sup,
@@ -4326,7 +4239,7 @@ ul {
     list-style: disc; }
 
 ol {
-  padding-left: 1.25em; }
+  padding-left: 2.44141em; }
   ol li {
     list-style: decimal; }
 
@@ -4345,8 +4258,7 @@ img {
 
 a img {
   -webkit-transform: rotate(0);
-          transform: rotate(0);
-  -webkit-backface-visibility: hidden; }
+          transform: rotate(0); }
 
 a img:hover {
   opacity: 0.75; }
@@ -5913,7 +5825,7 @@ body:not([class*="division"]) .mm-btn_prev:before {
           flex-grow: 1; }
   @media screen {
     #block-uppermenublock {
-      margin-left: 1.7em; } }
+      margin-left: 1.2em; } }
   #block-uppermenublock a {
     margin-right: 2em; }
     #block-uppermenublock a.active {
@@ -10915,7 +10827,11 @@ body.path-user .profile .field--name-field-biography {
 :root {
   --background-color: rgb(28, 30, 28);
   --text-color: white;
-  --content-width: 80vw; }
+  --color-red: #ff5045;
+  --content-width: 60vw; }
+  @media screen and (max-width: 1307px) {
+    :root {
+      --content-width: 80vw; } }
 
 .responsive-menu-page-wrapper {
   background-color: var(--background-color); }
@@ -10951,7 +10867,10 @@ hr {
 .node.node--type-project.node--view-mode-full {
   margin-top: 3.05176em; }
   .node.node--type-project.node--view-mode-full > .node__content > .field--name-body h2 {
-    text-align: center; }
+    text-align: center;
+    padding-top: 30px; }
+  .node.node--type-project.node--view-mode-full > .node__content > .field--name-body p, .node.node--type-project.node--view-mode-full > .node__content > .field--name-body li {
+    font-size: 1.15rem; }
 
 #block-de-theme-page-title--node-project {
   height: 70vh;

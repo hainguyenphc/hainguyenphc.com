@@ -1,5 +1,11 @@
 :root {
   --background-color: rgb(28, 30, 28);
   --text-color: white;
-  --content-width: 80vw;
+  // The accent color of the site.
+  --color-red: #ff5045;
+  --content-width: 60vw;
+
+  @media screen and (max-width: $standard-screen-max) {
+    --content-width: 80vw;
+  }
 }

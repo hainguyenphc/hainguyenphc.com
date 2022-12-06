@@ -5,6 +5,12 @@
       > .field--name-body {
         h2 {
           text-align: center;
+          padding-top: 30px;
+        }
+        // Makes the text in paragraphs and lists a bit bigger.
+        // 1.15 * 16px = 18.4px
+        p, li {
+          font-size: 1.15rem;
         }
       }
     }

@@ -66,6 +66,10 @@ video {
   margin: 0 0 ms() 0;
 }
 
+// p {
+//   font
+// }
+
 strong,
 b {
   font-weight: $bold;
@@ -76,14 +80,9 @@ em {
 }
 
 a {
-  color: $blue;
+  color: var(--color-red);
+  text-decoration: none;
   transition: color 0.3s ease-out;
-  //text-decoration: none;
-  &:hover,
-  &:focus,
-  &:active {
-    //text-decoration: none;
-  }
 }
 
 a.dark-link {
@@ -133,7 +132,7 @@ h1 {
   line-height: 1em;
   font-family: $font-set-1;
   font-weight: $bold;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   color: $dark-grey;
   font-size: ms(4);
   @include breakpoint($narrow-screen) {
@@ -164,7 +163,6 @@ h1 {
 h2 {
   margin-bottom: ms(-3);
   line-height: 1.1em;
-  text-transform: uppercase;
   font-weight: $semi-bold;
   font-size: ms(3);
   @include breakpoint($narrow-screen) {
@@ -174,7 +172,7 @@ h2 {
     color: $dark-grey;
   }
   &.header {
-    text-transform: uppercase;
+    // text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
     font-weight: $bold;
@@ -199,8 +197,7 @@ h3 {
   font-size: ms(2);
   margin-bottom: ms(-2);
   line-height: ms();
-  font-weight: $bold;
-  text-transform: uppercase;
+  font-weight: $semi-bold;
   @include breakpoint($narrow-screen) {
     font-size: ms(3);
   }
@@ -208,11 +205,10 @@ h3 {
     color: $dark-grey;
   }
   &.header {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
-    font-weight: $bold;
     font-size: 3.2em;
+    font-weight: $semi-bold;
     @include breakpoint($narrow-screen) {
       font-size: 3.5em;
     }
@@ -233,14 +229,12 @@ h4 {
   font-size: ms();
   margin-bottom: ms(-3);
   font-weight: $semi-bold;
-  text-transform: uppercase;
   font-size: ms(1);
   @include breakpoint($narrow-screen) {
     font-size: ms(2);
   }
   line-height: ms(1);
   &.header {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
     font-weight: $bold;
@@ -265,13 +259,11 @@ h4 {
 h5 {
   font-weight: $semi-bold;
   margin-bottom: ms();
-  text-transform: uppercase;
   font-size: ms(-1);
   @include breakpoint($narrow-screen) {
     font-size: ms();
   }
   &.header {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
     font-weight: $bold;
@@ -296,13 +288,11 @@ h5 {
 h6 {
   font-size: ms(-1);
   margin-bottom: 0;
-  text-transform: uppercase;
   font-weight: $bold;
   &.no-js {
     display: block;
   }
   &.header {
-    text-transform: uppercase;
     line-height: normal;
     line-height: 1em;
     font-weight: $bold;
@@ -315,18 +305,11 @@ h6 {
 
 sup,
 sub {
-  // vertical-align: super;
-  text-transform: uppercase;
   font-weight: $bold;
   @include breakpoint($narrow-screen) {
     font-size: ms(-2);
   }
 }
-
-// sub{
-//   font-size:  smaller;
-//   vertical-align: sub;
-// }
 
 blockquote {
   padding: ms(3);
@@ -396,10 +379,6 @@ table {
     }
   }
 
-  // tr{
-
-  // }
-
   tr.odd {
     background-color: white;
   }
@@ -416,14 +395,9 @@ table {
     background-color: tint($light-grey, 75);
   }
 
-  // th{
-  // }
-
   th,
   thead th {
-    // background-color: white;
     border-bottom: 1px solid $light-grey;
-    //line-height: ms(2);
     font-family: $font-set-2;
     background: $blue;
     color: white;
@@ -452,7 +426,7 @@ ul {
 }
 
 ol {
-  padding-left: ms(1);
+  padding-left: ms(4);
   li {
     list-style: decimal;
   }
@@ -475,7 +449,6 @@ img {
 
 a img {
   transform: rotate(0);
-  -webkit-backface-visibility: hidden;
 }
 
 a img:hover {
