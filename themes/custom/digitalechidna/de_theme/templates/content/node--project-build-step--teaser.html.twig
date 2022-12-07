@@ -75,10 +75,9 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
-
 {{ attach_library('classy/node') }}
-
 <article{{ attributes.addClass(classes) }}>
+
   {{ title_prefix }}
   {% if not page %}
     <h2{{ title_attributes }}>
@@ -90,21 +89,17 @@
   {% if display_submitted %}
     <footer class="node__meta">
       {{ author_picture }}
-      {# If it is a project, do not show metadata. #}
-      {# <div{{ author_attributes.addClass('node__submitted') }}> #}
+      <div{{ author_attributes.addClass('node__submitted') }}>
+        {# Do not show the author username. #}
         {# {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %} #}
-        {# {{ metadata }} #}
-      {# </div> #}
+        {% trans %}Last updated on {{ date }}{% endtrans %}
+        {{ metadata }}
+      </div>
     </footer>
   {% endif %}
 
   <div{{ content_attributes.addClass('node__content') }}>
-    {# We set up a div#content--left-sidebar to house the Categories field; Hence, no need to render it here. #}
-    {# @see themes/custom/digitalechidna/de_theme/templates/block/block--de-theme-content.html.twig #}
-    {{ content|without('field_project_categories', 'top_3_first_project_build_steps') }}
+    {{ content }}
   </div>
 
-  <div id="top-3-first-steps">
-    {{ content.top_3_first_project_build_steps }}
-  </div>
 </article>

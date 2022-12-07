@@ -40,3 +40,20 @@ function hnp_project_preprocess_field(array &$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function hnp_project_preprocess_node(array &$variables) {
+  $node = $variables['node'];
+  if ($node instanceof Node && $node->bundle() === 'project' && $variables['view_mode'] === 'full') {
+    $nid = $node->id();
+    $variables['content']['top_3_first_project_build_steps'] = [
+      '#type' => 'view',
+      '#name' => 'project_build_steps_series_',
+      '#display_id' => 'top_3_first_steps',
+      '#arguments' => ["{$nid}"],
+      '#embed' => TRUE,
+    ];
+  }
+}

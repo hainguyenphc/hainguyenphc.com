@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.node.project_build_step.body
     - field.field.node.project_build_step.field_project
+    - field.field.node.project_build_step.field_related_build_steps
+    - field.field.node.project_build_step.field_teaser_image
     - node.type.project_build_step
   module:
     - text
@@ -29,9 +31,19 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_related_build_steps:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
-hidden: {  }
+hidden:
+  field_teaser_image: true

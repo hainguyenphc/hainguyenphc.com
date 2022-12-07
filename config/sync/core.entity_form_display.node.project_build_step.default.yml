@@ -5,8 +5,12 @@ dependencies:
   config:
     - field.field.node.project_build_step.body
     - field.field.node.project_build_step.field_project
+    - field.field.node.project_build_step.field_related_build_steps
+    - field.field.node.project_build_step.field_teaser_image
+    - image.style.thumbnail
     - node.type.project_build_step
   module:
+    - image
     - path
     - text
 id: node.project_build_step.default
@@ -39,6 +43,24 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_related_build_steps:
+    type: entity_reference_autocomplete
+    weight: 124
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_teaser_image:
+    type: image_image
+    weight: 123
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   path:
     type: path
