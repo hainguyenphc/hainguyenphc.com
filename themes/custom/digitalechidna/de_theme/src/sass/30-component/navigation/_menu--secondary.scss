@@ -15,7 +15,6 @@
     a {
       @extend a.dark-link;
       font-weight: $bold;
-      text-transform: uppercase;
       color: var(--text-color);
       font-size: 0.9em;
       &:lang(fr) {
