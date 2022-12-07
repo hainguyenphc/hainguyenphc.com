@@ -79,7 +79,6 @@ function de_theme_preprocess_block(array &$variables) {
       $id = $variables['attributes']['id'];
       $variables['attributes']['id'] = "{$id}--node-{$bundle}";
       if ($bundle === 'project') {
-        
         // Pass the whole node into template.
         // Use Twig file_url function to get the URL of the banner image.
         // @see themes/custom/digitalechidna/de_theme/templates/block/block--page-title-block.html.twig

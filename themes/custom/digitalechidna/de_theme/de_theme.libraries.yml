@@ -22,8 +22,6 @@ base:
   css:
     theme:
       dist/css/de_theme.css: {}
-      # dist/css/ie/ie.css: { browsers: {IE: 'IE 9', '!IE': false } }
-      # dist/css/ie/ie-lt9.css: { browsers: {IE: 'lte IE 9', '!IE': false } }
   js:
     dist/scripts/js/script.min.js: {}
   dependencies:
@@ -32,6 +30,7 @@ base:
   - core/modernizr
   - core/jquery
   - core/drupal
+
 ssm:
   js:
     bower_components/SimpleStateManager/dist/ssm.min.js: {}

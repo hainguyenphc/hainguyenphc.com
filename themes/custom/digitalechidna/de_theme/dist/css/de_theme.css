@@ -1304,10 +1304,10 @@ form.content-moderation-entity-moderation-form input {
       padding-top: 50px; } }
   @media screen and (max-width: 992px) {
     .section-content {
-      padding-top: 30px; } }
+      padding-top: 20px; } }
   @media screen and (min-width: 1200px) and (max-width: 1220px) {
     .section-content {
-      padding-top: 50px; } }
+      padding-top: 20px; } }
   .section-content > .layout-container {
     background-color: #fff;
     padding-top: 3.05176em;
@@ -8898,7 +8898,7 @@ span.non-country-111, span.non-country-146 {
     display: -ms-flexbox;
     display: flex; }
     .view-display-id-dealer_marker_legend .view-header .dealer-type-legend {
-      margin: .5em 2em .5em 1em;
+      margin: 0.5em 2em 0.5em 1em;
       font-weight: 700; }
   .view-display-id-dealer_marker_legend .view-content {
     -webkit-box-flex: 0;
@@ -8913,7 +8913,7 @@ span.non-country-111, span.non-country-146 {
             flex-direction: column;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    margin: .5em 2em .5em 1em;
+    margin: 0.5em 2em 0.5em 1em;
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
@@ -8949,14 +8949,11 @@ span.non-country-111, span.non-country-146 {
       font-weight: 600;
       padding-left: 5px; }
     .view-display-id-dealer_marker_legend .view-content .views-field-field-dealer-icon {
-      margin-right: .2em; }
+      margin-right: 0.2em; }
       .view-display-id-dealer_marker_legend .view-content .views-field-field-dealer-icon img {
         height: 35px;
         width: auto;
         line-height: 0; }
-
-.user-logged-in .section-content .view-dealer-pin-marker-legend {
-  margin-top: 1em; }
 
 .search-page .region--sidebar-first {
   display: none; }
@@ -10840,7 +10837,11 @@ body.path-user .profile .field--name-field-biography {
 
 :root {
   --background-color: rgb(28, 30, 28);
+  --background-color-dark: rgb(28, 30, 28);
+  --background-color-light: white;
   --text-color: white;
+  --text-color-dark: black;
+  --text-color-light: white;
   --color-red: #ff5045;
   --color-grey: #dcdcdc;
   --content-width: 60vw; }
@@ -10855,6 +10856,7 @@ body.path-user .profile .field--name-field-biography {
   background-color: var(--background-color) !important; }
 
 #block-de-theme-breadcrumbs {
+  margin-top: 2rem;
   background-color: var(--background-color); }
   #block-de-theme-breadcrumbs > nav > ol > li > a:hover {
     color: var(--color-red);

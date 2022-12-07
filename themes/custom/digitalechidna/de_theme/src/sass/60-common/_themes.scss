@@ -4,13 +4,13 @@
 }
 
 #masthead {
-  > div {
+  > div{
     background-color: var(--background-color) !important;
   }
-  
 }
 
 #block-de-theme-breadcrumbs {
+  margin-top: 2rem;
   background-color: var(--background-color);
   > nav {
     > ol {
