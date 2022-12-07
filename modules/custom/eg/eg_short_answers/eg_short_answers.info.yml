@@ -1,0 +1,5 @@
+name: 'Short Answer Questions'
+description: 'Custom code to manipulate short answer questions.'
+core_version_requirement: '^8 || ^9'
+type: 'module'
+package: 'example'

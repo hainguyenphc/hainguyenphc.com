@@ -1,0 +1,6 @@
+name: Example - Sports
+description: Demonstrates Database API
+type: module
+core_version_requirement: ^8 || ^9
+package: example
+

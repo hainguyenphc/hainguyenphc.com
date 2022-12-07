@@ -1,0 +1,5 @@
+name: 'Example - License Plates'
+type: 'module'
+description: 'Demonstrates the custom field plugins.'
+package: 'example'
+core_version_requirement: ^9

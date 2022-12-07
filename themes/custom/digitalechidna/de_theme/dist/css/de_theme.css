@@ -10911,6 +10911,49 @@ hr {
   background-size: cover; }
   #block-de-theme-page-title--node-project > .page-title {
     color: white; }
+    #block-de-theme-page-title--node-project > .page-title > .field--name-title {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+      @media screen and (max-width: 463px) {
+        #block-de-theme-page-title--node-project > .page-title > .field--name-title {
+          max-width: var(--content-width); } }
+
+#block-de-theme-page-title {
+  height: 30vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-size: cover; }
+  #block-de-theme-page-title > .page-title {
+    color: white; }
+    #block-de-theme-page-title > .page-title > .field--name-title {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+      @media screen and (max-width: 463px) {
+        #block-de-theme-page-title > .page-title > .field--name-title {
+          max-width: var(--content-width); } }
 
 .category-card {
   -webkit-box-shadow: 0 0 5px 0 black;
@@ -10958,6 +11001,61 @@ hr {
                 align-items: center;
         max-width: 100%; } }
 
+.node.node--type-project.node--view-mode-teaser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  .node.node--type-project.node--view-mode-teaser > .title-and-metadata > h2 {
+    margin-bottom: 0; }
+    .node.node--type-project.node--view-mode-teaser > .title-and-metadata > h2 > a {
+      color: var(--color-red); }
+  .node.node--type-project.node--view-mode-teaser > .title-and-metadata > footer {
+    margin: 10px 0;
+    font-style: italic;
+    font-size: 1.15rem; }
+  .node.node--type-project.node--view-mode-teaser > .node__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+    .node.node--type-project.node--view-mode-teaser > .node__content > .teaser-image {
+      -webkit-box-flex: 2;
+          -ms-flex: 2;
+              flex: 2; }
+      .node.node--type-project.node--view-mode-teaser > .node__content > .teaser-image > .field--name-field-teaser-image > a img {
+        border: 1px solid var(--color-grey);
+        border-radius: 10px; }
+    .node.node--type-project.node--view-mode-teaser > .node__content > .content-text {
+      -webkit-box-flex: 3;
+          -ms-flex: 3;
+              flex: 3;
+      margin-left: 2rem;
+      font-size: 1.15rem; }
+      @media screen and (max-width: 768px) {
+        .node.node--type-project.node--view-mode-teaser > .node__content > .content-text {
+          margin: 2rem 0; } }
+      .node.node--type-project.node--view-mode-teaser > .node__content > .content-text > .node__links {
+        font-weight: bold; }
+    @media screen and (max-width: 768px) {
+      .node.node--type-project.node--view-mode-teaser > .node__content {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column; } }
+
+.node.node--type-project-build-step.node--view-mode-full {
+  margin-top: 1rem; }
+  .node.node--type-project-build-step.node--view-mode-full > .node__content > .field--name-body p,
+  .node.node--type-project-build-step.node--view-mode-full > .node__content > .field--name-body li {
+    font-size: 1.15rem; }
+
 #block-de-theme-page-title--node-project_build_step {
   overflow: hidden;
   display: -webkit-box;
@@ -10976,7 +11074,15 @@ hr {
           justify-content: center;
   background-size: cover; }
   #block-de-theme-page-title--node-project_build_step > .page-title {
-    color: white; }
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    max-width: var(--content-width); }
 
 h1.page-title > .field--name-title {
   font-style: normal;

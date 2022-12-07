@@ -1,0 +1,6 @@
+eg_menux.hello_config_form:
+  title: 'Configure Hello Message'
+  route_name: 'eg_salutation.hello_config_form'
+  group: 'eg_menux_grp' # @see eg_book.module line #77
+
+# remember to edit the template file, add {{ title_suffix }}

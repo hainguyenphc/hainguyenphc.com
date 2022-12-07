@@ -1,0 +1,13 @@
+<?php
+
+// function eg_products_update_9000(&$sanbox) {
+//   \Drupal::entityTypeManager()->clearCachedDefinitions();
+//   $entity_type = \Drupal::entityTypeManager()->getDefinition('product');
+//   \Drupal::entityDefinitionUpdateManager()->installEntityType($entity_type);
+// }
+
+// function eg_products_cron() {
+//   $importer = \Drupal::service('products.importer_manager')
+//     ->createInstanceFromConfig('json_importer_1');
+//   $importer->importProducts();
+// }

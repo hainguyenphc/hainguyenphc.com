@@ -1,0 +1,17 @@
+{
+  "name": "drupal/eg_products",
+  "description": "Import products",
+  "type": "drupal-module",
+  "autoload": {
+    "psr-4": {
+      "Drupal\\eg_products\\": "src/"
+    }
+  },
+  "extra": {
+    "drush": {
+      "services": {
+        "drush.services.yml": "^10"
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * @file eg_email.module
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Messenger\MessengerInterface;
+
+/**
+ * Implements hook_mail().
+ */
+function eg_email_mail($key, &$message, $params) {
+  $options = [
+    'lang' => $message['langcode'] ? $message['langcode'] : 'en',
+  ];
+
+  switch($key) {
+    case 'create_article': {
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t(
+        'Article created: @title',
+        array('@title' => $params['node_title']),
+        $options
+      );
+      $message['body'][] = $params['message'];
+      // An example how token is used.
+      $current_user_message = 'A hello message from [current-user:name].';
+      $current_user = \Drupal::currentUser();
+      // Adds a new paragraph to the body.
+      $message['body'][] = \Drupal::token()
+        ->replace($current_user_message, ['current-user' => $current_user]);
+      break;
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function eg_email_entity_insert(EntityInterface $entity) {
+
+  /**
+   * When an article is created, this triggers this module's hook_mail with the
+   * event 'create_article' to send out email to the current user.
+   */
+
+  // Short-circuits if $entity is not node or not article bundle.
+  if ($entity->getEntityTypeId() !== 'node'
+    || ($entity->getEntityTypeId() === 'node'
+    && $entity->bundle() !== 'article')
+  ) {
+    return;
+  }
+
+  $mailManager = \Drupal::service('plugin.manager.mail');
+  $module = 'eg_email'; // module name
+  $key = 'create_article'; // key representing an action.
+  $to = \Drupal::currentUser()->getEmail();
+  $params['message'] = $entity->get('body')->value;
+  $params['node_title'] = $entity->label();
+  $langcode = \Drupal::currentUser()->getPreferredLangcode();
+  $send = TRUE;
+
+  $result = $mailManager->mail(
+    $module,
+    $key,
+    $to,
+    $langcode,
+    $params,
+    NULL,
+    $send
+  );
+
+  if ($result['result'] !== true) {
+    \Drupal::messenger()
+      ->addMessage(
+        'There was a problem sending email.',
+        MessengerInterface::TYPE_ERROR
+      );
+  }
+  else {
+    \Drupal::messenger()
+      ->addMessage(
+        'Email was sent successfully.',
+        MessengerInterface::TYPE_STATUS
+      );
+  }
+}

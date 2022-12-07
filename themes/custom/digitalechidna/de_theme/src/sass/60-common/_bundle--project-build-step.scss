@@ -1,6 +1,20 @@
-// For Project pages, we would like to render the title in the middle of the banner image.
+.node.node--type-project-build-step {
+  &.node--view-mode-full {
+    margin-top: 1rem;
+    > .node__content {
+      > .field--name-body {
+        // Makes the text in paragraphs and lists a bit bigger.
+        // 1.15 * 16px = 18.4px
+        p,
+        li {
+          font-size: 1.15rem;
+        }
+      }
+    }
+  }
+}
+
 #block-de-theme-page-title--node-project_build_step {
-  // height: 70vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -13,5 +27,21 @@
   // @see themes/custom/digitalechidna/de_theme/templates/block/block--page-title-block.html.twig
   > .page-title {
     color: white;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    max-width: var(--content-width);
+    // @media screen and (max-width: $small-screen-min) {
+    //   margin-right: 2rem;
+    //   margin-left: 2rem;
+    // }
+    // @media screen and (min-width: $just-before-small-screen) and (max-width: $just-before-in-between-screen) {
+    //   margin-right: 5rem;
+    //   margin-left: 5rem;
+    // }
+    // @media screen and (min-width: $in-between-screen) and (max-width: $just-before-medium-screen-max) {
+    //   margin-right: 2rem;
+    //   margin-left: 2rem;
+    // }
   }
 }

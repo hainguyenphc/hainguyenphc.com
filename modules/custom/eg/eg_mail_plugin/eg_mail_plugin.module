@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_mail().
+ */
+function eg_mail_plugin_mail($key, &$message, $params) {
+
+}

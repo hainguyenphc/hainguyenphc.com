@@ -1,0 +1,12 @@
+# This is a menu link.
+eg_menux.hello:
+  # The machine name of the menu this menu link will be rendered in.
+  menu_name: 'main'
+  # The machine name of the route this menu link points to.
+  route_name: 'eg_salutation.hello'
+  # The machine name of another menu link that is a parent of this menu link.
+  # parent: 'xyz'
+  # Arbitrary info for this menu link.
+  title: 'Hello'
+  description: 'Go to /hello'
+  weight: 0

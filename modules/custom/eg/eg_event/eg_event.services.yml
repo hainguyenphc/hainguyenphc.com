@@ -1,0 +1,16 @@
+services:
+  eg_event.euro_cup_news_subscriber:
+    class: 'Drupal\eg_event\EventSubscriber\EuroCupNewsSubscriber'
+    arguments: ['@current_user', '@current_route_match']
+    tags:
+      - { name: event_subscriber }
+
+  eg_event.euro_cup_history_subscriber:
+    class: 'Drupal\eg_event\EventSubscriber\EuroCupHistorySubscriber'
+    arguments: []
+    tags:
+      - { name: event_subscriber }
+
+  eg_event.euro_cup_history:
+    class: 'Drupal\eg_event\EuroCupHistory'
+    arguments: ['@event_dispatcher']

@@ -1,0 +1,83 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_theme().
+ *
+ * @see BookController - it populates all the variables.
+ */
+function eg_book_theme($existing, $type, $theme, $path) {
+  return [
+    /* book.html.twig */
+    'book' => [
+      'variables' => [
+        'author' => [],
+        'publication_date' => NULL,
+        'body' => '',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ *
+ * HOOK is 'block'.
+ */
+function eg_book_theme_suggestions_book($variables) {
+  $suggestions = [];
+
+  // Whatever the business logic to provide some contexts here.
+  $some_authors_are_disabled = TRUE;
+  if ($some_authors_are_disabled) {
+    /* create new template called book__authors_are_disabled.html.twig */
+    $suggestions[] = 'book__authors_are_disabled';
+  }
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * HOOK is 'book'.
+ *
+ * @see BookController - it runs before this.
+ */
+function template_preprocess_book(&$variables) {
+  /* DateTime object cannot be printed directly, it needs to be formatted. */
+  if (array_key_exists('publication_date', $variables)) {
+    $publication_date = $variables['publication_date'];
+    if ($publication_date instanceof DateTime) {
+      $variables['publication_date'] = $publication_date->format('Y-m-d');
+    }
+  }
+  if (array_key_exists('author', $variables)) {
+    $author_ids = $variables['author'];
+    $author_links = [];
+    foreach ($author_ids as $author_id) {
+      /* Fully loads the user to extract necessary info. */
+      $author = User::load($author_id);
+      $author_url = Url::fromRoute(
+        'entity.user.canonical',
+        ['user' => $author_id]
+      );
+      $author_name = $author->getDisplayName();
+      $author_links[] = [
+        'title' => $author_name,
+        'url' => $author_url,
+      ];
+    }
+    $variables['author'] = [
+      '#theme' => 'links',
+      '#links' => $author_links,
+    ];
+    $variables['author']['#contextual_links'] = [
+      'eg_menux_grp' => [
+        'route_parameters' => [],
+      ],
+    ];
+  }
+}

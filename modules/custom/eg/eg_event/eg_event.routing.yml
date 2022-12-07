@@ -1,0 +1,7 @@
+eg_event.euro_cup_news:
+  path: '/euro-cup-news'
+  defaults:
+    _controller: 'Drupal\eg_event\Controller\EuroCupNewsController::showNews'
+    _title: 'Euro Cup Latest News'
+  requirements:
+    _permission: 'access content'
