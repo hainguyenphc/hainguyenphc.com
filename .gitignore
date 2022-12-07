@@ -12,3 +12,6 @@ sites/default/files
 # Some images are critical and they should be shipped everywhere.
 # sites/default/public-files
 sites/default/settings.php
+
+# Public file system
+sites/default/public-files
