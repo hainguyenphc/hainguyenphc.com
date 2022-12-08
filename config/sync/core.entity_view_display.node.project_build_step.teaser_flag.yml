@@ -1,9 +1,9 @@
-uuid: a74654fc-9555-48e0-a53f-4b4d67d9d0ee
+uuid: f538a8e4-1893-4fe4-9ec1-052360053b4c
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.teaser_flag
     - field.field.node.project_build_step.body
     - field.field.node.project_build_step.field_brief_description
     - field.field.node.project_build_step.field_project
@@ -14,10 +14,10 @@ dependencies:
     - image
     - text
     - user
-id: node.project_build_step.teaser
+id: node.project_build_step.teaser_flag
 targetEntityType: node
 bundle: project_build_step
-mode: teaser
+mode: teaser_flag
 content:
   field_brief_description:
     type: text_default

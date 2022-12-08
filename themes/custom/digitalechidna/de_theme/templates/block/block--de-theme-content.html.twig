@@ -43,7 +43,12 @@
     {% if content__left_sidebar %}
       <div id="content--node-wrapper">{{ content }}</div>
       {# @see themes/custom/digitalechidna/de_theme/de_theme.theme #}
-      <div id="content--left-sidebar">{{ content__left_sidebar }}</div>
+      <div id="content--left-sidebar">
+        {{ content__left_sidebar.main }}
+        <div class="suffix-1" style='margin-top: 1.25rem;'>
+          {{ content__left_sidebar.suffix_1|raw }}
+        </div>
+      </div>
     {% else %}
       {{ content }}
     {% endif %}

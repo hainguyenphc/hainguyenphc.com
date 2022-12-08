@@ -1,0 +1,10 @@
+uuid: c1da8a96-103f-4b70-bd54-434236a2ca4b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.teaser_flag
+label: 'Teaser (Flag)'
+targetEntityType: node
+cache: true

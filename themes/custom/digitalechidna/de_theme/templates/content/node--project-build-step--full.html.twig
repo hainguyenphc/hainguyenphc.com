@@ -99,7 +99,16 @@
   {% endif %}
 
   <div{{ content_attributes.addClass('node__content') }}>
-    {{ content|without('field_project') }}
+    {{ content|without('field_project', 'field_related_build_steps') }}
   </div>
+
+  {# @see modules/custom/hnp_project_build_step/hnp_project_build_step.module #}
+  {# Only renders this div if there are related contents. #}
+  {% if no_related_content == false %}
+    <div id="related-first-steps">
+      <h2>{% trans %} Related Contents {% endtrans %}</h2>
+      {{ content.field_related_build_steps }}
+    </div>
+  {% endif %}
 
 </article>

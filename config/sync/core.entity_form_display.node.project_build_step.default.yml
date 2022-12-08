@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.project_build_step.body
+    - field.field.node.project_build_step.field_brief_description
     - field.field.node.project_build_step.field_project
     - field.field.node.project_build_step.field_related_build_steps
     - field.field.node.project_build_step.field_teaser_image
@@ -33,6 +34,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_brief_description:
+    type: text_textarea
+    weight: 125
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_project:
     type: entity_reference_autocomplete

@@ -11240,6 +11240,97 @@ hr {
             justify-content: center;
     max-width: var(--content-width); }
 
+#top-3-first-steps {
+  margin: 2rem 0; }
+
+.view-id-project_build_steps_series_.view-display-id-top_3_first_steps .view-content,
+.view-id-project_build_steps_series_.view-display-id-page_read_all .view-content {
+  font-size: 1.15rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: var(--content-width); }
+  @media screen and (max-width: 894px) {
+    .view-id-project_build_steps_series_.view-display-id-top_3_first_steps .view-content,
+    .view-id-project_build_steps_series_.view-display-id-page_read_all .view-content {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; } }
+  .view-id-project_build_steps_series_.view-display-id-top_3_first_steps .view-content > .views-row,
+  .view-id-project_build_steps_series_.view-display-id-page_read_all .view-content > .views-row {
+    margin: 1rem;
+    padding: 1rem;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    border: 1px solid var(--text-color-light);
+    border-radius: 12px;
+    -webkit-box-shadow: 10px 5px var(--text-color-light);
+            box-shadow: 10px 5px var(--text-color-light);
+    min-width: 300px; }
+
+.build-step-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: var(--content-width/2); }
+  .build-step-card > .build-step-card-image {
+    width: 300px;
+    max-width: 350px; }
+    .build-step-card > .build-step-card-image img {
+      border-radius: 10px; }
+
+.build-step-card-title > h4 {
+  margin-bottom: 5px; }
+
+.build-step-card-metadata {
+  font-style: italic;
+  margin-bottom: 5px; }
+
+.build-step-card-read-more {
+  font-weight: bold; }
+
+.field--name-field-related-build-steps {
+  font-size: 1.15rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: var(--content-width); }
+  @media screen and (max-width: 894px) {
+    .field--name-field-related-build-steps {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; } }
+  .field--name-field-related-build-steps > .field__item {
+    margin: 1rem;
+    padding: 1rem;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    border: 1px solid var(--text-color-light);
+    border-radius: 12px;
+    -webkit-box-shadow: 10px 5px var(--text-color-light);
+            box-shadow: 10px 5px var(--text-color-light);
+    min-width: 300px; }
+
 h1.page-title > .field--name-title {
   font-style: normal;
   font-weight: 700; }

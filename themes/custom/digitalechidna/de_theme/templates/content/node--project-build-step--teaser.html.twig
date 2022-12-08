@@ -64,7 +64,6 @@
  */
 #}
 
-
 {%
   set classes = [
     'node',
@@ -75,18 +74,20 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
+
 {{ attach_library('classy/node') }}
-<article{{ attributes.addClass(classes) }}>
 
-  {{ title_prefix }}
-  {% if not page %}
-    <h2{{ title_attributes }}>
+<div class="build-step-card">
+  <div class="build-step-card-image">
+    <a href="{{ url }}" rel="bookmark">{{ content.field_teaser_image }}</a>
+  </div>
+  <div class="build-step-card-title">
+    {# {{ label }} #}
+     <h4{{ title_attributes }}>
       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
-  {% endif %}
-  {{ title_suffix }}
-
-  {% if display_submitted %}
+    </h4>
+  </div>
+  <div class="build-step-card-metadata">
     <footer class="node__meta">
       {{ author_picture }}
       <div{{ author_attributes.addClass('node__submitted') }}>
@@ -96,10 +97,11 @@
         {{ metadata }}
       </div>
     </footer>
-  {% endif %}
-
-  <div{{ content_attributes.addClass('node__content') }}>
-    {{ content }}
   </div>
-
-</article>
+  <div class="build-step-card-brief-description">
+    {{ content.field_brief_description }}
+  </div>
+  <div class="build-step-card-read-more">
+    <a href="{{ url }}" rel="bookmark">{% trans %} Read more {% endtrans %}</a>
+  </div>
+</div>

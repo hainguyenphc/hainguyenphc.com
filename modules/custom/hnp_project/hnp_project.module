@@ -2,6 +2,7 @@
 
 use Drupal\node\Entity\Node;
 use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
 
 /**
  * Implements hook_views_pre_view().
@@ -55,5 +56,15 @@ function hnp_project_preprocess_node(array &$variables) {
       '#arguments' => ["{$nid}"],
       '#embed' => TRUE,
     ];
+
+    // Determines if the `project_build_steps_series_.top_3_first_steps` view block
+    // has results or not.
+    $view = Views::getView('project_build_steps_series_');
+    $view->setDisplay('top_3_first_steps');
+    $view->setArguments(["{$nid}"]);
+    $view->setOffset(0);
+    $view->usePager();
+    $view->execute();
+    $variables['no_content'] = count($view->result) === 0;
   }
 }
