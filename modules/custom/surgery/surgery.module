@@ -1,0 +1,41 @@
+<?php
+
+// set_error_handler('error_handler');
+
+function error_handler($errno, $errmsg, $filename, $linenum, $vars, $tmp) {
+  if (0 === error_reporting())
+    return false;
+
+  if ( $errno !== E_ERROR )
+    throw new \ErrorException( sprintf('%s: %s', $errno, $errmsg ), 0, $errno, $filename, $linenum );
+}
+
+function get_settings_php_file_of($project) {
+  $file_path = NULL;
+  $handle = NULL;
+  try {
+    $file_path = "/Users/admin/Sites/${project}/docroot/sites/default/settings.php";
+    $handle = file_get_contents($file_path);
+  } catch (\Throwable $th) {
+    try {
+      $file_path = "/Users/admin/Sites/${project}/web/sites/default/settings.php";
+      $handle = file_get_contents($file_path);
+    } catch (\Throwable $th) {
+      try {
+        $file_path = "/Users/admin/Sites/${project}/sites/default/settings.php";
+        $handle = file_get_contents($file_path);
+      } catch (\Throwable $th) {
+        print("No settings.php file detected.");
+        echo PHP_EOL;
+      }
+    }
+  }
+
+  if (!is_null($handle) && !is_null($file_path)) {
+    print_r($file_path);
+    echo PHP_EOL;
+    print_r($handle);
+  }
+}
+
+// get_settings_php_file_of('blockbooking');

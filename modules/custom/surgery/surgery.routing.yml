@@ -1,0 +1,10 @@
+surgery.installed_modules_page:
+  path: '/surgery/installed-modules'
+  defaults:
+    _title: 'Installed Modules'
+    _controller: 'Drupal\surgery\Controller\InstalledModulesPage::buildPage'
+  requirements:
+    _permission: 'administer content types'
+  options:
+    _admin_route: TRUE
+  arguments: ['@extension.list.module']
