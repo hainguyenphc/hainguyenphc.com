@@ -1,0 +1,11 @@
+services:
+  products.importer_manager:
+    class: 'Drupal\eg_products\Plugin\ImporterPluginManager'
+    # This is also a service, we inherit it.
+    parent: 'default_plugin_manager'
+    arguments: ['@entity_type.manager']
+  products.commands:
+    class: 'Drupal\eg_products\Commands\ProductCommands'
+    arguments: ['@products.importer_manager']
+    tags:
+      - { name: drush.command }

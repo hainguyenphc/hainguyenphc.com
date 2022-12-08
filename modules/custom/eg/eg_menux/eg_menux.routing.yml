@@ -1,0 +1,8 @@
+eg_menux.main:
+  path: '/menux'
+  defaults:
+    _controller:
+      'Drupal\eg_menux\Controller\MenuxController::render'
+    _title: 'Menux'
+  requirements:
+    _permission: 'access control'

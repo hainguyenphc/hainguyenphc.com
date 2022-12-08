@@ -1,0 +1,70 @@
+<?php
+
+use Drupal\node\Entity\Node;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function hnp_project_views_pre_view(ViewExecutable $view, string $display_id, array &$args) {
+  if ($view->id() === 'projects' && $display_id === 'page__projects_by_category') {
+    $terms_query = \Drupal::entityQuery('taxonomy_term');
+    $terms_query->condition('vid', "project_category");
+    $tids = $terms_query->execute();
+    foreach ($tids as $tid) {
+      $aliasManager = \Drupal::service('path_alias.manager');
+      $alias = $aliasManager->getAliasByPath("/taxonomy/term/{$tid}");
+      $alias = str_replace('/', '', $alias);
+      if ($args[0] === $alias) {
+        $args[0] = 1;
+        $view->args[0] = intval($tid);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function hnp_project_preprocess_field(array &$variables) {
+  if (isset($variables['element']['#object'])) {
+    $node = $variables['element']['#object'];
+    if ($node instanceof Node 
+      && $node->bundle() === 'project' 
+      && isset($variables['field_name']) 
+      && $variables['field_name'] === 'created'
+    ) {
+      $variables['items'][0]['content']['#markup'] = !$node->changed->isEmpty() 
+        ? date('F d, Y', $node->changed->value) 
+        : date('F d, Y', $node->created->value);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function hnp_project_preprocess_node(array &$variables) {
+  $node = $variables['node'];
+  if ($node instanceof Node && $node->bundle() === 'project' && $variables['view_mode'] === 'full') {
+    $nid = $node->id();
+    $variables['content']['top_3_first_project_build_steps'] = [
+      '#type' => 'view',
+      '#name' => 'project_build_steps_series_',
+      '#display_id' => 'top_3_first_steps',
+      '#arguments' => ["{$nid}"],
+      '#embed' => TRUE,
+    ];
+
+    // Determines if the `project_build_steps_series_.top_3_first_steps` view block
+    // has results or not.
+    $view = Views::getView('project_build_steps_series_');
+    $view->setDisplay('top_3_first_steps');
+    $view->setArguments(["{$nid}"]);
+    $view->setOffset(0);
+    $view->usePager();
+    $view->execute();
+    $variables['no_content'] = count($view->result) === 0;
+  }
+}

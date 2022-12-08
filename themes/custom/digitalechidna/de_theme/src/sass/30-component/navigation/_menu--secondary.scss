@@ -15,8 +15,7 @@
     a {
       @extend a.dark-link;
       font-weight: $bold;
-      text-transform: uppercase;
-      color: #000;
+      color: var(--text-color);
       font-size: 0.9em;
       &:lang(fr) {
         font-size: 0.78em;
@@ -27,16 +26,21 @@
 
 #block-uppermenublock {
   @media screen {
-    margin-left: 1.7em;
+    margin-left: 1.2em;
   }
   flex-grow: 1;
 
   a {
     margin-right: 2em;
 
+    &:hover {
+      color: var(--color-red);
+    }
+
     // Active state
     &.active {
       position: relative;
+      color: var(--color-red);
 
       &::after {
         border-bottom: 7px solid #000;
@@ -74,16 +78,4 @@
 
 #block-productregistrationmenublock {
   margin-left: 0;
-}
-
-#block-basiccartcountblock {
-  .basic-cart-count {
-    margin-right: 0.5em;
-  }
-  p {
-    margin: 0;
-  }
-  a {
-    color: #000;
-  }
 }

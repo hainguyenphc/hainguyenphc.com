@@ -1,0 +1,6 @@
+name: Example - Link
+description: Demonstrates how to generate links.
+package: example
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9

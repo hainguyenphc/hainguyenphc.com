@@ -5,9 +5,13 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.project_build_step.body
+    - field.field.node.project_build_step.field_brief_description
     - field.field.node.project_build_step.field_project
+    - field.field.node.project_build_step.field_related_build_steps
+    - field.field.node.project_build_step.field_teaser_image
     - node.type.project_build_step
   module:
+    - image
     - text
     - user
 id: node.project_build_step.teaser
@@ -15,18 +19,30 @@ targetEntityType: node
 bundle: project_build_step
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
+  field_brief_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_image:
+    type: image
     label: hidden
     settings:
-      trim_length: 600
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 2
     region: content
 hidden:
+  body: true
   field_project: true
+  field_related_build_steps: true

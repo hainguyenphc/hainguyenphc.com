@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function eg_mail_plugin_install($is_syncing) {
+  if ($is_syncing) {
+    return;
+  }
+
+  $config = \Drupal::configFactory()->get('system.mail');
+  $mail_plugins = $config->get('interface');
+  if (in_array('eg_mail_plugin', array_keys($mail_plugins))) {
+    return;
+  }
+  $mail_plugins['eg_mail_plugin'] = 'eg_mail_plugin_mail';
+  $config->set('interface', $mail_plugins)->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function eg_mail_plugin_uninstall($is_syncing) {
+  if ($is_syncing) {
+    return;
+  }
+
+  $config = \Drupal::configFactory()->getEditable('system.mail');
+  $mail_plugins = $config->get('interface');
+  if (!in_array('eg_mail_plugin', array_keys($mail_plugins))) {
+    return;
+  }
+
+  unset($mail_plugins['eg_mail_plugin']);
+  $config->set('interface', $mail_plugins)->save();
+}

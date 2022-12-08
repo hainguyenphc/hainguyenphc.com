@@ -1,0 +1,6 @@
+name: Example - Email
+description: Sends out emails programatically.
+package: example
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9

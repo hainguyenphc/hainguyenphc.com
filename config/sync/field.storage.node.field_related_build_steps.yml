@@ -1,0 +1,19 @@
+uuid: 8c52e58a-0eef-4b3c-9172-98ca064907b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_related_build_steps
+field_name: field_related_build_steps
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,10 @@
+teams.team_type.*:
+  type: 'config_entity'
+  label: 'Team type config'
+  mapping:
+    id:
+      type: 'string'
+      label: 'ID'
+    label:
+      type: 'label'
+      label: 'Label'

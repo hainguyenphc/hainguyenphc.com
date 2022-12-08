@@ -1,0 +1,12 @@
+uuid: 9ab08d51-d5cc-4e1b-8710-a4dd5c7bbc2e
+langcode: en
+status: true
+dependencies: {  }
+id: roboto_500_latin_for_h3
+label: 'Roboto 500 Latin (for h3)'
+font_url: 'https://www.google.com/webfonts/family?family=Roboto&subset=latin#500'
+fallback: ''
+selectors: '.fontyourface h3'
+theme: de_theme
+style: null
+weight: null

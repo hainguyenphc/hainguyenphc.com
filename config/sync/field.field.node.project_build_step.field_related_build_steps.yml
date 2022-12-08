@@ -1,0 +1,28 @@
+uuid: 2834417e-35ea-41fc-a03d-bac4fc4a7796
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_build_steps
+    - node.type.project_build_step
+id: node.project_build_step.field_related_build_steps
+field_name: field_related_build_steps
+entity_type: node
+bundle: project_build_step
+label: 'Related Contents'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      project_build_step: project_build_step
+    sort:
+      field: created
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,48 @@
+uuid: f538a8e4-1893-4fe4-9ec1-052360053b4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser_flag
+    - field.field.node.project_build_step.body
+    - field.field.node.project_build_step.field_brief_description
+    - field.field.node.project_build_step.field_project
+    - field.field.node.project_build_step.field_related_build_steps
+    - field.field.node.project_build_step.field_teaser_image
+    - node.type.project_build_step
+  module:
+    - image
+    - text
+    - user
+id: node.project_build_step.teaser_flag
+targetEntityType: node
+bundle: project_build_step
+mode: teaser_flag
+content:
+  field_brief_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teaser_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  body: true
+  field_project: true
+  field_related_build_steps: true

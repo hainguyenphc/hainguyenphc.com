@@ -1,0 +1,14 @@
+eg_book.book:
+  path: '/book/{book}'
+  defaults:
+    _controller:
+      '\Drupal\eg_book\Controller\BookController::getBook'
+    _title_callback:
+      '\Drupal\eg_book\Controller\BookController::getTitle'
+  options:
+    parameters:
+      book:
+        # a book is a content type.
+        type: entity:node
+  requirements:
+    _permission: 'access content'

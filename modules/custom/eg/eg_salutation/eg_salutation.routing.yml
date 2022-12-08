@@ -1,0 +1,45 @@
+eg_salutation.hello:
+  path: '/hello'
+  defaults:
+    _controller: 'Drupal\eg_salutation\Controller\HelloController::hello'
+    _title: 'Salutation - Hello'
+  requirements:
+    _permission: 'access content'
+
+# @see https://www.drupal.org/node/2095317
+eg_salutation.introduce_node:
+  path: '/introduce/{node_param}'
+  defaults:
+    _controller:
+      'Drupal\eg_salutation\Controller\NodeIntroductionController::introduce'
+    _title_callback:
+      'Drupal\eg_salutation\Controller\NodeIntroductionController::getTitle'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node_param:
+        type: entity:node
+
+# with service (ws) - better approach
+eg_salutation.hello_ws:
+  path: '/hello-ws/{user}'
+  defaults:
+    _controller:
+      'Drupal\eg_salutation\Controller\HelloWsController::hello'
+    _title_callback:
+      'Drupal\eg_salutation\Controller\HelloWsController::getTitle'
+  options:
+    parameters:
+      node_param:
+        type: entity:user
+  requirements:
+    _permission: 'access content'
+
+eg_salutation.hello_config_form:
+  path: '/admin/config/hello-configuration'
+  defaults:
+    _form: 'Drupal\eg_salutation\Form\HelloConfigForm'
+    _title: 'Hello Configuration Form'
+  requirements:
+    _permission: 'administer site configuration'

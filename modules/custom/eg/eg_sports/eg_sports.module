@@ -1,0 +1,28 @@
+<?php
+
+use Drupal\Core\Database\Query\AlterableInterface;
+
+/**
+ * Implements hook_query_alter().
+ */
+function eg_sports_query_alter(AlterableInterface $query) {
+  /*
+    We add tag during building the query builder.
+    $query = $database->select('players', 'p')->fields('p')->addTag('players_query');
+    $result = $query->execute();
+  */
+  // Short-circuits if there is no tag.
+  if (!$query->hasTag('player_query')) {
+    return;
+  }
+  // Alters the query here.
+
+}
+
+/**
+ * Implements hook_query_TAG_alter().
+ * E.g., the TAG here is 'player_query'.
+ */
+function eg_sports_query_player_query_alter(AlterableInterface $query) {
+
+}

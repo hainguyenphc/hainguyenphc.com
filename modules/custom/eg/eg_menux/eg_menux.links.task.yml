@@ -1,0 +1,13 @@
+eg_menux.hello_ws:
+  route_name: eg_salutation.hello_ws
+  title: 'Hello World (WS)'
+  # base_route: 'eg_menux.main'
+  base_route: 'eg_salutation.hello_ws'
+  route_parameters:
+    user: '1'
+
+eg_menux.hello_config_form:
+  route_name: eg_salutation.hello_config_form
+  title: 'Salutation Config Form'
+  # base_route: 'eg_menux.main'
+  base_route: 'eg_salutation.hello_ws'

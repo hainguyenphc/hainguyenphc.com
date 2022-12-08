@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.project.body
+    - field.field.node.project.field_banner_image
+    - field.field.node.project.field_brief_description
     - field.field.node.project.field_project_categories
+    - field.field.node.project.field_teaser_image
     - node.type.project
   module:
     - text
@@ -19,7 +22,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
   field_project_categories:
     type: entity_reference_label
@@ -27,11 +30,10 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 102
+    weight: 1
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
-hidden: {  }
+hidden:
+  field_banner_image: true
+  field_brief_description: true
+  field_teaser_image: true
+  links: true

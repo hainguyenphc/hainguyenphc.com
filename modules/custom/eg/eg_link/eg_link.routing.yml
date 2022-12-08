@@ -1,0 +1,7 @@
+eg_link.link_demo:
+  path: '/link-demo'
+  defaults:
+    _controller: 'Drupal\eg_link\Controller\LinkDemo::renderPage'
+    _title: 'Link the Drupal way'
+  requirements:
+    _permission: 'access content'

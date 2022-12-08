@@ -1,0 +1,110 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function eg_sports_schema() {
+  $schema = [];
+
+  $schema['eg_sports_teams'] = [
+    'description' => t('The table holds team data'),
+    'fields' => [
+      'id' => [
+        'description' => t('The primary identifier for teams'),
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'description' => t('The team name'),
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'description' => [
+        'description' => t('The team description'),
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      // Assume a new column is added after hook_schema() runs. We do this both
+      // in the hook_schema() for other sites that install this module for the
+      // 1st time and hook_update_N() for sites already installed it.
+      'location' => [
+        'description' => t('The team location'),
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => [
+      'id'
+    ],
+  ];
+
+  $schema['eg_sports_players'] = [
+    'description' => t('The table that holds players data'),
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for players',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'team_id' => [
+        'description' => 'The ID of the team this player belongs to',
+        'type' => 'int',
+        'unsigned' => TRUE,
+      ],
+      'name' => [
+        'description' => t('The player\'s name'),
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'data' => [
+        'description' => t('Arbitrary data intrinsic to player'),
+        'type' => 'blob',
+        'size' => 'big',
+      ],
+    ],
+    'primary key' => [
+      'id'
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * If the module is already installed before the hook_schema() is written, we
+ * could write a hook_update_N() and call `drupal_install_schema('eg_sports')`.
+ */
+
+/**
+ * Implements hook_update_N().
+ */
+function eg_sports_update_9001(&$sandbox) {
+  $location = [
+    'description' => t('The team location'),
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+  ];
+  $schema = \Drupal::database()->schema();
+  $schema->addField('eg_sports_teams', 'location', $location);
+
+  // Other things we could do
+
+  // Creates a new table
+  // $schema->createTable('new_table_name', $new_table_definition);
+
+  // Drops table
+  // $schema->dropTable('existing_table_name');
+
+  // Drops field/column
+  // $schema->dropField('existing_table_name', 'field_name_to_delete');
+
+  // Alters field/column
+  // $schema->changeField('existing_table_name', 'field_name_to_change', 'new_field_name', $new_field_definition);
+}

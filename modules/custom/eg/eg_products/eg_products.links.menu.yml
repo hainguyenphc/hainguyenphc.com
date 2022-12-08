@@ -1,0 +1,20 @@
+entity.product.collection:
+  title: 'Products Inventory'
+  route_name: 'entity.product.collection'
+  description: 'All products are listed here'
+  parent: 'system.admin_structure'
+  weight: 100
+
+entity.importer.collection:
+  title: 'Importer List'
+  route_name: 'entity.importer.collection'
+  description: 'All Importer entities are listed here'
+  parent: 'system.admin_structure'
+  weight: 99
+
+entity.product_type.collection:
+  title: 'Product Types'
+  route_name: 'entity.product_type.collection'
+  description: 'All Product types (bundles) are listed here'
+  parent: 'system.admin_structure'
+  weight: 101

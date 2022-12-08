@@ -1,0 +1,9 @@
+eg_short_answers.practice_form:
+  path: '/short-answer/practice/{short_answer}'
+  defaults:
+    _form:
+      'Drupal\eg_short_answers\Form\ShortAnswerPractice'
+    _title_callback:
+      'Drupal\eg_short_answers\Form\ShortAnswerPractice::getTitle'
+  requirements:
+    _permission: 'access content'

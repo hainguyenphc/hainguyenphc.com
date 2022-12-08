@@ -1,0 +1,19 @@
+entity.team.collection:
+  title: 'Teams'
+  route_name: 'entity.team.collection'
+  description: 'All teams are listed here'
+  parent: 'system.admin_structure'
+  weight: 102
+
+entity.team.add_page:
+  title: 'Add Team'
+  route_name: 'entity.team.add_page'
+  parent: 'system.admin_content'
+
+# The Drupal\eg_sports\ListBuilderTeamTypeListBuilder class must be created.
+entity.team_type.collection:
+  title: 'Team Types'
+  route_name: 'entity.team_type.collection'
+  description: 'All team types (bundles) are listed here'
+  parent: 'system.admin_structure'
+  weight: 103

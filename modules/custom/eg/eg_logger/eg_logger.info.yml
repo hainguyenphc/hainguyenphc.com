@@ -1,0 +1,5 @@
+name: Example - Logger
+description: Demonstrates how implement custom logging system
+type: module
+core_version_requirement: ^8 || ^9
+package: example

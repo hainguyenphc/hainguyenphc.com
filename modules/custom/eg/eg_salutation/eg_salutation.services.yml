@@ -1,0 +1,4 @@
+services:
+  eg_salutation.hello:
+    class: 'Drupal\eg_salutation\Hello'
+    arguments: ['@config.factory']

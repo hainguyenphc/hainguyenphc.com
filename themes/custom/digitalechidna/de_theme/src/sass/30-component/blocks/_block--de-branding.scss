@@ -1,18 +1,17 @@
 #block-sitebranding {
-
   @media screen and (max-width: 992px) {
     padding: 0;
-    
+
     .site-slogan {
       display: none;
     }
   }
-  
+
   @media screen and (min-width: 1220px) {
-    margin-top: -48px;
+    margin-top: -30px;
   }
 
-  background-color: black;
+  background-color: var(--background-color);
   width: 190px;
   display: flex;
   flex-direction: column;

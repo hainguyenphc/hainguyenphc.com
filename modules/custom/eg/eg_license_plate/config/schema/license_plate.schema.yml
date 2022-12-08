@@ -1,0 +1,10 @@
+field.storage_settings.license_plate:
+  type: mapping
+  label: 'License plate storage settings'
+  mapping:
+    number_max_length:
+      type: integer
+      label: 'Max length for the number'
+    code_max_length:
+      type: integer
+      label: 'Max length for the code'

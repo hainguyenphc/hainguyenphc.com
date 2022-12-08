@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a book.
+ *
+ * Available variables:
+ * - author: The author of this book.
+ * - publication_date: The date this book gets published.
+ * - body: A summary of the book and any appraisal.
+ * - attributes: HTML attributes for the layout <div>.
+ *
+ * @ingroup themeable
+ */
+#}
+<div {{ attributes }}>
+  {{ title_prefix }}
+  {# author #}
+  {% if author %}
+    <div>
+      {{ author }}
+    </div>
+  {% else %}
+    <div>
+      <p>The authors of this book are unknown. We are sorry for this inconvenience. Please check back later.</p>
+    </div>
+  {% endif %}
+  <hr />
+  {# body - summary #}
+  {% if body %}
+    {{ body|raw }}
+  {% endif %}
+  <hr />
+  {# publication date #}
+  {% if publication_date %}
+    {{ publication_date }}
+  {% endif %}
+  {{ title_suffix }}
+</div>

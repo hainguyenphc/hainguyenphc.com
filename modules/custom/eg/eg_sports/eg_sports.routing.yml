@@ -1,0 +1,31 @@
+eg_sports.teams:
+  path: '/sports/teams'
+  defaults:
+    _controller: 'Drupal\eg_sports\Controller\TeamsController::getTeams'
+    _title_callback: 'Drupal\eg_sports\Controller\TeamsController::getTitle'
+  requirements:
+    _permission: 'access content'
+
+eg_sports.seed:
+  path: '/sports/seeds'
+  defaults:
+    _controller: 'Drupal\eg_sports\Controller\SeedController::seed'
+    _title: 'Seed sample data'
+  requirements:
+    _permission: 'access content'
+
+eg_sports.players:
+  path: '/sports/players'
+  defaults:
+    _controller: 'Drupal\eg_sports\Controller\PlayersController::getPlayers'
+    _title: 'Players and their clubs'
+  requirements:
+    _permission: 'access content'
+
+eg_sports.players_in_pager:
+  path: '/sports/players-in-pager'
+  defaults:
+    _controller: 'Drupal\eg_sports\Controller\PlayersController::getPlayersInPager'
+    _title: 'Players and their clubs'
+  requirements:
+    _permission: 'access content'

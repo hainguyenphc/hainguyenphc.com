@@ -5,53 +5,32 @@
  * Functions to support theming in de_theme.
  */
 
-/**
- * Implements hook_preprocess_HOOK() for HTML document templates.
- *
- * Adds body classes if certain regions have content.
- */
-// function de_theme_preprocess_html(&$variables) {
-//   // Add information about the number of sidebars.
-//   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_secondary'])) {
-//     $variables['attributes']['class'][] = 'layout-two-sidebars-display';
-//   }
-//   elseif (!empty($variables['page']['sidebar_first'])) {
-//     $variables['attributes']['class'][] = 'layout-one-sidebar-display';
-//     $variables['attributes']['class'][] = 'layout-sidebar-first-display';
-//   }
-//   elseif (!empty($variables['page']['sidebar_second'])) {
-//     $variables['attributes']['class'][] = 'layout-one-sidebar-display';
-//     $variables['attributes']['class'][] = 'layout-sidebar-second-display';
-//   }
-//   else {
-//     $variables['attributes']['class'][] = 'layout-no-sidebars-display';
-//   }
-// }
-
+use Drupal\node\Entity\Node;
+use Drupal\views\Views;
 
 /**
  * Implement hook_preprocess_html()
  */
 
- function de_theme_preprocess_html(&$variables){
-    if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
-        $variables['attributes']['class'][] = 'two_sidebars';
-    }
-    elseif (!empty($variables['page']['sidebar_first'])) {
-        $variables['attributes']['class'][] = 'one_sidebar sidebar_first';
-    }
-    elseif (!empty($variables['page']['sidebar_second'])) {
-        $variables['attributes']['class'][] = 'one_sidebar sidebar_second';
-    }
-    else {
-        $variables['attributes']['class'][] = 'no_sidebars';
-    }
+ function de_theme_preprocess_html(array &$variables){
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'two_sidebars';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'one_sidebar sidebar_first';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'one_sidebar sidebar_second';
+  }
+  else {
+    $variables['attributes']['class'][] = 'no_sidebars';
+  }
  }
 
- /**
+/**
   * Implement hook_preprocess_page()
   */
-function de_theme_preprocess_page(&$variables) {
+function de_theme_preprocess_page(array &$variables) {
    // fix Main page content block order issue
   if (isset($variables['page']['content']['system_main'])) {
     $main_content = $variables['page']['content']['system_main'];
@@ -64,5 +43,63 @@ function de_theme_preprocess_page(&$variables) {
   }
 }
 
+/**
+  * Implement hook_preprocess_block()
+  */
+function de_theme_preprocess_block(array &$variables) {
+  if ($variables['plugin_id'] === 'page_title_block') {
+    /** @var Drupal\node\Entity\Node $node */
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof Node) {
+      /** @var string $bundle */
+      $bundle = $node->bundle();
+      $id = $variables['attributes']['id'];
+      $variables['attributes']['id'] = "{$id}--node-{$bundle}";
+      if ($bundle === 'project' || $bundle === 'page') {
+        // Pass the whole node into template.
+        // Use Twig file_url function to get the URL of the banner image.
+        // @see themes/custom/digitalechidna/de_theme/templates/block/block--page-title-block.html.twig
+        $variables['node'] = $node;
+      }
+    }
+  }
 
+  // Renders contents on left sidebar for
+  // - Project
+  // - Project Build Step
+  if ($variables['plugin_id'] === 'system_main_block') {
+    /** @var \Drupal\node\Entity\Node $node  */
+    $node = \Drupal::request()->attributes->get('node');
+    // Target `project` bundle.
+    if ($node && $node instanceof Node && $node->bundle() === 'project' && $node->hasField('field_project_categories')) {
+      $nid = $node->id();
+      /** @var \Drupal\Core\Field\EntityReferenceFieldItemList */
+      $categories = $node->field_project_categories;
+      /** @var array $render */
+      $render = $categories->view('full');
+      $variables['content__left_sidebar']['main'] = $render;
 
+      // Determines if the `project_build_steps_series_.top_3_first_steps` view block
+      // has results or not.
+      $view = Views::getView('project_build_steps_series_');
+      $view->setDisplay('page_read_all');
+      $view->setArguments(["{$nid}"]);
+      $view->setOffset(0);
+      $view->usePager();
+      $view->execute();
+      if (count($view->result) > 0) {
+        $variables['no_content'] = count($view->result) === 0;
+        $variables['content__left_sidebar']['suffix_1'] = [
+          '#markup' => "<a href='/projects/{$nid}/read-all'><h3>Build Steps</h3></a>",
+        ];
+      }
+    }
+    // Target the `project_build_step` bundle.
+    if ($node && $node instanceof Node && $node->bundle() === 'project_build_step' && $node->hasField('field_project')) {
+      $go_to_project = $node->field_project;
+      /** @var array $render */
+      $render = $go_to_project->view('full');
+      $variables['content__left_sidebar'] = $render;
+    }
+  }
+}

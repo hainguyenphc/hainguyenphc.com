@@ -1,0 +1,21 @@
+uuid: dac2926b-79d6-4d68-b7e4-3a7fbc9b60ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_brief_description
+    - node.type.project_build_step
+  module:
+    - text
+id: node.project_build_step.field_brief_description
+field_name: field_brief_description
+entity_type: node
+bundle: project_build_step
+label: 'Brief Description'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,12 @@
+uuid: d815078d-38d6-4aba-82bb-c9af0cc663d8
+langcode: en
+status: true
+dependencies: {  }
+id: roboto_700_latin
+label: 'Roboto 700 Latin'
+font_url: 'https://www.google.com/webfonts/family?family=Roboto&subset=latin#700'
+fallback: ''
+selectors: '.fontyourface h1'
+theme: de_theme
+style: null
+weight: null

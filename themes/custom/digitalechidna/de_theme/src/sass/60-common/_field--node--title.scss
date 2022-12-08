@@ -1,0 +1,8 @@
+h1.page-title {
+  > .field--name-title {
+    // The html tag itself has this font already.
+    // font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+  }
+}

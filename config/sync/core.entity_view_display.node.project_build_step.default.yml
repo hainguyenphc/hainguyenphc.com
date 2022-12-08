@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.project_build_step.body
+    - field.field.node.project_build_step.field_brief_description
     - field.field.node.project_build_step.field_project
+    - field.field.node.project_build_step.field_related_build_steps
+    - field.field.node.project_build_step.field_teaser_image
     - node.type.project_build_step
   module:
     - text
@@ -19,19 +22,30 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_project:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 102
+    weight: 2
+    region: content
+  field_related_build_steps:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
-hidden: {  }
+hidden:
+  field_brief_description: true
+  field_teaser_image: true
