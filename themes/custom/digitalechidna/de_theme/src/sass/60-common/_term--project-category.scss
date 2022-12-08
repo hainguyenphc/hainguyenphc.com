@@ -1,0 +1,10 @@
+.view-taxonomy-term.view-id-taxonomy_term.view-display-id-page_1 {
+  > .view-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @media screen and (max-width: $just-before-weird-screen-max) {
+      gap: 1.5rem;
+    }
+  }  
+}

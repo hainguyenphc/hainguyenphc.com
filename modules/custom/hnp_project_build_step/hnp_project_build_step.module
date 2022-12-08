@@ -42,7 +42,6 @@ function hnp_project_build_step_preprocess_block(array &$variables) {
   if ($variables['plugin_id'] === 'page_title_block') {
     $current_path = \Drupal::service('path.current')->getPath();
     if (str_contains($current_path, 'projects') && str_contains($current_path, 'read-all')) {
-      $a = 1;
       $tokens = explode('/', $current_path);
       foreach ($tokens as $index => $token) {
         if (is_numeric($token)) {
@@ -54,6 +53,4 @@ function hnp_project_build_step_preprocess_block(array &$variables) {
       }
     }
   }
-
-  $a = 1;
 }

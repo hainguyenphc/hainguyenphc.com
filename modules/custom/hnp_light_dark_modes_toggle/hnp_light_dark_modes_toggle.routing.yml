@@ -1,0 +1,6 @@
+switch_to_theme_mode:
+  path: /hnp-light-dark-modes/toggle-to/{mode}
+  defaults:
+    _controller: Drupal\hnp_light_dark_modes_toggle\Controller\ThemeModeSwitcher::switchTo
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function hnp_light_dark_modes_toggle_theme($existing, $type, $theme, $path) {
+  return [
+    'light_dark_toggle' => [
+      'template' => 'light-dark-toggle',
+      'variables' => [
+        'current_mode' => 'dark',
+      ],
+    ],
+  ];
+}
+
+// function hnp_light_dark_modes_toggle_css_alter(array &$css, $assets) {
+//   $config = \Drupal::config('hnp_light_dark_modes_toggle.current_theme_mode');
+//   $current_theme_mode = $config->get('current_theme_mode');
+//   if ($current_theme_mode === 'dark') {
+//     unset($css["themes/custom/digitalechidna/de_theme/dist/css/de_theme.css"]);
+//     // unset($assets['libraries']['de_theme/base']);
+//   }
+//   else {
+//     unset($css["themes/custom/digitalechidna/de_theme/dist-dark/css/de_theme.css"]);
+//     // unset($assets['libraries']['de_theme/base_dark']);
+//   }
+// }

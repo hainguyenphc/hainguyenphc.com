@@ -1,0 +1,11 @@
+light_dark_toggle:
+  version: 1.x
+  css:
+    theme:
+      css/light_dark_toggle.css: {}
+  js:
+    js/light_dark_toggle.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
