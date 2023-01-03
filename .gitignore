@@ -15,3 +15,5 @@ sites/default/settings.php
 
 # Public file system
 sites/default/public-files
+
+**/simpletest/**
