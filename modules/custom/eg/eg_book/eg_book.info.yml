@@ -3,4 +3,3 @@ description: Demonstrates the theming process with a book title
 type: module
 core_version_requirement: ^8 || ^9
 package: example
-
