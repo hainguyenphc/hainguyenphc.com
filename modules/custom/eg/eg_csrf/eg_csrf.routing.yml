@@ -1,0 +1,17 @@
+eg_csrf.landing_page:
+  path: '/csrf-landing-page'
+  defaults:
+    _controller:
+      '\Drupal\eg_csrf\Controller\ContactAuthor::landingPage'
+  requirements:
+    _permission: 'access content'
+
+eg_csrf.contact_author:
+  path: '/csrf-contact-author'
+  defaults:
+    _controller:
+      '\Drupal\eg_csrf\Controller\ContactAuthor::contactAuthor'
+    _title: 'Contact Author'
+  requirements:
+    _permission: 'access content'
+  _csrf_token: 'TRUE'
