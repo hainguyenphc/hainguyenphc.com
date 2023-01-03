@@ -15,6 +15,7 @@
         }
     ],
     "require": {
+        "behat/behat": "^3.12",
         "composer/installers": "^1.9",
         "drupal/admin_toolbar": "^3.2",
         "drupal/config_ignore": "^2.3",
@@ -26,7 +27,9 @@
         "drupal/fontyourface": "^3.6",
         "drupal/responsive_menu": "^4.4",
         "drupal/tb_megamenu": "^1.7",
-        "drush/drush": "^11.3"
+        "drush/drush": "^11.3",
+        "phpunit/phpunit": "^9.5",
+        "symfony/phpunit-bridge": "^6.2"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -101,6 +104,8 @@
         }
     },
     "require-dev": {
-        "drupal/coffee": "^1.2"
+        "drupal/coffee": "^1.2",
+        "drupal/drupal-extension": "^4.2",
+        "phpspec/prophecy-phpunit": "^2"
     }
 }
