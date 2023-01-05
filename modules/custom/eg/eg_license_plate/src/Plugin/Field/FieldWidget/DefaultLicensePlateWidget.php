@@ -16,6 +16,9 @@ use Drupal\eg_license_plate\Plugin\Field\FieldType\LicensePlateItem;
  *      "license_plate"
  *   }
  * )
+ * 
+ * @see field.widget.settings.default_license_plate_widget 
+ * in modules/custom/eg/eg_license_plate/config/schema/license_plate.schema.yml file.
  */
 class DefaultLicensePlateWidget extends WidgetBase {
 
