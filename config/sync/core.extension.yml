@@ -21,6 +21,9 @@ module:
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  eg_csrf: 0
+  eg_license_plate: 0
+  eg_tests: 0
   field: 0
   field_ui: 0
   file: 0
