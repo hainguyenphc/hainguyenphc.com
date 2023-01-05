@@ -1,3 +1,5 @@
+# @see field.storage_settings.file in core/modules/file/config/schema/file.schema.yml file.
+# Format: field.storage_settings.ID where ID is the id from @FieldType annotation.
 field.storage_settings.license_plate:
   type: mapping
   label: 'License plate storage settings'
@@ -9,7 +11,7 @@ field.storage_settings.license_plate:
       type: integer
       label: 'Max length for the code'
 
-# @see field.widget.settings.file_generic in core/modules/file/config/schema/file.schema.yml
+# @see field.widget.settings.file_generic in core/modules/file/config/schema/file.schema.yml file.
 # Format: field.widget.settings.ID where ID is the id from @FieldWidget annotation.
 field.widget.settings.default_license_plate_widget:
   type: mapping
