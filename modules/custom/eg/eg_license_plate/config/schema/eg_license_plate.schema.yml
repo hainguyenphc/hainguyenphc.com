@@ -45,3 +45,11 @@ field.formatter.settings.default_license_plate_formatter:
     concatenated:
       type: boolean
       label: "Whether to concatenate the two fields number and code into one single span tag."
+
+field.field_settings.license_plate_type:
+  type: mapping
+  label: 'License plate field settings'
+  mapping:
+    codes:
+      type: string
+      label: 'Codes'

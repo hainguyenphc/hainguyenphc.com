@@ -21,6 +21,7 @@ use Drupal\Core\TypedData\DataDefinition;
  * 
  * See web/modules/custom/eg_license_plate/config/schema/license_plate.schema.yml file.
  * The pattern is field.storage_settings.FIELD_TYPE_PLUGIN_ID
+ * The pattern is field.field_settings.
  */
 class LicensePlateItem extends FieldItemBase {
 
@@ -69,6 +70,36 @@ class LicensePlateItem extends FieldItemBase {
     ];
 
     return $elements + parent::storageSettingsForm($form, $form_state, $has_data);
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * Field settings are specific to each field instance on a certain entity bundle.
+   * For example:
+   *  - field settings for CT 1
+   *  - field settings for CT 2
+   *  - etc.
+   */
+  public static function defaultFieldSettings() {
+    return [
+      'code' => '',
+    ] + parent::defaultFieldSettings();
+  }
+
+  /** 
+   * {@inheritDoc}
+   */
+  public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
+    $element = [];
+
+    $element['codes'] = [
+      '#title' => $this->t('License plate code'),
+      '#type' => 'textarea',
+      '#default_value' => $this->t('If you want the field to have a select list with license plate codes instead of a textfield, please provide the available codes. Each one is on a new line.'),
+    ];
+
+    return $element;
   }
 
   /**

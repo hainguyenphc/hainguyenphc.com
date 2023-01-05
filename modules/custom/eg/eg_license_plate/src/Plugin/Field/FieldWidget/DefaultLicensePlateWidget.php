@@ -134,16 +134,17 @@ class DefaultLicensePlateWidget extends WidgetBase {
     ] + $element;
 
     $placeholder_settings = $this->getSetting('placeholder');
-    $element['details']['code'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Plate code'),
-      '#default_value' => isset($items[$delta]->code) ? $items[$delta]->code : NULL,
-      '#size' => $this->getSetting('code_size'),
-      '#placeholder' => $placeholder_settings['code'],
-      '#maxlength' => $this->getFieldSetting('code_max_length'),
-      '#description' => '',
-      '#required' => $element['#required'],
-    ];
+    // $element['details']['code'] = [
+    //   '#type' => 'textfield',
+    //   '#title' => $this->t('Plate code'),
+    //   '#default_value' => isset($items[$delta]->code) ? $items[$delta]->code : NULL,
+    //   '#size' => $this->getSetting('code_size'),
+    //   '#placeholder' => $placeholder_settings['code'],
+    //   '#maxlength' => $this->getFieldSetting('code_max_length'),
+    //   '#description' => '',
+    //   '#required' => $element['#required'],
+    // ];
+    $this->__addCodeField($element, $items, $delta, $placeholder_settings);
 
     $element['details']['number'] = [
       '#type' => 'textfield',
@@ -172,6 +173,40 @@ class DefaultLicensePlateWidget extends WidgetBase {
     }
     
     return $values;
+  }
+
+  protected function __addCodeField(&$element, FieldItemListInterface $items, $delta, $placeholder_settings) {
+    $element['details']['code'] = [
+      // '#type' => 'textfield',
+      '#title' => $this->t('Plate code'),
+      '#default_value' => isset($items[$delta]->code) ? $items[$delta]->code : NULL,
+      // '#size' => $this->getSetting('code_size'),
+      // '#placeholder' => $placeholder_settings['code'],
+      // '#maxlength' => $this->getFieldSetting('code_max_length'),
+      '#description' => '',
+      '#required' => $element['#required'],
+    ];
+
+    // @see modules/custom/eg/eg_license_plate/src/Plugin/Field/FieldType/LicensePlateItem.php
+    // - defaultFieldSettings()
+    // - fieldSettingsForm()
+    $codes = $this->getFieldSetting('codes');
+    if (!$codes) {
+      $element['details']['code'] = [
+        '#type' => 'textfield',
+        '#size' => $this->getSetting('code_size'),
+        '#placeholder' => $placeholder_settings['code'],
+        '#maxlength' => $this->getFieldSetting('code_max_length'),
+      ];
+
+      return;
+    }
+
+    $codes = explode('\r\n', $codes);
+    $element['details']['code'] += [
+      '#type' => 'select',
+      '#options' => array_combine($codes, $codes),
+    ];
   }
   
 }
