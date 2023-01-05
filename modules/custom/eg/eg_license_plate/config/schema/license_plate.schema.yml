@@ -2,37 +2,46 @@
 # Format: field.storage_settings.ID where ID is the id from @FieldType annotation.
 field.storage_settings.license_plate:
   type: mapping
-  label: 'License plate storage settings'
+  label: "License plate storage settings"
   mapping:
     number_max_length:
       type: integer
-      label: 'Max length for the number'
+      label: "Max length for the number"
     code_max_length:
       type: integer
-      label: 'Max length for the code'
+      label: "Max length for the code"
 
 # @see field.widget.settings.file_generic in core/modules/file/config/schema/file.schema.yml file.
 # Format: field.widget.settings.ID where ID is the id from @FieldWidget annotation.
 field.widget.settings.default_license_plate_widget:
   type: mapping
-  label: 'Default license plate widget settings'
+  label: "Default license plate widget settings"
   mapping:
     number_size:
       type: integer
-      label: 'Number size'
+      label: "Number size"
     code_size:
       type: integer
-      label: 'Code size'
+      label: "Code size"
     fieldset_state:
       type: string
-      label: 'The state of the fieldset which contains 2 values: open and closed'
+      label: "The state of the fieldset which contains 2 values: open and closed"
     placeholder:
       type: mapping
-      label: 'The placeholder for the two fields'
+      label: "The placeholder for the two fields"
       mapping:
         number:
           type: string
-          label: 'The placeholder for the number field'
+          label: "The placeholder for the number field"
         code:
           type: string
-          label: 'The placeholder for the code field'
+          label: "The placeholder for the code field"
+
+# Format: field.formatter.settings.ID where ID is the id from @FieldFormatter annotation.
+field.formatter.settings.default_license_plate_formatter:
+  type: mapping
+  label: "Default license plate formatter settings"
+  mapping:
+    concatenated:
+      type: boolean
+      label: "Whether to concatenate the two fields number and code into one single span tag."

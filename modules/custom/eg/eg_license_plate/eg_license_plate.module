@@ -1,3 +1,21 @@
 <?php
 
+/**
+ * @file
+ * Hooks for eg_license_plate.
+ */
 
+/** 
+ * Implements hook_theme().
+ */
+function eg_license_plate_theme($existing, $type, $theme, $path) {
+  return [
+    'license_plate' => [
+      'variables' => [
+        'code' => NULL,
+        'number' => NULL,
+        'concatenated' => FALSE,
+      ],
+    ],
+  ];
+}
