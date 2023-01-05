@@ -116,9 +116,59 @@ class DefaultLicensePlateWidget extends WidgetBase {
 
   /**
    * {@inheritDoc}
+   * 
+   * `$items` is the entire list of values for this field (each field could have multiple values, aka multiple license plates).
+   * `$delta` is the delta of the item in the list.
+   * `$element` contains some data prepared for us based on the field configurations.
+   * @see WidgetBase::formMultipleElements() and WidgetBase::formSingleElement().
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    $element['details'] = [
+      '#type' => 'details',
+      '#title' => $element['#title'],
+      '#open' => $this->getSetting('fieldset_state') === 'open' ? TRUE: FALSE,
+      '#description' => $element['#description'],
+    ] + $element;
+
+    $placeholder_settings = $this->getSetting('placeholder');
+    $element['details']['code'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Plate code'),
+      '#default_value' => isset($items[$delta]->code) ? $items[$delta]->code : NULL,
+      '#size' => $this->getSetting('code_size'),
+      '#placeholder' => $placeholder_settings['code'],
+      '#maxlength' => $this->getFieldSetting('code_max_length'),
+      '#description' => '',
+      '#required' => $element['#required'],
+    ];
+
+    $element['details']['number'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Plate number'),
+      '#default_value' => isset($items[$delta]->number) ? $items[$delta]->number : NULL,
+      '#size' => $this->getSetting('number_size'),
+      '#placeholder' => $placeholder_settings['number'],
+      '#maxlength' => $this->getFieldSetting('number_max_length'),
+      '#description' => '',
+      '#required' => $element['#required'],
+    ];
+
+    return $element;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * Prepares the field values when submitting.
+   */
+  public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
+    foreach ($values as &$value) {
+      $value['number'] = $value['details']['number'];
+      $value['code'] = $value['details']['code'];
+      unset($value['details']);
+    }
     
+    return $values;
   }
   
 }
