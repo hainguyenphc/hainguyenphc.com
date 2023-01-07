@@ -1,0 +1,5 @@
+name: Example - Testing in Drupal - Service Test
+description: Test the MyServiceInterface
+type: module
+core_version_requirement: ^8 || ^9
+package: Testing

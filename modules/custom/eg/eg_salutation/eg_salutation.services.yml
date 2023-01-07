@@ -2,3 +2,11 @@ services:
   eg_salutation.hello:
     class: 'Drupal\eg_salutation\Hello'
     arguments: ['@config.factory']
+
+  eg_salutation.access_checker:
+    class: 'Drupal\eg_salutation\Access\HelloWorldAccess'
+    arguments: ['@config.factory']
+    # @see modules/custom/eg/eg_salutation/eg_salutation.routing.yml file.
+    # The eg_salutation.goodbye route has `_just_helloworld_access_check: 'TRUE'`.
+    tags:
+      - { name: 'access_check', applies_to: '_just_helloworld_access_check' }

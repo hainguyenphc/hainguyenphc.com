@@ -4,7 +4,19 @@ eg_salutation.hello:
     _controller: 'Drupal\eg_salutation\Controller\HelloController::hello'
     _title: 'Salutation - Hello'
   requirements:
-    _permission: 'access content'
+    # _permission: 'access content'
+    _custom_access: '\Drupal\eg_salutation\Controller\HelloController::access'
+
+eg_salutation.goodbye:
+  path: '/b6c45961-457c-4cad-b5aa-fddafb246816'
+  defaults:
+    _controller: 'Drupal\eg_salutation\Controller\HelloController::goodbye'
+    _title: 'Salutation - Goodbye'
+  # Access check using service.
+  requirements:
+    # Note: we could also add a string that could be used by the access checker internally.
+    # But, for default value, use 'TRUE'.
+    _just_helloworld_access_check: 'TRUE'
 
 # @see https://www.drupal.org/node/2095317
 eg_salutation.introduce_node:

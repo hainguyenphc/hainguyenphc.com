@@ -1,5 +1,5 @@
 eg_csrf.landing_page:
-  path: '/csrf-landing-page'
+  path: '/35818d3a-c3fb-4a59-9baa-dd43f5eec666-csrf-landing-page'
   defaults:
     _controller:
       '\Drupal\eg_csrf\Controller\ContactAuthor::landingPage'
@@ -7,11 +7,12 @@ eg_csrf.landing_page:
     _permission: 'access content'
 
 eg_csrf.contact_author:
-  path: '/csrf-contact-author'
+  path: '/225d3e44-922f-43b5-aa2b-155b24a2fb23-csrf-contact-author'
   defaults:
     _controller:
       '\Drupal\eg_csrf\Controller\ContactAuthor::contactAuthor'
     _title: 'Contact Author'
   requirements:
-    _permission: 'access content'
-  _csrf_token: 'TRUE'
+    # Going to the route will not work as the route is now inaccessible.
+    # Instead, we must render a link to the route.
+    _csrf_token: 'TRUE'

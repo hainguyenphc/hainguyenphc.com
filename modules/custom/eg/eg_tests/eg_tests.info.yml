@@ -1,0 +1,5 @@
+name: Example - Testing in Drupal
+description: Demonstrates testing system
+type: module
+core_version_requirement: ^8 || ^9
+package: example

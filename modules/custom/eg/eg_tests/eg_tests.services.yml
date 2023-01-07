@@ -1,0 +1,3 @@
+services:
+  eg_tests.status_text:
+    class: 'Drupal\service_test\Service\MyService'

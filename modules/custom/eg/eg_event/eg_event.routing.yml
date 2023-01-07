@@ -1,5 +1,5 @@
 eg_event.euro_cup_news:
-  path: '/euro-cup-news'
+  path: '/6aea427f-b49f-4957-a03d-b0341274aa25'
   defaults:
     _controller: 'Drupal\eg_event\Controller\EuroCupNewsController::showNews'
     _title: 'Euro Cup Latest News'
