@@ -46,6 +46,8 @@ field.formatter.settings.default_license_plate_formatter:
       type: boolean
       label: "Whether to concatenate the two fields number and code into one single span tag."
 
+# @see Drupal\eg_license_plate\Plugin\Field\FieldType\LicensePlateItem::fieldSettingsForm
+# The `license_plate_type` part is a made-up setting name of our choice.
 field.field_settings.license_plate_type:
   type: mapping
   label: 'License plate field settings'

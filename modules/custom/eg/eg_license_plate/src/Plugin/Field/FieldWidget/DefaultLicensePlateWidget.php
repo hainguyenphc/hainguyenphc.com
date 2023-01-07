@@ -26,7 +26,7 @@ class DefaultLicensePlateWidget extends WidgetBase {
 
   public static function defaultSettings() {
     return [
-      'number_size' => 255, // 255 numbers at max.
+      'number_size' => 60, // 255 numbers at max.
       'code_size' => 5, // 5 characters at max.
       'fieldset_state' => 'open',
       'placeholder' => [
@@ -129,21 +129,12 @@ class DefaultLicensePlateWidget extends WidgetBase {
     $element['details'] = [
       '#type' => 'details',
       '#title' => $element['#title'],
-      '#open' => $this->getSetting('fieldset_state') === 'open' ? TRUE: FALSE,
+      '#open' => $this->getSetting('fieldset_state') === 'open' ? TRUE : FALSE,
       '#description' => $element['#description'],
     ] + $element;
 
     $placeholder_settings = $this->getSetting('placeholder');
-    // $element['details']['code'] = [
-    //   '#type' => 'textfield',
-    //   '#title' => $this->t('Plate code'),
-    //   '#default_value' => isset($items[$delta]->code) ? $items[$delta]->code : NULL,
-    //   '#size' => $this->getSetting('code_size'),
-    //   '#placeholder' => $placeholder_settings['code'],
-    //   '#maxlength' => $this->getFieldSetting('code_max_length'),
-    //   '#description' => '',
-    //   '#required' => $element['#required'],
-    // ];
+
     $this->__addCodeField($element, $items, $delta, $placeholder_settings);
 
     $element['details']['number'] = [
@@ -177,22 +168,19 @@ class DefaultLicensePlateWidget extends WidgetBase {
 
   protected function __addCodeField(&$element, FieldItemListInterface $items, $delta, $placeholder_settings) {
     $element['details']['code'] = [
-      // '#type' => 'textfield',
       '#title' => $this->t('Plate code'),
       '#default_value' => isset($items[$delta]->code) ? $items[$delta]->code : NULL,
-      // '#size' => $this->getSetting('code_size'),
-      // '#placeholder' => $placeholder_settings['code'],
-      // '#maxlength' => $this->getFieldSetting('code_max_length'),
       '#description' => '',
       '#required' => $element['#required'],
     ];
 
-    // @see modules/custom/eg/eg_license_plate/src/Plugin/Field/FieldType/LicensePlateItem.php
-    // - defaultFieldSettings()
-    // - fieldSettingsForm()
+    // @see Drupal\eg_license_plate\Plugin\Field\FieldType\LicensePlateItem::fieldSettingsForm
+    // @see `field.field_settings.license_plate_type` in modules/custom/eg/eg_license_plate/config/schema/eg_license_plate.schema.yml file.
+    // If the list of codes is empty or null, this implies we render a text field.
+    // Otherwise, we render a select list.
     $codes = $this->getFieldSetting('codes');
     if (!$codes) {
-      $element['details']['code'] = [
+      $element['details']['code'] += [
         '#type' => 'textfield',
         '#size' => $this->getSetting('code_size'),
         '#placeholder' => $placeholder_settings['code'],

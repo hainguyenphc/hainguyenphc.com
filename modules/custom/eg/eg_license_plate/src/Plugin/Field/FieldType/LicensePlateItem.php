@@ -45,6 +45,8 @@ class LicensePlateItem extends FieldItemBase {
 
   /**
    * {@inheritDoc}
+   * 
+   * @see admin/structure/types/manage/car/fields/node.car.field_license_plate/storage page.
    */
   public function storageSettingsForm(array &$form, FormStateInterface $form_state, $has_data) {
     $elements = [];
@@ -89,14 +91,16 @@ class LicensePlateItem extends FieldItemBase {
 
   /** 
    * {@inheritDoc}
+   * @see /admin/structure/types/manage/car/fields/node.car.field_license_plate/storage page.
    */
   public function fieldSettingsForm(array $form, FormStateInterface $form_state) {
     $element = [];
 
     $element['codes'] = [
-      '#title' => $this->t('License plate code'),
+      '#title' => $this->t('Available license plate codes'),
       '#type' => 'textarea',
-      '#default_value' => $this->t('If you want the field to have a select list with license plate codes instead of a textfield, please provide the available codes. Each one is on a new line.'),
+      '#default_value' => $this->getSetting('codes'),
+      '#description' => $this->t('If you want the field to have a select list with some available license plate codes instead of a textfield, please provide the available codes. Each one is on a new line.'),
     ];
 
     return $element;
@@ -104,6 +108,8 @@ class LicensePlateItem extends FieldItemBase {
 
   /**
    * {@inheritDoc}
+   * 
+   * @see node__field_license_plate table.
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
     $schema = [
@@ -172,8 +178,8 @@ class LicensePlateItem extends FieldItemBase {
   public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
     $random = new Random();
     
-    $values['number'] = $random->word(mt_rand(5, $field_definition->getSetting(self::NUMBER_MAX_LENGTH)));
-    $values['code'] = $random->word(mt_rand(2, $field_definition->getSetting(self::CODE_MAX_LENGTH)));
+    $values['number'] = $random->word(mt_rand(1, $field_definition->getSetting(self::NUMBER_MAX_LENGTH)));
+    $values['code'] = $random->word(mt_rand(1, $field_definition->getSetting(self::CODE_MAX_LENGTH)));
 
     return $values;
   }
