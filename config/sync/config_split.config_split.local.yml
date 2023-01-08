@@ -16,7 +16,13 @@ module:
   gnode: 0
   group: 0
 theme: {  }
-blacklist: {  }
+blacklist:
+  - core.entity_view_display.node.car.default
+  - core.entity_view_display.node.car.teaser
+  - field.field.node.car.body
+  - field.field.node.car.field_license_plate
+  - group.content_type.development-group_node-car
+  - node.type.car
 graylist: {  }
 graylist_dependents: true
 graylist_skip_equal: true
