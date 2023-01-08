@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '39a58488faeafcd35e5e3c1dd734268b18d428ee',
+        'reference' => 'b34f9950048174f08e3dde2316a75d5743b76691',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -508,6 +508,15 @@
             'reference' => '8.x-1.4',
             'dev_requirement' => false,
         ),
+        'drupal/environment_indicator' => array(
+            'pretty_version' => '4.0.12',
+            'version' => '4.0.12.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/environment_indicator',
+            'aliases' => array(),
+            'reference' => '4.0.12',
+            'dev_requirement' => false,
+        ),
         'drupal/flexible_permissions' => array(
             'pretty_version' => '1.0.0-beta1',
             'version' => '1.0.0.0-beta1',
@@ -541,7 +550,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '39a58488faeafcd35e5e3c1dd734268b18d428ee',
+            'reference' => 'b34f9950048174f08e3dde2316a75d5743b76691',
             'dev_requirement' => false,
         ),
         'drupal/responsive_menu' => array(

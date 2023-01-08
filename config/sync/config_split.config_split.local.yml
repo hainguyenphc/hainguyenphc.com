@@ -1,0 +1,22 @@
+uuid: 288454ef-96c7-4782-8acc-54228f03e624
+langcode: en
+status: true
+dependencies: {  }
+id: local
+label: Local
+description: 'The local site powered by DDEV.'
+weight: 0
+folder: config/envs/local
+module:
+  eg_csrf: 0
+  eg_event: 0
+  eg_license_plate: 0
+  eg_salutation: 0
+  eg_tests: 0
+  gnode: 0
+  group: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true

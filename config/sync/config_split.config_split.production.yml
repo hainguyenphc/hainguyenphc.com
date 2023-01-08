@@ -1,0 +1,22 @@
+uuid: 914ae2c3-0fbd-473a-b31e-bfbf62c2bfaa
+langcode: en
+status: true
+dependencies: {  }
+id: production
+label: Production
+description: 'The production currently hosted in Siteground.'
+weight: 0
+folder: config/envs/prod
+module:
+  eg_csrf: 0
+  eg_event: 0
+  eg_license_plate: 0
+  eg_salutation: 0
+  eg_tests: 0
+  gnode: 0
+  group: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
