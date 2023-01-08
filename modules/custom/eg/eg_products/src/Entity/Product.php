@@ -27,6 +27,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *    },
  *    base_table = "product",
  *    admin_permission = "administer site configuration",
+ *    access = "Drupal\eg_products\Access\ProductAccessControlHandler",
  *    entity_keys = {
  *      "id" = "id",
  *      "label" = "name",
