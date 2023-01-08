@@ -1,0 +1,12 @@
+name: 'Group configuration tests'
+description: 'Support module for group configuration tests.'
+package: 'Testing'
+type: 'module'
+core_version_requirement: ^9.1 || ^10
+dependencies:
+  - 'group:group'
+
+# Information added by Drupal.org packaging script on 2022-12-23
+version: '2.0.0-beta6'
+project: 'group'
+datestamp: 1671788533

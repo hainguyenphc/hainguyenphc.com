@@ -1,0 +1,17 @@
+uuid: 711f73f3-f1a5-4f80-8b44-edc1d3b5071e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.development
+    - node.type.page
+  module:
+    - gnode
+    - node
+id: development-group_node-page
+group_type: development
+content_plugin: 'group_node:page'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

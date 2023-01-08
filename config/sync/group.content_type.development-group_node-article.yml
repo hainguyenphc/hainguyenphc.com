@@ -1,0 +1,17 @@
+uuid: adb179a3-e66c-453d-b80c-9df6383a5a26
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.development
+    - node.type.article
+  module:
+    - gnode
+    - node
+id: development-group_node-article
+group_type: development
+content_plugin: 'group_node:article'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

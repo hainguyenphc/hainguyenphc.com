@@ -22,12 +22,18 @@ module:
   dynamic_page_cache: 0
   editor: 0
   eg_csrf: 0
+  eg_event: 0
   eg_license_plate: 0
+  eg_salutation: 0
   eg_tests: 0
+  entity: 0
   field: 0
   field_ui: 0
   file: 0
   filter: 0
+  flexible_permissions: 0
+  gnode: 0
+  group: 0
   help: 0
   history: 0
   hnp_constants: 0
@@ -58,6 +64,7 @@ module:
   tour: 0
   update: 0
   user: 0
+  variationcache: 0
   views_ui: 0
   fontyourface: 1
   google_fonts_api: 10

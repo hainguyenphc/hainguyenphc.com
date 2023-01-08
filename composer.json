@@ -25,6 +25,7 @@
         "drupal/core-recommended": "^9.4",
         "drupal/core-vendor-hardening": "^9.4",
         "drupal/fontyourface": "^3.6",
+        "drupal/group": "^2.0@beta",
         "drupal/responsive_menu": "^4.4",
         "drupal/tb_megamenu": "^1.7",
         "drush/drush": "^11.3",
@@ -34,7 +35,7 @@
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "beta",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
