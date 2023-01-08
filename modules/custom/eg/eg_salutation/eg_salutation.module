@@ -2,6 +2,7 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Session\AccountProxy;
 use Drupal\user\Entity\User;
 
 /**
@@ -111,4 +112,36 @@ function eg_salutation_tokens($type, $tokens, array $data, array $options, Bubbl
   }
 
   return $replacement;
+}
+
+/**
+ * Implements hook_node_access_records().
+ */
+function eg_salutation_node_access_records($node) {
+  $grants = [];
+  if ($node->id() === '9') {
+    $grants[] = [
+      // A made-up category name.
+      'realm' => 'salutation',
+      // Hard code user ID of 2.
+      'gid' => 2,
+      'grant_view' => 1,
+      'grant_update' => 1,
+      'grant_delete' => 1,
+      'priority' => 1,
+    ];
+  }
+  return $grants;
+}
+
+/** 
+ * Implements hook_node_grants().
+ */
+function eg_salutation_node_grants(AccountProxy $account, string $operation) {
+  if ($operation === 'update' && $account->isAuthenticated()) {
+    $grants['salutation'] = [
+      $account->id(),
+    ];
+    return $grants;
+  }
 }
