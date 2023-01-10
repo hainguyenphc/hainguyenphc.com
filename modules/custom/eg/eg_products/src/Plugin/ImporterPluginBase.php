@@ -15,32 +15,32 @@ abstract class ImporterPluginBase
   extends PluginBase
   implements ImporterPluginInterface, ContainerFactoryPluginInterface {
 
-  // /** @var \Drupal\Core\Entity\EntityTypeManagerInterface */
-  // protected $entity_type_manager;
+  /** @var \Drupal\Core\Entity\EntityTypeManagerInterface */
+  protected $entity_type_manager;
 
-  // /** @var \GuzzleHttp\Client */
-  // protected $guzzle_http_client;
+  /** @var \GuzzleHttp\Client */
+  protected $guzzle_http_client;
 
-  // public function __construct(
-  //   array $configuration,
-  //   $plugin_id, $plugin_definition,
-  //   EntityTypeManager $entity_type_manager,
-  //   Client $guzzle_http_client
-  // ) {
-  //   parent::__construct($configuration, $plugin_id, $plugin_definition);
+  public function __construct(
+    array $configuration,
+    $plugin_id, $plugin_definition,
+    EntityTypeManager $entity_type_manager,
+    Client $guzzle_http_client
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
 
-  //   $this->entity_type_manager = $entity_type_manager;
-  //   $this->guzzle_http_client = $guzzle_http_client;
+    $this->entity_type_manager = $entity_type_manager;
+    $this->guzzle_http_client = $guzzle_http_client;
 
-  //   if (!isset($configuration['config'])) {
-  //     throw new PluginException('Missing Importer configuration.');
-  //   }
+    if (!isset($configuration['config'])) {
+      throw new PluginException('Missing Importer configuration.');
+    }
 
-  //   // if (!($configuration['config'] instanceof ImporterPluginInterface)) {
-  //   if (!($configuration['config'] instanceof ImporterInterface)) {
-  //     throw new PluginException('Incorrect Importer configuration');
-  //   }
-  // }
+    // if (!($configuration['config'] instanceof ImporterPluginInterface)) {
+    if (!($configuration['config'] instanceof ImporterInterface)) {
+      throw new PluginException('Incorrect Importer configuration');
+    }
+  }
 
   public static function create(
     ContainerInterface $container,

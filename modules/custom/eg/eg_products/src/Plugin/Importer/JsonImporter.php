@@ -2,6 +2,7 @@
 
 namespace Drupal\eg_products\Plugin\Importer;
 
+use Drupal\Core\Batch\BatchBuilder;
 use Drupal\eg_products\Plugin\ImporterPluginBase;
 
 /**
@@ -24,11 +25,50 @@ class JsonImporter extends ImporterPluginBase {
     }
 
     $products = $data->products;
+    // Approach 1: brute force
+    // foreach ($products as $product) {
+    //   $this->persistProduct($product);
+    // }
+    // Approach 2: Batch API
+    $bacth_builder = new BatchBuilder();
+    $bacth_builder->setTitle(t('Importing products'));
+    $bacth_builder->addOperation([$this, 'clearMissingProducts'], [$products]);
+    $bacth_builder->addOperation([$this, 'doImportProducts'], [$products]);
+    $bacth_builder->setFinishCallback([$this, 'importProductsFinishedCallback']);
+    return TRUE;
+  }
+
+  public function clearMissingProducts(array $products, array &$context) {
+    if (!isset($context['results']['cleared'])) {
+      $context['results']['cleared'] = [];
+    }
+    if (!$products) {
+      return;
+    }
+    
+    $ids = [];
     foreach ($products as $product) {
-      $this->persistProduct($product);
+      $ids[] = $product->id;
+    }
+    $ids = $this->entity_type_manager->getStorage('product')
+      ->getQuery()
+      ->condition('remote_id', $ids, 'NOT IN')
+      ->execute();
+    if (!$ids) {
+      $context['results']['cleared'] = [];
+      return;
     }
 
-    return TRUE;
+    $entities = $this->entity_type_manager->getStorage('product')->loadMultiple($ids);
+    foreach ($entities as $entity) {
+      $context['results']['cleared'][] = $entity->getName();
+    }
+
+    $context['message'] = t('Removing @count products', [
+      '@count' => count($entities),
+    ]);
+
+    $this->entity_type_manager->getStorage('product')->delete($entities);
   }
 
   /**
