@@ -102,6 +102,38 @@ class JsonImporter extends ImporterPluginBase {
   }
 
   /**
+   * @param bool $success
+   *    Indicates if the batch completes successfully.
+   * @param array $results
+   *    The $context['results'] arrays in `clearMissingProducts` and `doImportProducts`
+   *    are merged together and passed in as `$results`.
+   * @param array $operations
+   *    A list of operations.
+   */
+  public function importProductsFinishedCallback($success, $results, $operations) {
+    if (!$success) {
+      // $this->messenger->addStatus(t('There was a problem with this batch.'), 'error');
+      return;
+    }
+
+    $cleared = count($results['cleared']);
+    if ($cleared === 0) {
+      // $this->messenger->addStatus(t('No product was removed.'));
+    }
+    else {
+      // $this->messenger->addStatus($this->formatPlural($cleared, '1 product was removed', '@count products were removed'));
+    }
+
+    $imported = count($results['imported']);
+    if ($imported === 0) {
+      // $this->messenger->addStatus(t('No product was imported.'));
+    }
+    else {
+      // $this->messenger->addStatus($this->formatPlural($imported, '1 product was imported', '@count products were imported'));
+    }
+  }
+
+  /**
    * Loads the product data from the remote source URL.
    *
    * @return \stdClass
