@@ -38,6 +38,7 @@ class JsonImporter extends ImporterPluginBase {
     return TRUE;
   }
 
+  // Removes products that are currently in DB but are not in the new JSON source file.
   public function clearMissingProducts(array $products, array &$context) {
     if (!isset($context['results']['cleared'])) {
       $context['results']['cleared'] = [];
@@ -71,7 +72,8 @@ class JsonImporter extends ImporterPluginBase {
     $this->entity_type_manager->getStorage('product')->delete($entities);
   }
 
-  public function doImportProducts($products, array &$context) {
+  // After clearing out obsolete products, we save the remainder.
+  public function doImportProducts(array $products, array &$context) {
     if (!isset($context['results']['imported'])) {
       $context['results']['imported'] = [];
     }
