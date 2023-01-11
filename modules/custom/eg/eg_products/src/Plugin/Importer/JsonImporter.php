@@ -71,6 +71,34 @@ class JsonImporter extends ImporterPluginBase {
     $this->entity_type_manager->getStorage('product')->delete($entities);
   }
 
+  public function doImportProducts($products, array &$context) {
+    if (!isset($context['results']['imported'])) {
+      $context['results']['imported'] = [];
+    }
+
+    if (!$products) {
+      return;
+    }
+
+    $sandbox = &$context['sandbox'];
+    if (!$sandbox) {
+      // A counter; value is [0, count($products)] range.
+      $sandbox['progress'] = 0;
+      $sandbox['max'] = count($products);
+      $sandbox['products'] = $products;
+    }
+
+    $slice = array_splice($sandbox['products'], 0, 3);
+    foreach ($slice as $product) {
+      $context['message'] = t('Importing product @name', ['@name' => $product->name]);
+      $this->persistProduct($product);
+      $context['results']['imported'][] = $product->name;
+      $sandbox['progress']++;
+    }
+
+    $context['finished'] = $sandbox['progress'] / $sandbox['max'];
+  }
+
   /**
    * Loads the product data from the remote source URL.
    *
