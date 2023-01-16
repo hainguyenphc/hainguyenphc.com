@@ -35,6 +35,10 @@ class JsonImporter extends ImporterPluginBase {
     $bacth_builder->addOperation([$this, 'clearMissingProducts'], [$products]);
     $bacth_builder->addOperation([$this, 'doImportProducts'], [$products]);
     $bacth_builder->setFinishCallback([$this, 'importProductsFinishedCallback']);
+    // After setting the batch, we actually need to trigger it via `batch_process()`.
+    // But in this case, the form API will do that.
+    // Remember, we submit the form to start importing products.
+    // If we are using Drush to trigger the process, use `drush_backend_batch_process()`.
     batch_set($bacth_builder->toArray());
 
     return TRUE;
