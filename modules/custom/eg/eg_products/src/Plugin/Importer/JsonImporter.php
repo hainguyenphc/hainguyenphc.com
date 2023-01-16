@@ -35,6 +35,8 @@ class JsonImporter extends ImporterPluginBase {
     $bacth_builder->addOperation([$this, 'clearMissingProducts'], [$products]);
     $bacth_builder->addOperation([$this, 'doImportProducts'], [$products]);
     $bacth_builder->setFinishCallback([$this, 'importProductsFinishedCallback']);
+    batch_set($bacth_builder->toArray());
+
     return TRUE;
   }
 
