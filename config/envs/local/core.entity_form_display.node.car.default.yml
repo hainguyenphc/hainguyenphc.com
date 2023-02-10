@@ -4,10 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.car.body
+    - field.field.node.car.field_image
     - field.field.node.car.field_license_plate
+    - image.style.thumbnail
     - node.type.car
   module:
     - eg_license_plate
+    - image
     - path
     - text
 id: node.car.default
@@ -30,6 +33,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 123
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
   field_license_plate:
     type: default_license_plate_widget

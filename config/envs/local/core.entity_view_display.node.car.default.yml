@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.car.body
+    - field.field.node.car.field_image
     - field.field.node.car.field_license_plate
     - node.type.car
   module:
     - eg_license_plate
+    - image
     - text
     - user
 id: node.car.default
@@ -20,7 +22,18 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
     region: content
   field_license_plate:
     type: default_license_plate_formatter
@@ -28,11 +41,7 @@ content:
     settings:
       concatenated: false
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
-hidden: {  }
+hidden:
+  links: true
