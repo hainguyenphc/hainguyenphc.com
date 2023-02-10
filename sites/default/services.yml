@@ -1,0 +1,25 @@
+# Local development services.
+#
+# To activate this feature, follow the instructions at the top of the
+# 'example.settings.local.php' file, which sits next to this file.
+parameters:
+  http.response.debug_cacheability_headers: false
+  twig.config:
+    auto_reload: true
+    # cache: false
+    debug: true
+services:
+  cache.backend.null:
+    class: Drupal\Core\Cache\NullBackendFactory
+  lock:
+    class: Drupal\Core\Lock\DatabaseLockBackend
+    arguments: ['@database']
+    tags:
+      - { name: backend_overridable }
+    lazy: true
+  lock.persistent:
+    class: Drupal\Core\Lock\PersistentDatabaseLockBackend
+    arguments: ['@database']
+    tags:
+      - { name: backend_overridable }
+    lazy: true

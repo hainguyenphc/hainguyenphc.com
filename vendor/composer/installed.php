@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b34f9950048174f08e3dde2316a75d5743b76691',
+        'reference' => '8b3a5540de54b29a20a08876c72e2ea6bf4c679c',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -517,6 +517,15 @@
             'reference' => '4.0.12',
             'dev_requirement' => false,
         ),
+        'drupal/feeds' => array(
+            'pretty_version' => '3.0.0-beta3',
+            'version' => '3.0.0.0-beta3',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/feeds',
+            'aliases' => array(),
+            'reference' => '8.x-3.0-beta3',
+            'dev_requirement' => false,
+        ),
         'drupal/flexible_permissions' => array(
             'pretty_version' => '1.0.0-beta1',
             'version' => '1.0.0.0-beta1',
@@ -550,7 +559,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b34f9950048174f08e3dde2316a75d5743b76691',
+            'reference' => '8b3a5540de54b29a20a08876c72e2ea6bf4c679c',
             'dev_requirement' => false,
         ),
         'drupal/responsive_menu' => array(
