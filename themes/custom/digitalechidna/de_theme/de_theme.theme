@@ -31,7 +31,7 @@ use Drupal\views\Views;
   * Implement hook_preprocess_page()
   */
 function de_theme_preprocess_page(array &$variables) {
-   // fix Main page content block order issue
+  // Fix Main page content block order issue
   if (isset($variables['page']['content']['system_main'])) {
     $main_content = $variables['page']['content']['system_main'];
     unset($variables['page']['content']['system_main']);
