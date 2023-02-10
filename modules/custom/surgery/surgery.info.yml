@@ -1,5 +1,9 @@
 name: 'Surgery'
-description: 'Performs a surgery on a site'
 type: module
-package: Custom
 core_version_requirement: ^9
+package: Custom
+description: 'Performs a surgery on a site'
+hidden: TRUE
+dependencies:
+  - coffee:coffee
+  - link_attributes:link_attributes

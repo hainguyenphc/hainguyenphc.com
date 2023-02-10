@@ -8,3 +8,11 @@ surgery.installed_modules_page:
   options:
     _admin_route: TRUE
   arguments: ['@extension.list.module']
+
+# Coffee extension
+surgery.coffee.get_data:
+  path: '/admin/surgery/coffee/get-data/{query}'
+  defaults:
+    _controller: 'Drupal\surgery\Controller\SurgeryCoffeeController::coffeeData'
+  requirements:
+    _permission: 'access coffee'

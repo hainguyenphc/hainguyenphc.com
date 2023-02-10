@@ -4,12 +4,13 @@ namespace Drupal\surgery\Commands;
 
 use Drupal\Core\Extension\ModuleExtensionList;
 use Drupal\Core\Extension\ModuleHandler;
+use Drupal\surgery\Constants\Constants as K;
 use Drush\Commands\DrushCommands;
 
 /**
  * A Drush commandfile.
  */
-class ModuleCommand extends DrushCommands {
+class ModuleCommands extends DrushCommands {
     /**
      * @var ModuleHandler $moduleHandler
      */
@@ -40,24 +41,22 @@ class ModuleCommand extends DrushCommands {
      * @option      bool $is_machine_name
      * @usage       surgery:cimi
      *   Checks if a module is installed.
+     * 
+     * Examples:
+     *  - ddev drush surgery:cimi ban
+     *  - ddev drush surgery:check-if-module-installed "Admin Toolbar" --is_machine_name=false
      */
-    public function checkIfModuleInstalled(string $module, array $options = ['is_machine_name' => TRUE]) {
+    public function checkIfModuleInstalled(string $module, array $options = ['is_machine_name' => K::TRUE_STRING]) {
         $installed = FALSE;
-        if ($options['is_machine_name']) {
+        if (isset($options['is_machine_name']) && $options['is_machine_name'] === K::TRUE_STRING) {
             $installed = $this->moduleHandler->moduleExists($module);
         } else {
-            
             $info = $this->moduleExtensionList->getAllInstalledInfo();
             foreach ($info as $each) {
-                if (strtolower($each['name']) == strtolower($module)) {
-                    $installed = TRUE;
-                }
+                if (strtolower($each['name']) == strtolower($module)) $installed = TRUE;
             }
         }
-        if ($installed) {
-            $this->output()->writeln("<info>$module is installed.</info>");
-        } else {
-            $this->output()->writeln("<comment>$module is not installed.</comment>");
-        }
+
+        $this->output()->writeln($installed ? "<info>$module is installed.</info>" : "<comment>$module is not installed.</comment>");
     }
 }

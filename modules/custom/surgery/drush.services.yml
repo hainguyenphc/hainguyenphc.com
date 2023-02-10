@@ -1,6 +1,10 @@
 services:
-  surgery.commands:
-    class: 'Drupal\surgery\Commands\ModuleCommand'
+  surgery.module_commands:
+    class: 'Drupal\surgery\Commands\ModuleCommands'
     tags:
       - {name: 'drush.command'}
     arguments: ['@module_handler', '@extension.list.module']
+  surgery.menu_commands:
+    class: 'Drupal\surgery\Commands\MenuCommands'
+    tags:
+      - {name: 'drush.command'}
