@@ -1,0 +1,122 @@
+
+//header changes when cart is in the header
+
+//layout header
+
+.shopify-enabled {
+
+	//search
+
+	.region--masthead-primary .region-inner {
+		@include breakpoint(0 $medium-screen-max) {
+	   	position: unset;
+
+	    a.header-search-trigger {
+	      right: 41px;
+	    }
+		}
+	}
+
+
+	//layout
+
+	.region--masthead-primary {
+	  @include breakpoint(0 $medium-screen-max) {
+		  #block-portfolio-branding,
+			#block-sitebranding { 
+		  	margin: 0 auto;
+		  }
+
+		  //search
+
+	    .napoleon-search-header-form  {
+	   		order: 3;
+	      position: unset;
+	      .header-search-trigger {
+	      	position: relative;
+	      	right: 41px;
+	      }
+
+	      #napoleon-search-header-form {
+					left: -50vw;
+			    right: -50vw;
+			    margin-left: 50%;
+			    margin-right: 50%;
+	      }
+	    }
+
+	    #block-header-cart-mobile-block {
+	     display: block !important;
+	     position: absolute;
+	     right: 23px;
+	      a {
+	        color: white;
+	        .fab:before {
+	          font-size: 27px;
+	          color: white;
+	          line-height: 25px;
+	        }
+	      }
+
+		  .items-in-cart:not(.items-in-cart--empty) {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: $red;
+		    border: 2px solid white;
+		    border-radius: 50%;
+		    height: 22px;
+		    width: 22px;
+		    text-align: center;
+		    font-weight: $bold;
+		    line-height: 15px;
+		    position: absolute;
+		    right: -6px;
+		    top: 0;
+		    z-index: 3;
+				}
+	    }
+		}
+	}
+
+
+	//block links
+
+	#block-uppermenublock {
+		a {
+	    margin-right:1em;
+	    @include breakpoint(1065px 1219px) {
+	  		margin-right: 1.5em;
+	  	}
+	    @include breakpoint(1320px) {
+	      margin-right: 2em;
+	    }
+	  }
+	}
+
+
+	//menu items
+
+	.choose-region-form.choose-region-select-form.block.block-napoleon-region,
+	#block-languagedropdownswitcher,
+	#block-basiccartcountblock--2,
+	#block-productregistrationmenublock,
+	#block-dealerlogin,
+	.language-switcher-language-url,
+	#block-basiccartcountblock {
+	  ul.links a,
+	  a {
+	    font-weight: $semi-bold;
+	  }
+	  margin-left: .5em;
+	  @include breakpoint(1035px 1215px) {
+	  	margin-left: 1.3em;
+	  }
+	  @include breakpoint(1250px) {
+	    margin-left: .8em;
+	  }
+	  @include breakpoint(1455px) {
+	    margin-left: 1.8em;
+	  }
+	}
+}

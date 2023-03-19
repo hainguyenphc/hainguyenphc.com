@@ -1,0 +1,276 @@
+/* _print.scss */
+// contains default boilerplate print resets, echidna default theme specific
+// resets, and project theme specific rests.
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+// default
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+        font-family: "Times"
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    // a[href]:after {
+        // content: " (" attr(href) ")";
+    // }
+
+    // abbr[title]:after {
+        // content: " (" attr(title) ")";
+    // }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+        font-size: 12pt;
+        * {
+          font-size: 12pt;
+        }
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr{
+      border-bottom: 1px solid #ebebeb !important;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    // theme default ==================================
+
+    html,body{
+        @include reset-font;
+        font-family: Georgia, ‘Times New Roman’, serif;
+        font-size: 10pt;
+        line-height: 16pt;
+    }
+
+    * {
+      font-size: 10pt !important;
+      line-height: 16pt !important;
+    }
+
+    body{
+        padding: 1em;
+    }
+
+    main,
+    .layout-container,
+    .region,
+    .block{
+        margin: 0 !important;
+        padding: 0 !important;
+        display:  block !important;
+    }
+
+    .site-name{
+      font-weight: $bold;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ul,
+    ol,
+    dl,
+    pre,
+    table,
+    fieldset,
+    form
+    details,
+    blockquote,
+    object,
+    iframe,
+    pre,
+    address,
+    code,
+    dl,
+    dt,
+    dd,
+    embed,
+    label,
+    audio,
+    video{
+      @include reset-font;
+    }
+
+    h1,h2,h3,h4,h5,h6{
+        @include reset-font;
+        @include reset;
+        text-indent: 0 !important;
+        margin-bottom: ms(-2);
+        margin-top: ms(-2);
+    }
+
+    ul,ol{
+      @include reset;
+      li{
+        list-style-position: inside;
+      }
+    }
+
+    ul li{
+      list-style-type: disc;
+    }
+
+    ol li{
+      list-style-type: decimal;
+    }
+
+    table th{
+      text-align: left;
+    }
+
+    h1,
+    #page-title{
+      font-weight: bold;
+      font-size: 16pt !important;
+    }
+
+    h2{
+      font-weight: bold;
+      font-size: 12pt !important;
+      a{
+        font-size: 12pt !important;
+      }
+    }
+
+    h3{
+      font-weight: bold;
+      font-size: 11pt !important;
+      a{
+        font-size: 11pt !important;
+      }
+    }
+
+    h4{
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    h5,h6{
+      font-weight: bold;
+    }
+
+    .highlight-box{
+      border: 1px solid black;
+      border-radius: 0;
+    }
+
+    .highlight-type{
+      font-weight: $bold;
+    }
+
+
+    // theme specific ====================================
+
+
+    #footer,
+    .napoleon-search-form-recipes-small,
+    #block-portfolio-local-tasks,
+    #header {
+      display: none !important;
+    }
+
+    //recipes
+
+    .node--type-recipe .description {
+      display: flex;
+
+    }
+
+    .node--type-recipe .description .col.recipies {
+      margin-left: 0em;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 60%;
+      flex: 1 1 60%;
+      margin-right: 1em;
+    }
+
+    .node--type-recipe .description .col.images {
+      display: block;
+      margin-right: 0em;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 40%;
+      flex: 1 1 40%;
+      margin-left: 1em;
+    }
+
+    .node--type-recipe .description .mobile-tab-titles {
+      display: none;
+    }
+
+    .node--type-recipe .info-wrapper .overview .field__label {
+      width: auto;
+    }
+
+    .node--type-recipe .info-wrapper .overview {
+      flex-direction: row;
+    }
+
+
+
+
+
+
+
+
+
+} // end print

@@ -1,0 +1,26 @@
+#block-portfolio-content {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  width: var(--content-width);
+  margin: 0 auto;
+  @media screen and (max-width: $standard-screen-max) {
+    flex-direction: column;
+  }
+}
+
+#content--node-wrapper {
+  flex: 3;
+}
+
+#content--left-sidebar {
+  flex: 1;
+  z-index: 0;
+  position: fixed;
+  left: 5%;
+  top: 40%;
+  @media screen and (max-width: $standard-screen-max) {
+    position: relative;
+  }
+}

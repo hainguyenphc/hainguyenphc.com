@@ -1,25 +1,51 @@
-name: 'Hai Nguyen Custom Portfolio Theme'
+name: portfolio
 type: theme
-base theme: olivero
-description: de_theme theme based on the classy base theme.
-version: 0.0.1
+base theme: classy
+description: portfolio theme based on the classy base theme.
+version: 2.0.0
 core: 8.x
 core_version_requirement: ^8 || ^9
-# Step 1: defines the regions.
-regions:
-  header: Header
-  primary_menu: 'Primary menu'
-  secondary_menu: 'Secondary menu'
-  hero: 'Hero (full width)'
-  highlighted: Highlighted
-  breadcrumb: Breadcrumb
-  social: Social Bar
-  content_above: Content Above
-  content: Content
-  sidebar: 'Sidebar'
-  content_below: 'Content Below'
-  footer_top: 'Footer Top'
-  footer_bottom: 'Footer Bottom'
-# Step 2: defines the libraries.
 libraries:
   - portfolio/base
+  - portfolio/libre-baskerville-font
+  - portfolio/material-icons
+  - portfolio/oswald-font
+  - portfolio/source-sans-pro-font
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/menu.css: false
+        css/components/tabs.css: false
+        css/components/pager.css: false
+        css/components/forms.css: false
+  core/modernizr:
+    js:
+      assets/vendor/modernizr/modernizr.min.js: dist/scripts/js/vendor/modernizr.min.js
+ckeditor_stylesheets:
+  - dist/fonts/libre-baskerville/libre-baskerville-font.css
+  - dist/fonts/material-icons-main/iconfont/material-icons.css
+  - dist/fonts/oswald/oswald-font.css
+  - dist/fonts/source-sans-pro/source-sans-pro-font.css
+  - dist/css/portfolio_editor_stylesheet.css
+regions:
+    # Alert
+    top_alert: Top Alert
+    # Masthead
+    masthead_actions: Masthead Actions
+    masthead_primary: Masthead Primary
+    masthead_secondary: Masthead secondary
+    # Announcement
+    announcements: Announcements
+    # Content
+    content_prefix: Content Prefix
+    content: Content
+    content_suffix: Content Suffix
+    # Sidebar
+    sidebar_first: Sidebar First
+    sidebar_second: Sidebar Second
+    # Footer
+    footer_first: Footer First
+    footer_first_right: Footer first Right
+    footer_second: Footer Second
+    footer_second_right: Footer second Right

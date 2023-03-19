@@ -1,7 +1,102 @@
 <?php
 
 /**
- * @file themes/custom/portfolio/portfolio.theme
+ * @file
+ * Functions to support theming in portfolio.
  */
 
-// function portfolio(array &$variables) {}
+use Drupal\node\Entity\Node;
+use Drupal\views\Views;
+
+/**
+ * Implement hook_preprocess_html()
+ */
+
+function portfolio_preprocess_html(array &$variables) {
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'two_sidebars';
+  } elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'one_sidebar sidebar_first';
+  } elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'one_sidebar sidebar_second';
+  } else {
+    $variables['attributes']['class'][] = 'no_sidebars';
+  }
+}
+
+/**
+ * Implement hook_preprocess_page()
+ */
+function portfolio_preprocess_page(array &$variables) {
+  // Fix Main page content block order issue
+  if (isset($variables['page']['content']['system_main'])) {
+    $main_content = $variables['page']['content']['system_main'];
+    unset($variables['page']['content']['system_main']);
+    $pos = array_search('portfolio_content', array_keys($variables['page']['content']));
+    $content_ordered = array_slice($variables['page']['content'], 0, $pos, true) +
+      ['system_main' => $main_content] +
+      array_slice($variables['page']['content'], $pos, NULL, true);
+    $variables['page']['content'] = $content_ordered;
+  }
+}
+
+/**
+ * Implement hook_preprocess_block()
+ */
+function portfolio_preprocess_block(array &$variables) {
+  if ($variables['plugin_id'] === 'page_title_block') {
+    /** @var Drupal\node\Entity\Node $node */
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof Node) {
+      /** @var string $bundle */
+      $bundle = $node->bundle();
+      $id = $variables['attributes']['id'];
+      $variables['attributes']['id'] = "{$id}--node-{$bundle}";
+      if ($bundle === 'project' || $bundle === 'page') {
+        // Pass the whole node into template.
+        // Use Twig file_url function to get the URL of the banner image.
+        // @see themes/custom/digitalechidna/portfolio/templates/block/block--page-title-block.html.twig
+        $variables['node'] = $node;
+      }
+    }
+  }
+
+  // Renders contents on left sidebar for
+  // - Project
+  // - Project Build Step
+  if ($variables['plugin_id'] === 'system_main_block') {
+    /** @var \Drupal\node\Entity\Node $node  */
+    $node = \Drupal::request()->attributes->get('node');
+    // Target `project` bundle.
+    if ($node && $node instanceof Node && $node->bundle() === 'project' && $node->hasField('field_project_categories')) {
+      $nid = $node->id();
+      /** @var \Drupal\Core\Field\EntityReferenceFieldItemList */
+      $categories = $node->field_project_categories;
+      /** @var array $render */
+      $render = $categories->view('full');
+      $variables['content__left_sidebar']['main'] = $render;
+
+      // Determines if the `project_build_steps_series_.top_3_first_steps` view block
+      // has results or not.
+      $view = Views::getView('project_build_steps_series_');
+      $view->setDisplay('page_read_all');
+      $view->setArguments(["{$nid}"]);
+      $view->setOffset(0);
+      $view->usePager();
+      $view->execute();
+      if (count($view->result) > 0) {
+        $variables['no_content'] = count($view->result) === 0;
+        $variables['content__left_sidebar']['suffix_1'] = [
+          '#markup' => "<a href='/projects/{$nid}/read-all'><h3>Build Steps</h3></a>",
+        ];
+      }
+    }
+    // Target the `project_build_step` bundle.
+    if ($node && $node instanceof Node && $node->bundle() === 'project_build_step' && $node->hasField('field_project')) {
+      $go_to_project = $node->field_project;
+      /** @var array $render */
+      $render = $go_to_project->view('full');
+      $variables['content__left_sidebar'] = $render;
+    }
+  }
+}
