@@ -5,9 +5,9 @@ dependencies:
   module:
     - help
   theme:
-    - de_theme
+    - portfolio
 id: help
-theme: de_theme
+theme: portfolio
 region: sidebar_first
 weight: 0
 provider: null

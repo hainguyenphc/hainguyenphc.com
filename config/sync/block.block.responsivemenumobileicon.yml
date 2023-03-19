@@ -5,9 +5,9 @@ dependencies:
   module:
     - responsive_menu
   theme:
-    - de_theme
+    - portfolio
 id: responsivemenumobileicon
-theme: de_theme
+theme: portfolio
 region: masthead_primary
 weight: -8
 provider: null

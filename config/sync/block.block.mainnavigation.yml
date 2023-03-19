@@ -7,9 +7,9 @@ dependencies:
   module:
     - system
   theme:
-    - de_theme
+    - portfolio
 id: mainnavigation
-theme: de_theme
+theme: portfolio
 region: sidebar_first
 weight: 0
 provider: null

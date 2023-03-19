@@ -5,9 +5,9 @@ dependencies:
   module:
     - hnp_upper_menu
   theme:
-    - de_theme
+    - portfolio
 id: uppermenublock
-theme: de_theme
+theme: portfolio
 region: masthead_actions
 weight: -9
 provider: null

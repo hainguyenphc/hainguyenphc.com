@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   theme:
-    - de_theme
+    - portfolio
 _core:
   default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
-id: de_theme_primary_local_tasks
-theme: de_theme
+id: portfolio_primary_local_tasks
+theme: portfolio
 region: content_prefix
 weight: -8
 provider: null

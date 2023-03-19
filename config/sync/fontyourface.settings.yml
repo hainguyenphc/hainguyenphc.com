@@ -8,4 +8,4 @@ enabled_fonts:
   - 'https://www.google.com/webfonts/family?family=Roboto&subset=latin#500'
   - 'https://www.google.com/webfonts/family?family=Jost&subset=latin#100'
 load_on_themes:
-  de_theme: de_theme
+  portfolio: portfolio

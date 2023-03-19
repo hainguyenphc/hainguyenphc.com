@@ -7,6 +7,6 @@ label: 'Roboto 500 Latin (for h2)'
 font_url: 'https://www.google.com/webfonts/family?family=Roboto&subset=latin#500'
 fallback: ''
 selectors: '.fontyourface h2'
-theme: de_theme
+theme: portfolio
 style: null
 weight: null

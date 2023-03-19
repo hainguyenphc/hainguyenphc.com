@@ -5,11 +5,11 @@ dependencies:
   module:
     - system
   theme:
-    - de_theme
+    - portfolio
 _core:
   default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
-id: de_theme_breadcrumbs
-theme: de_theme
+id: portfolio_breadcrumbs
+theme: portfolio
 region: content_prefix
 weight: -9
 provider: null

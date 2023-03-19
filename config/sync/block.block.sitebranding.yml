@@ -5,9 +5,9 @@ dependencies:
   module:
     - system
   theme:
-    - de_theme
+    - portfolio
 id: sitebranding
-theme: de_theme
+theme: portfolio
 region: masthead_primary
 weight: -9
 provider: null

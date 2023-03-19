@@ -7,11 +7,11 @@ dependencies:
   module:
     - system
   theme:
-    - de_theme
+    - portfolio
 _core:
   default_config_hash: gmxYWWHmgbe0Pnv8y48ZLSLH5mEHejOjAP6RLxUfdzU
-id: de_theme_account_menu
-theme: de_theme
+id: portfolio_account_menu
+theme: portfolio
 region: top_alert
 weight: -6
 provider: null

@@ -5,11 +5,11 @@ dependencies:
   module:
     - search
   theme:
-    - de_theme
+    - portfolio
 _core:
   default_config_hash: imMyHD6LYci0gtXq56qr9ZKGHzbEG9uFydrN5EhKtSU
-id: de_theme_search_form_wide
-theme: de_theme
+id: portfolio_search_form_wide
+theme: portfolio
 region: top_alert
 weight: -9
 provider: null
