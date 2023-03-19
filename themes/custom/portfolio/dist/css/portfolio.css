@@ -4595,6 +4595,8 @@ section .field--type-video-embed-field {
     color: white !important;
     text-decoration: none;
     font-size: 30px !important; }
+    #block-sitebranding .site-name a:hover {
+      color: #ff5045 !important; }
   #block-sitebranding .site-slogan {
     color: white; }
 

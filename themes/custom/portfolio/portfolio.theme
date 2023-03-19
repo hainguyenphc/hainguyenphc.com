@@ -11,7 +11,6 @@ use Drupal\views\Views;
 /**
  * Implement hook_preprocess_html()
  */
-
 function portfolio_preprocess_html(array &$variables) {
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
     $variables['attributes']['class'][] = 'two_sidebars';
