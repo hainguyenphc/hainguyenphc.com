@@ -1,5 +1,0 @@
-name: 'HNP React App'
-type: 'module'
-description: 'Handles rendering for React App'
-package: 'hNP'
-core_version_requirement: ^9 || ^10
