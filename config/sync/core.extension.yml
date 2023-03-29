@@ -35,8 +35,10 @@ module:
   hnp_constants: 0
   hnp_project: 0
   hnp_project_build_step: 0
+  hnp_react_app: 0
   hnp_upper_menu: 0
   image: 0
+  jsonapi: 0
   link: 0
   media: 0
   media_library: 0

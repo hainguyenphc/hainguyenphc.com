@@ -10,8 +10,8 @@ _core:
   default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
 id: portfolio_content
 theme: portfolio
-region: content
-weight: -8
+region: react_app
+weight: -10
 provider: null
 plugin: system_main_block
 settings:

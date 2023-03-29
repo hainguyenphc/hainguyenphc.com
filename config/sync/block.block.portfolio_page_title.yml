@@ -1,6 +1,6 @@
 uuid: 9e6e77f5-361c-48b1-a09d-de7fe4eb5cd3
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - portfolio
@@ -9,7 +9,7 @@ _core:
 id: portfolio_page_title
 theme: portfolio
 region: content
-weight: -9
+weight: -10
 provider: null
 plugin: page_title_block
 settings:

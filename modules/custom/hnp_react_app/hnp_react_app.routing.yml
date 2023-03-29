@@ -1,0 +1,7 @@
+hnp_react_app.overview:
+  path: '/react-app'
+  defaults:
+    _controller: 'Drupal\hnp_react_app\Controller\MyReactAppController::overview'
+    _title: 'My React App'
+  requirements:
+    _permission: 'access content'
