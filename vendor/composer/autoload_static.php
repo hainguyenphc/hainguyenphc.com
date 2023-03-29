@@ -115,10 +115,15 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
             'Prophecy\\PhpUnit\\' => 17,
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
+        ),
+        'O' => 
+        array (
+            'OpenIDConnectServer\\' => 20,
         ),
         'M' => 
         array (
@@ -126,7 +131,12 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         ),
         'L' => 
         array (
+            'League\\Uri\\' => 11,
+            'League\\OAuth2\\Server\\' => 21,
+            'League\\Event\\' => 13,
             'League\\Container\\' => 17,
+            'Lcobucci\\JWT\\' => 13,
+            'Lcobucci\\Clock\\' => 15,
             'Laminas\\Stdlib\\' => 15,
             'Laminas\\Feed\\' => 13,
             'Laminas\\Escaper\\' => 16,
@@ -160,6 +170,7 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'Dflydev\\DotAccessData\\' => 22,
+            'Defuse\\Crypto\\' => 14,
             'DeepCopy\\' => 9,
         ),
         'C' => 
@@ -390,6 +401,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
@@ -406,13 +421,38 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'OpenIDConnectServer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/steverhoades/oauth2-openid-connect-server/src',
+        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'League\\Uri\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/uri/src',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
+        ),
+        'League\\OAuth2\\Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/oauth2-server/src',
+        ),
+        'League\\Event\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/event/src',
+        ),
         'League\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
+        'Lcobucci\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/clock/src',
         ),
         'Laminas\\Stdlib\\' => 
         array (
@@ -509,6 +549,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'Dflydev\\DotAccessData\\' => 
         array (
             0 => __DIR__ . '/..' . '/dflydev/dot-access-data/src',
+        ),
+        'Defuse\\Crypto\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/defuse/php-encryption/src',
         ),
         'DeepCopy\\' => 
         array (
