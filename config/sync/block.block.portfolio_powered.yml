@@ -11,7 +11,7 @@ _core:
 id: portfolio_powered
 theme: portfolio
 region: top_alert
-weight: -2
+weight: -1
 provider: null
 plugin: system_powered_by_block
 settings:

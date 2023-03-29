@@ -1,0 +1,20 @@
+uuid: 8a0b45bb-1f4a-498b-9401-f1d2a3dd3c97
+langcode: en
+status: false
+dependencies:
+  module:
+    - responsive_menu
+  theme:
+    - reactportfolio
+id: reactportfolio_horizontalmenu
+theme: reactportfolio
+region: react_app
+weight: -7
+provider: null
+plugin: responsive_menu_horizontal_menu
+settings:
+  id: responsive_menu_horizontal_menu
+  label: 'Horizontal menu'
+  label_display: '0'
+  provider: responsive_menu
+visibility: {  }

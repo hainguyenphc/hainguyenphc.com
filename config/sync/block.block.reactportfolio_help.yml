@@ -1,15 +1,15 @@
-uuid: 6d6f61fa-e1c6-418e-8db8-f3d0f5850b7c
+uuid: 0e93c298-25d5-4ad7-892e-3e317665656c
 langcode: en
 status: false
 dependencies:
   module:
     - help
   theme:
-    - portfolio
-id: help
-theme: portfolio
-region: sidebar_first
-weight: -10
+    - reactportfolio
+id: reactportfolio_help
+theme: reactportfolio
+region: react_app
+weight: 0
 provider: null
 plugin: help_block
 settings:

@@ -1,0 +1,10 @@
+name: React-based Portfolio
+type: theme
+base theme: classy
+description: A pure React-based theme.
+core_version_requirement: ^9 || ^10
+libraries:
+  - reactportfolio/frontend
+regions:
+  react_app: React App
+  content: Content

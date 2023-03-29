@@ -1,17 +1,17 @@
-uuid: 567c5703-243f-4566-a8d2-70167dc6ee65
+uuid: 803d72b9-ce85-49b2-95f3-a310535e1b84
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
   theme:
-    - portfolio
+    - reactportfolio
 _core:
   default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
-id: portfolio_breadcrumbs
-theme: portfolio
-region: content_prefix
-weight: -10
+id: reactportfolio_breadcrumbs
+theme: reactportfolio
+region: react_app
+weight: -9
 provider: null
 plugin: system_breadcrumb_block
 settings:

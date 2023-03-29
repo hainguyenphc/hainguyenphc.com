@@ -9,7 +9,7 @@ _core:
 id: portfolio_primary_local_tasks
 theme: portfolio
 region: content_prefix
-weight: -8
+weight: -9
 provider: null
 plugin: local_tasks_block
 settings:

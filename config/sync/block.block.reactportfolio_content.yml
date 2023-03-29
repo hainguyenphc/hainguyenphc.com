@@ -1,17 +1,17 @@
-uuid: 53cdd578-d673-4d1d-9359-7875160ebabc
+uuid: 8230227b-b046-4123-9188-7d2503c90f97
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - portfolio
+    - reactportfolio
 _core:
   default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
-id: portfolio_content
-theme: portfolio
-region: content
-weight: -9
+id: reactportfolio_content
+theme: reactportfolio
+region: react_app
+weight: -10
 provider: null
 plugin: system_main_block
 settings:

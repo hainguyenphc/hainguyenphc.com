@@ -1,4 +1,4 @@
-uuid: 2a0b22b5-3765-464a-8fb3-2b74d748d90a
+uuid: 9198b3e6-92a3-4ecb-9ac3-be9490c74771
 langcode: en
 status: false
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   module:
     - system
   theme:
-    - portfolio
-id: mainnavigation
-theme: portfolio
-region: sidebar_first
-weight: -9
+    - reactportfolio
+id: reactportfolio_mainnavigation
+theme: reactportfolio
+region: react_app
+weight: 0
 provider: null
 plugin: 'system_menu_block:main'
 settings:

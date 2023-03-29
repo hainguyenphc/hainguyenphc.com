@@ -10,8 +10,8 @@ _core:
   default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
 id: portfolio_site_branding
 theme: portfolio
-region: top_alert
-weight: 0
+region: masthead_primary
+weight: -10
 provider: null
 plugin: system_branding_block
 settings:
