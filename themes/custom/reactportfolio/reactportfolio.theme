@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file themes/custom/reactportfolio/reactportfolio.theme
+ */
+
+// function reactportfolio_() {}
+
+/** 
+ * Implements hook_library_info_alter().
+ * Every build generates new files with new hashes. This dynamically determines
+ * the new files so that updating asset names in *.libraries.yml file.
+ */
+function reactportfolio_library_info_alter(array &$libraries, string $extension) {
+  if ($extension === "reactportfolio" && isset($libraries['frontend'])) {
+    $path_to_theme = \Drupal::service('extension.path.resolver')->getPath('theme', 'reactportfolio');
+    $path_to_assets = $path_to_theme . '/frontend/dist/assets';
+    foreach (scandir($path_to_assets) as $file_name) {
+      $key = 'frontend/dist/assets/' . $file_name;
+      if (str_contains($file_name, '.js')) {
+        $libraries['frontend']['js'] = [$key => []];
+      }
+      else if (str_contains($file_name, '.css')) {
+        $libraries['frontend']['css']['theme'] = [$key => []];
+      }
+    }
+  }
+}
