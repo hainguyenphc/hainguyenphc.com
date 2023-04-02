@@ -2,6 +2,6 @@
 
 export default function Index() {
   return (<div>
-    Index: index of all client and personal projects
+    Homepage: index of all client and personal projects
   </div>);
 }

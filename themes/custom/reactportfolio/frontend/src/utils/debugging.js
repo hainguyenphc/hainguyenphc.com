@@ -1,3 +1,3 @@
-const IS_DEBUGGING = true;
+const IS_DEBUGGING = false;
 
 export default IS_DEBUGGING;

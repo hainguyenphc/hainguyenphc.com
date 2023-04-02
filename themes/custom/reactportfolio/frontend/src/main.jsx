@@ -3,12 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import "./index.css";
 import Index from './routes';
-import DrupalIndex from './routes/drupal';
-import DrupalClientProject, { loader as DrupalClientProjectLoader } from './routes/drupal/client-project';
+import DrupalIndex, { loader as DrupalIndexLoader } from './routes/drupal';
+import DrupalProject, { loader as DrupalProjectLoader } from './routes/drupal/project';
 import DrupalProjectBuildStep, { loader as DrupalProjectBuildStepLoader } from './routes/drupal/project-build-step';
-import IOSIndex from './routes/ios';
-import IOSTutorial from './routes/ios/tutorial';
-import PersonalProject from './routes/personal-project';
 import Root from './routes/root';
 
 // ==============================================
@@ -29,11 +26,12 @@ const router = createBrowserRouter([
           {
             path: '/drupal',
             element: <DrupalIndex />,
+            loader: DrupalIndexLoader,
             children: [
               {
                 path: 'projects/:project',
-                element: <DrupalClientProject />,
-                loader: DrupalClientProjectLoader,
+                element: <DrupalProject />,
+                loader: DrupalProjectLoader,
                 action: null,
                 children: [],
               },

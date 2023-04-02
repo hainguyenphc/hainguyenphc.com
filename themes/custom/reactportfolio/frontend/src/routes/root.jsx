@@ -14,15 +14,13 @@ const TOPICS = [
 ];
 
 export default function Root() {
-  return (<div>
+  return (<>
     <ul>
       {TOPICS.map(each => <li key={each.id}>
-          <Link to={`${each.slug}`}>{each.title}</Link>
-        </li> 
+        <Link to={`${each.slug}`}>{each.title}</Link>
+      </li>
       )}
     </ul>
-    <div>
-      <Outlet />
-    </div>
-  </div>);
+    <Outlet />
+  </>);
 }
