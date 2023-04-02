@@ -17,7 +17,7 @@ function reactportfolio_library_info_alter(array &$libraries, string $extension)
     $path_to_assets = $path_to_theme . '/frontend/dist/assets';
     foreach (scandir($path_to_assets) as $file_name) {
       $key = 'frontend/dist/assets/' . $file_name;
-      if (str_contains($file_name, '.js')) {
+      if (str_contains($file_name, '.js') && !str_contains($file_name, '.map')) {
         $libraries['frontend']['js'] = [$key => []];
       }
       else if (str_contains($file_name, '.css')) {

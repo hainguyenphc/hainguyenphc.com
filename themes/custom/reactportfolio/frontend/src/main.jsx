@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import "./index.css";
 import Index from './routes';
 import DrupalIndex from './routes/drupal';
 import DrupalClientProject, { loader as DrupalClientProjectLoader } from './routes/drupal/client-project';
