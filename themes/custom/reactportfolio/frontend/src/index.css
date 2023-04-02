@@ -1,3 +1,15 @@
-/* body {
-  background-color: antiquewhite;
+/* .active > a {
+  color: red;
+}
+
+.menu-items {
+  border: 1px solid black;
+  padding: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-item {
+  margin: 10px 1rem;
 } */

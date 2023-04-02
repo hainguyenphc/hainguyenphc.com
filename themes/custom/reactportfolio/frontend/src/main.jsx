@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import "./index.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Index from './routes';
 import DrupalIndex, { loader as DrupalIndexLoader } from './routes/drupal';
 import DrupalProject, { loader as DrupalProjectLoader } from './routes/drupal/project';
@@ -32,8 +33,6 @@ const router = createBrowserRouter([
                 path: 'projects/:project',
                 element: <DrupalProject />,
                 loader: DrupalProjectLoader,
-                action: null,
-                children: [],
               },
               {
                 path: 'projects/:project/:buildStep',

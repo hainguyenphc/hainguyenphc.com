@@ -25,6 +25,7 @@ class ProjectController extends ControllerBase {
       $datum['nid'] = $node->id();
       $datum['machine_name'] = $node->field_machine_n->value;
       $datum['title'] = $node->getTitle();
+      $datum['body'] = $node->body->value;
       $datum['url_alias'] = $node->toUrl()->toString();
       $datum['build_steps'] = $this->_getBuildStepsByProject($node->field_machine_n->value);
       $data[] = $datum;
