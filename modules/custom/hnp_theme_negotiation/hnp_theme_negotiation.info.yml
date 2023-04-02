@@ -1,0 +1,5 @@
+name: 'HNP Theme Negotiation'
+type: 'module'
+description: 'Dynamically negotiates themes'
+package: 'HNP'
+core_version_requirement: ^9 || ^10

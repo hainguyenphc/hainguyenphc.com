@@ -1,0 +1,27 @@
+hnp_project.get_projects_by_category:
+  path: /jsonapi/projects-by-category/{category}
+  defaults:
+    _controller: Drupal\hnp_project\Controller\ProjectController::getProjectsByCategory
+  requirements:
+    _permission: 'access content'
+
+hnp_project.get_project:
+  path: /jsonapi/projects/{project}
+  defaults:
+    _controller: Drupal\hnp_project\Controller\ProjectController::getProject
+  requirements:
+    _permission: 'access content'
+
+hnp_project.get_build_steps_by_project:
+  path: /jsonapi/projects/{project}/build-steps
+  defaults:
+    _controller: Drupal\hnp_project\Controller\ProjectController::getBuildStepsByProject
+  requirements:
+    _permission: 'access content'
+
+hnp_project.get_build_step:
+  path: /jsonapi/projects/{project}/build-steps/{build_step}
+  defaults:
+    _controller: Drupal\hnp_project\Controller\ProjectController::getBuildStep
+  requirements:
+    _permission: 'access content'

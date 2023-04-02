@@ -1,11 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
 
 const TOPICS = [
-  {
-    id: 'ios',
-    slug: 'ios',
-    title: 'iOS Developement',
-  },
+  // {
+  //   id: 'ios',
+  //   slug: 'ios',
+  //   title: 'iOS Developement',
+  // },
   {
     id: 'drupal',
     slug: 'drupal',
