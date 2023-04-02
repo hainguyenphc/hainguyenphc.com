@@ -7,18 +7,13 @@ use Drupal\Core\Theme\ThemeNegotiatorInterface;
 
 class ThemeNegotiator implements ThemeNegotiatorInterface {
 
+  const IS_DEBUGGING = FALSE;
+
   /** 
    * {@inheritDoc}
    */
   function applies(RouteMatchInterface $route_match) {
-    // $route_name = $route_match->getRouteName();
-    // if ($route_name !== 'react') {
-    //   return TRUE;
-    // }
-    // // if ($route_name === 'entity.node.canonical' || $route_name === 'node.add' || $route_name === 'entity.node.preview') {
-    // //   return TRUE;
-    // // }
-    return TRUE;
+    return self::IS_DEBUGGING;
   }
 
   /** 
