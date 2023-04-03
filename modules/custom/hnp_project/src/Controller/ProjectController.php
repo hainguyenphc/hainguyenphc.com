@@ -34,6 +34,9 @@ class ProjectController extends ControllerBase {
     return new JsonResponse(['data' => $data]);
   }
 
+  /** 
+   * Handles `hnp_project.get_project` route.
+   */
   public function getProject($project) {
     $query = \Drupal::entityQuery('node')
       ->condition('type', 'project')
@@ -55,11 +58,17 @@ class ProjectController extends ControllerBase {
     return new JsonResponse(['data' => $datum]);
   }
 
+  /** 
+   * Handles `hnp_project.get_build_steps_by_project` route.
+   */
   public function getBuildStepsByProject($project) {
     $data = $this->_getBuildStepsByProject($project);
     return new JsonResponse(['data' => $data]);
   }
 
+  /** 
+   * Handles `hnp_project.get_build_step` route.
+   */
   public function getBuildStep($build_step) {
     $query = \Drupal::entityQuery('node')
       ->condition('type', 'project_build_step')
