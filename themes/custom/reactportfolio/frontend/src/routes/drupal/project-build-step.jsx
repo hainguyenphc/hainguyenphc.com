@@ -2,10 +2,8 @@ import { useLoaderData } from "react-router-dom";
 
 export default function DrupalProjectBuildStep() {
   const { buildStep } = useLoaderData();
-  return (<div>
-    <div>{buildStep.title}</div>
-    <div>{buildStep.body}</div>
-  </div>);
+  const { title, body } = buildStep;
+  return (<><h1 dangerouslySetInnerHTML={{ __html: title }}></h1><div dangerouslySetInnerHTML={{ __html: body }}></div></>);
 }
 
 export async function loader({ params }) {
