@@ -1,18 +1,27 @@
-import { Link, Outlet } from "react-router-dom";
+/**
+ * @file themes/custom/reactportfolio/frontend/src/routes/root.jsx
+ */
+
+import { Outlet } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 
 const TOPICS = [
   {
-    id: 'ios',
-    slug: 'ios',
-    title: 'iOS Developement',
+    id: 'home',
+    slug: '',
+    title: 'Home'
   },
   {
     id: 'drupal',
     slug: 'drupal',
-    title: 'Drupal Development',
-  }
+    title: 'Drupal',
+  },
+  {
+    id: 'ios',
+    slug: 'ios',
+    title: 'iOS/MacOS',
+  },
 ];
 
 export default function Root() {

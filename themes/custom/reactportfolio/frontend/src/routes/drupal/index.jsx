@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+/**
+ * @file themes/custom/reactportfolio/frontend/src/routes/drupal/index.jsx
+ */
+
+import { useState } from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
 

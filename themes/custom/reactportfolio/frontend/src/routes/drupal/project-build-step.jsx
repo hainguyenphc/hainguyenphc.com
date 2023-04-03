@@ -1,3 +1,7 @@
+/**
+ * @file themes/custom/reactportfolio/frontend/src/routes/drupal/project-build-step.jsx
+ */
+
 import { useLoaderData } from "react-router-dom";
 
 export default function DrupalProjectBuildStep() {

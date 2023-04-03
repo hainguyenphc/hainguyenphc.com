@@ -1,3 +1,7 @@
+/**
+ * @file themes/custom/reactportfolio/frontend/src/index.css
+ */
+
 * {
   font-size: 1.15rem;
 }
@@ -21,6 +25,10 @@
 #main {
   text-align: justify;
 }
+
+/************************************************
+ * SCREEN <= 991px
+ ************************************************/
 
 @media screen and (max-width: 991px) {
   .drupal-index {

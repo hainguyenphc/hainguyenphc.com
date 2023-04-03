@@ -1,5 +1,8 @@
-import { useEffect } from "react";
-import { useLoaderData, useOutletContext } from "react-router-dom";
+/**
+ * @file themes/custom/reactportfolio/frontend/src/routes/drupal/project.jsx
+ */
+
+import { useLoaderData } from "react-router-dom";
 
 export default function DrupalProject() {
   const { project } = useLoaderData();
