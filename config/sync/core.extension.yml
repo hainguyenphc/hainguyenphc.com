@@ -35,6 +35,7 @@ module:
   hnp_constants: 0
   hnp_project: 0
   hnp_project_build_step: 0
+  hnp_theme_negotiation: 0
   hnp_upper_menu: 0
   image: 0
   jsonapi: 0

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.project.body
     - field.field.node.project.field_banner_image
     - field.field.node.project.field_brief_description
+    - field.field.node.project.field_machine_n
     - field.field.node.project.field_project_categories
     - field.field.node.project.field_teaser_image
     - node.type.project
@@ -35,5 +36,6 @@ content:
 hidden:
   field_banner_image: true
   field_brief_description: true
+  field_machine_n: true
   field_teaser_image: true
   links: true

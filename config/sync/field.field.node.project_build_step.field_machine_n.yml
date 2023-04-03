@@ -1,0 +1,19 @@
+uuid: dcd1e6eb-50b7-4a4b-9937-5c8c508ca83f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_machine_n
+    - node.type.project_build_step
+id: node.project_build_step.field_machine_n
+field_name: field_machine_n
+entity_type: node
+bundle: project_build_step
+label: 'Machine Name'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

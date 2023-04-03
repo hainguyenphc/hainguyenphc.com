@@ -1,0 +1,19 @@
+uuid: fa3b0fcb-6d8a-4107-b0ff-0ea22bcc7c15
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_machine_name
+    - taxonomy.vocabulary.project_category
+id: taxonomy_term.project_category.field_machine_name
+field_name: field_machine_name
+entity_type: taxonomy_term
+bundle: project_category
+label: 'Machine Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

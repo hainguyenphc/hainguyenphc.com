@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.project_build_step.body
     - field.field.node.project_build_step.field_brief_description
+    - field.field.node.project_build_step.field_machine_n
     - field.field.node.project_build_step.field_project
     - field.field.node.project_build_step.field_related_build_steps
     - field.field.node.project_build_step.field_teaser_image
@@ -48,4 +49,5 @@ content:
     region: content
 hidden:
   field_brief_description: true
+  field_machine_n: true
   field_teaser_image: true
