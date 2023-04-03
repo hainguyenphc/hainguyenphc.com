@@ -6,6 +6,10 @@
   font-size: 1.15rem;
 }
 
+img {
+  width: 100%;
+}
+
 #root {
   margin-top: 1rem;
 }
@@ -23,6 +27,7 @@
 }
 
 #main {
+  overflow: auto;
   text-align: justify;
 }
 
