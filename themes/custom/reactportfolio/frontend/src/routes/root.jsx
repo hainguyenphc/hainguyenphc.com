@@ -2,7 +2,7 @@
  * @file themes/custom/reactportfolio/frontend/src/routes/root.jsx
  */
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 
@@ -25,11 +25,13 @@ const TOPICS = [
 ];
 
 export default function Root() {
+  const HOVER_UNDERLINE_ANIMATION = "hover-underline-animation";
+  const location = useLocation();
   return (<>
-    <Nav className="mb-4">
-      {TOPICS.map(each => <Nav.Item key={`${each.slug}`}>
-        <LinkContainer to={`${each.slug}`}>
-          <Nav.Link>{each.title}</Nav.Link>
+    <Nav className="mb-4" defaultActiveKey={''}>
+      {TOPICS.map(each => <Nav.Item key={`${each.slug}`} >
+        <LinkContainer to={`${each.slug}`} id={each.slug === '' ? 'nav-link--home' : null}>
+          <Nav.Link className={`${HOVER_UNDERLINE_ANIMATION}` + (location.pathname.includes(each.slug) && each.slug !== '' ? ' active' : '')}>{each.title}</Nav.Link>
         </LinkContainer>
       </Nav.Item>)}
     </Nav>

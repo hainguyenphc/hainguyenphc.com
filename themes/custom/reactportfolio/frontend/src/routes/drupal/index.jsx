@@ -4,10 +4,11 @@
 
 import { useState } from "react";
 import Accordion from 'react-bootstrap/Accordion';
-import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 export default function DrupalIndex() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeProjectID, setActiveProjectID] = useState(null);
   const [show, setShow] = useState(true);
   const { projects } = useLoaderData();
@@ -28,7 +29,7 @@ export default function DrupalIndex() {
           </Accordion.Header>
           <Accordion.Body>
             <ul className={`drupal project--build-steps project--build-steps--${project.machine_name}`}>
-              {project.build_steps.map(step => <li key={step.nid} className={`drupal project--build-step project--build-step--${project.machine_name}`}>
+              {project.build_steps.map(step => <li key={step.nid} className={`drupal project--build-step project--build-step--${project.machine_name}` + (location.pathname === step.url_alias ? " chosen" : null)}>
                 <Link to={step.url_alias}>{step.title}</Link>
               </li>)}
             </ul>

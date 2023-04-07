@@ -1,0 +1,50 @@
+.accordion-item {
+  border: 0;
+}
+
+.accordion-button {
+  color: var(--hnp-link-color);
+  background-color: white;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--hnp-link-color);
+  font-weight: 500;
+  font-size: 1.15rem;
+  background-color: white;
+  box-shadow: none;
+}
+
+.accordion-body a {
+  color: var(--hnp-link-color);
+  text-decoration: none;
+}
+
+.accordion-body {
+  padding: 0;
+}
+
+ul.project--build-steps {
+  width: 100%;
+  padding: 0;
+}
+
+ul.project--build-steps {
+  list-style: none;
+}
+
+ul.project--build-steps > li {
+  padding: 0.5rem;
+}
+
+ul.project--build-steps > li.chosen {
+  background-position: left;
+  background-color: rgb(230, 247, 255);
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+ul.project--build-steps > li > a {
+  display: inline-block;
+  margin-left: 1.5rem;
+}
