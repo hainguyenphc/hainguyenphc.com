@@ -40,6 +40,7 @@ ul.project--build-steps > li {
 ul.project--build-steps > li.chosen {
   background-position: left;
   background-color: rgb(230, 247, 255);
+  background-color: var(--hnp-accordion-highlight-color);
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
