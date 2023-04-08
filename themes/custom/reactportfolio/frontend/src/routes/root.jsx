@@ -5,6 +5,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
 import Nav from 'react-bootstrap/Nav';
+import { useEffect } from "react";
+import Prism from "prismjs";
 
 const TOPICS = [
   {
@@ -27,6 +29,9 @@ const TOPICS = [
 export default function Root() {
   const HOVER_UNDERLINE_ANIMATION = "hover-underline-animation";
   const location = useLocation();
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (<>
     <Nav className="mb-4" defaultActiveKey={''}>
       {TOPICS.map(each => <Nav.Item key={`${each.slug}`} >

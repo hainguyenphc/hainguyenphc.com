@@ -5,6 +5,17 @@
 import { useState } from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import { Link, Outlet, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+// import Code from "../../components/Code";
+
+// const JSCode = `const App = props => {
+//   return (
+//     <div>
+//       <h1> Prism JS </h1>
+//       <div>Awesome Syntax Highlighter</div>
+//     </div>
+//   );
+// };
+// `;
 
 export default function DrupalIndex() {
   const navigate = useNavigate();
@@ -37,9 +48,12 @@ export default function DrupalIndex() {
         </Accordion.Item>)}
       </Accordion>
     </div>
+    
     <div id="main">
       <Outlet context={[show, setShow]} />
+      {/* <Code code={JSCode} language="javascript" /> */}
     </div>
+    
   </div>);
 }
 
