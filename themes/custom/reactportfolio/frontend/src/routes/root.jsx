@@ -2,11 +2,11 @@
  * @file themes/custom/reactportfolio/frontend/src/routes/root.jsx
  */
 
-import { Outlet, useLocation } from "react-router-dom";
-import { LinkContainer } from 'react-router-bootstrap';
-import Nav from 'react-bootstrap/Nav';
-import { useEffect } from "react";
 import Prism from "prismjs";
+import { useEffect } from "react";
+import Nav from 'react-bootstrap/Nav';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Outlet, useLocation } from "react-router-dom";
 
 const TOPICS = [
   {
@@ -39,6 +39,10 @@ export default function Root() {
           <Nav.Link className={`${HOVER_UNDERLINE_ANIMATION}` + (location.pathname.includes(each.slug) && each.slug !== '' ? ' active' : '')}>{each.title}</Nav.Link>
         </LinkContainer>
       </Nav.Item>)}
+      {/* Resume */}
+      <Nav.Item>
+        <a href="/Hai_Nguyen_resume.pdf" className={`${HOVER_UNDERLINE_ANIMATION} nav-link`} target="_blank" rel="noreferrer">My Resume</a>
+      </Nav.Item>
     </Nav>
     <Outlet />
   </>);
