@@ -1,3 +1,10 @@
+hnp_project.get_resume:
+  path: /Hai_Nguyen_resume.pdf
+  defaults:
+    _controller: Drupal\hnp_project\Controller\ResumeController::get
+  requirements:
+    _permission: 'access content'
+
 hnp_project.get_projects_by_category:
   path: /jsonapi/projects-by-category/{category}
   defaults:
