@@ -31,7 +31,7 @@ export default function Root() {
   const location = useLocation();
   useEffect(() => {
     Prism.highlightAll();
-  }, []);
+  }, [location.pathname]); // Whenever the location changes, we re-trigger the highlighting.
   return (<>
     <Nav className="mb-4" defaultActiveKey={''}>
       {TOPICS.map(each => <Nav.Item key={`${each.slug}`} >

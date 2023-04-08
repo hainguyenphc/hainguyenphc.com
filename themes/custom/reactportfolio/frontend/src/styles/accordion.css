@@ -1,3 +1,8 @@
+#accordion {
+  position: sticky;
+  top: 10px;
+}
+
 .accordion-item {
   border: 0;
 }
