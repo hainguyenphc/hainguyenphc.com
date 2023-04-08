@@ -14,6 +14,7 @@ import DrupalProject, { loader as DrupalProjectLoader } from './routes/drupal/pr
 import DrupalProjectBuildStep, { loader as DrupalProjectBuildStepLoader } from './routes/drupal/project-build-step';
 import DrupalTutorial from './routes/drupal/tutorial';
 import Root from './routes/root';
+import ErrorPage from './routes/error-page';
 
 // ==============================================
 
@@ -21,9 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        errorElement: null,
+        errorElement: <ErrorPage />,
         children: [
           {
             index: true,
