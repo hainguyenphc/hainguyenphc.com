@@ -2,7 +2,7 @@
  * @file themes/custom/reactportfolio/frontend/src/routes/drupal/index.jsx
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import { Link, Outlet, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import getHost from "../../utils/host";
@@ -24,6 +24,11 @@ export default function DrupalIndex() {
   const [activeProjectID, setActiveProjectID] = useState(null);
   const [show, setShow] = useState(true);
   const { projects } = useLoaderData();
+  useEffect(() => {
+    if (location.pathname === '/drupal') {
+      document.title = 'Drupal';
+    }
+  });
   return (<div className="drupal drupal-index">
     <div id="sidebar">
       <Accordion id="accordion" className="drupal menu-items" onSelect={(activeId) => {

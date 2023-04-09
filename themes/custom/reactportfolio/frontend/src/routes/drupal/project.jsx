@@ -4,10 +4,14 @@
 
 import { useLoaderData } from "react-router-dom";
 import getHost from "../../utils/host";
+import { useEffect } from "react";
 
 export default function DrupalProject() {
   const { project } = useLoaderData();
   const { title, body } = project;
+  useEffect(() => {
+    document.title = `Drupal: ${title}`;
+  });
   return (<><h1 dangerouslySetInnerHTML={{ __html: title }}></h1><div className={`drupal project-index project--${project.machine_name}`} dangerouslySetInnerHTML={{ __html: body }}></div></>);
 }
 

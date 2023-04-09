@@ -19,6 +19,26 @@ import Root from './routes/root';
 
 // ==============================================
 
+// const router_ = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route
+//       element={<Root />}
+//       path='/'
+//       errorElement={<ErrorPage />}
+//     >
+//       <Route errorElement={<ErrorPage />}>
+//         <Route index={true} element={<Index />} />
+//         <Route path='/drupal' element={<DrupalIndex />} loader={DrupalIndexLoader}>
+//           <Route path='' element={<DrupalForeword />} />
+//           <Route path='projects/:project' element={<DrupalProject />} loader={DrupalProjectLoader} />
+//           <Route path='projects/:project/:buildStep' element={<DrupalProjectBuildStep />} loader={DrupalProjectBuildStepLoader} />
+//           <Route path='tutorials/:tutorial' element={<DrupalTutorial />} loader={null} />
+//         </Route>
+//       </Route>
+//     </Route>
+//   )
+// );
+
 const router = createBrowserRouter([
   {
     path: '/',

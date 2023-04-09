@@ -31,6 +31,7 @@ export default function Root() {
   const location = useLocation();
   useEffect(() => {
     Prism.highlightAll();
+    document.title = 'Hai Nguyen Portfolio';
   }, [location.pathname]); // Whenever the location changes, we re-trigger the highlighting.
   return (<>
     <Nav className="mb-4" defaultActiveKey={''}>
