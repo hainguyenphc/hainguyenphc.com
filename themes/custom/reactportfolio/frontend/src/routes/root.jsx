@@ -19,11 +19,11 @@ const TOPICS = [
     slug: 'drupal',
     title: 'Drupal',
   },
-  {
-    id: 'ios',
-    slug: 'ios',
-    title: 'iOS/MacOS',
-  },
+  // {
+  //   id: 'ios',
+  //   slug: 'ios',
+  //   title: 'iOS/MacOS',
+  // },
 ];
 
 export default function Root() {

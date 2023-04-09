@@ -8,13 +8,14 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import "./index.css";
 import Index from './routes';
+import ComingSoonPage from './routes/coming-soon-page';
 import DrupalIndex, { loader as DrupalIndexLoader } from './routes/drupal';
 import DrupalForeword from './routes/drupal/fore-word';
 import DrupalProject, { loader as DrupalProjectLoader } from './routes/drupal/project';
 import DrupalProjectBuildStep, { loader as DrupalProjectBuildStepLoader } from './routes/drupal/project-build-step';
 import DrupalTutorial from './routes/drupal/tutorial';
-import Root from './routes/root';
 import ErrorPage from './routes/error-page';
+import Root from './routes/root';
 
 // ==============================================
 
@@ -58,21 +59,26 @@ const router = createBrowserRouter([
               }
             ],
           },
-          // // iOS "subsite"
-          // {
-          //   path: '/ios',
-          //   element: <IOSIndex />,
-          //   children: [
-          //     {
-          //       path: 'personal-projects/:projectId',
-          //       element: <PersonalProject />,
-          //     },
-          //     {
-          //       path: 'tutorials/:toturialId',
-          //       element: <IOSTutorial />,
-          //     },
-          //   ],
-          // }
+          // iOS "subsite"
+          {
+            path: '/ios',
+            element: <ComingSoonPage />
+            // element: <IOSIndex />,
+            // children: [
+            //   {
+            //     path: '',
+            //     element: null,
+            //   },
+            //   {
+            //     path: 'personal-projects/:projectId',
+            //     element: <PersonalProject />,
+            //   },
+            //   {
+            //     path: 'tutorials/:toturialId',
+            //     element: <IOSTutorial />,
+            //   },
+            // ],
+          }
         ],
       },
     ],
