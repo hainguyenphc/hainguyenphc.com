@@ -5,6 +5,7 @@
 import { useState } from "react";
 import Accordion from 'react-bootstrap/Accordion';
 import { Link, Outlet, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import host from '../../utils/host';
 // import Code from "../../components/Code";
 
 // const JSCode = `const App = props => {
@@ -58,6 +59,7 @@ export default function DrupalIndex() {
 }
 
 export async function loader() {
+  console.log(host());
   const response = await fetch('https://hainguyenphc.com.ddev.site/jsonapi/projects-by-category/drupal', { mode: 'cors' });
   const json = await response.json();
   return { projects: json.data };
