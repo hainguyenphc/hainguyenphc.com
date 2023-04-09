@@ -37,7 +37,9 @@ export default function Root() {
     <Nav className="mb-4" defaultActiveKey={''}>
       {TOPICS.map(each => <Nav.Item key={`${each.slug}`} >
         <LinkContainer to={`${each.slug}`} id={each.slug === '' ? 'nav-link--home' : null}>
-          <Nav.Link className={`${HOVER_UNDERLINE_ANIMATION}` + (location.pathname.includes(each.slug) && each.slug !== '' ? ' active' : '')}>{each.title}</Nav.Link>
+          <Nav.Link className={`${HOVER_UNDERLINE_ANIMATION}` + (location.pathname.includes(each.slug) && each.slug !== '' ? ' active' : '')}>
+            {each.title} {each.slug === '' ? <i className="fa fa-house"></i> : ''}
+          </Nav.Link>
         </LinkContainer>
       </Nav.Item>)}
       {/* Resume */}
