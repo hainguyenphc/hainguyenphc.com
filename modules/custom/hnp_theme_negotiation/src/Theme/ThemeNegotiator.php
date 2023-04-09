@@ -7,12 +7,17 @@ use Drupal\Core\Theme\ThemeNegotiatorInterface;
 
 class ThemeNegotiator implements ThemeNegotiatorInterface {
 
-  const IS_DEBUGGING = true;
+  const IS_DEBUGGING = FALSE;
 
   /** 
    * {@inheritDoc}
    */
   function applies(RouteMatchInterface $route_match) {
+    $route_name = $route_match->getRouteName();
+    if ($route_name === 'user.login') {
+      return TRUE;
+    }
+
     return self::IS_DEBUGGING;
   }
 
