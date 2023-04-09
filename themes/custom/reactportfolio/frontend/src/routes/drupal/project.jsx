@@ -3,6 +3,7 @@
  */
 
 import { useLoaderData } from "react-router-dom";
+import getHost from "../../utils/host";
 
 export default function DrupalProject() {
   const { project } = useLoaderData();
@@ -11,8 +12,9 @@ export default function DrupalProject() {
 }
 
 export async function loader({ params }) {
+  const host = getHost();
   const { project } = params;
-  const response = await fetch(`https://hainguyenphc.com.ddev.site/jsonapi/projects/${project}`, { mode: 'cors' });
+  const response = await fetch(`${host}/jsonapi/projects/${project}`, { mode: 'cors' });
   const json = await response.json();
   return { project: json.data };
 }

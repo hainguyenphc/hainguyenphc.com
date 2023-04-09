@@ -7,7 +7,7 @@ use Drupal\Core\Theme\ThemeNegotiatorInterface;
 
 class ThemeNegotiator implements ThemeNegotiatorInterface {
 
-  const IS_DEBUGGING = false;
+  const IS_DEBUGGING = true;
 
   /** 
    * {@inheritDoc}
