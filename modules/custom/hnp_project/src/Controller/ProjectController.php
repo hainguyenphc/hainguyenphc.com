@@ -49,11 +49,35 @@ class ProjectController extends ControllerBase {
     }
 
     $node = \Drupal\node\Entity\Node::load($nodes);
+    
     $datum = [];
     $datum['nid'] = $node->id();
     $datum['machine_name'] = $node->field_machine_n->value;
     $datum['title'] = $node->getTitle();
     $datum['body'] = $node->body->value;
+
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'project_build_step')
+      ->condition('field_project.entity:node.nid', $node->id())
+      ->range(0, 3)
+      ->accessCheck(FALSE);
+    $results = $query->execute();
+
+    $related = \Drupal\node\Entity\Node::loadMultiple($results);
+    if (!empty($related)) {
+      /** @var \Drupal\image\Entity\ImageStyle $image_style */
+      $image_style = \Drupal::entityTypeManager()->getStorage('image_style')->load('medium');
+      foreach ($related as $each) {
+        $teaser_image_uri = \Drupal\file\Entity\File::load($each->field_teaser_image->target_id)->getFileUri();
+        $teaser_image_url = $image_style->buildUrl($teaser_image_uri);
+        $datum['related'][$each->id()] = [
+          'id' => $each->id(),
+          'url' => $each->toUrl()->toString(),
+          'title' => $each->getTitle(),
+          'teaser_image_url' => $teaser_image_url,
+        ];
+      }
+    }
 
     return new JsonResponse(['data' => $datum]);
   }
@@ -79,13 +103,32 @@ class ProjectController extends ControllerBase {
     if (is_array($nodes)) {
       $nodes = reset($nodes);
     }
-
+    /** @var \Drupal\node\Entity\Node $node */
     $node = \Drupal\node\Entity\Node::load($nodes);
+
     $datum = [];
     $datum['nid'] = $node->id();
     $datum['machine_name'] = $node->field_machine_n->value;
     $datum['title'] = $node->getTitle();
     $datum['body'] = $node->body->value;
+
+    $related = $node->field_related_build_steps->referencedEntities();
+    if (!empty($related)) {
+      /** @var \Drupal\image\Entity\ImageStyle $image_style */
+      $image_style = \Drupal::entityTypeManager()->getStorage('image_style')->load('medium');
+      foreach ($related as $each) {
+        $id = $each->id();
+        if ($id == $node->id()) { continue; }
+        $teaser_image_uri = \Drupal\file\Entity\File::load($each->field_teaser_image->target_id)->getFileUri();
+        $teaser_image_url = $image_style->buildUrl($teaser_image_uri);
+        $datum['related'][$id] = [
+          'id' => $id,
+          'url' => $each->toUrl()->toString(),
+          'title' => $each->getTitle(),
+          'teaser_image_url' => $teaser_image_url,
+        ];
+      }
+    }
 
     return new JsonResponse(['data' => $datum]);
   }

@@ -14,7 +14,13 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
    */
   function applies(RouteMatchInterface $route_match) {
     $route_name = $route_match->getRouteName();
-    if ($route_name === 'user.login') {
+
+    $target_routes = [
+      'user.login',
+      'entity.node.preview',
+    ];
+
+    if (in_array($route_name, $target_routes)) {
       return TRUE;
     }
 

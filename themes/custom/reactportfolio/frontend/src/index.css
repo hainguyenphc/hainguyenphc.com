@@ -8,6 +8,7 @@
 @import "styles/accordion.css";
 @import "styles/blockquote.css";
 @import "styles/error-page.css";
+@import "styles/related-articles.css";
 
 * {
   font-size: 1.15rem;

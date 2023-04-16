@@ -12,6 +12,7 @@ hnp_project.get_projects_by_category:
   requirements:
     _permission: 'access content'
 
+# @see themes/custom/reactportfolio/frontend/src/routes/drupal/project.jsx
 hnp_project.get_project:
   path: /jsonapi/projects/{project}
   defaults:
@@ -26,6 +27,7 @@ hnp_project.get_build_steps_by_project:
   requirements:
     _permission: 'access content'
 
+# @see themes/custom/reactportfolio/frontend/src/routes/drupal/project-build-step.jsx file.
 hnp_project.get_build_step:
   path: /jsonapi/projects/{project}/build-steps/{build_step}
   defaults:
