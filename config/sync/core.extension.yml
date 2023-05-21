@@ -52,6 +52,7 @@ module:
   path_alias: 0
   rdf: 0
   responsive_menu: 0
+  rules: 0
   search: 0
   serialization: 0
   shortcut: 0
@@ -61,6 +62,7 @@ module:
   text: 0
   toolbar: 0
   tour: 0
+  typed_data: 0
   update: 0
   user: 0
   variationcache: 0
