@@ -49,6 +49,7 @@ class UserTypesAccess implements AccessInterface {
     if ($account->isAnonymous()) {
       return AccessResult::forbidden();
     }
+    /** @var \Drupal\user\Entity\User $user */
     $user = $this->entityTypeManager->getStorage('user')->load($account->id());
     $type = $user->get('field_user_type')->value;
     return in_array($type, $user_types) ? AccessResult::allowed() : AccessResult::forbidden();
