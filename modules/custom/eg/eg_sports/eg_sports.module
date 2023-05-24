@@ -26,3 +26,29 @@ function eg_sports_query_alter(AlterableInterface $query) {
 function eg_sports_query_player_query_alter(AlterableInterface $query) {
 
 }
+
+/** 
+ * Implements hook_cron().
+ */
+function eg_sports_cron() {
+  $database = \Drupal::database();
+  $subquery = "(SELECT [team_id] from {players} WHERE [team_id] IS NOT NULL)";
+  $query = $database->query("SELECT [id] from {teams} WHERE [id] NOT IN {$subquery}");
+  $result = $query->fetchAllAssoc('id');
+  if (!$result) { return; }
+  $ids = array_keys($result);
+
+  // Option 1:
+  // $database->delete('teams')
+  //   ->condition('id', $ids, 'IN')
+  //   ->execute();
+
+  // Option 2:
+  // The idea, then, is to check whether the team has been left empty and add it to a queue to be deleted later (whenever the cron runs).
+  foreach ($ids as $team_id) {
+    $queue = \Drupal::queue('team_cleaner', TRUE);
+    $item = new \stdClass();
+    $item->id = $team_id;
+    $queue->createItem($item);
+  }
+}
