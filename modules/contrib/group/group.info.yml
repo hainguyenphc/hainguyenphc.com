@@ -2,14 +2,14 @@ name: 'Group'
 description: 'Allows you to group users, content and other entities'
 package: 'Group'
 type: 'module'
-core_version_requirement: ^9.1 || ^10
+core_version_requirement: ^9.5 || ^10
 configure: 'group.settings'
 dependencies:
   - 'drupal:options'
   - 'entity:entity'
   - 'flexible_permissions:flexible_permissions'
 
-# Information added by Drupal.org packaging script on 2022-12-23
-version: '2.0.0-beta6'
+# Information added by Drupal.org packaging script on 2023-05-26
+version: '2.1.0'
 project: 'group'
-datestamp: 1671788533
+datestamp: 1685092677

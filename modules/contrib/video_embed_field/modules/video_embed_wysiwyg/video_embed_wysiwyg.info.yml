@@ -5,7 +5,7 @@ package: Video Embed Field
 core_version_requirement: ^9.2 || ^10
 dependencies:
   - drupal:field
-  - drupal:ckeditor
+  - drupal:editor
   - video_embed_field:video_embed_field
 
 # Information added by Drupal.org packaging script on 2022-12-19

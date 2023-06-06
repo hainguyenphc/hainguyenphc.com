@@ -2,8 +2,6 @@
 
 namespace Drupal\group\QueryAccess;
 
-use Drupal\Core\Database\Query\ConditionInterface;
-use Drupal\group\PermissionScopeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -13,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @internal
  */
-class GroupRelationshipQueryAlter extends QueryAlterBase {
+class GroupRelationshipQueryAlter extends PluginBasedQueryAlterBase {
 
   /**
    * The group relation type manager.
@@ -35,8 +33,7 @@ class GroupRelationshipQueryAlter extends QueryAlterBase {
    * {@inheritdoc}
    */
   protected function doAlter($operation) {
-    // @todo Move to plugin manager method and remove copy-paste.
-    $installed_ids = array_unique(array_merge(...array_values($this->pluginManager->getGroupTypePluginMap())));
+    $installed_ids = $this->pluginManager->getAllInstalledIds();
 
     // Check if any of the plugins actually support the operation. If not, we
     // can simply bail out here to play nice with other modules that do support
@@ -112,57 +109,22 @@ class GroupRelationshipQueryAlter extends QueryAlterBase {
   /**
    * {@inheritdoc}
    */
-  protected function addSynchronizedConditions(array $allowed_ids, ConditionInterface $scope_conditions, $scope) {
-    $data_table = $this->ensureDataTable();
-    $membership_alias = $this->ensureMembershipJoin();
-
-    foreach ($allowed_ids as $plugin_id => $identifiers) {
-      $sub_condition = $this->query->andConditionGroup();
-      $sub_condition->condition("$data_table.group_type", array_unique($identifiers), 'IN');
-      $sub_condition->condition("$data_table.plugin_id", $plugin_id);
-      if ($scope === PermissionScopeInterface::OUTSIDER_ID) {
-        $sub_condition->isNull("$membership_alias.entity_id");
-      }
-      else {
-        $sub_condition->isNotNull("$membership_alias.entity_id");
-      }
-      $scope_conditions->condition($sub_condition);
-    }
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function addIndividualConditions(array $allowed_ids, ConditionInterface $scope_conditions) {
-    $data_table = $this->ensureDataTable();
-
-    foreach ($allowed_ids as $plugin_id => $identifiers) {
-      $sub_condition = $this->query->andConditionGroup();
-      $sub_condition->condition("$data_table.gid", array_unique($identifiers) , 'IN');
-      $sub_condition->condition("$data_table.plugin_id", $plugin_id);
-      $scope_conditions->condition($sub_condition);
-    }
+  protected function getPluginDataTable() {
+    return $this->ensureDataTable();
   }
 
   /**
    * {@inheritdoc}
    */
   protected function getMembershipJoinTable() {
-    return $this->ensureBaseTable();
+    return $this->ensureDataTable();
   }
 
   /**
    * {@inheritdoc}
    */
   protected function getMembershipJoinLeftField() {
-    return 'id';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function getMembershipJoinRightField() {
-    return 'id';
+    return 'gid';
   }
 
 }

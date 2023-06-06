@@ -12,7 +12,6 @@ use Drupal\group\Plugin\Group\RelationHandlerDefault\PermissionProvider;
 use Drupal\group_test_plugin\Plugin\Group\RelationHandler\FullEntityPermissionProvider;
 use Drupal\Tests\UnitTestCase;
 use Drupal\user\EntityOwnerInterface;
-use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * Tests the default group relation permission_provider handler.
@@ -21,8 +20,6 @@ use Prophecy\PhpUnit\ProphecyTrait;
  * @group group
  */
 class PermissionProviderTest extends UnitTestCase {
-
-  use ProphecyTrait;
 
   /**
    * Tests the admin permission name.
@@ -321,8 +318,7 @@ class PermissionProviderTest extends UnitTestCase {
         $case['scope'] = $scope;
         $case['expected'] = FALSE;
         if ($case['definition']->definesEntityAccess() && $case['implements_published']) {
-          // View own unpublished entity is not implemented yet.
-          if ($scope === 'any') {
+          if ($case['implements_owner'] || $scope === 'any') {
             $case['expected'] = "view $scope unpublished {$scenario['plugin_id']} entity";
           }
         }

@@ -18,9 +18,7 @@ trait CalculatedPermissionsTrait {
    * {@inheritdoc}
    */
   public function getItem($scope, $identifier) {
-    return isset($this->items[$scope][$identifier])
-      ? $this->items[$scope][$identifier]
-      : FALSE;
+    return $this->items[$scope][$identifier] ?? FALSE;
   }
 
   /**
@@ -34,6 +32,13 @@ trait CalculatedPermissionsTrait {
       }
     }
     return $items;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getScopes() {
+    return array_keys($this->items);
   }
 
   /**

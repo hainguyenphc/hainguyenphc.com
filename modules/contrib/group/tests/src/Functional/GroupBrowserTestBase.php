@@ -42,8 +42,13 @@ abstract class GroupBrowserTestBase extends BrowserTestBase {
 
     // Make sure we do not use user 1.
     $this->createUser();
+  }
 
-    // Create a user that will server as the group creator.
+  /**
+   * Sets up the Drupal account.
+   */
+  protected function setUpAccount(): void {
+    // Create a user that will serve as the group creator.
     $this->groupCreator = $this->createUser($this->getGlobalPermissions());
     $this->drupalLogin($this->groupCreator);
   }

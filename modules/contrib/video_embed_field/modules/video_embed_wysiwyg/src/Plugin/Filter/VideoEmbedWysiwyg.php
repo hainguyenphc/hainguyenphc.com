@@ -19,7 +19,7 @@ use Drupal\Core\Render\RendererInterface;
  *   title = @Translation("Video Embed WYSIWYG"),
  *   id = "video_embed_wysiwyg",
  *   description = @Translation("Enables the use of video_embed_wysiwyg."),
- *   type = Drupal\filter\Plugin\FilterInterface::TYPE_MARKUP_LANGUAGE
+ *   type = Drupal\filter\Plugin\FilterInterface::TYPE_TRANSFORM_IRREVERSIBLE
  * )
  */
 class VideoEmbedWysiwyg extends FilterBase implements ContainerFactoryPluginInterface {

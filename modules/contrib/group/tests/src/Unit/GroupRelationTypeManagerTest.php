@@ -19,7 +19,6 @@ use Drupal\group\Plugin\Group\RelationHandler\RelationHandlerInterface;
 use Drupal\group\Plugin\Group\RelationHandler\RelationHandlerTrait;
 use Drupal\Tests\UnitTestCase;
 use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -29,8 +28,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @group group
  */
 class GroupRelationTypeManagerTest extends UnitTestCase {
-
-  use ProphecyTrait;
 
   /**
    * The group relation type manager under test.
@@ -339,12 +336,28 @@ class GroupRelationTypeManagerTest extends UnitTestCase {
    * @covers ::getAccessControlHandler
    */
   public function testGetAccessControlHandler() {
-    $this->setUpPluginDefinitions(
-      ['apple' => (new GroupRelationType(['id' => 'apple']))->setClass(GroupRelationTypeInterface::class)],
-      ['access_control' => TestGroupRelationHandler::class]
-    );
-
+    $this->setUpHandlerGetter('access_control');
     $this->assertInstanceOf(RelationHandlerInterface::class, $this->groupRelationTypeManager->getAccessControlHandler('apple'));
+  }
+
+  /**
+   * Tests the getEntityReferenceHandler() method.
+   *
+   * @covers ::getEntityReferenceHandler
+   */
+  public function testGetEntityReferenceHandler() {
+    $this->setUpHandlerGetter('entity_reference');
+    $this->assertInstanceOf(RelationHandlerInterface::class, $this->groupRelationTypeManager->getEntityReferenceHandler('apple'));
+  }
+
+  /**
+   * Tests the getOperationProvider() method.
+   *
+   * @covers ::getOperationProvider
+   */
+  public function testGetOperationProvider() {
+    $this->setUpHandlerGetter('operation_provider');
+    $this->assertInstanceOf(RelationHandlerInterface::class, $this->groupRelationTypeManager->getOperationProvider('apple'));
   }
 
   /**
@@ -353,12 +366,41 @@ class GroupRelationTypeManagerTest extends UnitTestCase {
    * @covers ::getPermissionProvider
    */
   public function testGetPermissionProvider() {
+    $this->setUpHandlerGetter('permission_provider');
+    $this->assertInstanceOf(RelationHandlerInterface::class, $this->groupRelationTypeManager->getPermissionProvider('apple'));
+  }
+
+  /**
+   * Tests the getPostInstallHandler() method.
+   *
+   * @covers ::getPostInstallHandler
+   */
+  public function testGetPostInstallHandler() {
+    $this->setUpHandlerGetter('post_install');
+    $this->assertInstanceOf(RelationHandlerInterface::class, $this->groupRelationTypeManager->getPostInstallHandler('apple'));
+  }
+
+  /**
+   * Tests the getUiTextProvider() method.
+   *
+   * @covers ::getUiTextProvider
+   */
+  public function testGetUiTextProvider() {
+    $this->setUpHandlerGetter('ui_text_provider');
+    $this->assertInstanceOf(RelationHandlerInterface::class, $this->groupRelationTypeManager->getUiTextProvider('apple'));
+  }
+
+  /**
+   * Runs common set up for handler getter tests.
+   *
+   * @param string $handler_id
+   *   The handler type to set up.
+   */
+  protected function setUpHandlerGetter(string $handler_id) {
     $this->setUpPluginDefinitions(
       ['apple' => (new GroupRelationType(['id' => 'apple']))->setClass(GroupRelationTypeInterface::class)],
-      ['permission_provider' => TestGroupRelationHandler::class]
+      [$handler_id => TestGroupRelationHandler::class]
     );
-
-    $this->assertInstanceOf(RelationHandlerInterface::class, $this->groupRelationTypeManager->getPermissionProvider('apple'));
   }
 
 }
