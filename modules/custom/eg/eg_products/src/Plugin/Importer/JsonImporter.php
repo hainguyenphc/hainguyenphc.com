@@ -67,6 +67,7 @@ class JsonImporter extends ImporterPluginBase {
     }
 
     $entities = $this->entity_type_manager->getStorage('product')->loadMultiple($ids);
+    /** @var \Drupal\eg_products\Entity\Product $entity */
     foreach ($entities as $entity) {
       $context['results']['cleared'][] = $entity->getName();
     }
