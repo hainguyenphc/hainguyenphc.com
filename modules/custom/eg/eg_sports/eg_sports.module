@@ -46,6 +46,7 @@ function eg_sports_cron() {
   // Option 2:
   // The idea, then, is to check whether the team has been left empty and add it to a queue to be deleted later (whenever the cron runs).
   foreach ($ids as $team_id) {
+    // @see modules/custom/eg/eg_sports/src/Plugin/QueueWorker/TeamCleaner.php file.
     $queue = \Drupal::queue('team_cleaner', TRUE);
     $item = new \stdClass();
     $item->id = $team_id;
