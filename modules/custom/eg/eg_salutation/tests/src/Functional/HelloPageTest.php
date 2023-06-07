@@ -36,6 +36,31 @@ class HelloPageTest extends BrowserTestBase {
     $this->assertSession()->pageTextContains($expected);
   }
 
+  /** 
+   * Tests that the configuration form for overriding the message works.
+   */
+  public function testSalutationOverrideForm() {
+    $expected = $this->assertDefaultSalutation();
+    $this->drupalGet('/admin/config/salutation-configuration');
+    $this->assertSession()->statusCodeEquals(403);
+    $account = $this->drupalCreateUser(['administer site configuration']);
+    $this->drupalLogin($account);
+    $this->drupalGet('/admin/config/salutation-configuration');
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->pageTextContains('Salutation configuration');
+    $this->assertSession()->elementExists('css', '#edit-salutation');
+
+    $edit = [
+      'salutation' => 'My custom salutation',
+    ];
+
+    $this->submitForm($edit, 'Save');
+    $this->assertSession()->pageTextContains('The configurationoptions have been saved');
+    $this->drupalGet('/hello');
+    $this->assertSession()->pageTextNotContains($expected);
+    $this->assertSession()->pageTextContains('My custom salutation');
+  }
+
   protected function assertDefaultSalutation() {
     $this->drupalGet('/hello');
     $this->assertSession()->pageTextContains('Our first route');
