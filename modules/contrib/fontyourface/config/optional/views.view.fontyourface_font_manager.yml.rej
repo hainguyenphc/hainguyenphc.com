@@ -1,0 +1,10 @@
+--- config/optional/views.view.fontyourface_font_manager.yml
++++ config/optional/views.view.fontyourface_font_manager.yml
+@@ -17,7 +17,6 @@ description: ''
+ tag: ''
+ base_table: fontyourface_font
+ base_field: fid
+-core: 8.x
+ display:
+   default:
+     display_plugin: default

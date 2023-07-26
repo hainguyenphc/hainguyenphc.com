@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '6e35a6bc7a8bd9acbc8d65c1157c41fb7d7b08e8',
+        'reference' => '115d46acfb21b98a369443f8ff1e4496c62e6573',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -614,12 +614,14 @@
             'dev_requirement' => false,
         ),
         'drupal/fontyourface' => array(
-            'pretty_version' => '3.6.0',
-            'version' => '3.6.0.0',
-            'reference' => '8.x-3.6',
+            'pretty_version' => 'dev-3.x',
+            'version' => 'dev-3.x',
+            'reference' => '8e5514d3b14022a7bc98931cf625da047045bdb8',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../modules/contrib/fontyourface',
-            'aliases' => array(),
+            'aliases' => array(
+                0 => '3.x-dev',
+            ),
             'dev_requirement' => false,
         ),
         'drupal/group' => array(
@@ -634,7 +636,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '6e35a6bc7a8bd9acbc8d65c1157c41fb7d7b08e8',
+            'reference' => '115d46acfb21b98a369443f8ff1e4496c62e6573',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
