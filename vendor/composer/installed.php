@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'f41ba93e6f1b83876f8ce7f552d223758e1bbd94',
+        'reference' => 'f5a7d650cb749041a0f8a51110924439abe7bc95',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -634,7 +634,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'f41ba93e6f1b83876f8ce7f552d223758e1bbd94',
+            'reference' => 'f5a7d650cb749041a0f8a51110924439abe7bc95',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -650,12 +650,14 @@
             'dev_requirement' => false,
         ),
         'drupal/rules' => array(
-            'pretty_version' => '3.0.0-alpha7',
-            'version' => '3.0.0.0-alpha7',
-            'reference' => '8.x-3.0-alpha7',
+            'pretty_version' => 'dev-3.x',
+            'version' => 'dev-3.x',
+            'reference' => '2d40d10351128a29c037b076c27611808398cc60',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../modules/contrib/rules',
-            'aliases' => array(),
+            'aliases' => array(
+                0 => '3.x-dev',
+            ),
             'dev_requirement' => false,
         ),
         'drupal/simple_oauth' => array(
