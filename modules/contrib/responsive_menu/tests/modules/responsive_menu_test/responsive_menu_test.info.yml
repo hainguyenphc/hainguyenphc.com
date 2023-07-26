@@ -2,6 +2,7 @@ name: 'Responsive Menu Test'
 type: module
 description: 'Support module for Responsive Menu tests.'
 package: Testing
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:node
   - drupal:filter
@@ -10,8 +11,3 @@ dependencies:
   - drupal:menu_link_content
   - responsive_menu:responsive_menu
   - drupal:language
-
-# Information added by Drupal.org packaging script on 2021-10-06
-version: '4.4.2'
-project: 'responsive_menu'
-datestamp: 1633530568

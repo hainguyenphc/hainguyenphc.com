@@ -29,7 +29,7 @@ responsive_menu.superfish:
   dependencies:
     - responsive_menu/responsive_menu.config
     - core/jquery
-    - core/jquery.once
+    - core/once
 
 responsive_menu.superfish_hoverintent:
   version: VERSION
@@ -47,11 +47,6 @@ responsive_menu.bootstrap:
       /libraries/mmenu/dist/wrappers/bootstrap/mmenu.bootstrap.css: {}
   dependencies:
     - responsive_menu/responsive_menu.config
-
-responsive_menu.polyfills:
-  version: VERSION
-  js:
-    /libraries/mmenu/dist/mmenu.polyfills.js: {}
 
 responsive_menu.toolbar:
   version: VERSION
