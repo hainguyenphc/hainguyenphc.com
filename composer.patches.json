@@ -5,6 +5,9 @@
     },
     "drupal/responsive_menu": {
       "3297964: Automated Drupal 10 compatibility fixes": "https://www.drupal.org/files/issues/2023-04-18/d10-compatibility-3297964-12.patch"
+    },
+    "drupal/ckeditor_templates": {
+      "3296778: Automated Drupal 10 compatibility fixes": "https://git.drupalcode.org/project/ckeditor_templates/-/merge_requests/5.patch"
     }
   }
 }

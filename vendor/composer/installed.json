@@ -2236,6 +2236,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "3296778: Automated Drupal 10 compatibility fixes": "https://git.drupalcode.org/project/ckeditor_templates/-/merge_requests/5.patch"
                 }
             },
             "installation-source": "dist",
