@@ -21,6 +21,7 @@ class TBMegaMenuController extends ControllerBase implements TrustedCallbackInte
     $render_array['#attached']['drupalSettings']['TBMegaMenu'] = [
       'TBElementsCounter' => ['column' => $number_columns],
     ];
+
     // Can't use DI here since it's invoked by the static method below.
     \Drupal::service('renderer')->render($render_array);
 
@@ -30,7 +31,7 @@ class TBMegaMenuController extends ControllerBase implements TrustedCallbackInte
   /**
    * {@inheritDoc}
    */
-  public static function trustedCallbacks() {
+  public static function trustedCallbacks(): array {
     return ['tbMegamenuAttachNumberColumns'];
   }
 

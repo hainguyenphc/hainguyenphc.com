@@ -3,27 +3,32 @@
   {% set tag = "a" %}
 {% else  %}
   {% set tag = 'span' %}
-  {% set linkAttributes = linkAttributes.addClass('tb-megamenu-no-link').setAttribute('tabindex', '0') %}
   {% if submenu is empty %}
-    {% set linkAttributes = linkAttributes.addClass('tb-megamenu-no-submenu') %}
+    {% set linkAttributes = linkAttributes.addClass('tbm-no-submenu') %}
   {% endif %}
 {% endif %}
 <li {{ attributes }} >
-  {% if tag == 'a' %}
-    <{{ tag }} href="{{ link['url'] }}" {{ link['attributes'] }}>
-  {% else %}
-    <{{ tag }}{{ link['attributes'] }}>
+  {% if section == 'frontend' %}
+    <div class="tbm-link-container">
   {% endif %}
-    {% if item_config['xicon'] %}
-      <i class="{{ item_config['xicon'] }}"></i>
+    {% if tag == 'a' %}
+      <{{ tag }} href="{{ link['url'] }}" {{ link['attributes'] }}>
+    {% else %}
+      <{{ tag }}{{ link['attributes'] }}>
     {% endif %}
-    {{ link.title_translate }}
-    {% if submenu and block_config['auto-arrow'] %}
-      <span class="caret"></span>
-    {% endif %}
-    {% if item_config['caption'] %}
-      <span class="mega-caption">{{ item_config['caption'] }}</span>
-    {% endif %}
-  </{{ tag }}>
+      {% if fontawesome and item_config['xicon'] %}
+        <span class="{{ item_config['xicon'] }}"></span>
+      {% endif %}
+      {{ link.title_translate }}
+      {% if item_config['caption'] %}
+        <span class="tbm-caption">{{ item_config['caption'] }}</span>
+      {% endif %}
+    </{{ tag }}>
+  {% if section == 'frontend' %}
+      {% if submenu and not group%}
+        <button class="tbm-submenu-toggle{% if block_config['auto-arrow'] %} always-show{% endif %}"><span class="visually-hidden">{{ 'Toggle submenu'|t }}</span></button>
+      {% endif %}
+    </div>
+  {% endif %}
   {{ submenu }}
 </li>

@@ -34,7 +34,7 @@
         "drupal/responsive_menu": "^4.4",
         "drupal/rules": "^3.0@alpha",
         "drupal/simple_oauth": "^5.2",
-        "drupal/tb_megamenu": "^1.7",
+        "drupal/tb_megamenu": "^3.0@alpha",
         "drupal/token": "^1.11",
         "drupal/upgrade_status": "^4.0",
         "drupal/video_embed_field": "^2.5",

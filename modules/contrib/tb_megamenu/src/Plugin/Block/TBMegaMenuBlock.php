@@ -27,21 +27,21 @@ class TBMegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
    *
    * @var string
    */
-  private $themeName;
+  protected string $themeName;
 
   /**
    * The theme manager service.
    *
    * @var \Drupal\Core\Theme\ThemeManagerInterface
    */
-  private $themeManager;
+  protected ThemeManagerInterface $themeManager;
 
   /**
    * The menu builder service.
    *
    * @var \Drupal\tb_megamenu\TBMegaMenuBuilderInterface
    */
-  private $menuBuilder;
+  protected TBMegaMenuBuilderInterface $menuBuilder;
 
   /**
    * Constructs a TBMegaMenuBlock.
@@ -66,7 +66,7 @@ class TBMegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): TBMegaMenuBlock|ContainerFactoryPluginInterface|static {
     return new static(
       $configuration,
       $plugin_id,
@@ -79,7 +79,7 @@ class TBMegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * {@inheritdoc}
    */
-  public function build() {
+  public function build(): array {
     $menu_name = $this->getDerivativeId();
     $theme_name = $this->getThemeName();
     $menu = $this->menuBuilder->getMenus($menu_name, $theme_name);
@@ -90,7 +90,7 @@ class TBMegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
       '#theme' => 'tb_megamenu',
       '#menu_name' => $menu_name,
       '#block_theme' => $theme_name,
-      '#attached' => ['library' => ['tb_megamenu/theme.tb_megamenu']],
+      '#attached' => ['library' => ['tb_megamenu/base', 'tb_megamenu/styles']],
       '#post_render' => ['\Drupal\tb_megamenu\Controller\TBMegaMenuController::tbMegamenuAttachNumberColumns'],
     ];
   }
@@ -106,7 +106,7 @@ class TBMegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
    * @return array
    *   The configuration render array
    */
-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+  public function buildConfigurationForm(array $form, FormStateInterface $form_state): array {
     $rebuild_form = parent::buildConfigurationForm($form, $form_state);
     $rebuild_form['cache']['max_age']['#default_value'] = 0;
     return $rebuild_form;
@@ -115,7 +115,7 @@ class TBMegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * {@inheritdoc}
    */
-  public function getCacheTags() {
+  public function getCacheTags(): array {
     // Rebuild block when menu or config changes.
     $configName = "{$this->getDerivativeId()}__{$this->getThemeName()}";
     $cacheTags = parent::getCacheTags();
@@ -127,7 +127,7 @@ class TBMegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * {@inheritdoc}
    */
-  public function getCacheContexts() {
+  public function getCacheContexts(): array {
     // ::build() uses MenuLinkTreeInterface::getCurrentRouteMenuTreeParameters()
     // to generate menu tree parameters, and those take the active menu trail
     // into account. Therefore, we must vary the rendered menu by the active
@@ -144,7 +144,7 @@ class TBMegaMenuBlock extends BlockBase implements ContainerFactoryPluginInterfa
    * @return string
    *   The current theme name.
    */
-  public function getThemeName() {
+  public function getThemeName(): string {
     if (!isset($this->themeName)) {
       $this->themeName = $this->themeManager->getActiveTheme()->getName();
     }

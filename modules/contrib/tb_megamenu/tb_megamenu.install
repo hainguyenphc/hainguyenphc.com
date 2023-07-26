@@ -32,10 +32,20 @@ function tb_megamenu_update_8001(&$sandbox) {
         ];
         $config = MegaMenuConfig::create($values);
       }
-      $config->menu = $menu;
-      $config->theme = $theme;
-      $config->block_config = $row->block_config;
-      $config->menu_config = $row->menu_config;
+
+      if (isset($config->menu)) {
+        $config->menu = $menu;
+      }
+      if (isset($config->theme)) {
+        $config->theme = $theme;
+      }
+      if (isset($config->block_config)) {
+        $config->block_config = $row->block_config;
+      }
+      if (isset($config->menu_config)) {
+        $config->menu_config = $row->menu_config;
+      }
+
       try {
         $config->save();
       }
