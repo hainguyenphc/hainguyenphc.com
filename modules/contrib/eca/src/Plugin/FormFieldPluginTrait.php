@@ -225,8 +225,17 @@ trait FormFieldPluginTrait {
           }
         }
         else {
+          $top_name = (string) reset($name_array);
           foreach (Element::children($elements) as $c_key) {
-            $lookup($elements[$c_key], $name_array);
+            if ($top_name === (string) $c_key) {
+              $sub_name_array = $name_array;
+              array_shift($sub_name_array);
+              $lookup($elements[$c_key], $sub_name_array);
+              break;
+            }
+            else {
+              $lookup($elements[$c_key], $name_array);
+            }
           }
         }
       };
@@ -338,7 +347,7 @@ trait FormFieldPluginTrait {
           $this->lookupKeys = ['array_parents'];
           // Alternatively, traverse along the keys of the form build array.
           foreach (Element::children($element) as $child_key) {
-            if (($child_key === $key) || (isset($element[$child_key]['#array_parents']) && in_array($key, $element[$child_key]['#array_parents'], TRUE))) {
+            if (((string) $child_key === (string) $key) || (isset($element[$child_key]['#array_parents']) && in_array($key, $element[$child_key]['#array_parents'], TRUE))) {
               $found[] = &$element[$child_key];
             }
             else {

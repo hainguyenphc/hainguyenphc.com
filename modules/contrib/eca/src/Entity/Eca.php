@@ -449,6 +449,11 @@ class Eca extends ConfigEntityBase implements EntityWithPluginCollectionInterfac
    */
   protected function validatePlugin(PluginFormInterface $plugin, array &$fields, string $type, string $plugin_id, string $label): bool {
     $replaced_fields = [];
+    $eca_validation_error = FALSE;
+    $messenger = $this->messenger();
+    $plugin_label = $plugin instanceof PluginInspectionInterface ?
+      $plugin->getPluginDefinition()['label'] : 'unknown';
+
     if ($plugin instanceof ConfigurableInterface) {
       foreach ($plugin->defaultConfiguration() + ['replace_tokens' => FALSE] as $key => $value) {
         // Convert potential strings from pseudo-checkboxes (for example a
@@ -476,6 +481,14 @@ class Eca extends ConfigEntityBase implements EntityWithPluginCollectionInterfac
       $form = [];
       $form_state = new FormState();
       foreach ($plugin->buildConfigurationForm($form, $form_state) as $key => $form_field) {
+        if (!empty($form_field['#eca_token_reference']) &&
+          isset($fields[$key]) &&
+          $this->valueIsToken($fields[$key])
+        ) {
+          $eca_validation_error = TRUE;
+          $errorMsg = sprintf('%s "%s" (%s): %s', $type, $plugin_label, $label, 'This field requires a token name, not a token; please remove the brackets.');
+          $messenger->addError($errorMsg);
+        }
         if (isset($form_field['#type'], $fields[$key]) &&
           in_array($form_field['#type'], ['number', 'email', 'machine_name'], TRUE) &&
           $this->valueIsToken($fields[$key])
@@ -526,7 +539,6 @@ class Eca extends ConfigEntityBase implements EntityWithPluginCollectionInterfac
       // Keep the currently stored list of messages in mind.
       // The form build will add messages to the messenger, which we want
       // to clear from the runtime.
-      $messenger = $this->messenger();
       $messages_by_type = $messenger->all();
 
       // Keep the current "has any errors" flag in mind, and reset this flag
@@ -567,6 +579,13 @@ class Eca extends ConfigEntityBase implements EntityWithPluginCollectionInterfac
       $form = $plugin->buildConfigurationForm([], $form_state);
       $plugin->submitConfigurationForm($form, $form_state);
     }
+
+    // If there have been any ECA specific validation errors but no other form
+    // error, we end up here but won't proceed, as the model is not valid.
+    if ($eca_validation_error) {
+      return FALSE;
+    }
+
     // Collect the resulting form field values.
     $fields = ($plugin instanceof ConfigurableInterface ? $plugin->getConfiguration() : []) + $fields;
 

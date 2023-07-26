@@ -5,7 +5,6 @@ namespace Drupal\eca_form\Plugin\Action;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
-use Drupal\eca\Plugin\DataType\DataTransferObject;
 use Drupal\eca\Plugin\FormFieldPluginTrait;
 
 /**
@@ -23,7 +22,7 @@ abstract class FormFieldActionBase extends FormActionBase {
     $original_field_name = $this->configuration['field_name'];
 
     $missing_form_fields = [];
-    foreach (DataTransferObject::buildArrayFromUserInput((string) $this->tokenServices->replace($original_field_name)) as $field_name) {
+    foreach ($this->extractFormFieldNames($original_field_name) as $field_name) {
       $this->configuration['field_name'] = $field_name;
       if (is_null($this->getTargetElement())) {
         $missing_form_fields[] = $field_name;
@@ -53,7 +52,7 @@ abstract class FormFieldActionBase extends FormActionBase {
   public function execute(): void {
     $original_field_name = $this->configuration['field_name'];
 
-    foreach (DataTransferObject::buildArrayFromUserInput((string) $this->tokenServices->replace($original_field_name)) as $field_name) {
+    foreach ($this->extractFormFieldNames($original_field_name) as $field_name) {
       $this->configuration['field_name'] = $field_name;
       $this->doExecute();
     }
@@ -100,6 +99,22 @@ abstract class FormFieldActionBase extends FormActionBase {
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state): void {
     $this->submitFormFieldConfigurationForm($form, $form_state);
     parent::submitConfigurationForm($form, $form_state);
+  }
+
+  /**
+   * Extracts form field names from the given user input.
+   *
+   * Runs through token replacement, and the input will be transformed into
+   * an array of field names, ready for being evaluated.
+   *
+   * @param string $user_input
+   *   The user input containing configured form field names.
+   *
+   * @return array
+   *   The extracted form field names, ready for evaluation.
+   */
+  protected function extractFormFieldNames(string $user_input): array {
+    return array_map('trim', explode(',', (string) $this->tokenServices->replace($user_input)));
   }
 
 }

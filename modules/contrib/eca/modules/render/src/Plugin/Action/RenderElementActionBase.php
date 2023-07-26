@@ -181,6 +181,7 @@ abstract class RenderElementActionBase extends RenderActionBase {
       '#default_value' => $this->configuration['token_name'],
       '#required' => FALSE,
       '#weight' => -28,
+      '#eca_token_reference' => TRUE,
     ];
     $form['weight'] = [
       '#type' => 'textfield',

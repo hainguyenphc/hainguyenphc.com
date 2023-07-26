@@ -64,6 +64,7 @@ class FormBuildEntity extends ConfigurableActionBase {
       '#description' => $this->t('The built entity will be stored into this specified token. Please note: An entity can only be built when a form got submitted. Example events where it works: <em>Validate form</em>, <em>Submit form</em>.'),
       '#required' => TRUE,
       '#weight' => -45,
+      '#eca_token_reference' => TRUE,
     ];
     return $form;
   }
