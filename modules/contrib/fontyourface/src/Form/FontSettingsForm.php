@@ -25,14 +25,6 @@ class FontSettingsForm extends ConfigFormBase {
   const HOOK_API = 'fontyourface_api';
   const HOOK_IMPORT = 'fontyourface_api';
 
-
-  /*
-   * Default hook constants api.
-   */
-  const HOOK_API = 'fontyourface_api';
-  const HOOK_IMPORT = 'fontyourface_api';
-
-
   /**
    * The theme handler.
    *

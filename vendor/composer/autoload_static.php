@@ -60,6 +60,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             'mglaman\\PHPStanDrupal\\' => 22,
         ),
+        'l' => 
+        array (
+            'lsolesen\\pel\\' => 13,
+        ),
         'c' => 
         array (
             'cweagans\\Composer\\' => 18,
@@ -167,6 +171,11 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
             'Grasmash\\Expander\\' => 18,
             'Goutte\\' => 7,
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
+            'FileEye\\MimeMap\\' => 16,
+        ),
         'E' => 
         array (
             'Enlightn\\SecurityChecker\\' => 25,
@@ -175,6 +184,7 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'D' => 
         array (
             'Drush\\' => 6,
+            'Drupal\\sophron\\' => 15,
             'Drupal\\Driver\\' => 14,
             'Drupal\\Core\\' => 12,
             'Drupal\\Composer\\Plugin\\VendorHardening\\' => 39,
@@ -230,6 +240,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'mglaman\\PHPStanDrupal\\' => 
         array (
             0 => __DIR__ . '/..' . '/mglaman/phpstan-drupal/src',
+        ),
+        'lsolesen\\pel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fileeye/pel/src',
         ),
         'cweagans\\Composer\\' => 
         array (
@@ -541,6 +555,14 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             0 => __DIR__ . '/..' . '/fabpot/goutte/Goutte',
         ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'FileEye\\MimeMap\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fileeye/mimemap/src',
+        ),
         'Enlightn\\SecurityChecker\\' => 
         array (
             0 => __DIR__ . '/..' . '/enlightn/security-checker/src',
@@ -552,6 +574,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'Drush\\' => 
         array (
             0 => __DIR__ . '/..' . '/drush/drush/src',
+        ),
+        'Drupal\\sophron\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/modules/contrib/sophron/src',
         ),
         'Drupal\\Driver\\' => 
         array (

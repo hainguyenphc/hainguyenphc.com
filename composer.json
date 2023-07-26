@@ -31,6 +31,7 @@
         "drupal/feeds": "^3.0@beta",
         "drupal/fontyourface": "3.x-dev@dev",
         "drupal/group": "^2.0@beta",
+        "drupal/imagemagick": "^3.4",
         "drupal/responsive_menu": "5.0.x-dev@dev",
         "drupal/rules": "3.x-dev@dev",
         "drupal/simple_oauth": "^5.2",
