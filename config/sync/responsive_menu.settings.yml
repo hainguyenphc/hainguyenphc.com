@@ -24,3 +24,4 @@ wrapper_theme: true
 use_polyfills: true
 modify_viewport: true
 use_bootstrap: false
+override_toolbar: true
