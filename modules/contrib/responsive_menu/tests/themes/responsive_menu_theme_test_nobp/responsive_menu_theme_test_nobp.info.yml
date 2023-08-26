@@ -1,5 +1,5 @@
 name: 'Responsive menu test theme (no breakpoints)'
 type: theme
 description: 'Test theme for responsive_menu module.'
-base theme: stable
-core_version_requirement: ^9 || ^10
+base theme: stable9
+core_version_requirement: ^9.3 || ^10

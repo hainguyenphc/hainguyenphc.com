@@ -40,17 +40,11 @@
 
         if (pagedim !== 'none') {
           options.extensions.push(pagedim);
-        };
+        }
 
         const config = {
           classNames: {
             selected: 'menu-item--active-trail'
-          }
-        };
-
-        if (settings.pageWrapper) {
-          config['offCanvas'] = {
-            selector: '.responsive-menu-page-wrapper',
           }
         };
 

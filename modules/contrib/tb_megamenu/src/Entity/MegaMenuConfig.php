@@ -2,7 +2,9 @@
 
 namespace Drupal\tb_megamenu\Entity;
 
+use Drupal\Component\Utility\Xss;
 use Drupal\Core\Config\Entity\ConfigEntityBase;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\tb_megamenu\MegaMenuConfigInterface;
 use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Html;
@@ -43,6 +45,8 @@ use Drupal\Component\Utility\Html;
  */
 class MegaMenuConfig extends ConfigEntityBase implements MegaMenuConfigInterface {
 
+  use StringTranslationTrait;
+
   /**
    * The MegaMenu ID.
    *
@@ -67,16 +71,16 @@ class MegaMenuConfig extends ConfigEntityBase implements MegaMenuConfigInterface
   /**
    * The json encoded string of block settings.
    *
-   * @var string
+   * @var string|array
    */
-  public string $block_config;
+  public string|array $block_config;
 
   /**
    * The json encoded string of menu settings.
    *
-   * @var string
+   * @var string|array
    */
-  public string $menu_config;
+  public string|array $menu_config;
 
   /**
    * Flags used for encoding JSON values.
@@ -162,20 +166,14 @@ class MegaMenuConfig extends ConfigEntityBase implements MegaMenuConfigInterface
 
     $config = isset($this->menu_config) ? Json::decode($this->menu_config) : [];
 
-    // Iterate through config in order to santitize items that could be
+    // Iterate through config in order to sanitize items that could be
     // vulnerable to XSS attacks.
     foreach ($config as $key => $value) {
       $config[$key]['submenu_config']['class'] = isset($value['submenu_config']['class']) ? Html::escape($value['submenu_config']['class']) : '';
-      $config[$key]['item_config']['class'] = isset($value['item_config']['class']) ? Html::escape($value['item_config']['class']) : '';
-      $config[$key]['item_config']['xicon'] = isset($value['item_config']['xicon']) ? Html::escape($value['item_config']['xicon']) : '';
-      $config[$key]['item_config']['label'] = isset($value['item_config']['label']) ? Html::escape($value['item_config']['label']) : '';
-
-      // Because the caption gets rendered on the frontend and may include
-      // special characters, we add it to a plain text render array. Any
-      // insecure tags will be autoescaped by twig.
-      $config[$key]['item_config']['caption'] = [
-        '#plain_text' => $value['item_config']['caption'],
-      ];
+      $config[$key]['item_config']['class'] =  isset($value['item_config']['class']) ? Html::escape($value['item_config']['class']) :'';
+      $config[$key]['item_config']['xicon'] =  isset($value['item_config']['xicon']) ? Html::escape($value['item_config']['xicon']) : '';
+      $config[$key]['item_config']['label'] =  isset($value['item_config']['label']) ? Html::escape($value['item_config']['label']) : '';
+      $config[$key]['item_config']['caption'] = isset($value['item_config']['caption']) ? Xss::filter($value['item_config']['caption']) : '';
     }
 
     if ($config === NULL) {

@@ -52,6 +52,20 @@ class ResponsiveMenuAdminTest extends BrowserTestBase {
   }
 
   /**
+   * Tries to match the polyfills library.
+   *
+   * @return bool
+   *   Whether the library was found in the HTML.
+   */
+  protected function getPolyfillsScript() {
+    $html = $this->getSession()->getPage()->getHtml();
+    if (preg_match('@<script src="/libraries/mmenu/dist/mmenu\.polyfills\.js.+?"></script>@', $html, $matches)) {
+      return TRUE;
+    }
+    return FALSE;
+  }
+
+  /**
    * Tests that a user with the correct permissions can access the admin page.
    */
   public function testAccessAdminPage() {
@@ -101,10 +115,10 @@ class ResponsiveMenuAdminTest extends BrowserTestBase {
    */
   public function testPolyfillsInclusion() {
     $this->drupalGet('/admin/config/user-interface/responsive-menu');
-    $this->getSession()->getPage()->checkField('Include IE11 polyfills');
+    $this->getSession()->getPage()->checkField('use_polyfills');
     $this->getSession()->getPage()->pressButton('Save configuration');
     $this->drupalGet('/node/1');
-    $this->assertSession()->elementContains('css', 'body', 'mmenu.polyfills.js');
+    $this->assertTrue($this->getPolyfillsScript());
   }
 
 }

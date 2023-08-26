@@ -1,4 +1,4 @@
-(function ($) {
+(function ($, once) {
 
   'use strict';
 
@@ -14,7 +14,6 @@
     attach: function (context, settings) {
 
       $(once('responsive-menu-optional', 'body', context)).each(function () {
-
         // Apply the superfish library to the menu.
         if ($.fn.superfish && drupalSettings.responsive_menu.superfish.active) {
           // Get the superfish settings.
@@ -33,4 +32,4 @@
     }
   };
 
-})(jQuery);
+})(jQuery, once);

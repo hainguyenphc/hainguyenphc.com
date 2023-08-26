@@ -29,10 +29,10 @@ if (window.matchMedia("(max-width: {{ block_config['breakpoint']}}px)").matches)
   document.getElementById("{{ attributes.id }}").classList.add('tbm--mobile')
 }
 
-{# If the menu should be hidden on mobile, add the appropriate class before
-   there is a chance for a flash of unstyled content. #}
 {% set hide_mobile = block_config['hide-mobile-menu'] %}
-if ({{ hide_mobile }}) {
+var hideMobile = {{ hide_mobile }}
+if (hideMobile === 1) {
   document.getElementById('{{ attributes.id }}').classList.add('tbm--mobile-hide')
 }
+
 </script>

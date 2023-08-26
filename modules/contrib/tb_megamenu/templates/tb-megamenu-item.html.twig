@@ -21,7 +21,10 @@
       {% endif %}
       {{ link.title_translate }}
       {% if item_config['caption'] %}
-        <span class="tbm-caption">{{ item_config['caption'] }}</span>
+        {% autoescape %}
+          {# Passed through Xss::filter prior to reaching twig.  We want to allow some html here. #}
+          <span class="tbm-caption">{{ item_config['caption']|raw }}</span>
+        {% endautoescape %}
       {% endif %}
     </{{ tag }}>
   {% if section == 'frontend' %}

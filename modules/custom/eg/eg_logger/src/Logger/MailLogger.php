@@ -32,7 +32,7 @@ class MailLogger implements LoggerInterface {
     $this->config_factory = $config_factory;
   }
 
-  public function log($level, $message, array $context = array()) {
+  public function log($level, string|\Stringable $message, array $context = []): void {
     // If there is no error, then we do not send out email.
     if ($level !== RfcLogLevel::ERROR) {
       return;

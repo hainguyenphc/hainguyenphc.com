@@ -9,7 +9,7 @@ dependencies:
   - 'entity:entity'
   - 'flexible_permissions:flexible_permissions'
 
-# Information added by Drupal.org packaging script on 2023-05-26
-version: '2.1.0'
+# Information added by Drupal.org packaging script on 2023-08-25
+version: '2.2.0'
 project: 'group'
-datestamp: 1685092677
+datestamp: 1692969154

@@ -149,7 +149,7 @@ class TBMegaMenuAdminController extends ControllerBase {
       $renderable_array = $this->menuBuilder->renderBlock($menu_name, $theme);
       $result = $this->renderer
         ->render($renderable_array)
-        ->__toString();
+        ->jsonSerialize();
     }
     // Display an error if the config can't be loaded.
     else {
@@ -297,7 +297,7 @@ class TBMegaMenuAdminController extends ControllerBase {
       ];
       $content = $this->renderer
         ->render($render)
-        ->__toString();
+        ->jsonSerialize();
       $result = Json::encode(['content' => $content, 'id' => $id]);
     }
     // Display an error if the block can't be loaded.
