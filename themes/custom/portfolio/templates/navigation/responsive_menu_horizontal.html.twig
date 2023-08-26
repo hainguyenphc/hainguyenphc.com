@@ -29,29 +29,31 @@
 
 {{ menus.menu_links(items, attributes, 0, is_global, language) }}
 {% macro menu_links(items, attributes, menu_level, is_global, language) %}
-  {% import _self as menus %}
-  {% if items %}
-    {% if menu_level == 0 %}
-      {% set break = false %}
-      {% for item in items if not break %}
-        {% set is_global = item.is_global %}
-        {% set break = true %}
-      {% endfor %}
-    {% endif %}
-    {% if menu_level == 0 and is_global == 1 %}
-      <ul id="horizontal-menu" class="horizontal-menu">
-      {% set render_end = true %}
-    {% elseif  menu_level == 0 and not is_global %}
-      {% set render_end = false %}
-    {% elseif menu_level == 1 and not is_global %}
-      <ul id="horizontal-menu" class="horizontal-menu">
-      {% set render_end = true %}
-    {% else %}
-      <ul class="menu sub-nav">
-      {% set render_end = true %}
-    {% endif %}
-    {% for item in items %}
-      {%
+	{% import _self as menus %}
+	{% if items %}
+		{% if menu_level == 0 %}
+			{% set break = false %}
+			{% for item in items %}
+				{% if not break %}
+					{% set is_global = item.is_global %}
+					{% set break = true %}
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+		{% if menu_level == 0 and is_global == 1 %}
+			<ul id="horizontal-menu" class="horizontal-menu">
+				{% set render_end = true %}
+			{% elseif  menu_level == 0 and not is_global %}
+				{% set render_end = false %}
+			{% elseif menu_level == 1 and not is_global %}
+				<ul id="horizontal-menu" class="horizontal-menu">
+					{% set render_end = true %}
+				{% else %}
+					<ul class="menu sub-nav">
+						{% set render_end = true %}
+					{% endif %}
+					{% for item in items %}
+						{%
         set classes = [
           'menu-item',
           item.is_expanded ? 'menu-item--expanded',
@@ -60,25 +62,25 @@
           item.fly_left ? 'menu-item--flyleft',
         ]
       %}
-      {% set options = item.url.getOptions %}
-      {% set language_class = language ~ '-only' %}
-      {% if render_end %}
-        <li{{ item.attributes.addClass(classes) }}>
-          {% if not options.attributes.class is defined or '-only' not in options.attributes.class or language_class in options.attributes.class %}
-            {{ link(item.title, item.url) }}
-            {% if item.below %}
-              {{ menus.menu_links(item.below, attributes, menu_level + 1, is_global, language) }}
-            {% endif %}
-          {% endif %}
-        </li>
-      {% else %}
-        {% if not options.attributes.class is defined or '-only' not in options.attributes.class or language_class in options.attributes.class %}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1, is_global, language) }}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-    {% if render_end %}
-      </ul>
-    {% endif %}
-  {% endif %}
-{% endmacro %}
+						{% set options = item.url.getOptions %}
+						{% set language_class = language ~ '-only' %}
+						{% if render_end %}
+							<li{{item.attributes.addClass(classes)}}>
+								{% if not options.attributes.class is defined or '-only' not in options.attributes.class or language_class in options.attributes.class %}
+									{{ link(item.title, item.url) }}
+									{% if item.below %}
+										{{ menus.menu_links(item.below, attributes, menu_level + 1, is_global, language) }}
+									{% endif %}
+								{% endif %}
+							</li>
+						{% else %}
+							{% if not options.attributes.class is defined or '-only' not in options.attributes.class or language_class in options.attributes.class %}
+								{{ menus.menu_links(item.below, attributes, menu_level + 1, is_global, language) }}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+					{% if render_end %}
+					</ul>
+				{% endif %}
+			{% endif %}
+		{% endmacro %}

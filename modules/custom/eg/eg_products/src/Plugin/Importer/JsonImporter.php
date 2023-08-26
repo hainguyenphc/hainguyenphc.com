@@ -60,6 +60,7 @@ class JsonImporter extends ImporterPluginBase {
     $ids = $this->entity_type_manager->getStorage('product')
       ->getQuery()
       ->condition('remote_id', $ids, 'NOT IN')
+      ->accessCheck(FALSE)
       ->execute();
     if (!$ids) {
       $context['results']['cleared'] = [];

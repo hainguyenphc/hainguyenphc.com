@@ -11,7 +11,7 @@ function hnp_project_views_pre_view(ViewExecutable $view, string $display_id, ar
   if ($view->id() === 'projects' && $display_id === 'page__projects_by_category') {
     $terms_query = \Drupal::entityQuery('taxonomy_term');
     $terms_query->condition('vid', "project_category");
-    $tids = $terms_query->execute();
+    $tids = $terms_query->accessCheck(FALSE)->execute();
     foreach ($tids as $tid) {
       $aliasManager = \Drupal::service('path_alias.manager');
       $alias = $aliasManager->getAliasByPath("/taxonomy/term/{$tid}");

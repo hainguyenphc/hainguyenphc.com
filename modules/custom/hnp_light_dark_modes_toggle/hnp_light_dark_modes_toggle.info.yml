@@ -2,4 +2,4 @@ name: 'HNP Light/Dark modes toggle'
 type: 'module'
 description: 'Custom logic to toggle dark and light modes.'
 package: 'hNP'
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10

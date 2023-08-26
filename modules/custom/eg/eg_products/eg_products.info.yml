@@ -1,5 +1,5 @@
 name: Example - Products (Enitity APIs demo)
 description: Demonstrates the Entity APIs in action
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 package: example

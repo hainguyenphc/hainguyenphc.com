@@ -2,8 +2,7 @@ name: Portfolio
 type: theme
 base theme: classy
 description: portfolio theme based on the classy base theme.
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 libraries:
   - portfolio/base
   - portfolio/libre-baskerville-font

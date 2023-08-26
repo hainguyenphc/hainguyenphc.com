@@ -1,6 +1,6 @@
 name: 'Surgery'
 type: module
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
 package: Custom
 description: 'Performs a surgery on a site'
 hidden: TRUE

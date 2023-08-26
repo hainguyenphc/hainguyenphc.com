@@ -2,4 +2,4 @@ name: 'HNP Constants'
 type: 'module'
 description: 'Stores all constants and literals in one place.'
 package: 'HNP'
-core_version_requirement: ^9
+core_version_requirement: ^9 || ^10
