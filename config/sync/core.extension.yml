@@ -31,6 +31,7 @@ module:
   file_mdm: 0
   filter: 0
   flexible_permissions: 0
+  gin_toolbar: 0
   help: 0
   history: 0
   hnp_constants: 0
@@ -82,4 +83,5 @@ theme:
   classy: 0
   portfolio: 0
   reactportfolio: 0
+  gin: 0
 profile: standard
