@@ -1,56 +1,118 @@
-uuid: ef1b10c0-4dfb-4dc3-9319-5af837f055ed
+uuid: 44ecd66b-b726-4166-ae44-97053d15debf
 langcode: en
 status: true
 dependencies:
   config:
     - filter.format.full_html
   module:
-    - ckeditor
-_core:
-  default_config_hash: wAnz2zfSYzdcolupgqQxXhngIscFdA_Y53q7FcwXpU0
+    - ckeditor5
 format: full_html
-editor: ckeditor
+editor: ckeditor5
 settings:
   toolbar:
-    rows:
-      -
+    items:
+      - blockQuote
+      - code
+      - codeBlock
+      - specialCharacters
+      - '|'
+      - bold
+      - underline
+      - italic
+      - strikethrough
+      - subscript
+      - superscript
+      - '|'
+      - link
+      - insertTable
+      - horizontalLine
+      - '|'
+      - bulletedList
+      - alignment
+      - numberedList
+      - indent
+      - outdent
+      - '|'
+      - drupalInsertImage
+      - drupalMedia
+      - videoEmbed
+      - '|'
+      - heading
+      - sourceEditing
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_codeBlock:
+      languages:
         -
-          name: Formatting
-          items:
-            - Bold
-            - Italic
-            - Strike
-            - Superscript
-            - Subscript
-            - '-'
-            - RemoveFormat
+          label: 'Plain text'
+          language: plaintext
         -
-          name: Linking
-          items:
-            - DrupalLink
-            - DrupalUnlink
+          label: C
+          language: c
         -
-          name: Lists
-          items:
-            - BulletedList
-            - NumberedList
+          label: 'C#'
+          language: cs
         -
-          name: Media
-          items:
-            - Blockquote
-            - DrupalImage
-            - Table
-            - HorizontalRule
+          label: C++
+          language: cpp
         -
-          name: 'Block Formatting'
-          items:
-            - Format
+          label: CSS
+          language: css
         -
-          name: Tools
-          items:
-            - ShowBlocks
-            - Source
-  plugins: {  }
+          label: Diff
+          language: diff
+        -
+          label: HTML
+          language: html
+        -
+          label: Java
+          language: java
+        -
+          label: JavaScript
+          language: javascript
+        -
+          label: PHP
+          language: php
+        -
+          label: Python
+          language: python
+        -
+          label: Ruby
+          language: ruby
+        -
+          label: TypeScript
+          language: typescript
+        -
+          label: XML
+          language: xml
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_imageResize:
+      allow_resize: true
+    ckeditor5_list:
+      reversed: true
+      startIndex: true
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    media_media:
+      allow_view_mode_override: true
+    video_embed_wysiwyg_video_embed:
+      defaults:
+        children:
+          autoplay: true
+          responsive: true
+          width: '42'
+          height: '42'
 image_upload:
   status: true
   scheme: public
