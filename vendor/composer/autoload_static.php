@@ -185,6 +185,7 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             'Enlightn\\SecurityChecker\\' => 25,
             'Egulias\\EmailValidator\\' => 23,
+            'EasyRdf\\' => 8,
         ),
         'D' => 
         array (
@@ -632,6 +633,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
+        ),
+        'EasyRdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easyrdf/easyrdf/lib',
         ),
         'Drush\\' => 
         array (

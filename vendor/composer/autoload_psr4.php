@@ -101,6 +101,7 @@ return array(
     'FileEye\\MimeMap\\' => array($vendorDir . '/fileeye/mimemap/src'),
     'Enlightn\\SecurityChecker\\' => array($vendorDir . '/enlightn/security-checker/src'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
+    'EasyRdf\\' => array($vendorDir . '/easyrdf/easyrdf/lib'),
     'Drush\\' => array($vendorDir . '/drush/drush/src'),
     'Drupal\\sophron\\' => array($baseDir . '/modules/contrib/sophron/src'),
     'Drupal\\Core\\' => array($baseDir . '/core/lib/Drupal/Core'),
