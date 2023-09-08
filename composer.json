@@ -32,6 +32,8 @@
         "drupal/environment_indicator": "^4.0",
         "drupal/feeds": "^3.0@beta",
         "drupal/fontyourface": "3.x-dev@dev",
+        "drupal/gin": "^3.0@rc",
+        "drupal/gin_toolbar": "^1.0@rc",
         "drupal/group": "^2.0@beta",
         "drupal/imagemagick": "^3.4",
         "drupal/responsive_menu": "4.4.x-dev@dev",
