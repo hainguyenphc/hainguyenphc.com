@@ -52,6 +52,7 @@
         "drupal/sitewide_alert": "^2.1",
         "drupal/smart_trim": "^2.1",
         "drupal/stable": "^2.0",
+        "drupal/taxonomy_access_fix": "^4.0",
         "drupal/tb_megamenu": "^3.0@alpha",
         "drupal/token": "^1.11",
         "drupal/twig_tweak": "^3.2",

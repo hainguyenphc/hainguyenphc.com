@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a5512f9edb8503df4a0e1e52f895ff6",
+    "content-hash": "d91b3a938b99cfff236e9467f0fc6933",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4894,6 +4894,62 @@
             "homepage": "https://www.drupal.org/project/stable",
             "support": {
                 "source": "https://git.drupalcode.org/project/stable"
+            }
+        },
+        {
+            "name": "drupal/taxonomy_access_fix",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/taxonomy_access_fix.git",
+                "reference": "4.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/taxonomy_access_fix-4.0.1.zip",
+                "reference": "4.0.1",
+                "shasum": "d28d57ebd6436b77830ab994d7d0df7a5bf0b7f4"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.1",
+                    "datestamp": "1691980926",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "FeyP",
+                    "homepage": "https://www.drupal.org/user/998680"
+                },
+                {
+                    "name": "pifagor",
+                    "homepage": "https://www.drupal.org/user/2375692"
+                },
+                {
+                    "name": "rudiedirkx",
+                    "homepage": "https://www.drupal.org/user/890274"
+                },
+                {
+                    "name": "voleger",
+                    "homepage": "https://www.drupal.org/user/3260314"
+                }
+            ],
+            "description": "Fixes the crooked access checks for Taxonomy pages.",
+            "homepage": "https://www.drupal.org/project/taxonomy_access_fix",
+            "support": {
+                "source": "https://git.drupalcode.org/project/taxonomy_access_fix"
             }
         },
         {
