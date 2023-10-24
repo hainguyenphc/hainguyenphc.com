@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'cb00eff587dd28dc19eb12be035ef329e1e38781',
+        'reference' => '3e561c4b994e814ec43badc7f514206cf382c44c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -305,7 +305,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/common',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'doctrine/deprecations' => array(
             'pretty_version' => '1.1.2',
@@ -323,7 +323,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/event-manager',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'doctrine/instantiator' => array(
             'pretty_version' => '2.0.0',
@@ -350,7 +350,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/persistence',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'dragonmantank/cron-expression' => array(
             'pretty_version' => 'v3.3.3',
@@ -683,7 +683,7 @@
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../modules/contrib/devel',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'drupal/devel_kint_extras' => array(
             'pretty_version' => '1.1.0',
@@ -870,7 +870,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'cb00eff587dd28dc19eb12be035ef329e1e38781',
+            'reference' => '3e561c4b994e814ec43badc7f514206cf382c44c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

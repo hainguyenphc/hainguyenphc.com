@@ -31,6 +31,7 @@
         "drupal/core-project-message": "^10",
         "drupal/core-recommended": "^10",
         "drupal/core-vendor-hardening": "^10",
+        "drupal/devel": "^5.0",
         "drupal/eca": "^1.1",
         "drupal/entitygroupfield": "^2.0@alpha",
         "drupal/environment_indicator": "^4.0",
@@ -141,7 +142,6 @@
     "require-dev": {
         "drupal/coffee": "^1.2",
         "phpspec/prophecy-phpunit": "^2",
-        "drupal/devel": "^5.0",
         "drupal/devel_kint_extras": "^1.1",
         "drupal/core-dev": "^10",
         "drupal/coder": "^8.3",
