@@ -29,6 +29,7 @@
         "drupal/core-recommended": "^10",
         "drupal/core-vendor-hardening": "^10",
         "drupal/eca": "^1.1",
+        "drupal/entitygroupfield": "^2.0@alpha",
         "drupal/environment_indicator": "^4.0",
         "drupal/feeds": "^3.0@beta",
         "drupal/fontyourface": "3.x-dev@dev",

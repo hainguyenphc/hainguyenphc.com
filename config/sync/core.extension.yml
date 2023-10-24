@@ -23,6 +23,7 @@ module:
   editor: 0
   eg_logger: 0
   entity: 0
+  entitygroupfield: 0
   environment_indicator: 0
   feeds: 0
   field: 0

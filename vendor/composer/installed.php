@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'f481e1b9850e67b1f3f7f592a50cf076c0c080f7',
+        'reference' => 'd98011d86535f6983db533b6f1cc6ef78e26bdc6',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -676,6 +676,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/entitygroupfield' => array(
+            'pretty_version' => '2.0.0-alpha1',
+            'version' => '2.0.0.0-alpha1',
+            'reference' => '2.0.0-alpha1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/entitygroupfield',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/environment_indicator' => array(
             'pretty_version' => '4.0.14',
             'version' => '4.0.14.0',
@@ -771,7 +780,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'f481e1b9850e67b1f3f7f592a50cf076c0c080f7',
+            'reference' => 'd98011d86535f6983db533b6f1cc6ef78e26bdc6',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
