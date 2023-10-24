@@ -90,6 +90,7 @@ module:
   views_ui: 0
   webform: 0
   fontyourface: 1
+  pathauto: 1
   google_fonts_api: 10
   local_fonts: 10
   views: 10
