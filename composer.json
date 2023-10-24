@@ -42,6 +42,7 @@
         "drupal/group": "^3.2",
         "drupal/honeypot": "^2.1",
         "drupal/imagemagick": "^3.4",
+        "drupal/paragraphs": "^1.16",
         "drupal/rdf": "^2.0",
         "drupal/responsive_menu": "4.4.x-dev@dev",
         "drupal/rules": "3.x-dev@dev",

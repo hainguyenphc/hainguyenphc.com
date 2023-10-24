@@ -27,6 +27,7 @@ module:
   editor: 0
   eg_logger: 0
   entity: 0
+  entity_reference_revisions: 0
   entitygroupfield: 0
   environment_indicator: 0
   feeds: 0
@@ -92,6 +93,7 @@ module:
   google_fonts_api: 10
   local_fonts: 10
   views: 10
+  paragraphs: 11
   standard: 1000
 theme:
   claro: 0
