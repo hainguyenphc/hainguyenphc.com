@@ -14,6 +14,7 @@
     attach: function (context, settings) {
       if (typeof(settings.environmentIndicator) != 'undefined') {
         const $body = $('body');
+        const borderWidth = getComputedStyle(document.body).getPropertyValue('--enviroment-indicator-border-width') || '6px';
 
         // Only apply text and background color if not using gin_toolbar
         if (!$body.hasClass('gin--vertical-toolbar') && !$body.hasClass('gin--horizontal-toolbar')) {
@@ -23,12 +24,12 @@
 
         // Set environment color for gin_toolbar vertical toolbar.
         if ($body.hasClass('gin--vertical-toolbar')) {
-          $('.toolbar-menu-administration', context).css({'border-left-color': settings.environmentIndicator.bgColor, 'border-left-width': '6px'});
-          $('.toolbar-tray-horizontal .toolbar-menu li.menu-item', context).css({'margin-left': '-3px'});
+          $('.toolbar-menu-administration', context).css({'border-left-color': settings.environmentIndicator.bgColor, 'border-left-width': borderWidth});
+          $('.toolbar-tray-horizontal .toolbar-menu li.menu-item', context).css({'margin-left': 'calc(var(--enviroment-indicator-border-width) * -0.5)'});
         }
         // Set environment color for gin_toolbar horizontal toolbar.
         if ($body.hasClass('gin--horizontal-toolbar')) {
-          $('#toolbar-item-administration-tray').css({'border-top-color': settings.environmentIndicator.bgColor, 'border-top-width': '6px'});
+          $('#toolbar-item-administration-tray').css({'border-top-color': settings.environmentIndicator.bgColor, 'border-top-width': borderWidth});
         }
         // Set environment color on the icon of the gin_toolbar
         if($body.hasClass('gin--horizontal-toolbar') || $body.hasClass('gin--vertical-toolbar')) {

@@ -21,7 +21,7 @@ final class GeneratedConfig
         0 => 'phpstan/rules.neon',
       ),
     ),
-    'version' => '2.5.8',
+    'version' => '2.6.5',
   ),
   'mglaman/phpstan-drupal' => 
   array (
@@ -62,7 +62,7 @@ final class GeneratedConfig
         1 => 'rules.neon',
       ),
     ),
-    'version' => '1.3.14',
+    'version' => '1.3.15',
   ),
 );
 

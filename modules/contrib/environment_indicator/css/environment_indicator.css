@@ -1,3 +1,7 @@
+:root {
+  --enviroment-indicator-border-width: 6px;
+}
+
 #environment-indicator {
   text-align: center;
   white-space: nowrap;
@@ -9,11 +13,6 @@
   right: 0;
   padding: 5px;
   background-image: linear-gradient(bottom, rgba(207,207,207,0.3) 19%, rgba(250,250,250,0.3) 60%, rgba(255,255,255,0.3) 80%);
-  background-image: -o-linear-gradient(bottom, rgba(207,207,207,0.3) 19%, rgba(250,250,250,0.3) 60%, rgba(255,255,255,0.3) 80%);
-  background-image: -moz-linear-gradient(bottom, rgba(207,207,207,0.3) 19%, rgba(250,250,250,0.3) 60%, rgba(255,255,255,0.3) 80%);
-  background-image: -webkit-linear-gradient(bottom, rgba(207,207,207,0.3) 19%, rgba(250,250,250,0.3) 60%, rgba(255,255,255,0.3) 80%);
-  background-image: -ms-linear-gradient(bottom, rgba(207,207,207,0.3) 19%, rgba(250,250,250,0.3) 60%, rgba(255,255,255,0.3) 80%);
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.19, rgba(207,207,207,0.3)), color-stop(0.6, rgba(250,250,250,0.3)), color-stop(0.8, rgba(255,255,255,0.3)));
 }
 
 #environment-indicator .description { font-size: 0.85em; }
@@ -40,9 +39,6 @@
 
 #environment-indicator ul.environment-switcher-container li a:hover {
   background-color: #DDD;
-  -moz-box-shadow: inset 0 1px 5px #333;
-  -webkit-box-shadow: inset 0 1px 5px #333;
-  -o-box-shadow: inset 0 1px 5px #333;
   box-shadow: inset 0 1px 5px #333;
 }
 
@@ -55,9 +51,6 @@
 .environment-indicator-color {
   font-size: 1em;
   text-align: center;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -o-border-radius: 5px;
   border-radius: 5px;
   background-color: #EDEDE0;
 }
@@ -84,12 +77,16 @@
 
 /* Style fixes for gin_toolbar */
 .gin--vertical-toolbar .toolbar-menu-administration {
-  border-left: 3px solid;
+  border-left: var(--enviroment-indicator-border-width) solid;
 }
 
 .gin--horizontal-toolbar #toolbar-item-administration-tray {
-  border-top: 3px solid;
+  border-top: var(--enviroment-indicator-border-width) solid;
   border-bottom: 0;
+}
+
+.gin--horizontal-toolbar .gin-secondary-toolbar {
+  margin-top: var(--enviroment-indicator-border-width);
 }
 
 [dir="ltr"] .gin--vertical-toolbar .toolbar-menu-administration > .toolbar-menu > .menu-item .toolbar-menu {

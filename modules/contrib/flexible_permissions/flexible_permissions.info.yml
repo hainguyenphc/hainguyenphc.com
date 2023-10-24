@@ -5,7 +5,7 @@ core_version_requirement: ^9.5 || ^10
 dependencies:
   - 'variationcache:variationcache'
 
-# Information added by Drupal.org packaging script on 2023-03-23
-version: '1.0.0'
+# Information added by Drupal.org packaging script on 2023-10-11
+version: '1.1.0'
 project: 'flexible_permissions'
-datestamp: 1679575749
+datestamp: 1697027414

@@ -151,7 +151,10 @@ class ChainPermissionCalculator implements ChainPermissionCalculatorInterface {
       // Alter mode, allow all calculators to alter the complete build.
       $calculated_permissions->disableBuildMode();
       foreach ($this->getCalculators() as $calculator) {
-        if ($calculator instanceof PermissionCalculatorAlterInterface) {
+        if ($calculator instanceof PermissionCalculatorAlterInterfaceV2) {
+          $calculator->alterPermissions($account, $scope, $calculated_permissions);
+        }
+        elseif ($calculator instanceof PermissionCalculatorAlterInterface) {
           $calculator->alterPermissions($calculated_permissions);
         }
       }
@@ -198,8 +201,9 @@ class ChainPermissionCalculator implements ChainPermissionCalculatorInterface {
     else {
       $contexts = [];
       foreach ($this->getCalculators() as $calculator) {
-        $contexts = array_merge($contexts, $calculator->getPersistentCacheContexts($scope));
+        $contexts[] = $calculator->getPersistentCacheContexts($scope);
       }
+      $contexts = array_merge(...$contexts);
 
       // Store the contexts in the regular static cache.
       $this->regularStatic->set($cid, $contexts);
