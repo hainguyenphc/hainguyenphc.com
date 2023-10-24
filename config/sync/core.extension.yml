@@ -68,10 +68,12 @@ module:
   serialization: 0
   shortcut: 0
   simple_oauth: 0
+  smart_trim: 0
   sophron: 0
   system: 0
   taxonomy: 0
   text: 0
+  token: 0
   toolbar: 0
   tour: 0
   typed_data: 0
