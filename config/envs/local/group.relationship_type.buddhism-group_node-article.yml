@@ -1,0 +1,17 @@
+uuid: 1d366e34-6da9-4ed9-863e-3aafe90aa7f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.buddhism
+    - node.type.article
+  module:
+    - gnode
+    - node
+id: buddhism-group_node-article
+group_type: buddhism
+content_plugin: 'group_node:article'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

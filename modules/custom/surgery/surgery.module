@@ -88,13 +88,13 @@ function surgery_preprocess_table(array &$variables) {
     if (in_array($table_id, $target_table_ids)) {
       $variables['#attached']['drupalSettings']['surgery']['table_ids'][] = $variables['attributes']['id'];
       $variables['#attached']['library'][] = 'surgery/data_tables';
-      $variables['#attached']['library'][] = 'surgery/table_tweaks';
+      // $variables['#attached']['library'][] = 'surgery/table_tweaks';
     }
   }
   else {
     $variables['attributes']['id'] = 'surgery-table';
     $variables['#attached']['drupalSettings']['surgery']['table_ids'][] = $variables['attributes']['id'];
     $variables['#attached']['library'][] = 'surgery/data_tables';
-    $variables['#attached']['library'][] = 'surgery/table_tweaks';
+    // $variables['#attached']['library'][] = 'surgery/table_tweaks';
   }
 }

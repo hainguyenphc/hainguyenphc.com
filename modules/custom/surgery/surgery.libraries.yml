@@ -6,7 +6,7 @@ data_tables:
   js:
     js/dataTables.min.js: {}
 
-table_tweaks:
-  version: VERSION
-  js:
-    js/table_tweaks.js: {}
+# table_tweaks:
+#   version: VERSION
+  # js:
+    # js/table_tweaks.js: {}

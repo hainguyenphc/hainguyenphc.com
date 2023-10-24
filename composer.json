@@ -36,6 +36,7 @@
         "drupal/entitygroupfield": "^2.0@alpha",
         "drupal/environment_indicator": "^4.0",
         "drupal/feeds": "^3.0@beta",
+        "drupal/field_group": "^3.4",
         "drupal/fontyourface": "3.x-dev@dev",
         "drupal/gin": "^3.0@rc",
         "drupal/gin_login": "^2.0",
