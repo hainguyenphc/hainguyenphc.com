@@ -43,6 +43,7 @@ module:
   hnp_project_build_step: 0
   hnp_theme_negotiation: 0
   hnp_upper_menu: 0
+  honeypot: 0
   image: 0
   imagemagick: 0
   jquery_ui: 0
