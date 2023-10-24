@@ -30,7 +30,7 @@ trait GroupMembershipTrait {
    * {@inheritdoc}
    */
   public static function loadSingle(GroupInterface $group, AccountInterface $account) {
-    $storage = \Drupal::entityTypeManager()->getStorage('group_content');
+    $storage = \Drupal::entityTypeManager()->getStorage('group_relationship');
 
     $ids = $storage->getQuery()
       ->accessCheck(FALSE)
@@ -46,7 +46,7 @@ trait GroupMembershipTrait {
    * {@inheritdoc}
    */
   public static function loadByGroup(GroupInterface $group, $roles = NULL) {
-    $storage = \Drupal::entityTypeManager()->getStorage('group_content');
+    $storage = \Drupal::entityTypeManager()->getStorage('group_relationship');
 
     $query = $storage->getQuery()
       ->accessCheck(FALSE)
@@ -65,7 +65,7 @@ trait GroupMembershipTrait {
    * {@inheritdoc}
    */
   public static function loadByUser(AccountInterface $account = NULL, $roles = NULL) {
-    $storage = \Drupal::entityTypeManager()->getStorage('group_content');
+    $storage = \Drupal::entityTypeManager()->getStorage('group_relationship');
 
     if (!isset($account)) {
       $account = \Drupal::currentUser();

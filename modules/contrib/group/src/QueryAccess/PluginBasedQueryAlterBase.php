@@ -31,7 +31,7 @@ abstract class PluginBasedQueryAlterBase extends QueryAlterBase {
     // A list of plugin IDs and group types can be optimized into a list of
     // group relationship type IDs. This to avoid having to add an IN query per
     // plugin ID as seen in ::addIndividualConditions().
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
 
     $group_relationship_type_ids = [];

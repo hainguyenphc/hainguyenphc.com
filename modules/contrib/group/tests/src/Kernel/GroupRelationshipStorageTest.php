@@ -42,15 +42,15 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->storage = $this->entityTypeManager->getStorage('group_content');
+    $this->storage = $this->entityTypeManager->getStorage('group_relationship');
     $this->groupType = $this->createGroupType();
 
     // Enable the test plugins on a test group type.
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
-    $storage->createFromPlugin($this->groupType, 'user_as_content')->save();
-    $storage->createFromPlugin($this->groupType, 'group_as_content')->save();
-    $storage->createFromPlugin($this->groupType, 'node_type_as_content')->save();
+    $storage->createFromPlugin($this->groupType, 'user_relation')->save();
+    $storage->createFromPlugin($this->groupType, 'group_relation')->save();
+    $storage->createFromPlugin($this->groupType, 'node_type_relation')->save();
   }
 
   /**
@@ -98,7 +98,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
 
     $this->expectException(EntityStorageException::class);
     $this->expectExceptionMessage('Cannot add an entity to an unsaved group.');
-    $this->storage->createForEntityInGroup($account, $group, 'user_as_content');
+    $this->storage->createForEntityInGroup($account, $group, 'user_relation');
   }
 
   /**
@@ -112,7 +112,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
 
     $this->expectException(EntityStorageException::class);
     $this->expectExceptionMessage('Cannot add an unsaved entity to a group.');
-    $this->storage->createForEntityInGroup($account, $group, 'user_as_content');
+    $this->storage->createForEntityInGroup($account, $group, 'user_relation');
   }
 
   /**
@@ -126,7 +126,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
 
     $this->expectException(EntityStorageException::class);
     $this->expectExceptionMessage('Invalid plugin provided for adding the entity to the group.');
-    $this->storage->createForEntityInGroup($account, $group, 'group_as_content');
+    $this->storage->createForEntityInGroup($account, $group, 'group_relation');
   }
 
   /**
@@ -140,7 +140,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
 
     $this->expectException(EntityStorageException::class);
     $this->expectExceptionMessage("The provided plugin provided does not support the entity's bundle.");
-    $this->storage->createForEntityInGroup($subgroup, $group, 'group_as_content');
+    $this->storage->createForEntityInGroup($subgroup, $group, 'group_relation');
   }
 
   /**
@@ -151,7 +151,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
   public function testCreateWithBundle() {
     $group = $this->createGroup(['type' => $this->groupType->id()]);
     $subgroup = $this->createGroup(['type' => $this->createGroupType(['id' => 'default'])->id()]);
-    $group_relationship = $this->storage->createForEntityInGroup($subgroup, $group, 'group_as_content');
+    $group_relationship = $this->storage->createForEntityInGroup($subgroup, $group, 'group_relation');
     $this->assertInstanceOf('\Drupal\group\Entity\GroupRelationshipInterface', $group_relationship, 'Created a GroupRelationship entity using a bundle-specific plugin.');
   }
 
@@ -163,7 +163,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
   public function testCreateWithoutBundle() {
     $group = $this->createGroup(['type' => $this->groupType->id()]);
     $account = $this->createUser();
-    $group_relationship = $this->storage->createForEntityInGroup($account, $group, 'user_as_content');
+    $group_relationship = $this->storage->createForEntityInGroup($account, $group, 'user_relation');
     $this->assertInstanceOf('\Drupal\group\Entity\GroupRelationshipInterface', $group_relationship, 'Created a GroupRelationship entity using a bundle-independent plugin.');
   }
 
@@ -176,7 +176,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
     $group = $this->createGroup(['type' => $this->groupType->id()]);
     $node_type = $this->createNodeType();
 
-    $group_relationship = $this->storage->createForEntityInGroup($node_type, $group, 'node_type_as_content');
+    $group_relationship = $this->storage->createForEntityInGroup($node_type, $group, 'node_type_relation');
     $this->assertInstanceOf('\Drupal\group\Entity\GroupRelationshipInterface', $group_relationship, 'Created a GroupRelationship entity using a config handling plugin.');
 
     $storage = $this->entityTypeManager->getStorage('group_config_wrapper');
@@ -225,8 +225,8 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
     $group = $this->createGroup(['type' => $this->groupType->id()]);
 
     $this->expectException(EntityStorageException::class);
-    $this->expectExceptionMessage('Loading relationships for the given entity of type "group" not supported by the provided plugin "user_as_content".');
-    $this->storage->loadByEntity($group, 'user_as_content');
+    $this->expectExceptionMessage('Loading relationships for the given entity of type "group" not supported by the provided plugin "user_relation".');
+    $this->storage->loadByEntity($group, 'user_relation');
   }
 
   /**
@@ -242,8 +242,8 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
     // Both entities should have ID 2 to test
     $this->assertSame($group_b->id(), $account->id());
 
-    // Add the group as content so we can verify only the user is returned.
-    $group_a->addRelationship($group_b, 'group_as_content');
+    // Relate the group so we can verify only the user is returned.
+    $group_a->addRelationship($group_b, 'group_relation');
     $this->assertCount(2, $this->storage->loadByEntity($account), 'Managed to load the group creator memberships by user.');
     $this->assertCount(2, $this->storage->loadByEntity($account, 'group_membership'), 'Managed to load the group creator memberships by user and plugin ID.');
   }
@@ -256,7 +256,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
   public function testLoadByConfigEntity() {
     $group = $this->createGroup(['type' => $this->groupType->id()]);
     $node_type = $this->createNodeType();
-    $group->addRelationship($node_type, 'node_type_as_content');
+    $group->addRelationship($node_type, 'node_type_relation');
 
     $storage = $this->entityTypeManager->getStorage('group_config_wrapper');
     assert($storage instanceof ConfigWrapperStorageInterface);
@@ -266,7 +266,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
     $this->assertCount(1, $group_relationships, 'Managed to load the grouped node types by node type.');
     $this->assertSame($wrapper->id(), reset($group_relationships)->get('entity_id')->target_id);
 
-    $group_relationships = $this->storage->loadByEntity($node_type, 'node_type_as_content');
+    $group_relationships = $this->storage->loadByEntity($node_type, 'node_type_relation');
     $this->assertCount(1, $group_relationships, 'Managed to load the grouped node types by node type and plugin ID.');
     $this->assertSame($wrapper->id(), reset($group_relationships)->get('entity_id')->target_id);
   }
@@ -285,7 +285,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
     $this->assertSame($group_b->id(), $account->id());
 
     // Add the group as content so we can verify only the user is returned.
-    $group_a->addRelationship($group_b, 'group_as_content');
+    $group_a->addRelationship($group_b, 'group_relation');
     $this->assertCount(1, $this->storage->loadByEntityAndGroup($account, $group_a), 'Managed to load the group creator membership by user and group.');
     $this->assertCount(1, $this->storage->loadByEntityAndGroup($account, $group_a, 'group_membership'), 'Managed to load the group creator membership by user, group and plugin ID.');
   }
@@ -298,7 +298,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
   public function testLoadByConfigEntityAndGroup() {
     $group = $this->createGroup(['type' => $this->groupType->id()]);
     $node_type = $this->createNodeType();
-    $group->addRelationship($node_type, 'node_type_as_content');
+    $group->addRelationship($node_type, 'node_type_relation');
 
     $storage = $this->entityTypeManager->getStorage('group_config_wrapper');
     assert($storage instanceof ConfigWrapperStorageInterface);
@@ -308,7 +308,7 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
     $this->assertCount(1, $group_relationships, 'Managed to load the grouped node types by node type and group.');
     $this->assertSame($wrapper->id(), reset($group_relationships)->get('entity_id')->target_id);
 
-    $group_relationships = $this->storage->loadByEntityAndGroup($node_type, $group, 'node_type_as_content');
+    $group_relationships = $this->storage->loadByEntityAndGroup($node_type, $group, 'node_type_relation');
     $this->assertCount(1, $group_relationships, 'Managed to load the grouped node types by node type, group and plugin ID.');
     $this->assertSame($wrapper->id(), reset($group_relationships)->get('entity_id')->target_id);
   }
@@ -335,40 +335,40 @@ class GroupRelationshipStorageTest extends GroupKernelTestBase {
     $account = $this->createUser();
 
     // Enable the test plugins on the test group types.
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
-    $storage->createFromPlugin($group_type_none, 'user_as_content')->save();
-    $storage->createFromPlugin($group_type_shared, 'user_as_content_shared_bundle_class')->save();
-    $storage->createFromPlugin($group_type_specific, 'user_as_content_shared_bundle_class')->save();
+    $storage->createFromPlugin($group_type_none, 'user_relation')->save();
+    $storage->createFromPlugin($group_type_shared, 'user_relation_shared_bundle_class')->save();
+    $storage->createFromPlugin($group_type_specific, 'user_relation_shared_bundle_class')->save();
 
     // Verify that the group types use the expected entity class.
-    $group_relationship_none = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_none->id()]), 'user_as_content');
-    $group_relationship_shared = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_shared->id()]), 'user_as_content_shared_bundle_class');
-    $group_relationship_specific = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_specific->id()]), 'user_as_content_shared_bundle_class');
+    $group_relationship_none = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_none->id()]), 'user_relation');
+    $group_relationship_shared = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_shared->id()]), 'user_relation_shared_bundle_class');
+    $group_relationship_specific = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_specific->id()]), 'user_relation_shared_bundle_class');
     $this->assertInstanceOf('\Drupal\group\Entity\GroupRelationship', $group_relationship_none, 'Regular entity class detected when no specific or shared bundle class was present.');
     $this->assertInstanceOf('\Drupal\group_test_plugin\Entity\GroupedUser', $group_relationship_shared, 'Shared bundle class detected when no specific bundle class was present.');
     $this->assertInstanceOf('\Drupal\group_test_plugin\Entity\GroupedUser', $group_relationship_specific, 'Shared bundle class detected when no specific bundle class was present.');
 
     // Enable a specific bundle class.
-    $GLOBALS['specific_bundle_id'] = $storage->getRelationshipTypeId($group_type_specific->id(), 'user_as_content_shared_bundle_class');
+    $GLOBALS['specific_bundle_id'] = $storage->getRelationshipTypeId($group_type_specific->id(), 'user_relation_shared_bundle_class');
     $this->entityTypeManager->clearCachedDefinitions();
     \Drupal::service('entity_type.bundle.info')->clearCachedBundles();
 
     // Verify again, checking that the specific bundle class takes precedence.
-    $group_relationship_none = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_none->id()]), 'user_as_content');
-    $group_relationship_shared = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_shared->id()]), 'user_as_content_shared_bundle_class');
-    $group_relationship_specific = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_specific->id()]), 'user_as_content_shared_bundle_class');
+    $group_relationship_none = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_none->id()]), 'user_relation');
+    $group_relationship_shared = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_shared->id()]), 'user_relation_shared_bundle_class');
+    $group_relationship_specific = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_specific->id()]), 'user_relation_shared_bundle_class');
     $this->assertInstanceOf('\Drupal\group\Entity\GroupRelationship', $group_relationship_none, 'Regular entity class detected when no specific or shared bundle class was present.');
     $this->assertInstanceOf('\Drupal\group_test_plugin\Entity\GroupedUser', $group_relationship_shared, 'Shared bundle class detected when no specific bundle class was present.');
     $this->assertInstanceOf('\Drupal\group_test_plugin\Entity\GroupedUserSpecific', $group_relationship_specific, 'Specific bundle class detected when specific bundle class was present.');
 
     // Enable specific bundle class for the plugin without shared bundle class.
-    $GLOBALS['specific_bundle_id'] = $storage->getRelationshipTypeId($group_type_none->id(), 'user_as_content');
+    $GLOBALS['specific_bundle_id'] = $storage->getRelationshipTypeId($group_type_none->id(), 'user_relation');
     $this->entityTypeManager->clearCachedDefinitions();
     \Drupal::service('entity_type.bundle.info')->clearCachedBundles();
 
     // Verify again, checking that the specific bundle class works.
-    $group_relationship_none = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_none->id()]), 'user_as_content');
+    $group_relationship_none = $this->storage->createForEntityInGroup($account, $this->createGroup(['type' => $group_type_none->id()]), 'user_relation');
     $this->assertInstanceOf('\Drupal\group_test_plugin\Entity\GroupedUserSpecific', $group_relationship_none, 'Specific bundle class detected when no shared bundle class was present.');
   }
 

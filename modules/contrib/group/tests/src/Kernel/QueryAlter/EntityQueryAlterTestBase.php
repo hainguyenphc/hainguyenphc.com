@@ -79,7 +79,7 @@ abstract class EntityQueryAlterTestBase extends QueryAlterTestBase {
    * {@inheritdoc}
    */
   protected function setUpContent(GroupTypeInterface $group_type) {
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
     $storage->save($storage->createFromPlugin($group_type, $this->pluginId));
   }
@@ -104,7 +104,7 @@ abstract class EntityQueryAlterTestBase extends QueryAlterTestBase {
    * {@inheritdoc}
    */
   protected function addSynchronizedConditions(array $allowed_ids, ConditionInterface $conditions, $outsider) {
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
     $group_relationship_type_id = $storage->getRelationshipTypeId(reset($allowed_ids), $this->pluginId);
 

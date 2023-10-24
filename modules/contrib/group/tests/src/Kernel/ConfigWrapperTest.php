@@ -99,9 +99,9 @@ class ConfigWrapperTest extends GroupKernelTestBase {
    * Installs a node type handling plugin on a group type.
    */
   protected function installNodeTypePlugin(): void {
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
-    $storage->save($storage->createFromPlugin($this->createGroupType(), 'node_type_as_content'));
+    $storage->save($storage->createFromPlugin($this->createGroupType(), 'node_type_relation'));
   }
 
 }

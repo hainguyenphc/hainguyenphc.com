@@ -50,8 +50,8 @@ abstract class GroupViewsKernelTestBase extends ViewsKernelTestBase {
     $this->installEntitySchema('user');
     $this->installEntitySchema('group');
     $this->installEntitySchema('group_type');
-    $this->installEntitySchema('group_content');
-    $this->installEntitySchema('group_content_type');
+    $this->installEntitySchema('group_relationship');
+    $this->installEntitySchema('group_relationship_type');
     $this->installConfig(['group', 'field']);
 
     $this->entityTypeManager = $this->container->get('entity_type.manager');
@@ -125,6 +125,7 @@ abstract class GroupViewsKernelTestBase extends ViewsKernelTestBase {
     $group_type = $storage->create($values + [
       'id' => $this->randomMachineName(),
       'label' => $this->randomString(),
+      'creator_wizard' => FALSE,
     ]);
     $storage->save($group_type);
     return $group_type;

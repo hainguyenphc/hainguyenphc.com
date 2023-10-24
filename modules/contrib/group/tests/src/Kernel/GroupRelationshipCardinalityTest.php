@@ -59,14 +59,14 @@ class GroupRelationshipCardinalityTest extends GroupKernelTestBase {
 
     $this->groupTypeA = $this->createGroupType();
     $this->groupTypeB = $this->createGroupType();
-    $this->relationshipStorage = $this->entityTypeManager->getStorage('group_content');
-    $this->relationshipTypeStorage = $this->entityTypeManager->getStorage('group_content_type');
+    $this->relationshipStorage = $this->entityTypeManager->getStorage('group_relationship');
+    $this->relationshipTypeStorage = $this->entityTypeManager->getStorage('group_relationship_type');
 
     // Make sure members can view the group and grouped entity.
     $base = [
       'scope' => PermissionScopeInterface::INSIDER_ID,
       'global_role' => RoleInterface::AUTHENTICATED_ID,
-      'permissions' => ['view group', 'view any entity_test_as_content entity'],
+      'permissions' => ['view group', 'view any entity_test_relation entity'],
     ];
     $this->createGroupRole(['group_type' => $this->groupTypeA->id()] + $base);
     $this->createGroupRole(['group_type' => $this->groupTypeB->id()] + $base);
@@ -83,14 +83,14 @@ class GroupRelationshipCardinalityTest extends GroupKernelTestBase {
   public function testGroupCardinality() {
     $relationship_type = $this->relationshipTypeStorage->createFromPlugin(
       $this->groupTypeA,
-      'entity_test_as_content',
+      'entity_test_relation',
       ['group_cardinality' => 1]
     );
     $this->relationshipTypeStorage->save($relationship_type);
 
     $relationship_type_b = $this->relationshipTypeStorage->createFromPlugin(
       $this->groupTypeB,
-      'entity_test_as_content',
+      'entity_test_relation',
       ['group_cardinality' => 1]
     );
     $this->relationshipTypeStorage->save($relationship_type_b);
@@ -98,7 +98,7 @@ class GroupRelationshipCardinalityTest extends GroupKernelTestBase {
     $entity = $this->createTestEntity();
 
     // Try creating a first relationship.
-    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $this->createGroup(['type' => $this->groupTypeA->id()]), 'entity_test_as_content');
+    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $this->createGroup(['type' => $this->groupTypeA->id()]), 'entity_test_relation');
     $violations = $relationship->validate();
     $this->assertEquals(0, $violations->count(), 'No violations when unsaved entity did not reach limit');
 
@@ -108,7 +108,7 @@ class GroupRelationshipCardinalityTest extends GroupKernelTestBase {
     $this->assertEquals(0, $violations->count(), 'No violations when saved entity did not reach limit');
 
     // Create a second one in a different group and check for violations.
-    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $this->createGroup(['type' => $this->groupTypeA->id()]), 'entity_test_as_content');
+    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $this->createGroup(['type' => $this->groupTypeA->id()]), 'entity_test_relation');
     $violations = $relationship->validate();
     $this->assertEquals(1, $violations->count(), 'Violation when unsaved entity reaches limit');
     $message = new TranslatableMarkup(
@@ -122,7 +122,7 @@ class GroupRelationshipCardinalityTest extends GroupKernelTestBase {
     $this->assertEquals((string) $message, (string) $violations->get(0)->getMessage());
 
     // Create one in the second group type to prove that doesn't collide.
-    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $this->createGroup(['type' => $this->groupTypeB->id()]), 'entity_test_as_content');
+    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $this->createGroup(['type' => $this->groupTypeB->id()]), 'entity_test_relation');
     $violations = $relationship->validate();
     $this->assertEquals(0, $violations->count(), 'No violations when adding entity to a group of a different type');
   }
@@ -135,7 +135,7 @@ class GroupRelationshipCardinalityTest extends GroupKernelTestBase {
   public function testEntityCardinality() {
     $relationship_type = $this->relationshipTypeStorage->createFromPlugin(
       $this->groupTypeA,
-      'entity_test_as_content',
+      'entity_test_relation',
       ['entity_cardinality' => 1]
     );
     $this->relationshipTypeStorage->save($relationship_type);
@@ -143,7 +143,7 @@ class GroupRelationshipCardinalityTest extends GroupKernelTestBase {
     $entity = $this->createTestEntity();
 
     // Try creating a first relationship.
-    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $group, 'entity_test_as_content');
+    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $group, 'entity_test_relation');
     $violations = $relationship->validate();
     $this->assertEquals(0, $violations->count(), 'No violations when unsaved entity did not reach limit');
 
@@ -153,7 +153,7 @@ class GroupRelationshipCardinalityTest extends GroupKernelTestBase {
     $this->assertEquals(0, $violations->count(), 'No violations when saved entity did not reach limit');
 
     // Create a second one in a different group and check for violations.
-    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $group, 'entity_test_as_content');
+    $relationship = $this->relationshipStorage->createForEntityInGroup($entity, $group, 'entity_test_relation');
     $violations = $relationship->validate();
     $this->assertEquals(1, $violations->count(), 'Violation when unsaved entity reaches limit');
     $message = new TranslatableMarkup(

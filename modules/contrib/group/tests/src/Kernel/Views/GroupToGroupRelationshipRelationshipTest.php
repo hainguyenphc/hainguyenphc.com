@@ -5,7 +5,7 @@ namespace Drupal\Tests\group\Kernel\Views;
 use Drupal\group\Entity\Storage\GroupRelationshipTypeStorageInterface;
 
 /**
- * Tests the group_to_group_content relationship handler.
+ * Tests the group_to_group_relationship relationship handler.
  *
  * @see \Drupal\group\Plugin\views\relationship\GroupToGroupRelationship
  *
@@ -23,7 +23,7 @@ class GroupToGroupRelationshipRelationshipTest extends GroupViewsKernelTestBase 
    *
    * @var array
    */
-  public static $testViews = ['test_group_to_group_content_relationship'];
+  public static $testViews = ['test_group_to_group_relationship_relationship'];
 
   /**
    * {@inheritdoc}
@@ -32,10 +32,10 @@ class GroupToGroupRelationshipRelationshipTest extends GroupViewsKernelTestBase 
     parent::setUp($import_test_views);
     $this->installEntitySchema('node');
 
-    // Enable the user_as_content plugin on the test group type.
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    // Enable the user_relation plugin on the test group type.
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
-    $storage->createFromPlugin($this->groupType, 'user_as_content')->save();
+    $storage->createFromPlugin($this->groupType, 'user_relation')->save();
   }
 
   /**
@@ -65,8 +65,8 @@ class GroupToGroupRelationshipRelationshipTest extends GroupViewsKernelTestBase 
    */
   public function testOtherContentIsNotListed() {
     $group = $this->createGroup();
-    $group->addRelationship($this->createUser(), 'user_as_content');
-    $this->assertEquals(1, count($this->getViewResults()), 'The view only displays the default member and not the user that was added as content.');
+    $group->addRelationship($this->createUser(), 'user_relation');
+    $this->assertEquals(1, count($this->getViewResults()), 'The view only displays the default member and not the user that was simply related.');
   }
 
 }

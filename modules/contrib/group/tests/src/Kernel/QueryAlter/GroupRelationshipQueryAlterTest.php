@@ -19,7 +19,7 @@ class GroupRelationshipQueryAlterTest extends QueryAlterTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $entityTypeId = 'group_content';
+  protected $entityTypeId = 'group_relationship';
 
   /**
    * {@inheritdoc}
@@ -31,7 +31,7 @@ class GroupRelationshipQueryAlterTest extends QueryAlterTestBase {
    *
    * @var string
    */
-  protected $pluginId = 'user_as_content';
+  protected $pluginId = 'user_relation';
 
   /**
    * {@inheritdoc}
@@ -114,7 +114,7 @@ class GroupRelationshipQueryAlterTest extends QueryAlterTestBase {
    * {@inheritdoc}
    */
   protected function setUpContent(GroupTypeInterface $group_type) {
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
     $storage->save($storage->createFromPlugin($group_type, $this->pluginId));
     return $this->createGroup(['type' => $group_type->id()]);
@@ -145,7 +145,7 @@ class GroupRelationshipQueryAlterTest extends QueryAlterTestBase {
    * {@inheritdoc}
    */
   protected function addSynchronizedConditions(array $allowed_ids, ConditionInterface $conditions, $outsider) {
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
     $group_relationship_type_id = $storage->getRelationshipTypeId(reset($allowed_ids), $this->pluginId);
 

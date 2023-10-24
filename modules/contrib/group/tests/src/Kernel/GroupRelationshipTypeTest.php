@@ -43,9 +43,9 @@ class GroupRelationshipTypeTest extends GroupKernelTestBase {
     $this->assertSame(['group_config_wrapper'], array_keys($bundle_info->getBundleInfo('group_config_wrapper')));
 
     // Install a config handling plugin on a group type.
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
-    $storage->save($storage->createFromPlugin($this->createGroupType(), 'node_type_as_content'));
+    $storage->save($storage->createFromPlugin($this->createGroupType(), 'node_type_relation'));
 
     // Assert that the cache was cleared and bundle declared.
     $this->assertSame(['node_type'], array_keys($bundle_info->getBundleInfo('group_config_wrapper')));
@@ -60,7 +60,7 @@ class GroupRelationshipTypeTest extends GroupKernelTestBase {
     // Create a group type and enable relating users.
     $group_type = $this->createGroupType();
 
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
     $group_relationship_type = $storage->load($storage->getRelationshipTypeId($group_type->id(), 'group_membership'));
 
@@ -76,7 +76,7 @@ class GroupRelationshipTypeTest extends GroupKernelTestBase {
    * Tests that the entity type is defined as internal.
    */
   public function testIsInternal() {
-    $this->assertTrue($this->entityTypeManager->getDefinition('group_content_type')->isInternal());
+    $this->assertTrue($this->entityTypeManager->getDefinition('group_relationship_type')->isInternal());
   }
 
 }
