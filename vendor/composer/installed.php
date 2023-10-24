@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '8892467579b9330d58a4a754a7d1b954c25cbb89',
+        'reference' => '5d7aa62ff5147fb83bfd46515e5618e30458bbb7',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -732,6 +732,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/gin_login' => array(
+            'pretty_version' => '2.0.3',
+            'version' => '2.0.3.0',
+            'reference' => '2.0.3',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/gin_login',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/gin_toolbar' => array(
             'pretty_version' => '1.0.0-rc3',
             'version' => '1.0.0.0-RC3',
@@ -762,7 +771,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '8892467579b9330d58a4a754a7d1b954c25cbb89',
+            'reference' => '5d7aa62ff5147fb83bfd46515e5618e30458bbb7',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
