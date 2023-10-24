@@ -82,6 +82,7 @@ module:
   video_embed_wysiwyg: 0
   views_templates: 0
   views_ui: 0
+  webform: 0
   fontyourface: 1
   google_fonts_api: 10
   local_fonts: 10
