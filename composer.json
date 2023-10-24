@@ -45,6 +45,7 @@
         "drupal/responsive_menu": "4.4.x-dev@dev",
         "drupal/rules": "3.x-dev@dev",
         "drupal/simple_oauth": "^5.2",
+        "drupal/sitewide_alert": "^2.1",
         "drupal/smart_trim": "^2.1",
         "drupal/stable": "^2.0",
         "drupal/tb_megamenu": "^3.0@alpha",
