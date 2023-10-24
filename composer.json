@@ -35,7 +35,7 @@
         "drupal/gin": "^3.0@rc",
         "drupal/gin_login": "^2.0",
         "drupal/gin_toolbar": "^1.0@rc",
-        "drupal/group": "^2.0@beta",
+        "drupal/group": "^3.2",
         "drupal/imagemagick": "^3.4",
         "drupal/rdf": "^2.0",
         "drupal/responsive_menu": "4.4.x-dev@dev",

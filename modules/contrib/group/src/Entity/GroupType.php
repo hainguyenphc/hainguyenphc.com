@@ -162,7 +162,7 @@ class GroupType extends ConfigEntityBundleBase implements GroupTypeInterface {
       $query->condition('scope', PermissionScopeInterface::INDIVIDUAL_ID);
     }
 
-    return $query->accessCheck()->execute();
+    return $query->accessCheck(FALSE)->execute();
   }
 
   /**
@@ -234,7 +234,7 @@ class GroupType extends ConfigEntityBundleBase implements GroupTypeInterface {
       // \Drupal\group\EventSubscriber\ConfigSubscriber after the entire import
       // has finished.
       if (!$this->isSyncing()) {
-        // Enable enforced content plugins for the new group type.
+        // Enable enforced relation plugins for the new group type.
         $this->getGroupRelationTypeManager()->installEnforced($this);
       }
     }

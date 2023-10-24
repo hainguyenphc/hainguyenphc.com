@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - group_test_plugin
-id: entity_test_as_content
-label: 'Test entity as content'
+id: entity_test_relation
+label: 'Test entity relation (generic)'
 module: views
 description: ''
 tag: ''

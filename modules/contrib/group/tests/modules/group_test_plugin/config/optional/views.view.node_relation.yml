@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - group_test_plugin
-id: node_as_content
-label: 'Node as content'
+id: node_relation
+label: 'Node relation (generic)'
 module: views
 description: ''
 tag: ''

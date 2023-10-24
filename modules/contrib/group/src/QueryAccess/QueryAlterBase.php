@@ -314,7 +314,7 @@ abstract class QueryAlterBase implements ContainerInjectionInterface {
       $l_field = $this->getMembershipJoinLeftField();
 
       // Join the memberships of the current user.
-      $group_relationship_data_table = $this->entityTypeManager->getDefinition('group_content')->getDataTable();
+      $group_relationship_data_table = $this->entityTypeManager->getDefinition('group_relationship')->getDataTable();
       $this->joinAliasMemberships = $this->query->leftJoin(
         $group_relationship_data_table,
         'gcfd',

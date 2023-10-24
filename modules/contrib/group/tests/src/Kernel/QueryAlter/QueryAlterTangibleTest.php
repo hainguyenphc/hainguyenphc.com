@@ -54,14 +54,14 @@ class QueryAlterTangibleTest extends GroupKernelTestBase {
     $this->groupTypeA = $this->createGroupType(['id' => 'foo', 'creator_membership' => FALSE]);
     $this->groupTypeB = $this->createGroupType(['id' => 'bar', 'creator_membership' => FALSE]);
 
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
-    $storage->save($storage->createFromPlugin($this->groupTypeA, 'user_as_content'));
-    $storage->save($storage->createFromPlugin($this->groupTypeA, 'node_as_content:page'));
-    $storage->save($storage->createFromPlugin($this->groupTypeA, 'node_as_content:article'));
-    $storage->save($storage->createFromPlugin($this->groupTypeB, 'user_as_content'));
-    $storage->save($storage->createFromPlugin($this->groupTypeB, 'node_as_content:page'));
-    $storage->save($storage->createFromPlugin($this->groupTypeB, 'node_as_content:article'));
+    $storage->save($storage->createFromPlugin($this->groupTypeA, 'user_relation'));
+    $storage->save($storage->createFromPlugin($this->groupTypeA, 'node_relation:page'));
+    $storage->save($storage->createFromPlugin($this->groupTypeA, 'node_relation:article'));
+    $storage->save($storage->createFromPlugin($this->groupTypeB, 'user_relation'));
+    $storage->save($storage->createFromPlugin($this->groupTypeB, 'node_relation:page'));
+    $storage->save($storage->createFromPlugin($this->groupTypeB, 'node_relation:article'));
   }
 
   /**
@@ -71,7 +71,7 @@ class QueryAlterTangibleTest extends GroupKernelTestBase {
     $role_base = [
       'scope' => PermissionScopeInterface::OUTSIDER_ID,
       'global_role' => RoleInterface::AUTHENTICATED_ID,
-      'permissions' => ['view any node_as_content:page entity'],
+      'permissions' => ['view any node_relation:page entity'],
     ];
     $role_a = $this->createGroupRole(['group_type' => $this->groupTypeA->id()] + $role_base);
     $role_b = $this->createGroupRole(['group_type' => $this->groupTypeB->id()] + $role_base);
@@ -84,21 +84,21 @@ class QueryAlterTangibleTest extends GroupKernelTestBase {
     $group_a = $this->createGroup(['type' => $this->groupTypeA->id()]);
     $group_b = $this->createGroup(['type' => $this->groupTypeB->id()]);
 
-    $group_a->addRelationship($page_a, 'node_as_content:page');
-    $group_a->addRelationship($article_a, 'node_as_content:article');
-    $group_b->addRelationship($page_b, 'node_as_content:page');
-    $group_b->addRelationship($article_b, 'node_as_content:article');
+    $group_a->addRelationship($page_a, 'node_relation:page');
+    $group_a->addRelationship($article_a, 'node_relation:article');
+    $group_b->addRelationship($page_b, 'node_relation:page');
+    $group_b->addRelationship($article_b, 'node_relation:article');
 
     $expected = [$page_a->id(), $page_b->id()];
     $visible = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can only see the pages, but not the articles.');
 
-    $role_a->grantPermission('view any node_as_content:article entity')->save();
+    $role_a->grantPermission('view any node_relation:article entity')->save();
     $expected[] = $article_a->id();
     $visible = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can see both pages and articles from group type A and only pages from group type B.');
 
-    $role_b->grantPermission('view any node_as_content:article entity')->save();
+    $role_b->grantPermission('view any node_relation:article entity')->save();
     $expected[] = $article_b->id();
     $visible = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can see both pages and articles.');
@@ -110,7 +110,7 @@ class QueryAlterTangibleTest extends GroupKernelTestBase {
   public function testMultipleBundlesIndividual() {
     $role_base = [
       'scope' => PermissionScopeInterface::INDIVIDUAL_ID,
-      'permissions' => ['view any node_as_content:page entity'],
+      'permissions' => ['view any node_relation:page entity'],
     ];
     $role_a = $this->createGroupRole(['group_type' => $this->groupTypeA->id()] + $role_base);
     $role_b = $this->createGroupRole(['group_type' => $this->groupTypeB->id()] + $role_base);
@@ -125,21 +125,21 @@ class QueryAlterTangibleTest extends GroupKernelTestBase {
     $group_a->addRelationship($this->getCurrentUser(), 'group_membership', ['group_roles' => [$role_a->id()]]);
     $group_b->addRelationship($this->getCurrentUser(), 'group_membership', ['group_roles' => [$role_b->id()]]);
 
-    $group_a->addRelationship($page_a, 'node_as_content:page');
-    $group_a->addRelationship($article_a, 'node_as_content:article');
-    $group_b->addRelationship($page_b, 'node_as_content:page');
-    $group_b->addRelationship($article_b, 'node_as_content:article');
+    $group_a->addRelationship($page_a, 'node_relation:page');
+    $group_a->addRelationship($article_a, 'node_relation:article');
+    $group_b->addRelationship($page_b, 'node_relation:page');
+    $group_b->addRelationship($article_b, 'node_relation:article');
 
     $expected = [$page_a->id(), $page_b->id()];
     $visible = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can only see the pages, but not the articles.');
 
-    $role_a->grantPermission('view any node_as_content:article entity')->save();
+    $role_a->grantPermission('view any node_relation:article entity')->save();
     $expected[] = $article_a->id();
     $visible = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can see both pages and articles from group A and only pages from group B.');
 
-    $role_b->grantPermission('view any node_as_content:article entity')->save();
+    $role_b->grantPermission('view any node_relation:article entity')->save();
     $expected[] = $article_b->id();
     $visible = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can see both pages and articles.');
@@ -164,22 +164,22 @@ class QueryAlterTangibleTest extends GroupKernelTestBase {
     $group_b = $this->createGroup(['type' => $this->groupTypeB->id()]);
 
     $membership_a = $group_a->addRelationship($account_a, 'group_membership');
-    $relationship_a = $group_a->addRelationship($account_a, 'user_as_content');
+    $relationship_a = $group_a->addRelationship($account_a, 'user_relation');
     $membership_b = $group_b->addRelationship($account_b, 'group_membership');
-    $relationship_b = $group_b->addRelationship($account_b, 'user_as_content');
+    $relationship_b = $group_b->addRelationship($account_b, 'user_relation');
 
     $expected = [$membership_a->id(), $membership_b->id()];
-    $visible = $this->entityTypeManager->getStorage('group_content')->getQuery()->accessCheck()->execute();
+    $visible = $this->entityTypeManager->getStorage('group_relationship')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can only see the members, but not the user relationships.');
 
-    $role_a->grantPermission('view user_as_content relationship')->save();
+    $role_a->grantPermission('view user_relation relationship')->save();
     $expected[] = $relationship_a->id();
-    $visible = $this->entityTypeManager->getStorage('group_content')->getQuery()->accessCheck()->execute();
+    $visible = $this->entityTypeManager->getStorage('group_relationship')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can see both members and user relationships from group type A and only members from group type B.');
 
-    $role_b->grantPermission('view user_as_content relationship')->save();
+    $role_b->grantPermission('view user_relation relationship')->save();
     $expected[] = $relationship_b->id();
-    $visible = $this->entityTypeManager->getStorage('group_content')->getQuery()->accessCheck()->execute();
+    $visible = $this->entityTypeManager->getStorage('group_relationship')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can see both members and user relationships.');
   }
 
@@ -201,22 +201,22 @@ class QueryAlterTangibleTest extends GroupKernelTestBase {
     $group_b = $this->createGroup(['type' => $this->groupTypeB->id()]);
 
     $membership_a = $group_a->addRelationship($account_a, 'group_membership', ['group_roles' => [$role_a->id()]]);
-    $relationship_a = $group_a->addRelationship($account_b, 'user_as_content');
+    $relationship_a = $group_a->addRelationship($account_b, 'user_relation');
     $membership_b = $group_b->addRelationship($account_a, 'group_membership', ['group_roles' => [$role_b->id()]]);
-    $relationship_b = $group_b->addRelationship($account_b, 'user_as_content');
+    $relationship_b = $group_b->addRelationship($account_b, 'user_relation');
 
     $expected = [$membership_a->id(), $membership_b->id()];
-    $visible = $this->entityTypeManager->getStorage('group_content')->getQuery()->accessCheck()->execute();
+    $visible = $this->entityTypeManager->getStorage('group_relationship')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can only see the members, but not the user relationships.');
 
-    $role_a->grantPermission('view user_as_content relationship')->save();
+    $role_a->grantPermission('view user_relation relationship')->save();
     $expected[] = $relationship_a->id();
-    $visible = $this->entityTypeManager->getStorage('group_content')->getQuery()->accessCheck()->execute();
+    $visible = $this->entityTypeManager->getStorage('group_relationship')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can see both members and user relationships from group A and only members from group B.');
 
-    $role_b->grantPermission('view user_as_content relationship')->save();
+    $role_b->grantPermission('view user_relation relationship')->save();
     $expected[] = $relationship_b->id();
-    $visible = $this->entityTypeManager->getStorage('group_content')->getQuery()->accessCheck()->execute();
+    $visible = $this->entityTypeManager->getStorage('group_relationship')->getQuery()->accessCheck()->execute();
     $this->assertEqualsCanonicalizing($expected, $visible, 'Can see both members and user relationships.');
   }
 

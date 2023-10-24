@@ -65,8 +65,8 @@ abstract class GroupRelationshipToEntityBase extends RelationshipPluginBase {
   /**
    * Retrieves the entity type ID this plugin targets.
    *
-   * Do not return 'group_content', but the actual entity type ID you're trying
-   * to link up to the group_content entity type.
+   * Do not return 'group_relationship', but the actual entity type ID you're trying
+   * to link up to the group_relationship entity type.
    *
    * @return string
    *   The target entity type ID.
@@ -88,7 +88,7 @@ abstract class GroupRelationshipToEntityBase extends RelationshipPluginBase {
    */
   protected function defineOptions() {
     $options = parent::defineOptions();
-    $options['group_content_plugins']['default'] = [];
+    $options['group_relation_plugins']['default'] = [];
     return $options;
   }
 
@@ -103,13 +103,13 @@ abstract class GroupRelationshipToEntityBase extends RelationshipPluginBase {
       $options[$plugin_id] = $group_relation_type->getLabel();
     }
 
-    $form['group_content_plugins'] = [
+    $form['group_relation_plugins'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Filter by plugin'),
       '#description' => $this->t('Refine the result by plugin. Leave empty to select all plugins, including those that could be added after this relationship was configured.'),
       '#options' => $options,
       '#weight' => -2,
-      '#default_value' => $this->options['group_content_plugins'],
+      '#default_value' => $this->options['group_relation_plugins'],
     ];
   }
 
@@ -138,7 +138,7 @@ abstract class GroupRelationshipToEntityBase extends RelationshipPluginBase {
     }
 
     // Add the plugin IDs to the query if any were selected.
-    $plugin_ids = array_filter($this->options['group_content_plugins']);
+    $plugin_ids = array_filter($this->options['group_relation_plugins']);
 
     // If none were selected, we still need to build a list of plugin IDs to
     // make sure we do not show content using plugins that do not handle the

@@ -55,7 +55,7 @@ class GroupSupportRevisionsTest extends GroupBrowserTestBase {
     $this->setUpAccount();
 
     $this->groupType = $this->createGroupType();
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
     $storage->save($storage->createFromPlugin($this->groupType, 'group_node:page'));
 

@@ -4758,18 +4758,18 @@
         },
         {
             "name": "drupal/group",
-            "version": "2.2.0",
-            "version_normalized": "2.2.0.0",
+            "version": "3.2.1",
+            "version_normalized": "3.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/group.git",
-                "reference": "2.2.0"
+                "reference": "3.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/group-2.2.0.zip",
-                "reference": "2.2.0",
-                "shasum": "98d1844cb451d64c14004f20c492a17dc55c3332"
+                "url": "https://ftp.drupal.org/files/projects/group-3.2.1.zip",
+                "reference": "3.2.1",
+                "shasum": "7774014794ad8cc39b1e22737e48cdbdd60513db"
             },
             "require": {
                 "drupal/core": "^9.5 || ^10",
@@ -4779,8 +4779,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.2.0",
-                    "datestamp": "1692969152",
+                    "version": "3.2.1",
+                    "datestamp": "1697204379",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

@@ -4,13 +4,13 @@ dependencies:
   module:
     - group
     - user
-id: test_group_content_to_entity_relationship
-label: test_group_content_to_entity_relationship
+id: test_group_relationship_to_entity_reverse_relationship
+label: test_group_relationship_to_entity_reverse_relationship
 module: views
 description: ''
 tag: ''
-base_table: group_relationship_field_data
-base_field: id
+base_table: users_field_data
+base_field: uid
 display:
   default:
     id: default
@@ -23,10 +23,10 @@ display:
           id: id
           table: group_relationship_field_data
           field: id
-          relationship: none
+          relationship: group_relationship
           group_type: group
           admin_label: ''
-          entity_type: group_content
+          entity_type: group_relationship
           entity_field: id
           plugin_id: field
           label: 'Group relationship ID'
@@ -89,7 +89,7 @@ display:
           id: uid
           table: users_field_data
           field: uid
-          relationship: gc__user
+          relationship: none
           group_type: group
           admin_label: ''
           entity_type: user
@@ -152,9 +152,23 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: none
+        type: mini
         options:
           offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
       exposed_form:
         type: basic
         options:
@@ -166,8 +180,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'access user profiles'
       cache:
         type: tag
         options: {  }
@@ -198,17 +213,17 @@ display:
           replica: false
           query_tags: {  }
       relationships:
-        gc__user:
-          id: gc__user
-          table: group_relationship_field_data
-          field: gc__user
+        group_relationship:
+          id: group_relationship
+          table: users_field_data
+          field: group_relationship
           relationship: none
           group_type: group
-          admin_label: 'Group relationship User'
-          entity_type: group_content
-          plugin_id: group_content_to_entity
+          admin_label: 'User group relationships'
+          entity_type: user
+          plugin_id: group_relationship_to_entity_reverse
           required: true
-          group_content_plugins:
+          group_relation_plugins:
             group_membership: group_membership
       header: {  }
       footer: {  }
@@ -218,4 +233,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
+        - user.permissions
       tags: {  }

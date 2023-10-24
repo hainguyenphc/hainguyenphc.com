@@ -88,7 +88,7 @@ class GroupRelationshipStorage extends SqlContentEntityStorage implements GroupR
 
     if ($bundle) {
       $plugin_id = $this->entityTypeManager
-        ->getStorage('group_content_type')
+        ->getStorage('group_relationship_type')
         ->load($bundle)
         ->getPluginId();
 
@@ -141,7 +141,7 @@ class GroupRelationshipStorage extends SqlContentEntityStorage implements GroupR
       $entity = $storage->wrapEntity($entity);
     }
 
-    $storage = $this->entityTypeManager->getStorage('group_content_type');
+    $storage = $this->entityTypeManager->getStorage('group_relationship_type');
     assert($storage instanceof GroupRelationshipTypeStorageInterface);
     $relationship_type_id = $storage->getRelationshipTypeId($group->bundle(), $plugin_id);
 

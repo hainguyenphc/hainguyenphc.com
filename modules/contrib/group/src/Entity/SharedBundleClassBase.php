@@ -14,21 +14,21 @@ class SharedBundleClassBase extends GroupRelationship {
    * {@inheritdoc}
    */
   public static function create(array $values = []) {
-    return \Drupal::entityTypeManager()->getStorage('group_content')->create($values);
+    return \Drupal::entityTypeManager()->getStorage('group_relationship')->create($values);
   }
 
   /**
    * {@inheritdoc}
    */
   public static function load($id) {
-    return \Drupal::entityTypeManager()->getStorage('group_content')->load($id);
+    return \Drupal::entityTypeManager()->getStorage('group_relationship')->load($id);
   }
 
   /**
    * {@inheritdoc}
    */
   public static function loadMultiple(array $ids = NULL) {
-    return \Drupal::entityTypeManager()->getStorage('group_content')->loadMultiple($ids);
+    return \Drupal::entityTypeManager()->getStorage('group_relationship')->loadMultiple($ids);
   }
 
 }

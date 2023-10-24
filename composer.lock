@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "def1a93b246322fa4128722eeb6ac839",
+    "content-hash": "370bf697f1a1ee6c7dc1c9eaae3ea478",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3025,17 +3025,17 @@
         },
         {
             "name": "drupal/group",
-            "version": "2.2.0",
+            "version": "3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/group.git",
-                "reference": "2.2.0"
+                "reference": "3.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/group-2.2.0.zip",
-                "reference": "2.2.0",
-                "shasum": "98d1844cb451d64c14004f20c492a17dc55c3332"
+                "url": "https://ftp.drupal.org/files/projects/group-3.2.1.zip",
+                "reference": "3.2.1",
+                "shasum": "7774014794ad8cc39b1e22737e48cdbdd60513db"
             },
             "require": {
                 "drupal/core": "^9.5 || ^10",
@@ -3045,8 +3045,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.2.0",
-                    "datestamp": "1692969152",
+                    "version": "3.2.1",
+                    "datestamp": "1697204379",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -14950,7 +14950,6 @@
         "drupal/fontyourface": 20,
         "drupal/gin": 5,
         "drupal/gin_toolbar": 5,
-        "drupal/group": 10,
         "drupal/responsive_menu": 20,
         "drupal/rules": 20,
         "drupal/tb_megamenu": 15
