@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_visibility_groups.block_visibility_group.group_subsite_menu_visibility
     - system.menu.group-subsite-menu
   module:
     - block_visibility_groups
@@ -19,7 +20,7 @@ plugin: 'system_menu_block:group-subsite-menu'
 settings:
   id: 'system_menu_block:group-subsite-menu'
   label: 'Group/Subsite Menu'
-  label_display: visible
+  label_display: '0'
   provider: system
   level: 1
   depth: 4
@@ -28,7 +29,7 @@ visibility:
   condition_group:
     id: condition_group
     negate: false
-    block_visibility_group: ''
+    block_visibility_group: group_subsite_menu_visibility
   'entity_bundle:node':
     id: 'entity_bundle:node'
     negate: false
