@@ -1,0 +1,17 @@
+uuid: d868afb9-c0e3-4d92-a9b9-e6f627d02759
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: group_subsite_menu_visibility
+label: 'Group/Subsite Menu Visibility'
+logic: and
+conditions:
+  71061164-6b7e-4f33-b862-71827de4ca1e:
+    id: request_path
+    negate: false
+    uuid: 71061164-6b7e-4f33-b862-71827de4ca1e
+    context_mapping: {  }
+    pages: '/abhidhamma/*'
+allow_other_conditions: false
