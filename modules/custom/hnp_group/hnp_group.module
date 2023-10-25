@@ -1,0 +1,32 @@
+<?php
+
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+
+/**
+ * @file modules/custom/hnp_group/hnp_group.module
+ */
+
+/**
+* Implements hook_preprocess_HOOK().
+*/
+function hnp_group_preprocess_field(array &$variables) {
+  $node = $variables["element"]["#object"];
+  $results = \Drupal::entityQuery('node')
+    ->condition('field_parent', $node->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  if (is_array($results) && !empty($results)) {
+    foreach ($results as $id) {
+      $node = Node::load($id);
+      $url = Url::fromRoute('entity.node.canonical', ['node' => $id]);
+      $link = Link::fromTextAndUrl($node->label(), $url);
+      $link = $link->toRenderable();
+      $link['attributes'] = [
+        'class' => [],
+      ];
+      $variables['children'][] = $link;
+    }
+  }
+}

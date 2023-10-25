@@ -1,0 +1,5 @@
+name: 'HNP Group'
+type: 'module'
+description: 'Custom logic for Group.'
+package: 'HNP'
+core_version_requirement: ^9 || ^10

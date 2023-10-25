@@ -43,6 +43,7 @@ module:
   help: 0
   history: 0
   hnp_constants: 0
+  hnp_group: 0
   hnp_project: 0
   hnp_project_build_step: 0
   hnp_theme_negotiation: 0
