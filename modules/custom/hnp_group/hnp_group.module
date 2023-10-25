@@ -9,10 +9,20 @@ use Drupal\node\Entity\Node;
  */
 
 /**
-* Implements hook_preprocess_HOOK().
-*/
-function hnp_group_preprocess_field(array &$variables) {
-  $node = $variables["element"]["#object"];
+ * Implements hook_preprocess_HOOK().
+ */
+function hnp_group_preprocess_node(array &$variables) {
+  $node = $variables["node"];
+
+  // The `article` entity belongs to a group and has a parent. Exit early.
+  if ($node->bundle() === 'article'
+    && $node->entitygroupfield->count() > 0
+    && $node->field_parent->count() > 0
+  ) {
+    return;
+  }
+
+  // The `article` entity belongs to a group and does not have a parent.
   $results = \Drupal::entityQuery('node')
     ->condition('field_parent', $node->id())
     ->accessCheck(FALSE)
@@ -27,6 +37,61 @@ function hnp_group_preprocess_field(array &$variables) {
         'class' => [],
       ];
       $variables['children'][] = $link;
+    }
+  }
+}
+
+/**
+* Implements hook_preprocess_HOOK().
+*/
+function hnp_group_preprocess_field(array &$variables) {
+  if ($variables['field_name'] !== 'field_parent') {
+    return;
+  }
+
+  $node = $variables['element']['#object'];
+
+  // Target `article` entities only.
+  if ($node->bundle() !== 'article') {
+    return;
+  }
+
+  // Load the children of this node.
+  $results = \Drupal::entityQuery('node')
+    ->condition('field_parent', $node->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  if (is_array($results) && !empty($results)) {
+    foreach ($results as $id) {
+      $_node = Node::load($id);
+      $url = Url::fromRoute('entity.node.canonical', ['node' => $id]);
+      $link = Link::fromTextAndUrl($_node->label(), $url);
+      $link = $link->toRenderable();
+      $link['attributes'] = [
+        'class' => [],
+      ];
+      $variables['children'][] = $link;
+    }
+  }
+
+  // Load the siblings of this node.
+  $results = \Drupal::entityQuery('node')
+    ->condition('field_parent', $node->field_parent->target_id)
+    ->accessCheck(FALSE)
+    ->execute();
+  $results = array_values($results);
+  if (is_array($results) && !empty($results)) {
+    foreach ($results as $id) {
+      if ($node->id() !== $id) {
+        $_node = Node::load($id);
+        $url = Url::fromRoute('entity.node.canonical', ['node' => $id]);
+        $link = Link::fromTextAndUrl($_node->label(), $url);
+        $link = $link->toRenderable();
+        $link['attributes'] = [
+          'class' => [],
+        ];
+        $variables['children'][] = $link;
+      }
     }
   }
 }

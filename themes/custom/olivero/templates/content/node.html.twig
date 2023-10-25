@@ -107,6 +107,22 @@
     {# Comments not part of content, so they won't inherit .text-content styles. #}
     {{ content|without('comment') }}
   </div>
+  {# ======================================================================== #}
+  {# 
+  /**
+   * We also render the next article in the series, those that have this node as parent.
+   * @see hnp_group_preprocess_node()
+  */
+  #}
+    {% if children %}
+      <div class="field field--name-field-parent field--label-above">
+        <div class="field__label">Related Content</div>
+      {% for item in children %}
+        <div class="field__item next-article">{{ item }}</div>
+      {% endfor %}
+      </div>
+    {% endif %}
+  {# ======================================================================== #}
   {% if content.comment %}
     <div id="comments" class="{{ layout }}">
       {{ content.comment }}
