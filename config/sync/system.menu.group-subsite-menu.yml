@@ -1,0 +1,8 @@
+uuid: 752e6ffd-fd39-47ce-a37b-850520d85d35
+langcode: en
+status: true
+dependencies: {  }
+id: group-subsite-menu
+label: 'Group/Subsite Menu'
+description: 'Menu for each Group/Subsite'
+locked: false
