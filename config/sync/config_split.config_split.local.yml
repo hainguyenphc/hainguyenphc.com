@@ -13,15 +13,12 @@ module:
   eg_license_plate: 0
   eg_salutation: 0
   eg_tests: 0
-  gnode: 0
-  group: 0
 theme: {  }
 blacklist:
   - core.entity_view_display.node.car.default
   - core.entity_view_display.node.car.teaser
   - field.field.node.car.body
   - field.field.node.car.field_license_plate
-  - group.content_type.development-group_node-car
   - node.type.car
 graylist: {  }
 graylist_dependents: true

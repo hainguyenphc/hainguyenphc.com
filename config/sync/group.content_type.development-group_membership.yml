@@ -1,1 +1,15 @@
-{  }
+uuid: 9a8530d1-683d-4eda-951f-f63270bb9276
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.development
+  module:
+    - user
+id: development-group_membership
+group_type: development
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

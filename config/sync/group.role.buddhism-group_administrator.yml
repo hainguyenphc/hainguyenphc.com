@@ -1,1 +1,15 @@
-{  }
+uuid: f7605773-7a00-43c9-8c4e-5a5253f1ea4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.buddhism
+    - user.role.administrator
+id: buddhism-group_administrator
+label: 'Group Administrator'
+weight: -96
+admin: true
+scope: insider
+global_role: administrator
+group_type: buddhism
+permissions: {  }
