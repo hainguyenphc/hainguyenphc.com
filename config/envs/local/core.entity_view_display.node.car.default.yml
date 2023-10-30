@@ -44,4 +44,5 @@ content:
     weight: 2
     region: content
 hidden:
+  entitygroupfield: true
   links: true
