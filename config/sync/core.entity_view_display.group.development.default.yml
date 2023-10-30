@@ -1,1 +1,33 @@
-{  }
+uuid: d17a4681-6f33-4b65-9d53-15314e5928cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.group.development.field_description
+    - group.type.development
+  module:
+    - text
+id: group.development.default
+targetEntityType: group
+bundle: development
+mode: default
+content:
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden:
+  changed: true
+  created: true
+  uid: true

@@ -1,1 +1,22 @@
-{  }
+uuid: 357f860a-f217-4c90-9cbc-ccd4d5fbc0fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_license_plate
+    - node.type.car
+  module:
+    - eg_license_plate
+id: node.car.field_license_plate
+field_name: field_license_plate
+entity_type: node
+bundle: car
+label: 'License Plate'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  code: ''
+field_type: license_plate

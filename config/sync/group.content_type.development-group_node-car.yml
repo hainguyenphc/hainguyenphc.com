@@ -1,1 +1,17 @@
-{  }
+uuid: 019ca615-aad6-4f02-b689-f0c39e9c2532
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.development
+    - node.type.car
+  module:
+    - gnode
+    - node
+id: development-group_node-car
+group_type: development
+content_plugin: 'group_node:car'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false
