@@ -1,9 +1,0 @@
-name: 'Surgery'
-type: module
-core_version_requirement: ^9 || ^10
-package: Custom
-description: 'Performs a surgery on a site'
-hidden: TRUE
-dependencies:
-  - coffee:coffee
-  - link_attributes:link_attributes
