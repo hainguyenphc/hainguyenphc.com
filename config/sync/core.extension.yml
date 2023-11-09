@@ -25,6 +25,7 @@ module:
   dblog: 0
   dynamic_page_cache: 0
   editor: 0
+  eg_tests: 0
   entity: 0
   entity_reference_revisions: 0
   entitygroupfield: 0
