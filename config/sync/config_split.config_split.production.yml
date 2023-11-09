@@ -7,13 +7,7 @@ label: Production
 description: 'The production currently hosted in Siteground.'
 weight: 0
 folder: config/envs/prod
-module:
-  eg_csrf: 0
-  eg_event: 0
-  eg_form_apis: 0
-  eg_license_plate: 0
-  eg_logger: 0
-  eg_salutation: 0
+module: {  }
 theme: {  }
 blacklist: {  }
 graylist: {  }
