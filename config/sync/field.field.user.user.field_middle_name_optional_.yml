@@ -1,0 +1,20 @@
+uuid: 99e93164-1cb4-4ec1-ac97-004997281857
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_middle_name_optional_
+  module:
+    - user
+id: user.user.field_middle_name_optional_
+field_name: field_middle_name_optional_
+entity_type: user
+bundle: user
+label: 'Middle Name (Optional)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
