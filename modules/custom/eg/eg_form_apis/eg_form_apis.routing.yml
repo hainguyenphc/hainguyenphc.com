@@ -1,0 +1,19 @@
+eg_form_apis.demo_form:
+  path: '/eg-form-apis/demo-form'
+  defaults:
+    _form: 'Drupal\eg_form_apis\Form\DemoForm'
+    _title: 'Demo Form'
+  requirements:
+    _permission: 'administer content types'
+  options:
+    _admin_route: TRUE
+
+eg_form_apis.download_remote_managed_file:
+  path: '/eg-form-apis/download-remote-managed-file'
+  defaults:
+    _form: 'Drupal\eg_form_apis\Form\DownloadRemoteManagedFile'
+    _title: 'Download Remote Managed File'
+  requirements:
+    _permission: 'administer content types'
+  options:
+    _admin_route: TRUE

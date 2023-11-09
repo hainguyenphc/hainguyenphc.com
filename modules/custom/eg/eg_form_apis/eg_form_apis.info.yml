@@ -1,0 +1,5 @@
+name: 'Example - Form APIs'
+type: 'module'
+description: 'Demonstrates the Drupal Form APIs'
+package: Custom
+core_version_requirement: ^9 || ^10
