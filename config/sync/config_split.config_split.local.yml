@@ -10,7 +10,9 @@ folder: config/envs/local
 module:
   eg_csrf: 0
   eg_event: 0
+  eg_form_apis: 0
   eg_license_plate: 0
+  eg_logger: 0
   eg_salutation: 0
   eg_tests: 0
 theme: {  }
