@@ -1,0 +1,32 @@
+#fullscreenoverlay {
+  overflow: hidden;
+}
+
+#fullscreeneditor {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* fix for sticky headers */
+#fullscreeneditor .ck-sticky-panel__content {
+  top: 0 !important;
+}
+
+#fullscreeneditor .ck.ck-editor__main {
+  overflow-y: scroll;
+  flex: 1;
+}
+
+#fullscreeneditor .ck.ck-editor__editable {
+  height: 100%;
+}
+
+#fullscreeneditor .ck-source-editing-area {
+  overflow-y: scroll;
+}
