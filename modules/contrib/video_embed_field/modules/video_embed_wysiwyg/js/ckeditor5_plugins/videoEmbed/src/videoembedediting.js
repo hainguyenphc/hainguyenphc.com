@@ -81,8 +81,9 @@ export default class VideoEmbedEditing extends Plugin {
     // https://ckeditor.com/docs/ckeditor5/latest/api/module_engine_conversion_conversion-ConverterDefinition.html
     conversion.for('upcast').elementToElement({
       view: function (element) {
+        const child = element.getChild(0);
         if (element.name === 'p') {
-          if (element.getChild(0).is('text')) {
+          if (child && child.is('text')) {
             let text = element.getChild(0).data;
             if (text.match(/^({(?=.*preview_thumbnail\b)(?=.*settings\b)(?=.*video_url\b)(?=.*settings_summary)(.*)})$/)) {
               return {name: true};
