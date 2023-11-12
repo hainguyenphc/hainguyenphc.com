@@ -1,0 +1,18 @@
+uuid: 0730bf10-a065-44eb-846a-3ad605c2c0ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.project_build_step
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.project_build_step
+target_entity_type_id: node
+target_bundle: project_build_step
+default_langcode: site_default
+language_alterable: false

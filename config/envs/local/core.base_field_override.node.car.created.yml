@@ -1,0 +1,18 @@
+uuid: fdeee190-e0e4-4f75-8882-ba9a3b34db55
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.car
+id: node.car.created
+field_name: created
+entity_type: node
+bundle: car
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

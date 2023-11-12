@@ -1,0 +1,18 @@
+uuid: 8f77bd2d-d86d-4f9c-962f-0ec2a85e9957
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.buddhism-group_node-project
+id: group_relationship.buddhism-group_node-project.changed
+field_name: changed
+entity_type: group_relationship
+bundle: buddhism-group_node-project
+label: 'Changed on'
+description: 'The time that the group relationship was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

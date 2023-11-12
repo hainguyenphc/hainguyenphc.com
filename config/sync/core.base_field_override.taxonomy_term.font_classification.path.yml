@@ -1,0 +1,20 @@
+uuid: 5de470bb-739e-469e-b969-cf7df246b9af
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.font_classification
+  module:
+    - path
+id: taxonomy_term.font_classification.path
+field_name: path
+entity_type: taxonomy_term
+bundle: font_classification
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,21 @@
+uuid: 64e7b872-c1ee-4139-9c0e-a4fbd442d5fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.languages_supported
+  module:
+    - text
+id: taxonomy_term.languages_supported.description
+field_name: description
+entity_type: taxonomy_term
+bundle: languages_supported
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

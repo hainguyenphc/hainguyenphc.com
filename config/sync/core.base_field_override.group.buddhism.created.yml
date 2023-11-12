@@ -1,0 +1,18 @@
+uuid: 345fb8d7-57a6-4311-9a93-002b34916ef4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.buddhism
+id: group.buddhism.created
+field_name: created
+entity_type: group
+bundle: buddhism
+label: 'Created on'
+description: 'The time that the group was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

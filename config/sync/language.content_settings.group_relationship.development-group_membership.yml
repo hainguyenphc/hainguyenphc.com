@@ -1,0 +1,18 @@
+uuid: 38d6d190-3cb0-45ab-a9e0-18ad99c51341
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.development-group_membership
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_relationship.development-group_membership
+target_entity_type_id: group_relationship
+target_bundle: development-group_membership
+default_langcode: site_default
+language_alterable: false

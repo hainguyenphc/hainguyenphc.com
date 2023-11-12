@@ -1,0 +1,18 @@
+uuid: 16591fe4-e39e-4908-86e7-a364a82e7cba
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.car
+id: node.car.changed
+field_name: changed
+entity_type: node
+bundle: car
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

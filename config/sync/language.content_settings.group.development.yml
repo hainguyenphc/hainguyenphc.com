@@ -1,0 +1,18 @@
+uuid: 8f1cd616-9dda-4124-9f85-715eb233f203
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.development
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group.development
+target_entity_type_id: group
+target_bundle: development
+default_langcode: site_default
+language_alterable: false

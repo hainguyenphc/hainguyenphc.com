@@ -1,0 +1,18 @@
+uuid: ebaa43fd-73b4-445a-922d-9648d0a9bfb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.buddhism
+id: group.buddhism.label
+field_name: label
+entity_type: group
+bundle: buddhism
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

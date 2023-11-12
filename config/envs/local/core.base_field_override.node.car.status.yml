@@ -1,0 +1,22 @@
+uuid: 7c2123d6-a282-4200-9ca2-3c2452b27a3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.car
+id: node.car.status
+field_name: status
+entity_type: node
+bundle: car
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

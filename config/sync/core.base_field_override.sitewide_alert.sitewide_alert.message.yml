@@ -1,0 +1,22 @@
+uuid: 241bef92-34b5-4a25-ba18-44a08a4a468c
+langcode: en
+status: true
+dependencies:
+  module:
+    - sitewide_alert
+    - text
+id: sitewide_alert.sitewide_alert.message
+field_name: message
+entity_type: sitewide_alert
+bundle: sitewide_alert
+label: 'Alert Message'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

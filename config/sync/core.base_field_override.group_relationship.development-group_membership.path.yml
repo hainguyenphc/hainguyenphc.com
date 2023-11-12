@@ -1,0 +1,20 @@
+uuid: 60d23f45-fea0-4511-8dcc-311cadb4419c
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.development-group_membership
+  module:
+    - path
+id: group_relationship.development-group_membership.path
+field_name: path
+entity_type: group_relationship
+bundle: development-group_membership
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

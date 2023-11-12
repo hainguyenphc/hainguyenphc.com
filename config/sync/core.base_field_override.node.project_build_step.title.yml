@@ -1,0 +1,18 @@
+uuid: ac2449d7-f3db-4b91-840d-457b8132fbe2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.project_build_step
+id: node.project_build_step.title
+field_name: title
+entity_type: node
+bundle: project_build_step
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

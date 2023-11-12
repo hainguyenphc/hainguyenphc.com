@@ -1,0 +1,18 @@
+uuid: d32e03cf-a2b3-4381-b085-24f64996fa48
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.project_build_step
+id: node.project_build_step.changed
+field_name: changed
+entity_type: node
+bundle: project_build_step
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

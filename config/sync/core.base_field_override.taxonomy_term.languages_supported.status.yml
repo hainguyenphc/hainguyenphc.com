@@ -1,0 +1,22 @@
+uuid: d7895734-7f66-4c44-97dc-580ebfd330d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.languages_supported
+id: taxonomy_term.languages_supported.status
+field_name: status
+entity_type: taxonomy_term
+bundle: languages_supported
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

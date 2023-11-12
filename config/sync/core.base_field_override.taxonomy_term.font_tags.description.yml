@@ -1,0 +1,21 @@
+uuid: 3270cfce-f489-44ce-be86-fa1bf72181eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.font_tags
+  module:
+    - text
+id: taxonomy_term.font_tags.description
+field_name: description
+entity_type: taxonomy_term
+bundle: font_tags
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

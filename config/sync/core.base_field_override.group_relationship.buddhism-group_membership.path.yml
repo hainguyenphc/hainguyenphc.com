@@ -1,0 +1,20 @@
+uuid: 4cdca2a1-c1cf-4300-b91e-def5bddabbc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.buddhism-group_membership
+  module:
+    - path
+id: group_relationship.buddhism-group_membership.path
+field_name: path
+entity_type: group_relationship
+bundle: buddhism-group_membership
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

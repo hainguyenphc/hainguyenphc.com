@@ -1,0 +1,20 @@
+uuid: c56caca5-2754-4f20-b67d-927df697f59a
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.development
+  module:
+    - path
+id: group.development.path
+field_name: path
+entity_type: group
+bundle: development
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

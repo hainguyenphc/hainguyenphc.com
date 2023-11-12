@@ -1,0 +1,22 @@
+uuid: b657ba03-8f5c-481d-afbb-158b9768a097
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.car
+id: node.car.sticky
+field_name: sticky
+entity_type: node
+bundle: car
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

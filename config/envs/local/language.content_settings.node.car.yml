@@ -1,0 +1,18 @@
+uuid: 904ae5cf-8982-41c9-b85a-93c7797f8eb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.car
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.car
+target_entity_type_id: node
+target_bundle: car
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,17 @@
+uuid: fc268641-e221-4a83-bea7-a70a7d990383
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - sitewide_alert
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: sitewide_alert.sitewide_alert
+target_entity_type_id: sitewide_alert
+target_bundle: sitewide_alert
+default_langcode: site_default
+language_alterable: false

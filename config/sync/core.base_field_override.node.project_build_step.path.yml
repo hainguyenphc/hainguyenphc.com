@@ -1,0 +1,20 @@
+uuid: ee4dbdec-6fb4-4791-8542-de71b0de57d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.project_build_step
+  module:
+    - path
+id: node.project_build_step.path
+field_name: path
+entity_type: node
+bundle: project_build_step
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,18 @@
+uuid: b7420b8b-3888-45ec-aab2-5584ed3ff519
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.font_foundry
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.font_foundry
+target_entity_type_id: taxonomy_term
+target_bundle: font_foundry
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,22 @@
+uuid: 231e51d6-64ea-411f-9a46-28043b38329a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+  module:
+    - entitygroupfield
+id: node.article.entitygroupfield
+field_name: entitygroupfield
+entity_type: node
+bundle: article
+label: Groups
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entitygroupfield
