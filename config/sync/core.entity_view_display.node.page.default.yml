@@ -30,5 +30,7 @@ content:
     weight: 1
     region: content
 hidden:
+  entitygroupfield: true
   field_banner_image: true
   field_teaser_image: true
+  langcode: true

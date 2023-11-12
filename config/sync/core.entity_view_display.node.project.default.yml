@@ -34,8 +34,10 @@ content:
     weight: 1
     region: content
 hidden:
+  entitygroupfield: true
   field_banner_image: true
   field_brief_description: true
   field_machine_n: true
   field_teaser_image: true
+  langcode: true
   links: true

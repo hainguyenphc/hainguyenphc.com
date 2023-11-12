@@ -33,3 +33,4 @@ hidden:
   entitygroupfield: true
   field_image: true
   field_license_plate: true
+  langcode: true

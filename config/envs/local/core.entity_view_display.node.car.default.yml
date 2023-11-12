@@ -45,4 +45,5 @@ content:
     region: content
 hidden:
   entitygroupfield: true
+  langcode: true
   links: true

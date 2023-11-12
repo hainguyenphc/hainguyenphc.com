@@ -63,3 +63,4 @@ content:
 hidden:
   comment: true
   entitygroupfield: true
+  langcode: true

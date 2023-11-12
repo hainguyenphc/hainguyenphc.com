@@ -46,6 +46,8 @@ content:
     region: content
 hidden:
   body: true
+  entitygroupfield: true
   field_banner_image: true
   field_machine_n: true
   field_project_categories: true
+  langcode: true

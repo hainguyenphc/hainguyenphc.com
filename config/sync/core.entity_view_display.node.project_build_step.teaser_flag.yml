@@ -45,6 +45,8 @@ content:
     region: content
 hidden:
   body: true
+  entitygroupfield: true
   field_machine_n: true
   field_project: true
   field_related_build_steps: true
+  langcode: true

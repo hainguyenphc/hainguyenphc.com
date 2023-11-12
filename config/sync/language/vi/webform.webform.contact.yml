@@ -1,0 +1,6 @@
+title: 'Liên hệ'
+settings:
+  confirmation_message: 'Thông điệp của bạn đã được gửi đi.'
+handlers:
+  email_notification:
+    label: 'Email cảnh báo'
