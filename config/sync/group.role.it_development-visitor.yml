@@ -1,0 +1,15 @@
+uuid: 2ea49917-d96e-4f4e-9f98-7ff50b12631d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.it_development
+    - user.role.anonymous
+id: it_development-visitor
+label: Visitor
+weight: -92
+admin: false
+scope: outsider
+global_role: anonymous
+group_type: it_development
+permissions: {  }

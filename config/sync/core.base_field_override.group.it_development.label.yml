@@ -1,0 +1,18 @@
+uuid: f6649d1b-e764-4243-804d-8d6e1506da63
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.it_development
+id: group.it_development.label
+field_name: label
+entity_type: group
+bundle: it_development
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,15 @@
+uuid: 9689364e-d049-4a29-a31c-db2cdf4a4414
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.it_development
+  module:
+    - user
+id: it_development-group_membership
+group_type: it_development
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

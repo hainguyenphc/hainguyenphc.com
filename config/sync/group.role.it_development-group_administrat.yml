@@ -1,0 +1,15 @@
+uuid: 20737b8c-afd1-4070-9eb1-80d3e6481961
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.it_development
+    - user.role.administrator
+id: it_development-group_administrat
+label: 'Group Administrator'
+weight: -93
+admin: true
+scope: insider
+global_role: administrator
+group_type: it_development
+permissions: {  }

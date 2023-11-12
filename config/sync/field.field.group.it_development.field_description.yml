@@ -1,0 +1,24 @@
+uuid: af7674dc-dcf7-4ccf-bf76-e49325c0e0fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_description
+    - group.type.it_development
+  module:
+    - text
+id: group.it_development.field_description
+field_name: field_description
+entity_type: group
+bundle: it_development
+label: Description
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

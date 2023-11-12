@@ -1,0 +1,11 @@
+uuid: dd9b69c2-295c-49cd-81d1-117a046bf1f6
+langcode: en
+status: true
+dependencies: {  }
+id: it_development
+label: IT/Development
+description: ''
+new_revision: true
+creator_membership: true
+creator_wizard: true
+creator_roles: {  }
