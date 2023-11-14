@@ -137,7 +137,7 @@ function eg_salutation_node_access_records($node) {
 /** 
  * Implements hook_node_grants().
  */
-function eg_salutation_node_grants(AccountProxy $account, string $operation) {
+function eg_salutation_node_grants($account, string $operation) {
   if ($operation === 'update' && $account->isAuthenticated()) {
     $grants['salutation'] = [
       $account->id(),
