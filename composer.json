@@ -21,6 +21,7 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.2",
         "drupal/antibot": "^2.0",
+        "drupal/back_to_top": "^3.0",
         "drupal/better_exposed_filters": "^6.0",
         "drupal/blazy": "^2.22",
         "drupal/block_visibility_groups": "^2.0",
