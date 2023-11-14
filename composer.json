@@ -25,6 +25,7 @@
         "drupal/better_exposed_filters": "^6.0",
         "drupal/blazy": "^2.22",
         "drupal/block_visibility_groups": "^2.0",
+        "drupal/checkbox_radio_buttons_multi_columns": "^2.0@alpha",
         "drupal/chosen": "^4.0",
         "drupal/ckeditor": "^1.0",
         "drupal/ckeditor5_fullscreen": "^1.0@beta",

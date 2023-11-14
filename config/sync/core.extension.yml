@@ -13,6 +13,7 @@ module:
   block_content: 0
   block_visibility_groups: 0
   breakpoint: 0
+  checkbox_radio_buttons_multi_columns: 0
   chosen: 0
   chosen_lib: 0
   ckeditor5: 0

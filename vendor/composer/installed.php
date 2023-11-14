@@ -424,6 +424,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/checkbox_radio_buttons_multi_columns' => array(
+            'pretty_version' => '2.0.0-alpha2',
+            'version' => '2.0.0.0-alpha2',
+            'reference' => '2.0.0-alpha2',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/checkbox_radio_buttons_multi_columns',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/chosen' => array(
             'pretty_version' => '4.0.0',
             'version' => '4.0.0.0',
