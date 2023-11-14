@@ -1,0 +1,13 @@
+uuid: a96b22b2-8fb2-4204-9923-07f81414539e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.project_build_step
+id: node.project_build_step
+targetEntityType: node
+bundle: project_build_step
+action: display_page
+no_bypass: false
+bypass_message: false
+configuration: {  }

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_image
     - field.field.node.article.field_parent
     - field.field.node.article.field_tags
+    - field.field.node.article.rabbit_hole__settings
     - node.type.article
   module:
     - user
@@ -30,3 +31,4 @@ hidden:
   field_parent: true
   field_tags: true
   langcode: true
+  rabbit_hole__settings: true

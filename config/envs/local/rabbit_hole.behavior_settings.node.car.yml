@@ -1,0 +1,13 @@
+uuid: ebda9a9b-e5d4-4b0f-8037-149dd75ac81f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.car
+id: node.car
+targetEntityType: node
+bundle: car
+action: display_page
+no_bypass: false
+bypass_message: false
+configuration: {  }

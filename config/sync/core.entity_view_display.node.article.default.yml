@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_image
     - field.field.node.article.field_parent
     - field.field.node.article.field_tags
+    - field.field.node.article.rabbit_hole__settings
     - image.style.wide
     - node.type.article
   module:
@@ -64,3 +65,4 @@ hidden:
   comment: true
   entitygroupfield: true
   langcode: true
+  rabbit_hole__settings: true
