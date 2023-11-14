@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'drupal/legacy-project',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'e20925203c457c32da338f268b415f6ea51f6bf1',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -847,6 +847,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/filter_perms' => array(
+            'pretty_version' => '2.0.0-rc1',
+            'version' => '2.0.0.0-RC1',
+            'reference' => '2.0.0-rc1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/filter_perms',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/flexible_permissions' => array(
             'pretty_version' => '1.1.0',
             'version' => '1.1.0.0',
@@ -967,9 +976,9 @@
             'dev_requirement' => false,
         ),
         'drupal/legacy-project' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'e20925203c457c32da338f268b415f6ea51f6bf1',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
