@@ -35,6 +35,7 @@
         "drupal/core-vendor-hardening": "^10",
         "drupal/devel": "^5.0",
         "drupal/eca": "^1.1",
+        "drupal/editoria11y": "^2.1",
         "drupal/entitygroupfield": "^2.0@alpha",
         "drupal/environment_indicator": "^4.0",
         "drupal/feeds": "^3.0@beta",

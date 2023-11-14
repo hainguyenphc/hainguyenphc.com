@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '49697de0c41138478c0cc170da01b232a72b758e',
+        'reference' => 'c3a854de7c763773e96132a6efd54bf51017a983',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -712,6 +712,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/editoria11y' => array(
+            'pretty_version' => '2.1.3',
+            'version' => '2.1.3.0',
+            'reference' => '2.1.3',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/editoria11y',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/entity' => array(
             'pretty_version' => '1.4.0',
             'version' => '1.4.0.0',
@@ -888,7 +897,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '49697de0c41138478c0cc170da01b232a72b758e',
+            'reference' => 'c3a854de7c763773e96132a6efd54bf51017a983',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
