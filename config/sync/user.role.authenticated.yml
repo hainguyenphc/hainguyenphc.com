@@ -9,6 +9,7 @@ dependencies:
     - comment
     - contact
     - filter
+    - fontawesome
     - media
     - search
     - shortcut
@@ -23,6 +24,7 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
+  - 'access fontawesome additional settings'
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'post comments'
