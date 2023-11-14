@@ -49,6 +49,7 @@
         "drupal/honeypot": "^2.1",
         "drupal/imagemagick": "^3.4",
         "drupal/link_attributes": "^2.1",
+        "drupal/linkit": "^6.1",
         "drupal/menu_block": "^1.10",
         "drupal/metatag": "^2.0",
         "drupal/paragraphs": "^1.16",
