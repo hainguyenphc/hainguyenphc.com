@@ -1,0 +1,5 @@
+custom:
+  text_current: '{current} trong số {total}'
+  text_previous: '« Trước'
+  text_next: 'Tiếp »'
+  text_close: Đóng
