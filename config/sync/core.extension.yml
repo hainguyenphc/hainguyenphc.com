@@ -6,6 +6,7 @@ module:
   automated_cron: 0
   better_exposed_filters: 0
   big_pipe: 0
+  blazy: 0
   block: 0
   block_content: 0
   block_visibility_groups: 0
@@ -66,6 +67,7 @@ module:
   locale: 0
   media: 0
   media_library: 0
+  menu_block: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
