@@ -8,8 +8,10 @@
 use Drupal\olivero\OliveroPreRender;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
 use Drupal\user\UserInterface;
 
 /**
@@ -112,6 +114,17 @@ function olivero_preprocess_node(&$variables) {
   if ($variables['node']->bundle() === 'article' && $variables['view_mode'] === 'full') {
     $variables['layout'] = 'content-narrow';
   }
+
+  $author_id = $variables['node']->uid->target_id;
+  $author = \Drupal::entityTypeManager()->getStorage('user')->load($author_id);
+  $author_full_name = empty($author->field_middle_name->value)
+    ? "{$author->field_first_name->value} {$author->field_last_name->value}"
+    : "{$author->field_first_name->value} {$author->field_middle_name->value} {$author->field_last_name->value}";
+  $variables['author_full_name'] = Link::createFromRoute(
+    $author_full_name, 
+    'entity.user.canonical', 
+    ['user' => $author_id]
+  )->toRenderable();
 }
 
 /**
