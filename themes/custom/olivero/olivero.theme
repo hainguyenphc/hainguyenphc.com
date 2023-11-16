@@ -151,6 +151,8 @@ function olivero_preprocess_block(&$variables) {
     if ($site_branding_color && $site_branding_color !== 'default') {
       $variables['attributes']['class'][] = 'site-branding--bg-' . $site_branding_color;
     }
+    // Introduce site slogan to the block.
+    $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
   }
 
   // Add a primary-nav class to main menu navigation block.

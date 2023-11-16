@@ -26,6 +26,11 @@
         <div class="site-branding__name">
           <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
         </div>
+        {% if site_slogan %}
+          <div class="site-branding__slogan">
+            <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">{{ site_slogan|raw }}</a>
+          </div>
+        {% endif %}
       </div>
     {% endif %}
   </div>
