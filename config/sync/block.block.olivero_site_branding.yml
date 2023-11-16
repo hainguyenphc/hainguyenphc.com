@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - block_visibility_groups
     - system
   theme:
     - olivero
@@ -21,5 +22,9 @@ settings:
   provider: system
   use_site_logo: true
   use_site_name: true
-  use_site_slogan: false
-visibility: {  }
+  use_site_slogan: true
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
