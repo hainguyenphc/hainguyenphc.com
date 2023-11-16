@@ -4,11 +4,11 @@ langcode: en
 uuid: b937213c-a24b-42ad-aa25-8a034ae0d919
 name: 'Hai Nguyen'
 mail: hai.nguyen.phc@gmail.com
-slogan: 'Software Engineer'
+slogan: 'Software Engineer<br>with close ties to Drupal'
 page:
   403: ''
   404: ''
-  front: /node/3
+  front: /node/2
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en
