@@ -1,9 +1,9 @@
-uuid: 2928903d-2575-44c7-b4f7-81f2f546d5a6
+uuid: 9dbfbba2-49f9-4ec5-b8ff-a750ce06fc8a
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.search_index
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_external_resources
@@ -11,34 +11,34 @@ dependencies:
     - field.field.node.article.field_parent
     - field.field.node.article.field_tags
     - field.field.node.article.rabbit_hole__settings
-    - image.style.medium
+    - image.style.thumbnail
     - node.type.article
   module:
     - image
     - smart_trim
     - user
 _core:
-  default_config_hash: 83jX5ChAGdMzOxiDA_B1NjgebVMuD8lNVDgClg_QVP8
-id: node.article.teaser
+  default_config_hash: 7fb0j9HnIXfP9ndewzgPPzzeX_SV532wuYpkscrCMCk
+id: node.article.search_index
 targetEntityType: node
 bundle: article
-mode: teaser
+mode: search_index
 content:
   body:
     type: smart_trim
     label: hidden
     settings:
-      trim_length: 200
+      trim_length: 50
       trim_type: chars
       trim_suffix: ''
       wrap_output: false
       wrap_class: trimmed
       more:
-        display_link: true
+        display_link: false
         target_blank: false
         link_trim_only: false
         class: more-link
-        text: 'Read More'
+        text: More
         aria_label: 'Read more about [node:title]'
         token_browser: ''
       summary_handler: full
@@ -47,14 +47,14 @@ content:
         trim_zero: false
         replace_tokens: false
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_image:
     type: image
     label: hidden
     settings:
       image_link: content
-      image_style: medium
+      image_style: thumbnail
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -62,11 +62,11 @@ content:
     region: content
   field_tags:
     type: entity_reference_label
-    label: above
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
 hidden:
   comment: true

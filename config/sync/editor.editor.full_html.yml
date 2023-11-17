@@ -17,6 +17,8 @@ settings:
       - codeBlock
       - specialCharacters
       - '|'
+      - heading
+      - style
       - bold
       - underline
       - italic
@@ -38,7 +40,6 @@ settings:
       - drupalMedia
       - videoEmbed
       - '|'
-      - heading
       - sourceEditing
   plugins:
     ckeditor5_alignment:
@@ -105,6 +106,19 @@ settings:
       startIndex: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: 'H2 Section'
+          element: '<h2 class="section">'
+        -
+          label: 'H3 Subsection'
+          element: '<h3 class="sub-section">'
+        -
+          label: 'H4 Subdivision'
+          element: '<h4 class="sub">'
+    linkit_extension:
+      linkit_enabled: false
     media_media:
       allow_view_mode_override: true
     video_embed_wysiwyg_video_embed:

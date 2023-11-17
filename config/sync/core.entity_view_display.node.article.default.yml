@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.comment
+    - field.field.node.article.field_external_resources
     - field.field.node.article.field_image
     - field.field.node.article.field_parent
     - field.field.node.article.field_tags
@@ -13,6 +14,7 @@ dependencies:
     - node.type.article
   module:
     - image
+    - link
     - text
     - user
 _core:
@@ -27,7 +29,19 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 3
+    region: content
+  field_external_resources:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: nofollow
+      target: '0'
+    third_party_settings: {  }
+    weight: 2
     region: content
   field_image:
     type: image
@@ -50,16 +64,16 @@ content:
     region: content
   field_tags:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 5
     region: content
 hidden:
   comment: true

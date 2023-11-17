@@ -2,6 +2,7 @@
 
 use Drupal\Core\Link;
 use Drupal\Core\Url;
+use Drupal\group\Entity\Group;
 use Drupal\node\Entity\Node;
 
 /**
@@ -94,4 +95,31 @@ function hnp_group_preprocess_field(array &$variables) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function hnp_group_views_pre_view($view, $display_id, &$args) {
+  if (
+    // This view block requires a context: a group entity.
+    // But, group entities are rendered with URL aliases, not IDs exposed making
+    // the block unable to render.
+    $view->id() === 'group_nodes' 
+    && $display_id === 'block_1'
+    && \Drupal::routeMatch()->getRouteName() === 'entity.group.canonical'
+  ) {
+    // We try to get the group entity from current request.
+    $request = \Drupal::request();
+    $group = $request->get('_entity');
+    // and introduce it as the context.
+    if ($group instanceof Group) {
+      $args[0] = $group->id();
+    }
+  }
+}
+
+function hnp_group_preprocess_views_view($variables) {
+
+  $a = 1;
 }

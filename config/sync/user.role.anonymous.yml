@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.restricted_html
+    - taxonomy.vocabulary.tags
   module:
     - comment
     - contact
@@ -12,6 +13,7 @@ dependencies:
     - search
     - sitewide_alert
     - system
+    - taxonomy_access_fix
 _core:
   default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
 id: anonymous
@@ -26,3 +28,5 @@ permissions:
   - 'use text format restricted_html'
   - 'view media'
   - 'view published sitewide alert entities'
+  - 'view term names in tags'
+  - 'view terms in tags'

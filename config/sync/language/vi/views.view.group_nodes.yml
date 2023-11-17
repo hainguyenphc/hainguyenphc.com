@@ -13,10 +13,6 @@ display:
           settings:
             format_custom_false: 'Đã bỏ công bố'
             format_custom_true: 'Đã công bố'
-        changed:
-          label: 'Đã cập nhật'
-        dropbutton:
-          label: 'Thao tác'
       pager:
         options:
           tags:

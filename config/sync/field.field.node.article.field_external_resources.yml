@@ -1,0 +1,23 @@
+uuid: c3b56a03-dff8-4739-b840-10918b6fa980
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_external_resources
+    - node.type.article
+  module:
+    - link
+id: node.article.field_external_resources
+field_name: field_external_resources
+entity_type: node
+bundle: article
+label: 'External Resources'
+description: 'External resources for more reading.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

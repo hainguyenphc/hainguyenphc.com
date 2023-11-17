@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.media.full
     - core.entity_view_mode.media.media_library
   module:
+    - blazy
     - editor
     - media
     - video_embed_wysiwyg
@@ -51,7 +52,7 @@ filters:
     status: false
     weight: -10
     settings:
-      allowed_html: ''
+      allowed_html: '<h2 class="section"> <h3 class="sub-section"> <h4 class="sub">'
       filter_html_help: true
       filter_html_nofollow: false
   media_embed:
@@ -72,3 +73,18 @@ filters:
     status: true
     weight: 0
     settings: {  }
+  blazy_filter:
+    id: blazy_filter
+    provider: blazy
+    status: false
+    weight: 3
+    settings:
+      media_switch: ''
+      hybrid_style: ''
+      box_style: ''
+      box_media_style: ''
+      box_caption: ''
+      filter_tags:
+        img: img
+        iframe: iframe
+      use_data_uri: '0'
