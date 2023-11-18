@@ -19,6 +19,7 @@ dependencies:
     - image
     - link
     - path
+    - rabbit_hole
     - text
 third_party_settings:
   field_group:
@@ -60,7 +61,7 @@ content:
     third_party_settings: {  }
   entitygroupfield:
     type: entitygroupfield_autocomplete_widget
-    weight: 12
+    weight: 14
     region: content
     settings:
       help_text: ''
@@ -126,19 +127,19 @@ content:
     third_party_settings: {  }
   rabbit_hole__settings:
     type: rabbit_hole_default
-    weight: 100
+    weight: 13
     region: content
     settings:
       advanced: true
     third_party_settings: {  }
   simple_sitemap:
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 11
+    weight: 12
     region: content
     settings:
       display_label: true
