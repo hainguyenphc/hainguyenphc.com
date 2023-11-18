@@ -5,40 +5,18 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.project.body
-    - field.field.node.project.field_banner_image
-    - field.field.node.project.field_brief_description
+    - field.field.node.project.field_images
     - field.field.node.project.field_machine_n
     - field.field.node.project.field_project_categories
-    - field.field.node.project.field_teaser_image
-    - image.style.wide
+    - field.field.node.project.rabbit_hole__settings
     - node.type.project
   module:
-    - image
-    - text
     - user
 id: node.project.teaser
 targetEntityType: node
 bundle: project
 mode: teaser
 content:
-  field_brief_description:
-    type: text_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_teaser_image:
-    type: image
-    label: hidden
-    settings:
-      image_link: content
-      image_style: wide
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 0
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -47,7 +25,8 @@ content:
 hidden:
   body: true
   entitygroupfield: true
-  field_banner_image: true
+  field_images: true
   field_machine_n: true
   field_project_categories: true
   langcode: true
+  rabbit_hole__settings: true
