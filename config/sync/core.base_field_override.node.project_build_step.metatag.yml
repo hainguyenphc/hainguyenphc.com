@@ -1,0 +1,20 @@
+uuid: 2fa21db6-0a71-4cf0-be57-219a695cc804
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.project_build_step
+  module:
+    - metatag
+id: node.project_build_step.metatag
+field_name: metatag
+entity_type: node
+bundle: project_build_step
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

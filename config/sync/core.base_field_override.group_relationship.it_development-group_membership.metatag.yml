@@ -1,0 +1,20 @@
+uuid: 388127b2-bce3-48ff-9cd5-77f443bcdfa6
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.it_development-group_membership
+  module:
+    - metatag
+id: group_relationship.it_development-group_membership.metatag
+field_name: metatag
+entity_type: group_relationship
+bundle: it_development-group_membership
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

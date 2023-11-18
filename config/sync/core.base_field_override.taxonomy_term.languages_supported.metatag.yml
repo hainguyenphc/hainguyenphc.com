@@ -1,0 +1,20 @@
+uuid: ba412561-e0ca-4f6e-b621-8beeb52deb26
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.languages_supported
+  module:
+    - metatag
+id: taxonomy_term.languages_supported.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: languages_supported
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

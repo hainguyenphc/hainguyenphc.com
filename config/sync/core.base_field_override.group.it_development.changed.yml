@@ -1,0 +1,18 @@
+uuid: 82269e0e-b26f-4ce0-8c16-bb7db8090a4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.it_development
+id: group.it_development.changed
+field_name: changed
+entity_type: group
+bundle: it_development
+label: 'Changed on'
+description: 'The time that the group was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

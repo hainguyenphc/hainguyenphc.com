@@ -1,0 +1,20 @@
+uuid: cc479894-a267-4358-840c-b1f74c6abd0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.buddhism-group_node-article
+  module:
+    - metatag
+id: group_relationship.buddhism-group_node-article.metatag
+field_name: metatag
+entity_type: group_relationship
+bundle: buddhism-group_node-article
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

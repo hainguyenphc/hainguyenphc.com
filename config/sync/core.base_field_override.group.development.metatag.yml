@@ -1,0 +1,20 @@
+uuid: ae77c636-189f-4425-aa18-8f80ecd0b23d
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.development
+  module:
+    - metatag
+id: group.development.metatag
+field_name: metatag
+entity_type: group
+bundle: development
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

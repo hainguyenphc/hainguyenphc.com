@@ -1,0 +1,20 @@
+uuid: 415b900c-bdcb-4f4d-8493-40bb0a9873d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.it_development
+  module:
+    - path
+id: group.it_development.path
+field_name: path
+entity_type: group
+bundle: it_development
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

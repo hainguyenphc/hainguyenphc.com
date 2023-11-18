@@ -1,0 +1,22 @@
+uuid: b770f8c0-869e-4106-86a7-8e1eafd3dc65
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.it_development
+id: group.it_development.status
+field_name: status
+entity_type: group
+bundle: it_development
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

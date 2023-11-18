@@ -1,0 +1,20 @@
+uuid: fce9628e-1ea9-4c27-91e5-d994dfb8c811
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.font_foundry
+  module:
+    - metatag
+id: taxonomy_term.font_foundry.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: font_foundry
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

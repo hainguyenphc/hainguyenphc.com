@@ -1,0 +1,18 @@
+uuid: ac3cd5ea-593d-4f1c-88a7-87ca7178cc7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.relationship_type.it_development-group_membership
+id: group_relationship.it_development-group_membership.created
+field_name: created
+entity_type: group_relationship
+bundle: it_development-group_membership
+label: 'Created on'
+description: 'The time that the group relationship was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,19 @@
+uuid: 76d38bc8-c0c0-4d00-9aa4-ae8feb43c782
+langcode: en
+status: true
+dependencies:
+  module:
+    - metatag
+    - sitewide_alert
+id: sitewide_alert.sitewide_alert.metatag
+field_name: metatag
+entity_type: sitewide_alert
+bundle: sitewide_alert
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed
