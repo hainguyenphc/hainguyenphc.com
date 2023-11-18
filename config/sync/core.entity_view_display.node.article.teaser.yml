@@ -7,14 +7,12 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_external_resources
-    - field.field.node.article.field_image
+    - field.field.node.article.field_images
     - field.field.node.article.field_parent
     - field.field.node.article.field_tags
     - field.field.node.article.rabbit_hole__settings
-    - image.style.medium
     - node.type.article
   module:
-    - image
     - smart_trim
     - user
 _core:
@@ -49,17 +47,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_image:
-    type: image
-    label: hidden
-    settings:
-      image_link: content
-      image_style: medium
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 0
-    region: content
   field_tags:
     type: entity_reference_label
     label: above
@@ -72,6 +59,7 @@ hidden:
   comment: true
   entitygroupfield: true
   field_external_resources: true
+  field_images: true
   field_parent: true
   langcode: true
   links: true

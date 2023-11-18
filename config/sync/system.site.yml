@@ -8,7 +8,7 @@ slogan: 'Software Engineer<br>with close ties to Drupal'
 page:
   403: ''
   404: ''
-  front: /drupal
+  front: /group/1
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en

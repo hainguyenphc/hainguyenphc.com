@@ -8,11 +8,11 @@ dependencies:
     - content_translation
 third_party_settings:
   content_translation:
-    enabled: false
+    enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
 id: group.it_development
 target_entity_type_id: group
 target_bundle: it_development
 default_langcode: site_default
-language_alterable: false
+language_alterable: true

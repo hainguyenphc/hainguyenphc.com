@@ -6,14 +6,12 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_external_resources
-    - field.field.node.article.field_image
+    - field.field.node.article.field_images
     - field.field.node.article.field_parent
     - field.field.node.article.field_tags
     - field.field.node.article.rabbit_hole__settings
-    - image.style.wide
     - node.type.article
   module:
-    - image
     - link
     - text
     - user
@@ -43,14 +41,12 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
-  field_image:
-    type: image
+  field_images:
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      image_link: ''
-      image_style: wide
-      image_loading:
-        attribute: lazy
+      view_mode: default
+      link: false
     third_party_settings: {  }
     weight: 0
     region: content
