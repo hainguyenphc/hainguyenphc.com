@@ -6,11 +6,14 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_banner_image
     - field.field.node.page.field_teaser_image
+    - field.field.node.page.rabbit_hole__settings
     - image.style.thumbnail
     - node.type.page
   module:
+    - checkbox_radio_buttons_multi_columns
     - image
     - path
+    - rabbit_hole
     - text
 _core:
   default_config_hash: SfpLhPExzvR0MgFp0Wp7CrmgEnhcqQ-fXIWFhbf4ue0
@@ -71,12 +74,24 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  rabbit_hole__settings:
+    type: rabbit_hole_default
+    weight: 100
+    region: content
+    settings:
+      advanced: true
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
-    type: boolean_checkbox
+    type: multi_column_options_buttons
     weight: 120
     region: content
     settings:
-      display_label: true
+      columns: 1
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
