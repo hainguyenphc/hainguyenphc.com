@@ -17,5 +17,12 @@ function eg_license_plate_theme($existing, $type, $theme, $path) {
         'concatenated' => FALSE,
       ],
     ],
+    'snippets_code' => [
+      'variables' => [
+        'source_code' => NULL,
+        'source_lang' => NULL,
+        'source_description' => NULL,
+      ],
+    ],
   ];
 }
