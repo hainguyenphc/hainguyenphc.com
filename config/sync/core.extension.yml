@@ -116,6 +116,7 @@ module:
   token: 0
   toolbar: 0
   tour: 0
+  tracer: 0
   twig_tweak: 0
   typed_data: 0
   update: 0
@@ -127,6 +128,7 @@ module:
   views_templates: 0
   views_ui: 0
   webform: 0
+  webprofiler: 0
   fontyourface: 1
   pathauto: 1
   content_translation: 10
