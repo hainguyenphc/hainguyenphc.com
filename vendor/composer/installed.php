@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '93981c7fb710db6548d60321c6547ef4a998e9db',
+        'reference' => '8b9557a35f8764aeff089b663b9a77ac0df9d100',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -128,9 +128,9 @@
             'dev_requirement' => true,
         ),
         'composer/installers' => array(
-            'pretty_version' => 'v1.12.0',
-            'version' => '1.12.0.0',
-            'reference' => 'd20a64ed3c94748397ff5973488761b22f6d3f19',
+            'pretty_version' => 'v2.2.0',
+            'version' => '2.2.0.0',
+            'reference' => 'c29dc4b93137acb82734f672c37e029dfbd95b35',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/./installers',
             'aliases' => array(),
@@ -1050,7 +1050,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '93981c7fb710db6548d60321c6547ef4a998e9db',
+            'reference' => '8b9557a35f8764aeff089b663b9a77ac0df9d100',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -2157,12 +2157,6 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
-        'roundcube/plugin-installer' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '*',
-            ),
-        ),
         'rsky/pear-core-min' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -2339,12 +2333,6 @@
             'install_path' => __DIR__ . '/../seld/signal-handler',
             'aliases' => array(),
             'dev_requirement' => true,
-        ),
-        'shama/baton' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '*',
-            ),
         ),
         'sirbrillig/phpcs-variable-analysis' => array(
             'pretty_version' => 'v2.11.17',
