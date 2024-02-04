@@ -137,6 +137,7 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
             'Psr\\Cache\\' => 10,
             'Prophecy\\PhpUnit\\' => 17,
             'Prophecy\\' => 9,
+            'PhpTuf\\ComposerStager\\' => 22,
             'PhpParser\\' => 10,
             'Peast\\' => 6,
             'PHPStan\\PhpDocParser\\' => 21,
@@ -199,6 +200,7 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             'Drush\\' => 6,
             'Drupal\\sophron\\' => 15,
+            'Drupal\\automatic_updates\\Development\\' => 37,
             'Drupal\\Core\\' => 12,
             'Drupal\\Composer\\Plugin\\VendorHardening\\' => 39,
             'Drupal\\Composer\\Plugin\\Scaffold\\' => 32,
@@ -528,6 +530,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
+        'PhpTuf\\ComposerStager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-tuf/composer-stager/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -669,6 +675,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'Drupal\\sophron\\' => 
         array (
             0 => __DIR__ . '/../..' . '/modules/contrib/sophron/src',
+        ),
+        'Drupal\\automatic_updates\\Development\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/modules/contrib/automatic_updates/scripts/src',
         ),
         'Drupal\\Core\\' => 
         array (

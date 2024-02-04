@@ -1,0 +1,11 @@
+name: 'Package Manager'
+type: module
+description: 'API module providing functionality to stage package installs and updates with Composer.'
+core_version_requirement: ^10.1
+dependencies:
+  - drupal:update
+
+# Information added by Drupal.org packaging script on 2023-12-27
+version: '3.0.0'
+project: 'automatic_updates'
+datestamp: 1703695603

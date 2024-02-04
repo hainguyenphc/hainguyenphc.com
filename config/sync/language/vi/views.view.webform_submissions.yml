@@ -11,16 +11,11 @@ display:
           sort_desc_label: 'Giảm dần'
       pager:
         options:
-          tags:
-            previous: ‹‹
-            next: ››
           expose:
             items_per_page_label: 'Số mục trên một trang'
             items_per_page_options_all_label: '- Tất cả -'
             offset_label: 'Độ dịch'
       fields:
-        sid:
-          label: '#'
         in_draft:
           label: Nháp
         created:
@@ -39,8 +34,6 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: 'Thao tác'
-        sid:
-          label: '#'
         in_draft:
           label: Nháp
         sticky:
@@ -67,8 +60,6 @@ display:
       fields:
         webform_submission_bulk_form:
           action_title: 'Thao tác'
-        sid:
-          label: '#'
         in_draft:
           label: Nháp
         sticky:
@@ -97,8 +88,6 @@ display:
   embed_review:
     display_options:
       fields:
-        sid:
-          label: '#'
         in_draft:
           label: Nháp
         sticky:

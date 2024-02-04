@@ -5,6 +5,7 @@ module:
   admin_toolbar_tools: 0
   antibot: 0
   automated_cron: 0
+  automatic_updates: 0
   back_to_top: 0
   better_exposed_filters: 0
   big_pipe: 0
@@ -94,6 +95,7 @@ module:
   ng_lightbox: 0
   node: 0
   options: 0
+  package_manager: 0
   page_cache: 0
   path: 0
   path_alias: 0

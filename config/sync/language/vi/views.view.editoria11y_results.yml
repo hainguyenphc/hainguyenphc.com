@@ -34,9 +34,6 @@ display:
           label: 'Số lượng'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Số mục trên một trang'
             items_per_page_options_all_label: '- Tất cả -'
@@ -50,9 +47,6 @@ display:
           label: 'Tiêu đề trang'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Số mục trên một trang'
             items_per_page_options_all_label: '- Tất cả -'
@@ -74,9 +68,6 @@ display:
           label: 'Ngôn ngữ'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Số mục trên một trang'
             items_per_page_options_all_label: '- Tất cả -'
@@ -94,9 +85,6 @@ display:
           label: Trang
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Số mục trên một trang'
             items_per_page_options_all_label: '- Tất cả -'
@@ -118,9 +106,6 @@ display:
           label: 'Ngôn ngữ'
       pager:
         options:
-          tags:
-            next: ››
-            previous: ‹‹
           expose:
             items_per_page_label: 'Số mục trên một trang'
             items_per_page_options_all_label: '- Tất cả -'

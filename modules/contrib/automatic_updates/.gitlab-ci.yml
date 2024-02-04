@@ -1,0 +1,208 @@
+################
+# DrupalCI GitLabCI template
+#
+# Gitlab-ci.yml to replicate DrupalCI testing for Contrib
+#
+# With thanks to:
+#   * The GitLab Acceleration Initiative participants
+#   * DrupalSpoons
+################
+
+################
+# Guidelines
+#
+# This template is designed to give any Contrib maintainer everything they need to test, without requiring modification. It is also designed to keep up to date with Core Development automatically through the use of include files that can be centrally maintained.
+#
+# However, you can modify this template if you have additional needs for your project.
+################
+
+################
+# Includes
+#
+# Additional configuration can be provided through includes.
+# One advantage of include files is that if they are updated upstream, the changes affect all pipelines using that include.
+#
+# Includes can be overridden by re-declaring anything provided in an include, here in gitlab-ci.yml
+# https://docs.gitlab.com/ee/ci/yaml/includes.html#override-included-configuration-values
+################
+
+include:
+  ################
+  # DrupalCI includes:
+  # As long as you include this, any future includes added by the Drupal Association will be accessible to your pipelines automatically.
+  # View these include files at https://git.drupalcode.org/project/gitlab_templates/
+  ################
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - '/includes/include.drupalci.main.yml'
+      # EXPERIMENTAL: For Drupal 7, remove the above line and uncomment the below.
+      # - '/includes/include.drupalci.main-d7.yml'
+      - '/includes/include.drupalci.variables.yml'
+      - '/includes/include.drupalci.workflows.yml'
+
+################
+# Pipeline configuration variables
+#
+# These are the variables provided to the Run Pipeline form that a user may want to override.
+#
+# Docs at https://git.drupalcode.org/project/gitlab_templates/-/blob/1.0.x/includes/include.drupalci.variables.yml
+################
+variables:
+  SKIP_COMPOSER_LINT: '1'
+  SKIP_ESLINT: '1'
+  SKIP_PHPCS: '1'
+  SKIP_PHPSTAN: '1'
+  SKIP_STYLELINT: '1'
+
+###################################################################################
+#
+#                                        *
+#                                       /(
+#                                      ((((,
+#                                    /(((((((
+#                                   ((((((((((*
+#                                ,(((((((((((((((
+#                              ,(((((((((((((((((((
+#                            ((((((((((((((((((((((((*
+#                         *(((((((((((((((((((((((((((((
+#                       ((((((((((((((((((((((((((((((((((*
+#                    *((((((((((((((((((  .((((((((((((((((((
+#                  ((((((((((((((((((.       /(((((((((((((((((*
+#                /(((((((((((((((((            .(((((((((((((((((,
+#             ,((((((((((((((((((                 ((((((((((((((((((
+#           .((((((((((((((((((((                   .(((((((((((((((((
+#          (((((((((((((((((((((((                     ((((((((((((((((/
+#        (((((((((((((((((((((((((((/                    ,(((((((((((((((*
+#      .((((((((((((((/  /(((((((((((((.                   ,(((((((((((((((
+#     *((((((((((((((      ,(((((((((((((/                   *((((((((((((((.
+#    ((((((((((((((,          /(((((((((((((.                  ((((((((((((((,
+#   (((((((((((((/              ,(((((((((((((*                 ,(((((((((((((,
+#  *(((((((((((((                .(((((((((((((((                ,(((((((((((((
+#  ((((((((((((/                /((((((((((((((((((.              ,((((((((((((/
+# (((((((((((((              *(((((((((((((((((((((((*             *((((((((((((
+# (((((((((((((            ,(((((((((((((..(((((((((((((           *((((((((((((
+# ((((((((((((,          /((((((((((((*      /((((((((((((/         ((((((((((((
+# (((((((((((((        /((((((((((((/          (((((((((((((*       ((((((((((((
+# (((((((((((((/     /((((((((((((               ,((((((((((((,    *((((((((((((
+#  ((((((((((((((  *(((((((((((/                   *((((((((((((.  ((((((((((((/
+#  *((((((((((((((((((((((((((,                      /(((((((((((((((((((((((((
+#   (((((((((((((((((((((((((                         ((((((((((((((((((((((((,
+#   .(((((((((((((((((((((((/                         ,(((((((((((((((((((((((
+#     ((((((((((((((((((((((/                         ,(((((((((((((((((((((/
+#      *(((((((((((((((((((((                         (((((((((((((((((((((,
+#       ,(((((((((((((((((((((,                      ((((((((((((((((((((/
+#         ,(((((((((((((((((((((*                  /((((((((((((((((((((
+#            ((((((((((((((((((((((,           ,/((((((((((((((((((((,
+#              ,(((((((((((((((((((((((((((((((((((((((((((((((((((
+#                 .(((((((((((((((((((((((((((((((((((((((((((((
+#                     .((((((((((((((((((((((((((((((((((((,.
+#                          .,(((((((((((((((((((((((((.
+#
+###################################################################################
+
+composer:
+  extends: .composer-base
+  variables:
+    COMPOSER_MIRROR_PATH_REPOS: '1'
+    PATH_REPO: '/tmp/automatic_updates'
+    _WEB_ROOT: '.'
+  script:
+    - mkdir $PATH_REPO
+    - mv ./* $PATH_REPO
+    # Expand the composer.json from the module with defaults to bring the Drupal project.
+    - curl -OL https://git.drupalcode.org/$_GITLAB_TEMPLATES_REPO/-/raw/$_GITLAB_TEMPLATES_REF/scripts/expand_composer_json.php
+    - php expand_composer_json.php
+    - composer config name drupal/automatic_updates-ci
+    - composer config repo.automatic_updates path $PATH_REPO
+    - composer require --no-update drupal/automatic_updates
+    - composer install $COMPOSER_EXTRA
+    - rm expand_composer_json.php
+    - composer create-project --no-install drupal/recommended-project:$_TARGET_CORE ./composer/Template/RecommendedProject
+    - composer create-project --no-install drupal/legacy-project:$_TARGET_CORE ./composer/Template/LegacyProject
+    - composer run core-convert --working-dir=./modules/contrib/automatic_updates -- $PWD --gitlabci --core_target_branch=10.1.x
+    - test -d ./core/modules/package_manager
+    - test -d ./core/modules/auto_updates
+    - rm -r -f ./modules/contrib
+
+phpunit:
+  stage: test
+  parallel:
+    matrix:
+      - MODULE:
+          - auto_updates
+          - package_manager
+        TEST_TYPE:
+          - PHPUnit-Unit
+          - PHPUnit-Kernel
+          - PHPUnit-Functional
+  rules:
+    - if: '$SKIP_PHPUNIT == "1"'
+      when: never
+    - when: on_success
+  needs: [ "composer" ]
+  extends:
+    - .test-variables
+  variables:
+    SYMFONY_DEPRECATIONS_HELPER: weak
+    _PHPUNIT_TESTGROUPS: '--verbose'
+    _PHPUNIT_EXTRA: '--types $TEST_TYPE --module $MODULE'
+    SIMPLETEST_BASE_URL: 'http://localhost'
+  services:
+    - name: $_CONFIG_DOCKERHUB_ROOT/$_TARGET_DB_TYPE-$_TARGET_DB_VERSION:production
+      alias: database
+    - name: $_CONFIG_DOCKERHUB_ROOT/chromedriver:production
+      alias: chrome
+      entrypoint:
+        - chromedriver
+        - "--no-sandbox"
+        - "--log-path=/tmp/chromedriver.log"
+        - "--verbose"
+        - "--whitelisted-ips="
+  script:
+    # Set up the web server. This is a copy of the &setup-websever anchor from the upstream template.
+    - mkdir -p $BROWSERTEST_OUTPUT_DIRECTORY
+    - mkdir -p $CI_PROJECT_DIR/sites/default/files/simpletest
+    - chmod -R 755 $BROWSERTEST_OUTPUT_DIRECTORY
+    - chmod -R 755 $CI_PROJECT_DIR/sites/default/files/simpletest
+    - sudo rm -r -f /var/www/html
+    - ln -s $CI_PROJECT_DIR /var/www/html
+    - chown -R www-data:www-data $CI_PROJECT_DIR
+    - service apache2 start
+    - curl $SIMPLETEST_BASE_URL
+    # Set up the database. This is a copy of the &simpletest-db anchor from the upstream template.
+    - |
+      [[ $_TARGET_DB_TYPE == "sqlite" ]] && export SIMPLETEST_DB=sqlite://localhost/sites/default/files/db.sqlite
+      [[ $_TARGET_DB_TYPE == "mysql" ]] && export SIMPLETEST_DB=mysql://$MYSQL_USER:$MYSQL_PASSWORD@database/$MYSQL_DATABASE
+      [[ $_TARGET_DB_TYPE == "pgsql" ]] && export SIMPLETEST_DB=pgsql://$POSTGRES_USER:$POSTGRES_PASSWORD@database/$POSTGRES_DB
+    # Provide some context on the test run.
+    - vendor/bin/drush status
+    # Remove all spaces from _PHPUNIT_TESTGROUPS for reliable checking and to
+    # ensure only one string is passed to bin/phpunit or run-tests.sh
+    - _PHPUNIT_TESTGROUPS=$(echo $_PHPUNIT_TESTGROUPS | sed -e 's/ //g')
+    # Execute tests.
+    - |
+      # if _PHPUNIT_TESTGROUPS is blank then do not add anything, because the test group will be handled by the matrix.
+      # if _PHPUNIT_TESTGROUPS is --all then add --directory modules/custom/$CI_PROJECT_NAME
+      # Otherwise add $_PHPUNIT_TESTGROUPS (without the --group)
+      WHAT_TO_RUN=$([[ "$_PHPUNIT_TESTGROUPS" == "" ]] && echo "" || ([[ "$_PHPUNIT_TESTGROUPS" == "--all" ]] && echo "--directory modules/custom/$CI_PROJECT_NAME" || echo "$_PHPUNIT_TESTGROUPS"))
+      echo "_PHPUNIT_CONCURRENT=$_PHPUNIT_CONCURRENT, _PHPUNIT_TESTGROUPS=$_PHPUNIT_TESTGROUPS, WHAT_TO_RUN=$WHAT_TO_RUN"
+      echo "executing: sudo SYMFONY_DEPRECATIONS_HELPER='$SYMFONY_DEPRECATIONS_HELPER' MINK_DRIVER_ARGS_WEBDRIVER='$MINK_DRIVER_ARGS_WEBDRIVER' -u www-data php $CI_PROJECT_DIR/core/scripts/run-tests.sh --color --keep-results --concurrency '32' --repeat '1' --sqlite 'sites/default/files/.sqlite' --dburl $SIMPLETEST_DB --url $SIMPLETEST_BASE_URL --verbose --non-html $WHAT_TO_RUN $_PHPUNIT_EXTRA"
+      sudo SYMFONY_DEPRECATIONS_HELPER="$SYMFONY_DEPRECATIONS_HELPER" MINK_DRIVER_ARGS_WEBDRIVER="$MINK_DRIVER_ARGS_WEBDRIVER" -u www-data php $CI_PROJECT_DIR/core/scripts/run-tests.sh --color --keep-results --concurrency "32" --repeat "1" --sqlite "sites/default/files/.sqlite" --dburl $SIMPLETEST_DB --url $SIMPLETEST_BASE_URL --xml $CI_PROJECT_DIR/sites/default/files/simpletest --verbose --non-html $WHAT_TO_RUN $_PHPUNIT_EXTRA || EXIT_CODE=$?
+    - cp /var/log/apache2/test.apache.access.log $CI_PROJECT_DIR/apache.access.log.txt
+    - cp /var/log/apache2/test.apache.error.log $CI_PROJECT_DIR/apache.error.log.txt
+    - exit $EXIT_CODE
+  artifacts:
+    expire_in: 6 mos
+    expose_as: 'junit-browser_output-apache_log'
+    when: always
+    reports:
+      junit:
+        - junit.xml
+        - $CI_PROJECT_DIR/$_WEB_ROOT/sites/default/files/simpletest/phpunit-*.xml
+    paths:
+      - junit.xml
+      - $CI_PROJECT_DIR/$_WEB_ROOT/sites/default/files/simpletest
+      - $BROWSERTEST_OUTPUT_DIRECTORY
+      - apache.access.log.txt
+      - apache.error.log.txt

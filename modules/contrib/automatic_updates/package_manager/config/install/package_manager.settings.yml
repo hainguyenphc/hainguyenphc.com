@@ -1,0 +1,8 @@
+# The rsync file syncer is currently the only stable file syncer and
+# should only be changed for development purposes.
+file_syncer: rsync
+executables:
+  composer: ~
+  rsync: ~
+additional_trusted_composer_plugins: []
+include_unknown_files_in_project_root: false
