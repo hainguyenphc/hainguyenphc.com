@@ -99,6 +99,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  project_browser: 0
   rabbit_hole: 0
   responsive_menu: 0
   rest: 0
