@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'drupal/legacy-project',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '9a9a7a792aadaa3dbac08ab119d7e1efa04d03d7',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1048,9 +1048,9 @@
             'dev_requirement' => false,
         ),
         'drupal/legacy-project' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '9a9a7a792aadaa3dbac08ab119d7e1efa04d03d7',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1178,9 +1178,9 @@
             'dev_requirement' => false,
         ),
         'drupal/sitewide_alert' => array(
-            'pretty_version' => '2.1.2',
-            'version' => '2.1.2.0',
-            'reference' => '2.1.2',
+            'pretty_version' => '2.2.1',
+            'version' => '2.2.1.0',
+            'reference' => '2.2.1',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../modules/contrib/sitewide_alert',
             'aliases' => array(),
@@ -2117,8 +2117,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psy/psysh' => array(

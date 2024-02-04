@@ -97,6 +97,17 @@ class SitewideAlertConfigForm extends ConfigFormBase {
       ) . '<br><br></p>',
     ];
 
+    $form['display_order'] = [
+      '#type' => 'select',
+      '#options' => [
+        'ascending' => $this->t('Display newer alerts last'),
+        'descending' => $this->t('Display newer alerts first'),
+      ],
+      '#title' => $this->t('Display Order'),
+      '#default_value' => $config->get('display_order'),
+      '#description' => $this->t('The order that the alerts display on the page when there are multiple active alerts.'),
+    ];
+
     $form['automatic_refresh'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Automatically Update (Refresh) Alerts'),
@@ -145,6 +156,7 @@ class SitewideAlertConfigForm extends ConfigFormBase {
     $this->config('sitewide_alert.settings')
       ->set('show_on_admin', $form_state->getValue('show_on_admin'))
       ->set('alert_styles', $form_state->getValue('alert_styles'))
+      ->set('display_order', $form_state->getValue('display_order'))
       ->set('refresh_interval', $form_state->getValue('refresh_interval'))
       ->set('automatic_refresh', $form_state->getValue('automatic_refresh'))
       ->set('cache_max_age', $form_state->getValue('cache_max_age'))

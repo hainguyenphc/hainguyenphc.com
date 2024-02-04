@@ -79,6 +79,12 @@ class SitewideAlertsController extends ControllerBase {
 
     $sitewideAlerts = $this->sitewideAlertManager->activeVisibleSitewideAlerts();
 
+    $sitewideAlertSettings = $this->configFactory->get('sitewide_alert.settings');
+
+    if ($sitewideAlertSettings->get('display_order') === 'descending') {
+      krsort($sitewideAlerts, SORT_NUMERIC);
+    }
+
     $viewBuilder = $this->entityTypeManager()->getViewBuilder('sitewide_alert');
 
     foreach ($sitewideAlerts as $sitewideAlert) {
@@ -95,11 +101,13 @@ class SitewideAlertsController extends ControllerBase {
       ];
     }
 
-    // Set response cache so it is invalidated whenever alerts get updated.
+    // Set response cache so it's invalidated whenever alerts get updated, or
+    // settings are changed.
     $cacheableMetadata = (new CacheableMetadata())
       ->setCacheMaxAge(30)
       ->addCacheContexts(['languages'])
       ->setCacheTags(['sitewide_alert_list']);
+    $cacheableMetadata->addCacheableDependency($sitewideAlertSettings);
 
     $response->addCacheableDependency($cacheableMetadata);
     $response->setData($sitewideAlertsJson);
@@ -116,7 +124,7 @@ class SitewideAlertsController extends ControllerBase {
 
     // Prevent the browser and downstream caches from caching for more than the
     // configured cache max age, in seconds.
-    $cacheMaxAge = $this->configFactory->get('sitewide_alert.settings')->get('cache_max_age') ?: 15;
+    $cacheMaxAge = $sitewideAlertSettings->get('cache_max_age') ?: 15;
     $response->setMaxAge($cacheMaxAge);
     $response->setSharedMaxAge($cacheMaxAge);
 

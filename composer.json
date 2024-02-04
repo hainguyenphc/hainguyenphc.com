@@ -74,7 +74,7 @@
         "drupal/rules": "3.x-dev@dev",
         "drupal/simple_oauth": "^5.2",
         "drupal/simple_sitemap": "^4.1",
-        "drupal/sitewide_alert": "^2.1",
+        "drupal/sitewide_alert": "^2.2",
         "drupal/smart_trim": "^2.1",
         "drupal/stable": "^2.0",
         "drupal/taxonomy_access_fix": "^4.0",

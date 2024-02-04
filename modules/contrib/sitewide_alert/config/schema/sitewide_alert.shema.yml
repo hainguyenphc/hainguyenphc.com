@@ -8,6 +8,11 @@ sitewide_alert.settings:
     alert_styles:
       type: 'string'
       label: 'Available alert styles'
+    display_order:
+      type: 'string'
+      label: 'Display Order'
+      constraints:
+        AllowedValues: [ 'descending', 'ascending' ]
     refresh_interval:
       type: 'integer'
       label: 'Browser Refresh Interval (in seconds)'

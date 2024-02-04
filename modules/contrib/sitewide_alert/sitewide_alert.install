@@ -177,3 +177,11 @@ function sitewide_alert_update_9003() {
   $config_factory = \Drupal::configFactory();
   $config_factory->getEditable('sitewide_alert.settings')->set('cache_max_age', 15)->save();
 }
+
+/**
+ * Set display order of alerts to ascending to match existing functionality.
+ */
+function sitewide_alert_update_9004() {
+  $config_factory = \Drupal::configFactory();
+  $config_factory->getEditable('sitewide_alert.settings')->set('display_order', 'ascending')->save();
+}

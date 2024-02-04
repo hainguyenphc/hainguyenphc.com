@@ -128,7 +128,8 @@ class SitewideAlertManager {
    * The time of the next scheduled change of alerts.
    *
    * @return \Drupal\Core\Datetime\DrupalDateTime|null
-   *   Time of next scheduled change of alerts; null if nothing is scheduled to change.
+   *   Time of next scheduled change of alerts; null if nothing is scheduled to
+   *   change.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
@@ -156,7 +157,8 @@ class SitewideAlertManager {
    * Determines the datetime of the soonest expiring visible scheduled alert.
    *
    * @return \Drupal\Core\Datetime\DrupalDateTime|null
-   *   The datetime of the soonest expiring scheduled alert; null if none of the alerts are scheduled to expire.
+   *   The datetime of the soonest expiring scheduled alert; null if none of the
+   *   alerts are scheduled to expire.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
@@ -191,7 +193,8 @@ class SitewideAlertManager {
    * Determines the datetime of the soonest expiring scheduled alert.
    *
    * @return \Drupal\Core\Datetime\DrupalDateTime|null
-   *   The datetime of the soonest expiring scheduled alert; null if none of the alerts are scheduled to expire.
+   *   The datetime of the soonest expiring scheduled alert; null if none of the
+   *   alerts are scheduled to expire.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException

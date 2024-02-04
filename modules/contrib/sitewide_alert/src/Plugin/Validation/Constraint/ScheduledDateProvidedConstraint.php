@@ -18,7 +18,7 @@ use Drupal\Core\Entity\Plugin\Validation\Constraint\CompositeConstraintBase;
 class ScheduledDateProvidedConstraint extends CompositeConstraintBase {
 
   /**
-   * Message shown when the entity is marked as scheduled, but no scheduled date is provided.
+   * Message shown when entity is marked as scheduled without a scheduled date.
    *
    * @var string
    */
