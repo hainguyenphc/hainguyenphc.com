@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22271d514ceba434bf98432a3c256016",
+    "content-hash": "2710cbdf8c25b294808653f3d50c8bdd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3163,27 +3163,30 @@
         },
         {
             "name": "drupal/config_ignore",
-            "version": "2.4.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/config_ignore.git",
-                "reference": "8.x-2.4"
+                "reference": "8.x-3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/config_ignore-8.x-2.4.zip",
-                "reference": "8.x-2.4",
-                "shasum": "e0e45dde2d6927c5d26de59f352792fb6cf26554"
+                "url": "https://ftp.drupal.org/files/projects/config_ignore-8.x-3.2.zip",
+                "reference": "8.x-3.2",
+                "shasum": "00335fc1ddeb4ed93f245dd6963d99b3c084c052"
             },
             "require": {
-                "drupal/config_filter": "^1 || ^2",
-                "drupal/core": "^8 || ^9 || ^10"
+                "drupal/core": "^8.8 || ^9 || ^10"
+            },
+            "require-dev": {
+                "drupal/config_filter": "^1.8||^2.2",
+                "drush/drush": "^10 || ^11 || ^12"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.4",
-                    "datestamp": "1676045435",
+                    "version": "8.x-3.2",
+                    "datestamp": "1705226226",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3192,7 +3195,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
@@ -3211,12 +3214,11 @@
                     "homepage": "https://www.drupal.org/user/413139"
                 }
             ],
-            "description": "Ignore certain configuration during import.",
+            "description": "Ignore certain configuration during import and export.",
             "homepage": "http://drupal.org/project/config_ignore",
             "support": {
                 "source": "https://git.drupalcode.org/project/config_ignore",
-                "issues": "https://drupal.org/project/config_ignore",
-                "irc": "irc://irc.freenode.org/drupal-contribute"
+                "issues": "http://drupal.org/project/config_ignore"
             }
         },
         {
@@ -4030,23 +4032,24 @@
         },
         {
             "name": "drupal/dynamic_entity_reference",
-            "version": "3.1.0",
+            "version": "4.0.0-alpha4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/dynamic_entity_reference.git",
-                "reference": "3.1.0"
+                "reference": "4.0.0-alpha4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/dynamic_entity_reference-3.1.0.zip",
-                "reference": "3.1.0",
-                "shasum": "4672b535acc326320f012033db94b5c0e379362c"
+                "url": "https://ftp.drupal.org/files/projects/dynamic_entity_reference-4.0.0-alpha4.zip",
+                "reference": "4.0.0-alpha4",
+                "shasum": "8436cd1b06aa4fe78e2643f24cfa8cb28da2507f"
             },
             "require": {
                 "drupal/core": "^10 || ^11",
                 "php": ">=8.1"
             },
             "require-dev": {
+                "drupal/diff": "*",
                 "mglaman/phpstan-drupal": "^1.1",
                 "phpstan/phpstan": "^1.1",
                 "phpstan/phpstan-deprecation-rules": "^1.0"
@@ -4054,11 +4057,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.1.0",
-                    "datestamp": "1688838762",
+                    "version": "4.0.0-alpha4",
+                    "datestamp": "1706487145",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -4724,20 +4727,20 @@
         },
         {
             "name": "drupal/file_mdm",
-            "version": "2.6.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/file_mdm.git",
-                "reference": "8.x-2.6"
+                "reference": "3.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/file_mdm-8.x-2.6.zip",
-                "reference": "8.x-2.6",
-                "shasum": "56c7c06107ce6e249b6d644136e6807573efb0e3"
+                "url": "https://ftp.drupal.org/files/projects/file_mdm-3.0.0.zip",
+                "reference": "3.0.0",
+                "shasum": "d6ea077882777619c25b217301dc3d1c10218502"
             },
             "require": {
-                "drupal/core": "^9.3 | ^10",
+                "drupal/core": "^10.1",
                 "fileeye/pel": "^0.9.20",
                 "phenx/php-font-lib": "^0.5.4"
             },
@@ -4748,8 +4751,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.6",
-                    "datestamp": "1688489716",
+                    "version": "3.0.0",
+                    "datestamp": "1691421181",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5312,28 +5315,28 @@
         },
         {
             "name": "drupal/imagemagick",
-            "version": "3.4.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/imagemagick.git",
-                "reference": "8.x-3.4"
+                "reference": "8.x-3.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/imagemagick-8.x-3.4.zip",
-                "reference": "8.x-3.4",
-                "shasum": "9f07b7db4bba2cb0e4ff004629f8f78242bb7226"
+                "url": "https://ftp.drupal.org/files/projects/imagemagick-8.x-3.7.zip",
+                "reference": "8.x-3.7",
+                "shasum": "2698db0ccc4a76d44ebbbfcabe9e70d25ae3db9b"
             },
             "require": {
-                "drupal/core": "^9.3 || ^10",
-                "drupal/file_mdm": "^2.5",
-                "drupal/sophron": "^1.2 || ^2"
+                "drupal/core": "^10.1",
+                "drupal/file_mdm": "^3",
+                "drupal/sophron": "^2.0.2"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.4",
-                    "datestamp": "1663947784",
+                    "version": "8.x-3.7",
+                    "datestamp": "1706096705",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6616,17 +6619,17 @@
         },
         {
             "name": "drupal/sophron",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/sophron.git",
-                "reference": "2.0.1"
+                "reference": "2.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/sophron-2.0.1.zip",
-                "reference": "2.0.1",
-                "shasum": "eb9b22e843400392ba7fa35dc99c644d2cf08982"
+                "url": "https://ftp.drupal.org/files/projects/sophron-2.0.2.zip",
+                "reference": "2.0.2",
+                "shasum": "ed5d910d6612ea591950b67384cc5ff26c5c7cc9"
             },
             "require": {
                 "drupal/core": "^10",
@@ -6635,8 +6638,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.1",
-                    "datestamp": "1676319965",
+                    "version": "2.0.2",
+                    "datestamp": "1699798487",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7940,16 +7943,16 @@
         },
         {
             "name": "fileeye/mimemap",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FileEye/MimeMap.git",
-                "reference": "befb9f1ee77dbf6b74a2c578874e128c9a5c1a2d"
+                "reference": "0795b7db12838ffb7bc564e0a02cf53fb1463ec0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FileEye/MimeMap/zipball/befb9f1ee77dbf6b74a2c578874e128c9a5c1a2d",
-                "reference": "befb9f1ee77dbf6b74a2c578874e128c9a5c1a2d",
+                "url": "https://api.github.com/repos/FileEye/MimeMap/zipball/0795b7db12838ffb7bc564e0a02cf53fb1463ec0",
+                "reference": "0795b7db12838ffb7bc564e0a02cf53fb1463ec0",
                 "shasum": ""
             },
             "require": {
@@ -7996,9 +7999,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FileEye/MimeMap/issues",
-                "source": "https://github.com/FileEye/MimeMap/tree/2.0.2"
+                "source": "https://github.com/FileEye/MimeMap/tree/2.0.3"
             },
-            "time": "2023-08-29T16:20:26+00:00"
+            "time": "2023-11-11T14:14:23+00:00"
         },
         {
             "name": "fileeye/pel",
@@ -10225,23 +10228,23 @@
         },
         {
             "name": "phenx/php-font-lib",
-            "version": "0.5.4",
+            "version": "0.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/php-font-lib.git",
-                "reference": "dd448ad1ce34c63d09baccd05415e361300c35b4"
+                "reference": "671df0f3516252011aa94f9e8e3b3b66199339f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/dd448ad1ce34c63d09baccd05415e361300c35b4",
-                "reference": "dd448ad1ce34c63d09baccd05415e361300c35b4",
+                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/671df0f3516252011aa94f9e8e3b3b66199339f8",
+                "reference": "671df0f3516252011aa94f9e8e3b3b66199339f8",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*"
             },
             "require-dev": {
-                "symfony/phpunit-bridge": "^3 || ^4 || ^5"
+                "symfony/phpunit-bridge": "^3 || ^4 || ^5 || ^6"
             },
             "type": "library",
             "autoload": {
@@ -10251,7 +10254,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-3.0"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -10263,9 +10266,9 @@
             "homepage": "https://github.com/PhenX/php-font-lib",
             "support": {
                 "issues": "https://github.com/dompdf/php-font-lib/issues",
-                "source": "https://github.com/dompdf/php-font-lib/tree/0.5.4"
+                "source": "https://github.com/dompdf/php-font-lib/tree/0.5.5"
             },
-            "time": "2021-12-17T19:44:54+00:00"
+            "time": "2024-01-07T18:13:29+00:00"
         },
         {
             "name": "phootwork/collection",
@@ -19044,6 +19047,7 @@
         "drupal/checkbox_radio_buttons_multi_columns": 15,
         "drupal/ckeditor5_fullscreen": 10,
         "drupal/conditional_fields": 15,
+        "drupal/dynamic_entity_reference": 15,
         "drupal/entitygroupfield": 15,
         "drupal/feeds": 10,
         "drupal/filter_perms": 5,

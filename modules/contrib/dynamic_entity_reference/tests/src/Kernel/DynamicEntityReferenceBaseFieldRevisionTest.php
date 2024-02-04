@@ -268,6 +268,22 @@ class DynamicEntityReferenceBaseFieldRevisionTest extends EntityKernelTestBase {
     $this->assertEquals($entity->der[0]->entity->id(), $referenced_entity_mul->id());
     $this->assertEquals($entity->der[0]->entity->uuid(), $referenced_entity_mul->uuid());
 
+    // Check the data in DB columns.
+    $database = $this->container
+      ->get('database');
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_rev}')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_rev}')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_rev}')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_rev}')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_mulrev_property_data}')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_mulrev_property_data}')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_mulrev_property_data}')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_mulrev_property_data}')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+
     $entity = $this->container
       ->get('entity_type.manager')
       ->getStorage($this->referencedEntityType)
@@ -294,6 +310,20 @@ class DynamicEntityReferenceBaseFieldRevisionTest extends EntityKernelTestBase {
     $this->assertEquals($entity->der[0]->entity->getName(), $referenced_entity->getName());
     $this->assertEquals($entity->der[0]->entity->id(), $referenced_entity->id());
     $this->assertEquals($entity->der[0]->entity->uuid(), $referenced_entity->uuid());
+
+    // Check the data in DB columns.
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_rev}')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_rev}')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_rev}')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_rev}')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_mulrev_property_data}')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_mulrev_property_data}')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_mulrev_property_data}')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_mulrev_property_data}')->fetchCol();
+    $this->assertSame($int_column, $str_column);
   }
 
   /**
@@ -465,7 +495,7 @@ class DynamicEntityReferenceBaseFieldRevisionTest extends EntityKernelTestBase {
   }
 
   /**
-   * Tests the multiple non-revisionable basefields.
+   * Tests the multiple revisionable basefields.
    */
   public function testRevisionableMultipleEntityReference() {
     \Drupal::state()->set('dynamic_entity_reference_entity_test_entities', [
@@ -517,6 +547,40 @@ class DynamicEntityReferenceBaseFieldRevisionTest extends EntityKernelTestBase {
     $this->assertEquals($entity->der[0]->entity->id(), $referenced_entity_mul->id());
     $this->assertEquals($entity->der[0]->entity->uuid(), $referenced_entity_mul->uuid());
 
+    // Check the data in DB columns.
+    $database = $this->container
+      ->get('database');
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_rev} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_rev} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_rev} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_rev} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_mulrev_property_data} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_mulrev_property_data} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_mulrev_property_data} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_mulrev_property_data} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    // Save a new revision.
+    $entity->dynamic_references[0] = $referenced_entity_mul;
+    $entity->der[0] = $referenced_entity;
+    $entity->setNewRevision(TRUE);
+    $entity->save();
+    // Check the data in DB columns.
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_rev_revision} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_rev_revision} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_rev_revision} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_rev_revision} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_mulrev_property_revision} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_mulrev_property_revision} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_mulrev_property_revision} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_mulrev_property_revision} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+
     $entity = $this->container
       ->get('entity_type.manager')
       ->getStorage($this->referencedEntityType)
@@ -543,6 +607,38 @@ class DynamicEntityReferenceBaseFieldRevisionTest extends EntityKernelTestBase {
     $this->assertEquals($entity->der[0]->entity->getName(), $referenced_entity->getName());
     $this->assertEquals($entity->der[0]->entity->id(), $referenced_entity->id());
     $this->assertEquals($entity->der[0]->entity->uuid(), $referenced_entity->uuid());
+
+    // Check the data in DB columns.
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_rev} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_rev} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_rev} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_rev} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_mulrev_property_data} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_mulrev_property_data} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_mulrev_property_data} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_mulrev_property_data} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    // Save a new revision.
+    $entity->dynamic_references[0] = $referenced_entity;
+    $entity->der[0] = $referenced_entity_mul;
+    $entity->setNewRevision(TRUE);
+    $entity->save();
+    // Check the data in DB columns.
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_rev_revision} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_rev_revision} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_rev_revision} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_rev_revision} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT dynamic_references__target_id_int FROM {entity_test_mulrev_property_revision} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT dynamic_references__target_id FROM {entity_test_mulrev_property_revision} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
+    $int_column = $database->query('SELECT der__target_id_int FROM {entity_test_mulrev_property_revision} ORDER BY id, revision_id')->fetchCol();
+    $str_column = $database->query('SELECT der__target_id FROM {entity_test_mulrev_property_revision} ORDER BY id, revision_id')->fetchCol();
+    $this->assertSame($int_column, $str_column);
   }
 
 }
