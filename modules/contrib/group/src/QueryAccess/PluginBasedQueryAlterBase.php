@@ -32,7 +32,7 @@ abstract class PluginBasedQueryAlterBase extends QueryAlterBase {
     // group relationship type IDs. This to avoid having to add an IN query per
     // plugin ID as seen in ::addIndividualConditions().
     $storage = $this->entityTypeManager->getStorage('group_relationship_type');
-    // assert($storage instanceof GroupRelationshipTypeStorageInterface);
+    assert($storage instanceof GroupRelationshipTypeStorageInterface);
 
     $group_relationship_type_ids = [];
     foreach ($allowed_ids as $plugin_id => $group_type_ids) {
