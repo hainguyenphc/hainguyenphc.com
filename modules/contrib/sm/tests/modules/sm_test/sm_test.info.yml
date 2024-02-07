@@ -1,0 +1,8 @@
+name: 'Test fixtures'
+type: module
+package: Testing
+
+# Information added by Drupal.org packaging script on 2023-12-12
+version: '0.0.4'
+project: 'sm'
+datestamp: 1702372410

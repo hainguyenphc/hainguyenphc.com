@@ -1,0 +1,4 @@
+system.messenger_settings:
+  title: 'Messenger'
+  route_name: symfony_messenger.config
+  parent: system.admin_config

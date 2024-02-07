@@ -1,0 +1,5 @@
+services:
+  sm_test.message_handler:
+    class: Drupal\sm_test\Messenger\SmTestMessageServiceHandler
+    tags:
+      - { name: messenger.message_handler }

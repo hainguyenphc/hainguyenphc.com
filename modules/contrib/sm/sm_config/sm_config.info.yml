@@ -1,0 +1,12 @@
+name: Symfony Messenger integration — Configuration UI
+description: 'Provides options to configure messenger with Drupal config. Otherwise messenger may be configured with container parameters.'
+type: module
+core_version_requirement: '>=10'
+php: 8.1
+dependencies:
+  - sm:sm
+
+# Information added by Drupal.org packaging script on 2023-12-12
+version: '0.0.4'
+project: 'sm'
+datestamp: 1702372410

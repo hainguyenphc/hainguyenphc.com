@@ -1,0 +1,11 @@
+name: Symfony Messenger integration
+type: module
+description: Integrates Symfony Messenger with Drupal.
+core_version_requirement: '>=10.1'
+php: 8.1
+package: Messenger
+
+# Information added by Drupal.org packaging script on 2023-12-12
+version: '0.0.4'
+project: 'sm'
+datestamp: 1702372410

@@ -1,0 +1,30 @@
+includes:
+  - phpstan-baseline.neon
+
+parameters:
+  level: 6
+  paths:
+    - bin
+    - src
+    - tests
+    - sm_config
+  reportUnmatchedIgnoredErrors: true
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false
+  treatPhpDocTypesAsCertain: false
+  fileExtensions:
+    - php
+    - module
+    - theme
+    - profile
+    - install
+    - inc
+  stubFiles:
+    - stubs/Stubs.stub
+  parallel:
+    jobSize: 20
+    maximumNumberOfProcesses: 32
+    minimumNumberOfJobsPerProcess: 4
+    processTimeout: 180.0
+  scanDirectories:
+    - web/core/

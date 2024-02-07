@@ -1,0 +1,36 @@
+include:
+  ################
+  # DrupalCI includes:
+  # As long as you include this, any future includes added by the Drupal Association will be accessible to your pipelines automatically.
+  # View these include files at https://git.drupalcode.org/project/gitlab_templates/
+  ################
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      # The `main` include from gitlab_templates which is normally here can
+      # instead be found in the main `.gitlab-single-pipeline.yml` file.
+      - '/includes/include.drupalci.variables.yml'
+      - '/includes/include.drupalci.workflows.yml'
+
+variables:
+  # Solve for Compooser has trouble detecting the branch name when resolving
+  # recursive dependency on self from symfony_messenger_doctrine.
+  COMPOSER_ROOT_VERSION: "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME}${CI_COMMIT_BRANCH}-dev"
+
+deploystacks:
+  trigger:
+    include: .drupalci/.gitlab-single-pipeline.yml
+    strategy: depend
+  parallel:
+    matrix:
+      # Variable expansion doesn't work with Matrix so cant use the variables
+      # from `include.drupalci.variables.yml`. Until then define the strings
+      # manually https://gitlab.com/gitlab-org/gitlab/-/issues/11549
+      # Valid tags for databases are at https://git.drupalcode.org/project/drupalci_environments/-/tree/dev/db
+      # Drupal 11 not included for now as a patch is already committed and will
+      # clash. @todo add back with a split composer.patches.json for each core
+      # CI run.
+      - _TARGET_CORE: ["10.1.x-dev"]
+        _TARGET_PHP: [ "8.1"]
+        _TARGET_DB_TYPE: "mysql"
+        _TARGET_DB_VERSION: "5.7"
