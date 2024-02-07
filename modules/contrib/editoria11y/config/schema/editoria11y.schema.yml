@@ -41,3 +41,6 @@ editoria11y.settings:
     preserve_params:
       type: string
       label: 'URL query parameters that should be recorded as separate pages'
+    custom_tests:
+      type: integer
+      label: 'Number of custom test finished events the checker should wait for'

@@ -70,6 +70,7 @@ Drupal.behaviors.editoria11y = {
               embeddedContent: !!drupalSettings.editoria11y.embedded_content_warning ? drupalSettings.editoria11y.embedded_content_warning : false,
               documentLinks: !!drupalSettings.editoria11y.download_links ? drupalSettings.editoria11y.download_links : `a[href$='.pdf'], a[href*='.pdf?'], a[href$='.doc'], a[href$='.docx'], a[href*='.doc?'], a[href*='.docx?'], a[href$='.ppt'], a[href$='.pptx'], a[href*='.ppt?'], a[href*='.pptx?'], a[href^='https://docs.google']`,
               buttonZIndex: 499,
+              customTests: drupalSettings.editoria11y.custom_tests,
             }
 
             if (typeof editoria11yOptionsOverride !== 'undefined') {
@@ -143,9 +144,9 @@ Drupal.behaviors.editoria11y = {
                 oks = {};
                 total = 0;
                 Ed11y.results.forEach(result => {
-                    if (result[5] !== "ok") {
+                    if (result.dismissalStatus !== "ok") {
                         // log all items not marked as OK
-                        let testName = result[1];
+                        let testName = result.test;
                         testName = Ed11y.M[testName].title;
                         if (results[testName]) {
                             results[testName] = parseInt(results[testName]) + 1;
@@ -155,9 +156,9 @@ Drupal.behaviors.editoria11y = {
                             total++;
                         }
                     }
-                    if (result[5] === "ok") {
-                        if (!results[result[1]]) {
-                            oks[result[1]] = Ed11y.M[result[1]].title;
+                    if (result.dismissalStatus === "ok") {
+                        if (!results[result.test]) {
+                            oks[result.test] = Ed11y.M[result.test].title;
                         }
                     }
                 })

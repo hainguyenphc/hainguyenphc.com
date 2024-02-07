@@ -53,7 +53,7 @@ class DashboardController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): DashboardController {
     return new static(
       $container->get('webprofiler.profiler'),
       $container->get('webprofiler.template_manager'),

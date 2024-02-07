@@ -288,6 +288,7 @@ function editoria11y_page_attachments(array &$attachments) {
     $attachments['#attached']['drupalSettings']['editoria11y']['sync'] = $sync;
     $attachments['#attached']['drupalSettings']['editoria11y']['dismissals'] = $dismissals;
     $attachments['#attached']['drupalSettings']['editoria11y']['theme'] = $config->get('ed11y_theme');
+    $attachments['#attached']['drupalSettings']['editoria11y']['custom_tests'] = $config->get('custom_tests');
   }
 
 }

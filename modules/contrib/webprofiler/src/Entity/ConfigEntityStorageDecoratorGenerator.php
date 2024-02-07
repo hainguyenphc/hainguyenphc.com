@@ -142,7 +142,7 @@ class ConfigEntityStorageDecoratorGenerator implements DecoratorGeneratorInterfa
    */
   private function getAst(string $classPath): ?array {
     $code = file_get_contents($classPath);
-    $parser = (new ParserFactory())->create(ParserFactory::ONLY_PHP7);
+    $parser = (new ParserFactory())->createForHostVersion();
 
     return $parser->parse($code);
   }
@@ -162,7 +162,6 @@ class ConfigEntityStorageDecoratorGenerator implements DecoratorGeneratorInterfa
     }
 
     if ($node->extends !== NULL &&
-      $node->implements !== NULL &&
       $node->extends->getParts()[0] == 'ConfigEntityStorage' &&
       isset($node->implements[0]) &&
       $node->implements[0]->getParts()[0] != ''

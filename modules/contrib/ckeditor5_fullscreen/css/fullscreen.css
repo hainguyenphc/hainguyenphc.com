@@ -1,8 +1,9 @@
-#fullscreenoverlay {
+/* ckeditor toolbar conflict with admin toolbar and node edit vertical tabs */
+[data-fullscreen="fullscreenoverlay"] {
   overflow: hidden;
 }
 
-#fullscreeneditor {
+[data-fullscreen="fullscreeneditor"] {
   position: fixed !important;
   top: 0;
   left: 0;
@@ -14,19 +15,24 @@
 }
 
 /* fix for sticky headers */
-#fullscreeneditor .ck-sticky-panel__content {
+[data-fullscreen="fullscreeneditor"] .ck-sticky-panel__content {
   top: 0 !important;
 }
 
-#fullscreeneditor .ck.ck-editor__main {
+[data-fullscreen="fullscreeneditor"] .ck.ck-editor__main {
   overflow-y: scroll;
   flex: 1;
 }
 
-#fullscreeneditor .ck.ck-editor__editable {
+[data-fullscreen="fullscreeneditor"] .ck.ck-editor__editable {
   height: 100%;
 }
 
-#fullscreeneditor .ck-source-editing-area {
+[data-fullscreen="fullscreeneditor"] .ck-source-editing-area {
   overflow-y: scroll;
+}
+
+/* ckeditor toolbar conflict with admin toolbar and node edit vertical tabs */
+[data-fullscreen="fullscreenoverlay"] .vertical-tabs__panes {
+  z-index: auto;
 }

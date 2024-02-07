@@ -95,6 +95,14 @@ class Editoria11ySettings extends ConfigFormBase {
       '#description' => $this->t('Provide a comma-separated list of selectors you wish to flag for the editor, e.g.: <code><em>.my-embedded-feed, #my-social-link-block</em></code>.'),
       '#default_value' => $config->get('embedded_content_warning'),
     ];
+    $form['tests']['custom_tests'] = [
+      '#title' => $this->t('Custom result injection events'),
+      '#type' => 'number',
+      '#min' => 0,
+      '#max' => 999,
+      '#description' => $this->t('Set to the number of other themes or modules that will be <a href="https://editoria11y.princeton.edu/configuration/#customtests">injecting custom results</a>.'),
+      '#default_value' => (int) $config->get('custom_tests'),
+    ];
     $form['tests']['download_links'] = [
       '#title' => $this->t("Remind the editor that these linked documents need a manual check"),
       '#type' => 'textarea',
@@ -184,6 +192,7 @@ class Editoria11ySettings extends ConfigFormBase {
       ->set('hidden_handlers', $form_state->getValue('hidden_handlers'))
       ->set('ignore_link_strings', $form_state->getValue('ignore_link_strings'))
       ->set('preserve_params', $form_state->getValue('preserve_params'))
+      ->set('custom_tests', $form_state->getValue('custom_tests'))
       ->save();
     parent::submitForm($form, $form_state);
   }

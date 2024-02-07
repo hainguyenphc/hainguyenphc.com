@@ -1,8 +1,22 @@
 parameters:
     ignoreErrors:
-      - "#Unsafe usage of new static#"
+      -
+        message: "#implements deprecated interface Symfony\\\\Component\\\\DependencyInjection\\\\ContainerAwareInterface#"
+        reportUnmatched: false
+      -
+        message: "#Usage of deprecated trait Symfony\\\\Component\\\\DependencyInjection\\\\ContainerAwareTrait#"
+        reportUnmatched: false
     level: 5
+    paths:
+      - src
     treatPhpDocTypesAsCertain: false
+    fileExtensions:
+      - php
+      - module
+      - theme
+      - profile
+      - install
+      - inc
     excludePaths:
       - templates/Error/*
       - src/Render/TraceableBigPipe.php

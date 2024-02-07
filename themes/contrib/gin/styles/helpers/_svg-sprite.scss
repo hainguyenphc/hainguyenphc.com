@@ -35,8 +35,6 @@ $sprites: (
     'files': "../../media/sprite.svg#files-view",
     'media': "../../media/sprite.svg#media-view",
     'people-new': "../../media/sprite.svg#people-new-view",
-    'toggle-collapse': "../../media/sprite.svg#toggle-collapse-view",
-    'toggle-expand': "../../media/sprite.svg#toggle-expand-view",
     'first': "../../media/sprite.svg#first-view",
     'last': "../../media/sprite.svg#last-view",
     'next': "../../media/sprite.svg#next-view",
@@ -60,6 +58,7 @@ $sprites: (
     'user': "../../media/sprite.svg#user-view",
     'appearance': "../../media/sprite.svg#appearance-view",
     'bat': "../../media/sprite.svg#bat-view",
+    'commerce-inbox': "../../media/sprite.svg#commerce-inbox-view",
     'commerce': "../../media/sprite.svg#commerce-view",
     'config': "../../media/sprite.svg#config-view",
     'content': "../../media/sprite.svg#content-view",
@@ -201,8 +200,8 @@ $sizes: (
         'height': 24px
     ),
     'chevron-down': (
-        'width': 14px,
-        'height': 9px
+        'width': 24px,
+        'height': 24px
     ),
     'create': (
         'width': 24px,
@@ -221,14 +220,6 @@ $sizes: (
         'height': 24px
     ),
     'people-new': (
-        'width': 24px,
-        'height': 24px
-    ),
-    'toggle-collapse': (
-        'width': 24px,
-        'height': 24px
-    ),
-    'toggle-expand': (
         'width': 24px,
         'height': 24px
     ),
@@ -321,6 +312,10 @@ $sizes: (
         'height': 24px
     ),
     'bat': (
+        'width': 24px,
+        'height': 24px
+    ),
+    'commerce-inbox': (
         'width': 24px,
         'height': 24px
     ),

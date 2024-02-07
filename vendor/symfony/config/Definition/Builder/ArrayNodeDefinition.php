@@ -23,21 +23,21 @@ use Symfony\Component\Config\Definition\PrototypedArrayNode;
  */
 class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinitionInterface
 {
-    protected $performDeepMerging = true;
-    protected $ignoreExtraKeys = false;
-    protected $removeExtraKeys = true;
-    protected $children = [];
-    protected $prototype;
-    protected $atLeastOne = false;
-    protected $allowNewKeys = true;
-    protected $key;
-    protected $removeKeyItem;
-    protected $addDefaults = false;
-    protected $addDefaultChildren = false;
-    protected $nodeBuilder;
-    protected $normalizeKeys = true;
+    protected bool $performDeepMerging = true;
+    protected bool $ignoreExtraKeys = false;
+    protected bool $removeExtraKeys = true;
+    protected array $children = [];
+    protected NodeDefinition $prototype;
+    protected bool $atLeastOne = false;
+    protected bool $allowNewKeys = true;
+    protected ?string $key = null;
+    protected bool $removeKeyItem = false;
+    protected bool $addDefaults = false;
+    protected int|string|array|null|false $addDefaultChildren = false;
+    protected NodeBuilder $nodeBuilder;
+    protected bool $normalizeKeys = true;
 
-    public function __construct(?string $name, NodeParentInterface $parent = null)
+    public function __construct(?string $name, ?NodeParentInterface $parent = null)
     {
         parent::__construct($name, $parent);
 
@@ -45,10 +45,7 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
         $this->trueEquivalent = [];
     }
 
-    /**
-     * @return void
-     */
-    public function setBuilder(NodeBuilder $builder)
+    public function setBuilder(NodeBuilder $builder): void
     {
         $this->nodeBuilder = $builder;
     }
@@ -126,7 +123,7 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      *
      * @return $this
      */
-    public function addDefaultChildrenIfNoneSet(int|string|array $children = null): static
+    public function addDefaultChildrenIfNoneSet(int|string|array|null $children = null): static
     {
         $this->addDefaultChildren = $children;
 
@@ -169,7 +166,7 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
      *
      * @return $this
      */
-    public function fixXmlConfig(string $singular, string $plural = null): static
+    public function fixXmlConfig(string $singular, ?string $plural = null): static
     {
         $this->normalization()->remap($singular, $plural);
 
@@ -348,7 +345,7 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
 
     protected function createNode(): NodeInterface
     {
-        if (null === $this->prototype) {
+        if (!isset($this->prototype)) {
             $node = new ArrayNode($this->name, $this->parent, $this->pathSeparator);
 
             $this->validateConcreteNode($node);
@@ -382,7 +379,7 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
 
             if (false !== $this->addDefaultChildren) {
                 $node->setAddChildrenIfNoneSet($this->addDefaultChildren);
-                if ($this->prototype instanceof static && null === $this->prototype->prototype) {
+                if ($this->prototype instanceof static && !isset($this->prototype->prototype)) {
                     $this->prototype->addDefaultsIfNotSet();
                 }
             }
@@ -404,18 +401,18 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
             $node->setDeprecated($this->deprecation['package'], $this->deprecation['version'], $this->deprecation['message']);
         }
 
-        if (null !== $this->normalization) {
+        if (isset($this->normalization)) {
             $node->setNormalizationClosures($this->normalization->before);
             $node->setNormalizedTypes($this->normalization->declaredTypes);
             $node->setXmlRemappings($this->normalization->remappings);
         }
 
-        if (null !== $this->merge) {
+        if (isset($this->merge)) {
             $node->setAllowOverwrite($this->merge->allowOverwrite);
             $node->setAllowFalse($this->merge->allowFalse);
         }
 
-        if (null !== $this->validation) {
+        if (isset($this->validation)) {
             $node->setFinalValidationClosures($this->validation->rules);
         }
 
@@ -425,11 +422,9 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
     /**
      * Validate the configuration of a concrete node.
      *
-     * @return void
-     *
      * @throws InvalidDefinitionException
      */
-    protected function validateConcreteNode(ArrayNode $node)
+    protected function validateConcreteNode(ArrayNode $node): void
     {
         $path = $node->getPath();
 
@@ -457,11 +452,9 @@ class ArrayNodeDefinition extends NodeDefinition implements ParentNodeDefinition
     /**
      * Validate the configuration of a prototype node.
      *
-     * @return void
-     *
      * @throws InvalidDefinitionException
      */
-    protected function validatePrototypeNode(PrototypedArrayNode $node)
+    protected function validatePrototypeNode(PrototypedArrayNode $node): void
     {
         $path = $node->getPath();
 

@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ReportController extends ControllerBase {
 
   /**
-   * DashboardController constructor.
+   * ReportController constructor.
    *
    * @param \Drupal\webprofiler\Profiler\Profiler $profiler
    *   The Profiler service.

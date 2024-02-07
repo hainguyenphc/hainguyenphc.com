@@ -109,7 +109,7 @@ class RequestDataCollector extends BaseRequestDataCollector implements HasPanelI
       ];
     }
 
-    if ($this->getContent()) {
+    if ($this->getContent() !== '') {
       $tabs[] = [
         'label' => 'Raw content',
         'content' => $this->renderContent($this->getContent()),

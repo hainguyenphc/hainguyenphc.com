@@ -409,4 +409,3 @@ function editoria11y_update_9004(&$sandbox) {
     \Drupal::configFactory()->getEditable($config_id)->setData($data)->save(TRUE);
   }
 }
-

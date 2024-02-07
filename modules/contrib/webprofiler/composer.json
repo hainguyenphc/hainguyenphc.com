@@ -19,7 +19,7 @@
         "drupal/core": ">=10.1.2",
         "league/commonmark": "~2.4",
         "nette/php-generator": "^4.0",
-        "nikic/php-parser": "^5.0 || ^4.0",
+        "nikic/php-parser": "^5.0 || ^4.18",
         "symfony/stopwatch": "^6",
         "symfony/var-dumper": "^6"
     },

@@ -35,7 +35,7 @@ class ReportFilterForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): ReportFilterForm {
     return new static(
       $container->get('webprofiler.profiler'),
     );
