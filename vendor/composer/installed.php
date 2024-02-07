@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'd2cd55a4b96870c860ac08f4547fc6e78fa57c76',
+        'reference' => 'd28bf5978df453bdea557778ec19e601a17e45b4',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -802,6 +802,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/devel_entity_updates' => array(
+            'pretty_version' => '4.1.1',
+            'version' => '4.1.1.0',
+            'reference' => '4.1.1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/devel_entity_updates',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/devel_kint_extras' => array(
             'pretty_version' => '1.1.0',
             'version' => '1.1.0.0',
@@ -1050,7 +1059,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd2cd55a4b96870c860ac08f4547fc6e78fa57c76',
+            'reference' => 'd28bf5978df453bdea557778ec19e601a17e45b4',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
