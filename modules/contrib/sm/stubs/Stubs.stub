@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types = 1);
+
+namespace Drupal\Core\Queue {
+
+  interface QueueInterface {
+
+    /**
+     * @phpstan-param int $lease_time
+     */
+    public function claimItem($lease_time = 3600): false|object;
+  };
+
+}

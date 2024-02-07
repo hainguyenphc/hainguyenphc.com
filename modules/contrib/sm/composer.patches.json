@@ -1,0 +1,8 @@
+{
+  "patches": {
+    "drupal/core": {
+      "Patch #1: Support IteratorArgument in \\Drupal\\Component\\DependencyInjection\\Dumper\\OptimizedPhpArrayDumper::dumpValue (https://www.drupal.org/project/drupal/issues/2961380)": "https://www.drupal.org/files/issues/2023-05-22/SupportIteratorArgument-2961380-29.patch",
+      "Patch #2: Support ServiceClosureArgument in \\Drupal\\Component\\DependencyInjection\\Dumper\\OptimizedPhpArrayDumper::dumpValue (https://www.drupal.org/project/drupal/issues/3108020)": "https://www.drupal.org/files/issues/2023-06-30/3108020-41_0.patch"
+    }
+  }
+}

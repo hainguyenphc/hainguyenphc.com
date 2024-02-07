@@ -1,0 +1,14 @@
+parameters:
+  sm_test_transport.transports:
+    sm_test_transport__in_memory:
+      dsn: 'in-memory://?serialize=true'
+      options: []
+    sm_test_transport__in_memory2: []
+
+services:
+  sm_test_transport.transport.in_memory_factory:
+    class: Symfony\Component\Messenger\Transport\InMemory\InMemoryTransportFactory
+    tags:
+      - { name: messenger.transport_factory }
+    autowire: true
+    public: false

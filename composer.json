@@ -44,6 +44,7 @@
         "drupal/core-vendor-hardening": "10.1.8",
         "drupal/ctools": "^4.0",
         "drupal/devel": "^5.0",
+        "drupal/devel_entity_updates": "^4.1",
         "drupal/diff": "^1.1",
         "drupal/dynamic_entity_reference": "^4.0@alpha",
         "drupal/easy_breadcrumb": "^2.0",
@@ -77,6 +78,7 @@
         "drupal/simple_oauth": "^5.2",
         "drupal/simple_sitemap": "^4.1",
         "drupal/sitewide_alert": "^2.2",
+        "drupal/sm": "^0.0",
         "drupal/smart_trim": "^2.1",
         "drupal/stable": "^2.0",
         "drupal/taxonomy_access_fix": "^4.0",
@@ -103,7 +105,8 @@
             "drupal/core-vendor-hardening": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "cweagans/composer-patches": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "symfony/runtime": true
         },
         "sort-packages": true
     },

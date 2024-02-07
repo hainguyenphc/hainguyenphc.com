@@ -28,13 +28,14 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '9e4824c5afbdc1482b6025ce3d4dfde8' => __DIR__ . '/..' . '/league/csv/src/functions_include.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
+        '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         'fbeead2280a8f3911a1fe6dd034f7d5e' => __DIR__ . '/..' . '/mkalkbrenner/php-htmldiff-advanced/src/HtmlDiffAdvancedInterface.php',
         '96f8d8288528d52059397cad6ec61f17' => __DIR__ . '/..' . '/mkalkbrenner/php-htmldiff-advanced/src/HtmlDiffAdvanced.php',
         '029bffbd721800038bcfaf4916fa491c' => __DIR__ . '/..' . '/mtownsend/xml-to-array/src/helpers.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '38143a9afc50997d55e4815db8489d1c' => __DIR__ . '/..' . '/rector/rector/bootstrap.php',
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
@@ -74,6 +75,7 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         ),
         'S' => 
         array (
+            'Symfony\\Runtime\\Symfony\\Component\\' => 34,
             'Symfony\\Polyfill\\Php83\\' => 23,
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -96,9 +98,13 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Stopwatch\\' => 28,
             'Symfony\\Component\\Serializer\\' => 29,
+            'Symfony\\Component\\Runtime\\' => 26,
             'Symfony\\Component\\Routing\\' => 26,
+            'Symfony\\Component\\PropertyInfo\\' => 31,
+            'Symfony\\Component\\PropertyAccess\\' => 33,
             'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\Mime\\' => 23,
+            'Symfony\\Component\\Messenger\\' => 28,
             'Symfony\\Component\\Mailer\\' => 25,
             'Symfony\\Component\\Lock\\' => 23,
             'Symfony\\Component\\HttpKernel\\' => 29,
@@ -112,6 +118,7 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Config\\' => 25,
+            'Symfony\\Component\\Clock\\' => 24,
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'Symfony\\Bridge\\PhpUnit\\' => 23,
@@ -302,6 +309,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
+        'Symfony\\Runtime\\Symfony\\Component\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/runtime/Internal',
+        ),
         'Symfony\\Polyfill\\Php83\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php83',
@@ -390,9 +401,21 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             0 => __DIR__ . '/..' . '/symfony/serializer',
         ),
+        'Symfony\\Component\\Runtime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/runtime',
+        ),
         'Symfony\\Component\\Routing\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/routing',
+        ),
+        'Symfony\\Component\\PropertyInfo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/property-info',
+        ),
+        'Symfony\\Component\\PropertyAccess\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/property-access',
         ),
         'Symfony\\Component\\Process\\' => 
         array (
@@ -401,6 +424,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'Symfony\\Component\\Mime\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/mime',
+        ),
+        'Symfony\\Component\\Messenger\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/messenger',
         ),
         'Symfony\\Component\\Mailer\\' => 
         array (
@@ -453,6 +480,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'Symfony\\Component\\Config\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/config',
+        ),
+        'Symfony\\Component\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/clock',
         ),
         'Symfony\\Component\\BrowserKit\\' => 
         array (

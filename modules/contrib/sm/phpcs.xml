@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="My Coding Standard">
+  <file>./bin</file>
+  <file>./src</file>
+  <file>./tests</file>
+  <file>./sm_config</file>
+  <rule ref="PreviousNextDrupal" />
+  <arg name="report" value="full"/>
+</ruleset>

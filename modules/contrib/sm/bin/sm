@@ -1,0 +1,47 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types = 1);
+
+use Composer\Autoload\ClassLoader;
+use Drupal\Core\DrupalKernel;
+use Drupal\Core\Site\Settings;
+use Symfony\Component\Console\Application;
+use Symfony\Component\HttpFoundation\Request;
+
+// We have the luxury of using this global.
+# https://getcomposer.org/doc/articles/vendor-binaries.md#finding-the-composer-autoloader-from-a-binary
+require_once dirname($GLOBALS['_composer_autoload_path']) . '/autoload_runtime.php';
+
+if ('cli' !== \PHP_SAPI) {
+  throw new Exception('This script must be run from the command line.');
+}
+
+// Utilises the https://symfony.com/doc/current/components/runtime.html component
+// to encapsulate the application cleanly.
+return static function (array $context): Application {
+  $loaders = ClassLoader::getRegisteredLoaders();
+  $classLoader = reset($loaders);
+
+  // Discovery can get out of whack if cleared caches and try to run this
+  // command without a web request priming discovery.
+  chdir(\DRUPAL_ROOT);
+  $kernel = new DrupalKernel('prod', $classLoader, FALSE);
+  $kernel::bootEnvironment();
+  $kernel->setSitePath($context['DRUPAL_DEV_SITE_PATH'] ?? 'sites/default');
+  Settings::initialize($kernel->getAppRoot(), $kernel->getSitePath(), $classLoader);
+  $kernel->boot();
+
+  // Drupal is highly dependent on a Request:
+  $request = Request::createFromGlobals();
+  $kernel->getContainer()
+    ->get('request_stack')
+    ->push($request);
+  // This sets things up, esp loadLegacyIncludes().
+  $kernel->preHandle($request);
+
+  $app = new Application('sm', \Drupal::VERSION);
+  // A container technique like Symfony.
+  $app->add($kernel->getContainer()->get('console.command.messenger_consume_messages'));
+  return $app;
+};

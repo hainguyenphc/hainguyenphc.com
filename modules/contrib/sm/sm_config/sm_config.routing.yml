@@ -1,0 +1,7 @@
+sm_config.settings:
+  path: '/admin/config/messenger/routing'
+  defaults:
+    _title: 'Routing'
+    _form: 'Drupal\sm_config\Form\SmRoutingConfigForm'
+  requirements:
+    _permission: 'administer sm_config configuration'

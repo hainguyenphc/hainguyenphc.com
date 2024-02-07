@@ -1,0 +1,138 @@
+parameters:
+  # See README.md for examples!
+  sm.default_bus: sm.bus.default
+  sm.buses:
+    default:
+      middleware: []
+      default_middleware:
+        enabled: true
+  sm.transports:
+    # https://symfony.com/doc/current/messenger.html#handling-messages-synchronously
+    synchronous:
+      dsn: 'sync://'
+  sm.routing: []
+
+services:
+  # Asynchronous
+  messenger.senders_locator:
+    class: Symfony\Component\Messenger\Transport\Sender\SendersLocator
+    arguments:
+      - "!abstract 'per message senders map'"
+      - "!abstract 'senders service locator'"
+    public: false
+  Symfony\Component\Messenger\Transport\Sender\SendersLocatorInterface: '@messenger.senders_locator'
+
+  messenger.middleware.send_message:
+    class: Symfony\Component\Messenger\Middleware\SendMessageMiddleware
+    abstract: true
+    autowire: true
+    arguments:
+      # PSR event dispatcher not autowired yet.
+      $eventDispatcher: '@event_dispatcher'
+    calls:
+      - [setLogger, ['@logger.channel.sm']]
+    public: false
+
+  # Message encoding/decoding
+  messenger.transport.native_php_serializer:
+    class: Symfony\Component\Messenger\Transport\Serialization\PhpSerializer
+    autowire: true
+    public: false
+
+  messenger.default_serializer: '@messenger.transport.native_php_serializer'
+
+  # Middlewares.
+  messenger.middleware.handle_message:
+    class: Symfony\Component\Messenger\Middleware\HandleMessageMiddleware
+    abstract: true
+    arguments:
+      - "!abstract 'bus handler resolver'"
+      - true
+    calls:
+      - [setLogger, ['@logger.channel.sm']]
+    public: false
+
+  messenger.middleware.add_bus_name_stamp_middleware:
+    class: Symfony\Component\Messenger\Middleware\AddBusNameStampMiddleware
+    abstract: true
+    public: false
+
+  messenger.middleware.dispatch_after_current_bus:
+    class: Symfony\Component\Messenger\Middleware\DispatchAfterCurrentBusMiddleware
+    abstract: true
+    public: false
+
+  messenger.middleware.failed_message_processing_middleware:
+    class: Symfony\Component\Messenger\Middleware\FailedMessageProcessingMiddleware
+    abstract: true
+    public: false
+
+  # Discovery
+  messenger.receiver_locator:
+    class: Symfony\Component\DependencyInjection\ServiceLocator
+    arguments:
+      # Leave empty so MessengerPass::process and subsequent registerReceivers
+      # are triggered. Just like messenger.php.
+      - []
+    tags:
+      - 'container.service_locator'
+    # Make public as there's no autowirable class.
+    public: true
+
+  # Transports
+  messenger.transport_factory:
+    class: Symfony\Component\Messenger\Transport\TransportFactory
+    arguments:
+      - "!abstract 'messenger.transport_factory tagged iterator'"
+
+  Symfony\Component\Messenger\Transport\TransportFactoryInterface: '@messenger.transport_factory'
+
+  sm.transport.synchronous_factory:
+    class: Symfony\Component\Messenger\Transport\Sync\SyncTransportFactory
+    tags:
+      - { name: messenger.transport_factory }
+    autowire: true
+    public: false
+
+  logger.channel.sm:
+    parent: logger.channel_base
+    arguments:
+      - 'sm'
+    public: false
+
+  # Console.
+  # Similar to framework-bundle/console.php
+  # Registered in the container just like a Symfony app (As opposed to
+  # traditional Drupal-like w/ `Application->add())`
+  # MessengerPass expects this ID.
+  console.command.messenger_consume_messages:
+    class: Drupal\sm\Command\SmConsumeMessagesCommand
+    arguments:
+      # Added by MessengerPass.
+      - "!abstract 'Routable message bus'"
+      - '@messenger.receiver_locator'
+      - '@event_dispatcher'
+      - '@logger.channel.sm'
+      # Receiver names. Added by MessengerPass.
+      - [ ]
+    tags:
+      - { name: 'console.command' }
+    public: true
+
+  # worker event listener
+  messenger.routable_message_bus:
+    # No autowiring alias for this service!
+    class: Symfony\Component\Messenger\RoutableMessageBus
+    arguments:
+      # Added by MessengerPass.
+      - "!abstract 'message bus locator'"
+    autowire: true
+    public: false
+
+  # Drupal Queue Interception
+  sm.queue_interceptor.queue_item_factory:
+    class: Drupal\sm\QueueInterceptor\SmLegacyQueueFactory
+    autowire: true
+    public: false
+  Drupal\sm\QueueInterceptor\SmLegacyQueueFactory: '@sm.queue_interceptor.queue_item_factory'
+

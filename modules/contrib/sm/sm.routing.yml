@@ -1,0 +1,7 @@
+symfony_messenger.config:
+  path: '/admin/config/messenger'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Messenger'
+  requirements:
+    _permission: 'access administration pages'

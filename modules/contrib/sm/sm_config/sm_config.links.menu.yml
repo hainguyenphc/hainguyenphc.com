@@ -1,0 +1,6 @@
+sm_config.settings:
+  title: Routing
+  description: 'Specify how messages are routed to transports.'
+  parent: system.messenger_settings
+  route_name: sm_config.settings
+  weight: 10

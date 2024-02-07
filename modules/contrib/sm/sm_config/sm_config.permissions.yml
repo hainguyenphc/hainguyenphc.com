@@ -1,0 +1,3 @@
+administer sm_config configuration:
+  title: 'Administer sm_config configuration'
+  restrict access: true
