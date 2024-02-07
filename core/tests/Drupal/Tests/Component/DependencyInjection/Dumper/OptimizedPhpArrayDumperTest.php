@@ -16,6 +16,7 @@ namespace Drupal\Tests\Component\DependencyInjection\Dumper {
   use Symfony\Component\DependencyInjection\ContainerInterface;
   use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
   use Symfony\Component\DependencyInjection\Exception\RuntimeException;
+  use Symfony\Component\DependencyInjection\Argument\IteratorArgument;
 
   /**
    * @coversDefaultClass \Drupal\Component\DependencyInjection\Dumper\OptimizedPhpArrayDumper
@@ -345,6 +346,13 @@ namespace Drupal\Tests\Component\DependencyInjection\Dumper {
         'arguments' => [[new Reference('bar')]],
         'arguments_count' => 1,
         'arguments_expected' => static::getCollection([static::getCollection([static::getServiceCall('bar')])]),
+      ] + $base_service_definition;
+
+      // Test an IteratorArgument collection with a reference to resolve.
+      $service_definitions[] = [
+        'arguments' => [new IteratorArgument([new Reference('bar')])],
+        'arguments_count' => 1,
+        'arguments_expected' => $this->getCollection([$this->getCollection([$this->getServiceCall('bar')])]),
       ] + $base_service_definition;
 
       // Test a collection with a variable to resolve.

@@ -4675,6 +4675,9 @@
                         "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                         "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                     }
+                },
+                "patches_applied": {
+                    "2961380: Support IteratorArgument in \\Drupal\\Component\\DependencyInjection\\Dumper\\OptimizedPhpArrayDumper::dumpValue": "https://www.drupal.org/files/issues/2023-05-22/SupportIteratorArgument-2961380-29-interdiff.txt"
                 }
             },
             "installation-source": "dist",

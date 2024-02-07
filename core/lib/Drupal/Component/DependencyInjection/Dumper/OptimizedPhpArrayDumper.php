@@ -12,6 +12,7 @@ use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\DependencyInjection\Dumper\Dumper;
 use Symfony\Component\ExpressionLanguage\Expression;
+use Symfony\Component\DependencyInjection\Argument\IteratorArgument;
 
 /**
  * OptimizedPhpArrayDumper dumps a service container as a serialized PHP array.
@@ -305,6 +306,9 @@ class OptimizedPhpArrayDumper extends Dumper {
     $code = [];
 
     foreach ($collection as $key => $value) {
+      if ($value instanceof IteratorArgument) {
+        $value = $value->getValues();
+      }
       if (is_array($value)) {
         $resolve_collection = FALSE;
         $code[$key] = $this->dumpCollection($value, $resolve_collection);
