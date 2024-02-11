@@ -1,0 +1,30 @@
+default:
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - FeatureContext
+  extensions:
+    Drupal\MinkExtension:
+      goutte: null
+      base_url: https://hainguyenphc.com.ddev.site
+      selenium2:
+        # browser: chrome
+        wd_host: http://selenium-chrome:4444/wd/hub
+        capabilities:
+          chrome:
+            switches:
+              - "--disable-gpu"
+              - "--headless"
+              - "--no-sandbox"
+              - "--disable-dev-shm-usage"
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drush:
+        alias: 'local'
+      drupal:
+        drupal_root: '.'
