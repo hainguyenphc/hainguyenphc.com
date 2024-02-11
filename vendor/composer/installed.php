@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'drupal/legacy-project',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'c0eef81ea6a340a37b723872ed7b0825a861476c',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -52,6 +52,21 @@
             'reference' => '16d53476e42827ed3aafbfa4fde17a1743eafd50',
             'type' => 'mink-driver',
             'install_path' => __DIR__ . '/../behat/mink-browserkit-driver',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'behat/mink-extension' => array(
+            'dev_requirement' => true,
+            'replaced' => array(
+                0 => 'v2.7.5',
+            ),
+        ),
+        'behat/mink-goutte-driver' => array(
+            'pretty_version' => 'v2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => 'a60fba46520c17d39b839151831cbc0710764b56',
+            'type' => 'mink-driver',
+            'install_path' => __DIR__ . '/../behat/mink-goutte-driver',
             'aliases' => array(),
             'dev_requirement' => true,
         ),
@@ -820,6 +835,24 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/drupal-driver' => array(
+            'pretty_version' => 'v2.2.2',
+            'version' => '2.2.2.0',
+            'reference' => '632712db66681b76651518bf5ab1e60fddc70a39',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../drupal/drupal-driver',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'drupal/drupal-extension' => array(
+            'pretty_version' => 'v5.0.0',
+            'version' => '5.0.0.0',
+            'reference' => 'd77136a6068ec286b9bd57c5cba400b82452859f',
+            'type' => 'behat-extension',
+            'install_path' => __DIR__ . '/../drupal/drupal-extension',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'drupal/dynamic_entity_reference' => array(
             'pretty_version' => '4.0.0-alpha4',
             'version' => '4.0.0.0-alpha4',
@@ -1048,9 +1081,9 @@
             'dev_requirement' => false,
         ),
         'drupal/legacy-project' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'c0eef81ea6a340a37b723872ed7b0825a861476c',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1374,6 +1407,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'fabpot/goutte' => array(
+            'pretty_version' => 'v4.0.3',
+            'version' => '4.0.3.0',
+            'reference' => 'e3f28671c87a48a0f13ada1baea0d95acc2138c3',
+            'type' => 'application',
+            'install_path' => __DIR__ . '/../fabpot/goutte',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'fileeye/mimemap' => array(
             'pretty_version' => '2.0.3',
             'version' => '2.0.3.0',
@@ -1391,6 +1433,15 @@
             'install_path' => __DIR__ . '/../fileeye/pel',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'friends-of-behat/mink-extension' => array(
+            'pretty_version' => 'v2.7.5',
+            'version' => '2.7.5.0',
+            'reference' => '854336030e11983f580f49faad1b49a1238f9846',
+            'type' => 'behat-extension',
+            'install_path' => __DIR__ . '/../friends-of-behat/mink-extension',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'grasmash/expander' => array(
             'pretty_version' => '3.0.0',
@@ -1835,6 +1886,18 @@
             'install_path' => __DIR__ . '/../phootwork/lang',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'php-http/async-client-implementation' => array(
+            'dev_requirement' => true,
+            'provided' => array(
+                0 => '*',
+            ),
+        ),
+        'php-http/client-implementation' => array(
+            'dev_requirement' => true,
+            'provided' => array(
+                0 => '*',
+            ),
         ),
         'php-tuf/composer-stager' => array(
             'pretty_version' => 'v2.0.0-beta3',
@@ -2494,6 +2557,30 @@
             'install_path' => __DIR__ . '/../symfony/finder',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'symfony/http-client' => array(
+            'pretty_version' => 'v6.4.3',
+            'version' => '6.4.3.0',
+            'reference' => 'a9034bc119fab8238f76cf49c770f3135f3ead86',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'symfony/http-client-contracts' => array(
+            'pretty_version' => 'v3.4.0',
+            'version' => '3.4.0.0',
+            'reference' => '1ee70e699b41909c209a0c930f11034b93578654',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/http-client-contracts',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'symfony/http-client-implementation' => array(
+            'dev_requirement' => true,
+            'provided' => array(
+                0 => '3.0',
+            ),
         ),
         'symfony/http-foundation' => array(
             'pretty_version' => 'v6.4.3',
