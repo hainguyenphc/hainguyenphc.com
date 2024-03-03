@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'drupal/legacy-project',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '4c3614c918c505fc5bf0325cb36314594526867b',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -593,9 +593,9 @@
             'dev_requirement' => false,
         ),
         'drupal/core' => array(
-            'pretty_version' => '10.2.0',
-            'version' => '10.2.0.0',
-            'reference' => '2f6c400cd6200f6e5900754e7e363cac811546b8',
+            'pretty_version' => '10.2.3',
+            'version' => '10.2.3.0',
+            'reference' => 'cc8c7952f7013795b735f5c15290e76937163bb7',
             'type' => 'drupal-core',
             'install_path' => __DIR__ . '/../../core',
             'aliases' => array(),
@@ -604,25 +604,25 @@
         'drupal/core-annotation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-assertion' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-class-finder' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-composer-scaffold' => array(
-            'pretty_version' => '10.2.0',
-            'version' => '10.2.0.0',
-            'reference' => '97bd91856535a354e9b1b815f0957893e26b6622',
+            'pretty_version' => '10.2.3',
+            'version' => '10.2.3.0',
+            'reference' => '63effa1bc644e80a269e8b4415e627491d26fd3f',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../drupal/core-composer-scaffold',
             'aliases' => array(),
@@ -631,19 +631,19 @@
         'drupal/core-datetime' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-dependency-injection' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-dev' => array(
-            'pretty_version' => '10.1.8',
-            'version' => '10.1.8.0',
-            'reference' => '5d02df4f05f5033e7d8bf4098efa55cc0847e2b9',
+            'pretty_version' => '10.2.3',
+            'version' => '10.2.3.0',
+            'reference' => '8c1bf854f2cf47d4f06918099ea866ce2471b2c6',
             'type' => 'metapackage',
             'install_path' => null,
             'aliases' => array(),
@@ -652,78 +652,78 @@
         'drupal/core-diff' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-discovery' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-event-dispatcher' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-file-cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-file-security' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-front-matter' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-gettext' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-graph' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-http-foundation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-php-storage' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-plugin' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-project-message' => array(
-            'pretty_version' => '10.2.0',
-            'version' => '10.2.0.0',
+            'pretty_version' => '10.2.3',
+            'version' => '10.2.3.0',
             'reference' => 'd1da83722735cb0f7ccabf9fef7b5607b442c3a8',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../drupal/core-project-message',
@@ -733,13 +733,13 @@
         'drupal/core-proxy-builder' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-recommended' => array(
-            'pretty_version' => '10.2.0',
-            'version' => '10.2.0.0',
-            'reference' => '13b68ef925c75455fd6cb6766d5879790727d83f',
+            'pretty_version' => '10.2.3',
+            'version' => '10.2.3.0',
+            'reference' => 'ee5d148455ca5792108a1fd007ae162ea2ffe859',
             'type' => 'metapackage',
             'install_path' => null,
             'aliases' => array(),
@@ -748,37 +748,37 @@
         'drupal/core-render' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-serialization' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-transliteration' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-utility' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-uuid' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/core-vendor-hardening' => array(
-            'pretty_version' => '10.1.8',
-            'version' => '10.1.8.0',
-            'reference' => 'a5cfe62bcd85532730990f5df5c2922bc8d3f767',
+            'pretty_version' => '10.2.3',
+            'version' => '10.2.3.0',
+            'reference' => 'a524b4dd2480910a7b0dad20f2995daf204e8e56',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../drupal/core-vendor-hardening',
             'aliases' => array(),
@@ -787,7 +787,7 @@
         'drupal/core-version' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '10.2.0',
+                0 => '10.2.3',
             ),
         ),
         'drupal/csv_serialization' => array(
@@ -1081,9 +1081,9 @@
             'dev_requirement' => false,
         ),
         'drupal/legacy-project' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '4c3614c918c505fc5bf0325cb36314594526867b',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1443,6 +1443,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'google/protobuf' => array(
+            'pretty_version' => 'v3.25.3',
+            'version' => '3.25.3.0',
+            'reference' => '983a87f4f8798a90ca3a25b0f300b8fda38df643',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../google/protobuf',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'grasmash/expander' => array(
             'pretty_version' => '3.0.0',
             'version' => '3.0.0.0',
@@ -1689,6 +1698,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'micheh/phpcs-gitlab' => array(
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => 'fd64e6579d9e30a82abba616fabcb9a2c837c7a8',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../micheh/phpcs-gitlab',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'mikey179/vfsstream' => array(
             'pretty_version' => 'v1.6.11',
             'version' => '1.6.11.0',
@@ -1775,6 +1793,60 @@
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'open-telemetry/api' => array(
+            'pretty_version' => '1.0.3',
+            'version' => '1.0.3.0',
+            'reference' => '87de95d926f46262885d0d390060c095af13e2e5',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../open-telemetry/api',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'open-telemetry/context' => array(
+            'pretty_version' => '1.0.2',
+            'version' => '1.0.2.0',
+            'reference' => 'e9d254a7c89885e63fd2fde54e31e81aaaf52b7c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../open-telemetry/context',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'open-telemetry/exporter-otlp' => array(
+            'pretty_version' => '1.0.4',
+            'version' => '1.0.4.0',
+            'reference' => '342686bfce05867b56561a0af2fc8a4a8f27b3cc',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../open-telemetry/exporter-otlp',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'open-telemetry/gen-otlp-protobuf' => array(
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => '76e2a44357f8c3fdcabcb070ec8a59e52ae3e3c3',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../open-telemetry/gen-otlp-protobuf',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'open-telemetry/sdk' => array(
+            'pretty_version' => '1.0.8',
+            'version' => '1.0.8.0',
+            'reference' => '1da4c0ca4f1a3c0fe84b81729dadec16f464fa77',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../open-telemetry/sdk',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'open-telemetry/sem-conv' => array(
+            'pretty_version' => '1.24.0',
+            'version' => '1.24.0.0',
+            'reference' => 'd03e6501d21c04cd1b1e66e4cbcc7c2dd2e2cfa3',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../open-telemetry/sem-conv',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'orno/di' => array(
             'dev_requirement' => false,
@@ -1891,13 +1963,51 @@
             'dev_requirement' => true,
             'provided' => array(
                 0 => '*',
+                1 => '1.0',
             ),
         ),
         'php-http/client-implementation' => array(
             'dev_requirement' => true,
             'provided' => array(
                 0 => '*',
+                1 => '1.0',
             ),
+        ),
+        'php-http/discovery' => array(
+            'pretty_version' => '1.19.2',
+            'version' => '1.19.2.0',
+            'reference' => '61e1a1eb69c92741f5896d9e05fb8e9d7e8bb0cb',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../php-http/discovery',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'php-http/guzzle7-adapter' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => 'fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-http/guzzle7-adapter',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'php-http/httplug' => array(
+            'pretty_version' => '2.4.0',
+            'version' => '2.4.0.0',
+            'reference' => '625ad742c360c8ac580fcc647a1541d29e257f67',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-http/httplug',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'php-http/promise' => array(
+            'pretty_version' => '1.3.0',
+            'version' => '1.3.0.0',
+            'reference' => '2916a606d3b390f4e9e8e2b8dd68581508be0f07',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-http/promise',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'php-tuf/composer-stager' => array(
             'pretty_version' => 'v2.0.0-beta3',
@@ -2147,6 +2257,7 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-factory' => array(
@@ -2162,6 +2273,7 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-message' => array(
@@ -2177,6 +2289,7 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/log' => array(
@@ -2725,6 +2838,15 @@
             'install_path' => __DIR__ . '/../symfony/polyfill-php81',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'symfony/polyfill-php82' => array(
+            'pretty_version' => 'v1.29.0',
+            'version' => '1.29.0.0',
+            'reference' => '559d488c38784112c78b9bf17c5ce8366a265643',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-php82',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'symfony/polyfill-php83' => array(
             'pretty_version' => 'v1.28.0',
