@@ -7407,6 +7407,75 @@
             "install-path": "../../modules/contrib/link_attributes"
         },
         {
+            "name": "drupal/linkchecker",
+            "version": "2.0.0-alpha2",
+            "version_normalized": "2.0.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/linkchecker.git",
+                "reference": "2.0.0-alpha2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/linkchecker-2.0.0-alpha2.zip",
+                "reference": "2.0.0-alpha2",
+                "shasum": "87a6843707dd457049336c3320cc6000179925f9"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10.0",
+                "drupal/dynamic_entity_reference": "^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "drupal/redirect": "^1.8"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-alpha2",
+                    "datestamp": "1705475131",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^10 || ^11"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/u/hass"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/243795/committers"
+                },
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/user/85918"
+                },
+                {
+                    "name": "VladimirAus",
+                    "homepage": "https://www.drupal.org/user/673120"
+                }
+            ],
+            "description": "Periodically checks for broken links in node types, blocks and fields and reports the results.",
+            "homepage": "https://www.drupal.org/project/linkchecker",
+            "support": {
+                "source": "https://git.drupal.org/project/linkchecker.git",
+                "issues": "https://www.drupal.org/project/issues/linkchecker"
+            },
+            "install-path": "../../modules/contrib/linkchecker"
+        },
+        {
             "name": "drupal/linkit",
             "version": "6.1.2",
             "version_normalized": "6.1.2.0",
@@ -8966,6 +9035,74 @@
                 "issues": "https://www.drupal.org/project/issues/typed_data"
             },
             "install-path": "../../modules/contrib/typed_data"
+        },
+        {
+            "name": "drupal/ultimate_cron",
+            "version": "2.0.0-alpha7",
+            "version_normalized": "2.0.0.0-alpha7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/ultimate_cron.git",
+                "reference": "8.x-2.0-alpha7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/ultimate_cron-8.x-2.0-alpha7.zip",
+                "reference": "8.x-2.0-alpha7",
+                "shasum": "d3667775c113c9565adec6794f6e7e74d8f19ec7"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.0-alpha7",
+                    "datestamp": "1707160107",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10 || ^11"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "arnested",
+                    "homepage": "https://www.drupal.org/user/245635"
+                },
+                {
+                    "name": "Berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "gielfeldt",
+                    "homepage": "https://www.drupal.org/user/366993"
+                },
+                {
+                    "name": "miro_dietiker",
+                    "homepage": "https://www.drupal.org/user/227761"
+                },
+                {
+                    "name": "Primsi",
+                    "homepage": "https://www.drupal.org/user/282629"
+                }
+            ],
+            "description": "Ultimate cron",
+            "homepage": "https://www.drupal.org/project/ultimate_cron",
+            "support": {
+                "source": "https://git.drupalcode.org/project/ultimate_cron"
+            },
+            "install-path": "../../modules/contrib/ultimate_cron"
         },
         {
             "name": "drupal/variationcache",

@@ -84,6 +84,7 @@ module:
   link: 0
   link_attributes: 0
   link_attributes_menu_link_content: 0
+  linkchecker: 0
   linkit: 0
   locale: 0
   media: 0
@@ -123,6 +124,7 @@ module:
   tracer: 0
   twig_tweak: 0
   typed_data: 0
+  ultimate_cron: 0
   update: 0
   user: 0
   variationcache: 0

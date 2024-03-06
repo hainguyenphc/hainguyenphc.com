@@ -143,7 +143,7 @@ class GroupPermissionsHashGenerator implements GroupPermissionsHashGeneratorInte
 
       if ($group_type_ids) {
         $grt_storage = $this->entityTypeManager->getStorage('group_relationship_type');
-        assert($grt_storage instanceof GroupRelationshipTypeStorageInterface);
+        // assert($grt_storage instanceof GroupRelationshipTypeStorageInterface);
 
         $group_relationship_type_ids = array_map(
           fn($group_type_id) => $grt_storage->getRelationshipTypeId($group_type_id, 'group_membership'),
