@@ -53,17 +53,12 @@ function eg_salutation_token_info() {
     ],
   ];
 
-  $xin_chao_type = [];
-  $xin_chao_tokens = [];
-
   return [
     'types' => [
       'hello_world' => $hello_world_type,
-      'xin_chao' => $xin_chao_type,
     ],
     'tokens' => [
       'hello_world' => $hello_world_tokens,
-      'xin_chao' => $xin_chao_tokens,
     ]
   ];
 }
@@ -96,20 +91,20 @@ function eg_salutation_tokens($type, $tokens, array $data, array $options, Bubbl
   }
 
   // Just an example how 2 types could complement each other.
-  if ($type === 'xin_chao' && !empty($data['user'])) {
-    foreach ($tokens as $name => $original) {
-      switch($name) {
-        /* business logic  */
-      }
-    }
-  }
-  if ($type === 'whatever') {
-    $account = User::load(\Drupal::currentUser()->id());
-    $bubbleable_metadata->addCacheContexts(['user']);
-    $replacement += $token_service->generate(
-      'xin_chao', $tokens, ['user' => $account], $options, $bubbleable_metadata
-    );
-  }
+  // if ($type === 'xin_chao' && !empty($data['user'])) {
+  //   foreach ($tokens as $name => $original) {
+  //     switch($name) {
+  //       /* business logic  */
+  //     }
+  //   }
+  // }
+  // if ($type === 'whatever') {
+  //   $account = User::load(\Drupal::currentUser()->id());
+  //   $bubbleable_metadata->addCacheContexts(['user']);
+  //   $replacement += $token_service->generate(
+  //     'xin_chao', $tokens, ['user' => $account], $options, $bubbleable_metadata
+  //   );
+  // }
 
   return $replacement;
 }
