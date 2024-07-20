@@ -19,3 +19,6 @@ sites/default/public-files
 **/simpletest/**
 
 surgery
+
+*.zip
+*.tar.gz
