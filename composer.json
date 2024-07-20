@@ -78,6 +78,7 @@
         "drupal/rules": "3.x-dev@dev",
         "drupal/simple_oauth": "^5.2",
         "drupal/simple_sitemap": "^4.1",
+        "drupal/simplesamlphp_auth": "^4.0",
         "drupal/sitewide_alert": "^2.2",
         "drupal/smart_trim": "^2.1",
         "drupal/stable": "^2.0",
@@ -108,7 +109,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "cweagans/composer-patches": true,
             "phpstan/extension-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "simplesamlphp/composer-module-installer": true
         },
         "sort-packages": true
     },
