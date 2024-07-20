@@ -192,5 +192,15 @@
         "phpstan/extension-installer": "^1.2",
         "phpstan/phpstan": "^1.9",
         "phpstan/phpstan-deprecation-rules": "^1.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "if [ -e vendor/simplesamlphp/simplesamlphp/config ]; then rm -r vendor/simplesamlphp/simplesamlphp/config; fi",
+            "ln -s ../../../simplesamlphp vendor/simplesamlphp/simplesamlphp/config"
+        ],
+        "post-update-cmd": [
+            "if [ -e vendor/simplesamlphp/simplesamlphp/config ]; then rm -r vendor/simplesamlphp/simplesamlphp/config; fi",
+            "ln -s ../../../simplesamlphp vendor/simplesamlphp/simplesamlphp/config"
+        ]
     }
 }
