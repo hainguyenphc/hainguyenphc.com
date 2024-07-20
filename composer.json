@@ -20,6 +20,7 @@
         "composer/installers": "^2.0",
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.2",
+        "drupal/allowed_languages": "^2.0@alpha",
         "drupal/antibot": "^2.0",
         "drupal/automatic_updates": "^3.0",
         "drupal/back_to_top": "^3.0",
