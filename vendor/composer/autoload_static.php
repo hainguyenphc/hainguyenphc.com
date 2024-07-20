@@ -38,9 +38,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         '062120a429d7568eacd495a8c34fcf09' => __DIR__ . '/..' . '/open-telemetry/sdk/Common/Dev/Compatibility/_load.php',
         '88e3b63cfb48eb8ea316a8a85a5f5c5f' => __DIR__ . '/..' . '/open-telemetry/sdk/_autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '9e4824c5afbdc1482b6025ce3d4dfde8' => __DIR__ . '/..' . '/league/csv/src/functions_include.php',
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
-        '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        '334983c1b64a31de3c73827b7a6a1e88' => __DIR__ . '/..' . '/simplesamlphp/simplesamlphp/src/_autoload_modules.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         'fbeead2280a8f3911a1fe6dd034f7d5e' => __DIR__ . '/..' . '/mkalkbrenner/php-htmldiff-advanced/src/HtmlDiffAdvancedInterface.php',
@@ -49,7 +50,6 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         '157bbd0180425c7142fbaf1b1646bec3' => __DIR__ . '/..' . '/open-telemetry/exporter-otlp/_register.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '38143a9afc50997d55e4815db8489d1c' => __DIR__ . '/..' . '/rector/rector/bootstrap.php',
-        '334983c1b64a31de3c73827b7a6a1e88' => __DIR__ . '/..' . '/simplesamlphp/simplesamlphp/src/_autoload_modules.php',
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
     );
 
@@ -139,8 +139,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'SlevomatCodingStandard\\' => 23,
+            'SimpleSAML\\XML\\' => 15,
             'SimpleSAML\\Module\\saml\\' => 23,
             'SimpleSAML\\Module\\multiauth\\' => 28,
+            'SimpleSAML\\Module\\metarefresh\\' => 30,
             'SimpleSAML\\Module\\exampleauth\\' => 30,
             'SimpleSAML\\Module\\cron\\' => 23,
             'SimpleSAML\\Module\\core\\' => 23,
@@ -322,8 +324,8 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'phootwork\\lang\\' => 
         array (
@@ -565,6 +567,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         array (
             0 => __DIR__ . '/..' . '/slevomat/coding-standard/SlevomatCodingStandard',
         ),
+        'SimpleSAML\\XML\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/simplesamlphp/xml-common/src',
+        ),
         'SimpleSAML\\Module\\saml\\' => 
         array (
             0 => __DIR__ . '/..' . '/simplesamlphp/simplesamlphp/modules/saml/src',
@@ -572,6 +578,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'SimpleSAML\\Module\\multiauth\\' => 
         array (
             0 => __DIR__ . '/..' . '/simplesamlphp/simplesamlphp/modules/multiauth/src',
+        ),
+        'SimpleSAML\\Module\\metarefresh\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/simplesamlphp/simplesamlphp/modules/metarefresh/src',
         ),
         'SimpleSAML\\Module\\exampleauth\\' => 
         array (
@@ -858,8 +868,8 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         ),
         'Gettext\\' => 
         array (
-            0 => __DIR__ . '/..' . '/gettext/translator/src',
-            1 => __DIR__ . '/..' . '/gettext/gettext/src',
+            0 => __DIR__ . '/..' . '/gettext/gettext/src',
+            1 => __DIR__ . '/..' . '/gettext/translator/src',
         ),
         'GPBMetadata\\Opentelemetry\\' => 
         array (
@@ -959,8 +969,8 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
-            1 => __DIR__ . '/..' . '/doctrine/common/src',
+            0 => __DIR__ . '/..' . '/doctrine/common/src',
+            1 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
         'Dflydev\\DotAccessData\\' => 
         array (

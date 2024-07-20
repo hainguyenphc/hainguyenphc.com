@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '48db374d188c195f720a1c52af18a8c0a711ae22',
+        'reference' => 'eaf953382297d5b27cf0a1ec61eadfde9f8f4d07',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1101,7 +1101,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '48db374d188c195f720a1c52af18a8c0a711ae22',
+            'reference' => 'eaf953382297d5b27cf0a1ec61eadfde9f8f4d07',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -2352,8 +2352,8 @@
         'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-factory' => array(
@@ -2368,8 +2368,8 @@
         'psr/http-factory-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-message' => array(
@@ -2384,8 +2384,8 @@
         'psr/http-message-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/log' => array(
@@ -2674,6 +2674,24 @@
             'reference' => 'f48377e3ce2dbe4f535da4d9bbe088df77c04074',
             'type' => 'simplesamlphp-module',
             'install_path' => __DIR__ . '/../simplesamlphp/simplesamlphp/public/assets/base',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'simplesamlphp/simplesamlphp-module-metarefresh' => array(
+            'pretty_version' => 'v1.2.2',
+            'version' => '1.2.2.0',
+            'reference' => 'ed2eadb2df4fbfe714078c67bff96fa2059b0f71',
+            'type' => 'simplesamlphp-module',
+            'install_path' => __DIR__ . '/../simplesamlphp/simplesamlphp/modules/metarefresh',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'simplesamlphp/xml-common' => array(
+            'pretty_version' => 'v1.16.1',
+            'version' => '1.16.1.0',
+            'reference' => 'a3c4c548ebd9783c3833c13ea7c01b010b0a1239',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../simplesamlphp/xml-common',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
