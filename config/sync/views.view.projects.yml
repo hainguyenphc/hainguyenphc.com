@@ -221,6 +221,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      use_ajax: true
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -240,7 +241,8 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        library_in_views_display_extender: {  }
       path: category/%
     cache_metadata:
       max-age: -1

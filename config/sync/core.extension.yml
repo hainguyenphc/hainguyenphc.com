@@ -3,6 +3,7 @@ _core:
 module:
   admin_toolbar: 0
   admin_toolbar_tools: 0
+  allowed_languages: 0
   antibot: 0
   automated_cron: 0
   automatic_updates: 0
@@ -135,7 +136,6 @@ module:
   views_templates: 0
   views_ui: 0
   webform: 0
-  webprofiler: 0
   fontyourface: 1
   pathauto: 1
   content_translation: 10
