@@ -201,6 +201,9 @@
         "post-update-cmd": [
             "if [ -e vendor/simplesamlphp/simplesamlphp/config ]; then rm -r vendor/simplesamlphp/simplesamlphp/config; fi",
             "ln -s ../../../simplesamlphp vendor/simplesamlphp/simplesamlphp/config"
+        ],
+        "post-drupal-scaffold-cmd": [
+            "patch -p1 < patches/simplesamlphp-simplesaml-path-access.patch"
         ]
     }
 }
