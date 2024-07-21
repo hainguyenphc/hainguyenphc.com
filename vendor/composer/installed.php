@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '770489f474d6372cdf878e6fe9c01044049fe30f',
+        'reference' => 'cb8803f9947f33e8fa985d59168290ddcf8f3834',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1101,7 +1101,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '770489f474d6372cdf878e6fe9c01044049fe30f',
+            'reference' => 'cb8803f9947f33e8fa985d59168290ddcf8f3834',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -2321,8 +2321,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.1|2.0',
-                1 => '^1.0',
+                0 => '^1.0',
+                1 => '1.1|2.0',
             ),
         ),
         'psr/event-dispatcher' => array(
@@ -2352,8 +2352,8 @@
         'psr/http-client-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-factory' => array(
@@ -2368,8 +2368,8 @@
         'psr/http-factory-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/http-message' => array(
@@ -2384,8 +2384,8 @@
         'psr/http-message-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '*',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '*',
             ),
         ),
         'psr/log' => array(
@@ -2400,8 +2400,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache-implementation' => array(
@@ -3230,9 +3230,9 @@
             'dev_requirement' => true,
         ),
         'twig/intl-extra' => array(
-            'pretty_version' => 'v3.9.0',
-            'version' => '3.9.0.0',
-            'reference' => '89781f6d97981397c8c8a13ca679919f39628c75',
+            'pretty_version' => 'v3.8.0',
+            'version' => '3.8.0.0',
+            'reference' => '7b3db67c700735f473a265a97e1adaeba3e6ca0c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../twig/intl-extra',
             'aliases' => array(),

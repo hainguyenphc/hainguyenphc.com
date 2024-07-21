@@ -324,8 +324,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'phootwork\\lang\\' => 
         array (
@@ -653,8 +653,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -706,8 +706,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'PHPStan\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
-            1 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
+            0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
+            1 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -759,8 +759,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces',
-            1 => __DIR__ . '/..' . '/league/uri',
+            0 => __DIR__ . '/..' . '/league/uri',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
         'League\\OAuth2\\Server\\' => 
         array (
@@ -868,8 +868,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Gettext\\' => 
         array (
-            0 => __DIR__ . '/..' . '/gettext/translator/src',
-            1 => __DIR__ . '/..' . '/gettext/gettext/src',
+            0 => __DIR__ . '/..' . '/gettext/gettext/src',
+            1 => __DIR__ . '/..' . '/gettext/translator/src',
         ),
         'GPBMetadata\\Opentelemetry\\' => 
         array (
@@ -969,8 +969,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
-            1 => __DIR__ . '/..' . '/doctrine/common/src',
+            0 => __DIR__ . '/..' . '/doctrine/common/src',
+            1 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
         'Dflydev\\DotAccessData\\' => 
         array (

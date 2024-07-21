@@ -94,7 +94,8 @@
         "drupal/webform": "^6.2@RC",
         "drupal/webprofiler": "^10.1",
         "drush/drush": "^12",
-        "simplesamlphp/simplesamlphp-module-metarefresh": "^1.2"
+        "simplesamlphp/simplesamlphp-module-metarefresh": "^1.2",
+        "twig/intl-extra": "~3.8.0"
     },
     "conflict": {
         "drupal/drupal": "*"
