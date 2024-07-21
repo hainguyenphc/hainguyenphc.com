@@ -30,6 +30,8 @@ $config = [
           // This is the IdP metadata URL mentioned way back at the start of
           // this guide. Specifying it as the source here tells simplesamlphp
           // to fetch it automatically.
+          // In Auth0, it is the "Identity Provider Metadata: Download" link, it serves an XML file.
+          // e.g. https://dev-h3g6rnzyw4uphcnl.us.auth0.com/samlp/metadata/ntMKt8dt2PlBp8ui4stj7Q6GwiNErgUO
           'src' => $remote_idp_url,
         ],
       ],

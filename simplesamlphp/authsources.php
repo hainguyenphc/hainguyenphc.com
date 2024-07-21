@@ -34,7 +34,7 @@ $config = [
     // will always be saml:SP assuming you're configuring your site as a SAML
     // SP.
     'saml:SP',
-    // The entityID is used by the IdP to identify your site. I usually set this
+    // The entityID represents your site (SP) expected by the IdP. I usually set this
     // to be the metadata URL. This is convenient because it's
     // universal and carries across environments. You might want to use
     // $_SERVER['HTTP_X_FORWARDED_HOST'] if you're behind a reverse proxy. This
@@ -43,6 +43,8 @@ $config = [
     // You could avoid this by generating it based on an environment variable
     // value instead. However, metadata will likely need to be re-imported at
     // least either way since various other metadata URLs will change as well.
+    // @see https://hainguyenphc.com.ddev.site/simplesaml/module.php/admin/federation
+    // e.g. https://hainguyenphc.com.ddev.site/simplesaml/module.php/saml/sp/metadata.php/default-sp
     'entityID'             => $base_url . '/module.php/saml/sp/metadata.php/default-sp',
     // This is the ID of your remote IdP. In most cases this is the same as the
     // URL you are retrieving the metadata from. You can get it by opening
