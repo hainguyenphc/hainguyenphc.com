@@ -64,6 +64,7 @@
         "drupal/group": "^3.2",
         "drupal/honeypot": "^2.1",
         "drupal/imagemagick": "^3.7",
+        "drupal/languageicons": "^2.0@beta",
         "drupal/link_attributes": "^2.1",
         "drupal/linkchecker": "^2.0@alpha",
         "drupal/linkit": "^6.1",
