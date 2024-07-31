@@ -1,0 +1,25 @@
+uuid: ba3de698-b554-4721-aa26-973b44a89551
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - language
+  theme:
+    - olivero
+id: olivero_languageswitchercontent
+theme: olivero
+region: header
+weight: -7
+provider: null
+plugin: 'language_block:language_content'
+settings:
+  id: 'language_block:language_content'
+  label: 'Language switcher (Content)'
+  label_display: visible
+  provider: language
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

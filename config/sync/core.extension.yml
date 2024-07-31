@@ -108,6 +108,7 @@ module:
   responsive_menu: 0
   rest: 0
   rules: 0
+  schema_metatag: 0
   search: 0
   serialization: 0
   shortcut: 0
