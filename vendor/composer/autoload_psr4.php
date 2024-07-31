@@ -91,6 +91,7 @@ return array(
     'OpenTelemetry\\Context\\' => array($vendorDir . '/open-telemetry/context'),
     'OpenTelemetry\\API\\' => array($vendorDir . '/open-telemetry/api'),
     'OpenIDConnectServer\\' => array($vendorDir . '/steverhoades/oauth2-openid-connect-server/src'),
+    'OomphInc\\ComposerInstallersExtender\\' => array($vendorDir . '/oomphinc/composer-installers-extender/src'),
     'Mtownsend\\XmlToArray\\' => array($vendorDir . '/mtownsend/xml-to-array/src'),
     'Micheh\\PhpCodeSniffer\\' => array($vendorDir . '/micheh/phpcs-gitlab/src'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),

@@ -169,6 +169,7 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
             'OpenTelemetry\\Context\\' => 22,
             'OpenTelemetry\\API\\' => 18,
             'OpenIDConnectServer\\' => 20,
+            'OomphInc\\ComposerInstallersExtender\\' => 36,
         ),
         'M' => 
         array (
@@ -635,6 +636,10 @@ class ComposerStaticInit779fe0ccaafbd8cb02590a7b87080481
         'OpenIDConnectServer\\' => 
         array (
             0 => __DIR__ . '/..' . '/steverhoades/oauth2-openid-connect-server/src',
+        ),
+        'OomphInc\\ComposerInstallersExtender\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/oomphinc/composer-installers-extender/src',
         ),
         'Mtownsend\\XmlToArray\\' => 
         array (
