@@ -77,6 +77,7 @@
         "drupal/rdf": "^2.0",
         "drupal/responsive_menu": "4.4.x-dev@dev",
         "drupal/rules": "3.x-dev@dev",
+        "drupal/schema_metatag": "^3.0",
         "drupal/simple_oauth": "^5.2",
         "drupal/simple_sitemap": "^4.1",
         "drupal/sitewide_alert": "^2.2",
