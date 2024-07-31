@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '48db374d188c195f720a1c52af18a8c0a711ae22',
+        'reference' => '62f95c958f79067f037e5cfe8105609247742513',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1101,7 +1101,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '48db374d188c195f720a1c52af18a8c0a711ae22',
+            'reference' => '62f95c958f79067f037e5cfe8105609247742513',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1228,6 +1228,15 @@
             'aliases' => array(
                 0 => '3.x-dev',
             ),
+            'dev_requirement' => false,
+        ),
+        'drupal/select2' => array(
+            'pretty_version' => '1.15.0',
+            'version' => '1.15.0.0',
+            'reference' => '8.x-1.15',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/select2',
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'drupal/simple_oauth' => array(
