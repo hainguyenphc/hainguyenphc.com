@@ -125,7 +125,9 @@
                 "type:drupal-core"
             ],
             "libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "modules/contrib/{$name}": [
                 "type:drupal-module"
