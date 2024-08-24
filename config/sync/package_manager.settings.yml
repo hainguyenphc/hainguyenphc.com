@@ -1,6 +1,5 @@
 _core:
   default_config_hash: U5mNVZBLMBkapwx5Dc8_QzKFegYocQmrNUl_wGsp0aQ
-file_syncer: rsync
 executables:
   composer: null
   rsync: null
