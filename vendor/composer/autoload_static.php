@@ -194,6 +194,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'OpenTelemetry\\Context\\' => 22,
             'OpenTelemetry\\API\\' => 18,
             'OpenIDConnectServer\\' => 20,
+            'OomphInc\\ComposerInstallersExtender\\' => 36,
         ),
         'M' => 
         array (
@@ -718,8 +719,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'PHPStan\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
-            1 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
+            0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
+            1 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -757,6 +758,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         array (
             0 => __DIR__ . '/..' . '/steverhoades/oauth2-openid-connect-server/src',
         ),
+        'OomphInc\\ComposerInstallersExtender\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/oomphinc/composer-installers-extender/src',
+        ),
         'Mtownsend\\XmlToArray\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtownsend/xml-to-array/src',
@@ -771,8 +776,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces',
-            1 => __DIR__ . '/..' . '/league/uri',
+            0 => __DIR__ . '/..' . '/league/uri',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
         'League\\OAuth2\\Server\\' => 
         array (
@@ -884,8 +889,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Gettext\\' => 
         array (
-            0 => __DIR__ . '/..' . '/gettext/translator/src',
-            1 => __DIR__ . '/..' . '/gettext/gettext/src',
+            0 => __DIR__ . '/..' . '/gettext/gettext/src',
+            1 => __DIR__ . '/..' . '/gettext/translator/src',
         ),
         'GPBMetadata\\Opentelemetry\\' => 
         array (

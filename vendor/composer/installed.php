@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'cdf56a15b00be34f56ae00e619c81fb6cf11cd2a',
+        'reference' => '050fe3579c68b844c25d6c8a005dd17251d6d8bf',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1110,7 +1110,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'cdf56a15b00be34f56ae00e619c81fb6cf11cd2a',
+            'reference' => '050fe3579c68b844c25d6c8a005dd17251d6d8bf',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1245,6 +1245,15 @@
             'reference' => '3.0.3',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../modules/contrib/schema_metatag',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'drupal/select2' => array(
+            'pretty_version' => '1.15.0',
+            'version' => '1.15.0.0',
+            'reference' => '8.x-1.15',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/select2',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -1893,6 +1902,24 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'npm-asset/select2' => array(
+            'pretty_version' => '4.0.13',
+            'version' => '4.0.13.0',
+            'reference' => null,
+            'type' => 'npm-asset',
+            'install_path' => __DIR__ . '/../../libraries/select2',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'oomphinc/composer-installers-extender' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'reference' => 'cbf4b6f9a24153b785d09eee755b995ba87bd5f9',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../oomphinc/composer-installers-extender',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'open-telemetry/api' => array(
             'pretty_version' => '1.0.3',
             'version' => '1.0.3.0',
@@ -2061,15 +2088,15 @@
         'php-http/async-client-implementation' => array(
             'dev_requirement' => true,
             'provided' => array(
-                0 => '1.0',
-                1 => '*',
+                0 => '*',
+                1 => '1.0',
             ),
         ),
         'php-http/client-implementation' => array(
             'dev_requirement' => true,
             'provided' => array(
-                0 => '1.0',
-                1 => '*',
+                0 => '*',
+                1 => '1.0',
             ),
         ),
         'php-http/discovery' => array(
@@ -2339,8 +2366,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.1|2.0',
-                1 => '^1.0',
+                0 => '^1.0',
+                1 => '1.1|2.0',
             ),
         ),
         'psr/event-dispatcher' => array(
