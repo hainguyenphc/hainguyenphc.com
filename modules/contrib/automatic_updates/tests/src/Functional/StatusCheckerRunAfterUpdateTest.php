@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -21,7 +21,7 @@ class StatusCheckerRunAfterUpdateTest extends UpdaterFormTestBase {
    * @return bool[][]
    *   The test cases.
    */
-  public function providerStatusCheckerRunAfterUpdate(): array {
+  public static function providerStatusCheckerRunAfterUpdate(): array {
     return [
       'has database updates' => [TRUE],
       'does not have database updates' => [FALSE],

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel\PathExcluder;
 
@@ -53,6 +53,20 @@ class SiteFilesExcluderTest extends PackageManagerKernelTestBase {
     foreach ($excluded as $path) {
       $this->assertFileExists("$active_dir/$path");
     }
+  }
+
+  /**
+   * Tests that invalid file settings do not cause errors.
+   */
+  public function testInvalidFileSettings() {
+    $invalid_path = '/path/does/not/exist';
+    $this->assertFileDoesNotExist($invalid_path);
+    $this->setSetting('file_public_path', $invalid_path);
+    $this->setSetting('file_private_path', $invalid_path);
+    // Ensure we have an up-to-date container.
+    $this->container = $this->container->get('kernel')->rebuildContainer();
+    $this->assertStatusCheckResults([]);
+    $this->assertResults([]);
   }
 
 }

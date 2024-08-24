@@ -1,10 +1,9 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
-use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\fixture_manipulator\ActiveFixtureManipulator;
 use Drupal\fixture_manipulator\FixtureManipulator;
 use Drupal\package_manager\Event\PreApplyEvent;
@@ -28,6 +27,9 @@ class PhpTufValidatorTest extends PackageManagerKernelTestBase {
   protected function setUp(): void {
     parent::setUp();
 
+    // PHP-TUF must be enabled for this test to run.
+    $this->setSetting('package_manager_bypass_tuf', FALSE);
+
     (new ActiveFixtureManipulator())
       ->addConfig([
         'repositories.drupal' => [
@@ -48,18 +50,6 @@ class PhpTufValidatorTest extends PackageManagerKernelTestBase {
         ],
       ])
       ->commitChanges();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function register(ContainerBuilder $container) {
-    parent::register($container);
-
-    // @todo Remove this in https://drupal.org/i/3358504, once
-    //   packages.drupal.org supports TUF.
-    $container->getDefinition(PhpTufValidator::class)
-      ->addTag('event_subscriber');
   }
 
   /**
@@ -141,7 +131,7 @@ class PhpTufValidatorTest extends PackageManagerKernelTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerInvalidConfiguration(): array {
+  public static function providerInvalidConfiguration(): array {
     return [
       'plugin specifically disallowed' => [
         [
@@ -159,14 +149,6 @@ class PhpTufValidatorTest extends PackageManagerKernelTestBase {
           t('The <code>php-tuf/composer-integration</code> plugin is not listed as an allowed plugin.'),
         ],
       ],
-      'packages.drupal.org not defined' => [
-        [
-          'repositories.drupal' => FALSE,
-        ],
-        [
-          t('The <code>https://packages.drupal.org</code> Composer repository must be defined in <code>composer.json</code>.'),
-        ],
-      ],
       'packages.drupal.org not using TUF' => [
         [
           'repositories.drupal' => [
@@ -175,7 +157,7 @@ class PhpTufValidatorTest extends PackageManagerKernelTestBase {
           ],
         ],
         [
-          t('TUF is not enabled for the https://packages.drupal.org/8 repository.'),
+          t('TUF is not enabled for the <code>https://packages.drupal.org/8</code> repository.'),
         ],
       ],
     ];
@@ -187,8 +169,8 @@ class PhpTufValidatorTest extends PackageManagerKernelTestBase {
    * @return \Generator
    *   The test cases.
    */
-  public function providerInvalidConfigurationInStage(): \Generator {
-    foreach ($this->providerInvalidConfiguration() as $name => $arguments) {
+  public static function providerInvalidConfigurationInStage(): \Generator {
+    foreach (static::providerInvalidConfiguration() as $name => $arguments) {
       $arguments[] = PreRequireEvent::class;
       yield "$name on pre-require" => $arguments;
 

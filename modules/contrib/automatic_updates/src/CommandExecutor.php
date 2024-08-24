@@ -35,7 +35,7 @@ final class CommandExecutor {
     private readonly PathLocator $pathLocator,
     private readonly FileSystemInterface $fileSystem,
     private readonly TimeInterface $time,
-    private readonly string $appRoot
+    private readonly string $appRoot,
   ) {}
 
   /**
@@ -49,7 +49,7 @@ final class CommandExecutor {
    *   A process to invoke the `auto-update` terminal command in a consistent
    *   way, with the `--host` and `--site-path` options always set.
    */
-  public function create(string $arguments = NULL): Process {
+  public function create(?string $arguments = NULL): Process {
     $script = $this->appRoot . '/core/scripts/auto-update';
     // BEGIN: DELETE FROM CORE MERGE REQUEST
     $script = __DIR__ . '/../auto-update';

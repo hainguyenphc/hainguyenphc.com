@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -191,7 +191,7 @@ class ComposerPluginsValidatorTest extends PackageManagerKernelTestBase {
    *
    * @return \Generator
    */
-  public function providerSimpleValidCases(): \Generator {
+  public static function providerSimpleValidCases(): \Generator {
     yield 'no composer plugins' => [
       [],
       [
@@ -274,7 +274,7 @@ class ComposerPluginsValidatorTest extends PackageManagerKernelTestBase {
    *
    * @return \Generator
    */
-  public function providerSimpleInvalidCases(): \Generator {
+  public static function providerSimpleInvalidCases(): \Generator {
     yield 'one UNsupported composer plugin — pretty package name' => [
       [
         'allow-plugins.not-cweagans/not-composer-patches' => TRUE,
@@ -373,9 +373,9 @@ class ComposerPluginsValidatorTest extends PackageManagerKernelTestBase {
    *
    * @return \Generator
    */
-  public function providerComplexInvalidCases(): \Generator {
-    $valid_cases = iterator_to_array($this->providerSimpleValidCases());
-    $invalid_cases = iterator_to_array($this->providerSimpleInvalidCases());
+  public static function providerComplexInvalidCases(): \Generator {
+    $valid_cases = iterator_to_array(static::providerSimpleValidCases());
+    $invalid_cases = iterator_to_array(static::providerSimpleInvalidCases());
     $all_config = NestedArray::mergeDeepArray(
       // First key-value pair for each simple test case: the packages it adds.
       array_map(fn (array $c) => $c[0], $valid_cases + $invalid_cases)

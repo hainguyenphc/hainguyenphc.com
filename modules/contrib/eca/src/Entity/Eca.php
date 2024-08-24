@@ -520,6 +520,11 @@ class Eca extends ConfigEntityBase implements EntityWithPluginCollectionInterfac
 
           }
         }
+        if (isset($form_field['#type'], $fields[$key]) && $form_field['#type'] === 'machine_name') {
+          // Remember the original configuration value.
+          $replaced_fields[$key] = $fields[$key];
+          $fields[$key] = str_replace('][', '', $fields[$key]);
+        }
       }
     }
 

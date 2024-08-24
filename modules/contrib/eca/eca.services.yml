@@ -4,8 +4,7 @@ services:
     class: Drupal\Core\Cache\MemoryCache\MemoryCache
   eca.state:
     class: Drupal\eca\EcaState
-    parent: state
-    arguments: ['@datetime.time']
+    arguments: ['@keyvalue', '@datetime.time']
   eca.processor:
     class: Drupal\eca\Processor
     arguments: ['@entity_type.manager', '@logger.channel.eca', '@event_dispatcher', '%eca.max_recursion_level%']

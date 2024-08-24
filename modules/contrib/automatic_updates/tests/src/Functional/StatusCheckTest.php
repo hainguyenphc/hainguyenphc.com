@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -115,7 +115,7 @@ class StatusCheckTest extends AutomaticUpdatesFunctionalTestBase {
   /**
    * Provides data for testModuleFormInstallDisplay.
    */
-  public function providerTestModuleFormInstallDisplay(): array {
+  public static function providerTestModuleFormInstallDisplay(): array {
     return [
       'Error' => [
         SystemManager::REQUIREMENT_ERROR,
@@ -241,7 +241,7 @@ class StatusCheckTest extends AutomaticUpdatesFunctionalTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerAdminRoutes(): array {
+  public static function providerAdminRoutes(): array {
     return [
       'Structure Page' => ['system.admin_structure'],
       'Update settings Page' => ['update.settings'],
@@ -288,7 +288,7 @@ class StatusCheckTest extends AutomaticUpdatesFunctionalTestBase {
     $assert->statusMessageContains('Your site has not recently run an update readiness check. Rerun readiness checks now.');
     $this->clickLink('Rerun readiness checks now.');
     $assert->addressEquals(Url::fromRoute($admin_route));
-    $assert->pageTextContainsOnce($expected_results[0]->summary);
+    $assert->pageTextContainsOnce((string) $expected_results[0]->summary);
 
     $expected_results = [
       '1 error' => $this->createValidationResult(SystemManager::REQUIREMENT_ERROR),

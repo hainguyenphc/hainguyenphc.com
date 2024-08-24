@@ -316,6 +316,14 @@ trait TokenDecoratorTrait {
         $real_token_type = 'book';
       }
 
+      // The webform_access contrib module defines the webform_access token type
+      // which is an alias for the node token type. We need to keep the alias,
+      // otherwise tokens would break.
+      // @see https://www.drupal.org/project/eca/issues/3378283
+      if ($type === 'webform_access') {
+        $real_token_type = 'webform_access';
+      }
+
       // Check whether we hold aliased Token data. Exclude the alias mapping if
       // the "token_type" key is set, which comes from the contrib Token module
       // and is set within the scope of generic entity tokens. Otherwise, since
@@ -363,6 +371,23 @@ trait TokenDecoratorTrait {
   public function replaceClear($text, array $data = [], array $options = [], BubbleableMetadata $bubbleable_metadata = NULL) {
     $options['clear'] = TRUE;
     return $this->replace($text, $data, $options, $bubbleable_metadata);
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * Logical-wise, this behaves the same as ::replace(). See the comments there.
+   */
+  public function replacePlain(string $plain, array $data = [], array $options = [], BubbleableMetadata $bubbleable_metadata = NULL): string {
+    $plain = parent::replacePlain($plain, $data, $options, $bubbleable_metadata);
+
+    if (!in_array(get_class($this->token), [
+      'Drupal\Core\Utility\Token',
+      'Drupal\token\Token',
+    ], TRUE) && method_exists($this->token, 'replacePlain')) {
+      $plain = $this->token->replacePlain($plain, $data, $options, $bubbleable_metadata);
+    }
+    return $plain;
   }
 
   /**

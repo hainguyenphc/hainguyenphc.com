@@ -80,7 +80,7 @@ class TaskWorker extends QueueWorkerBase implements ContainerFactoryPluginInterf
     }
     $task = $data;
     if (!$task->isDueForProcessing()) {
-      throw new NotYetDueForProcessingException('Task is not yet due for processing.');
+      throw new NotYetDueForProcessingException($task->getDelay(), 'Task is not yet due for processing.');
     }
     $this->tokenServices->addTokenDataProvider($task);
     $this->eventDispatcher->dispatch(new ProcessingTaskEvent($task), QueueEvents::PROCESSING_TASK);

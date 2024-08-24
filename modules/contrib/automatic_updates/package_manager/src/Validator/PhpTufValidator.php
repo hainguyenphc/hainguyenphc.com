@@ -1,11 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\Validator;
 
+use Drupal\Component\Assertion\Inspector;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
 use Drupal\package_manager\ComposerInspector;
@@ -29,10 +31,8 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  *   packages.drupal.org (since that's currently the only server that supports
  *   TUF), and that those repositories have TUF support explicitly enabled.
  *
- * Note that this validator is currently not active, because the service
- * definition is not tagged as an event subscriber. This will be changed in
- * https://drupal.org/i/3358504, once TUF support is rolled out on
- * packages.drupal.org.
+ * Until it's more battle-tested, TUF protection is bypassed by default.
+ * Ultimately, though, Package Manager will not treat TUF as optional.
  *
  * @internal
  *   This is an internal part of Package Manager and may be changed or removed
@@ -50,21 +50,15 @@ final class PhpTufValidator implements EventSubscriberInterface {
    */
   public const PLUGIN_NAME = 'php-tuf/composer-integration';
 
-  /**
-   * Constructs a PhpTufValidator object.
-   *
-   * @param \Drupal\package_manager\PathLocator $pathLocator
-   *   The path locator service.
-   * @param \Drupal\package_manager\ComposerInspector $composerInspector
-   *   The Composer inspector service.
-   * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
-   *   The module handler service.
-   */
   public function __construct(
     private readonly PathLocator $pathLocator,
     private readonly ComposerInspector $composerInspector,
-    private readonly ModuleHandlerInterface $moduleHandler
-  ) {}
+    private readonly ModuleHandlerInterface $moduleHandler,
+    private readonly Settings $settings,
+    private readonly array $repositories,
+  ) {
+    assert(Inspector::assertAllStrings($repositories));
+  }
 
   /**
    * {@inheritdoc}
@@ -111,6 +105,11 @@ final class PhpTufValidator implements EventSubscriberInterface {
   private function validateTuf(string $dir): array {
     $messages = [];
 
+    // This setting will be removed without warning when no longer need.
+    if ($this->settings->get('package_manager_bypass_tuf', TRUE)) {
+      return $messages;
+    }
+
     if ($this->moduleHandler->moduleExists('help')) {
       $help_url = Url::fromRoute('help.page', ['name' => 'package_manager'])
         ->setOption('fragment', 'package-manager-tuf-info')
@@ -147,25 +146,15 @@ final class PhpTufValidator implements EventSubscriberInterface {
       $messages[] = $message;
     }
 
-    // Get the defined repositories that use packages.drupal.org.
-    $repositories = array_filter(
-      Json::decode($this->composerInspector->getConfig('repositories', $dir)),
-      fn (array $r): bool => str_starts_with($r['url'], 'https://packages.drupal.org')
-    );
-
-    // All packages.drupal.org repositories must have TUF protection.
-    foreach ($repositories as $repository) {
-      if (empty($repository['tuf'])) {
-        $messages[] = $this->t('TUF is not enabled for the @url repository.', [
-          '@url' => $repository['url'],
-        ]);
+    // Confirm that all repositories we're configured to look at have opted into
+    // TUF protection.
+    foreach ($this->getRepositoryStatus($dir) as $url => $is_protected) {
+      if ($is_protected) {
+        continue;
       }
-    }
-
-    // There must be at least one repository using packages.drupal.org, since
-    // that's the only repository which supports TUF right now.
-    if (empty($repositories)) {
-      $message = $this->t('The <code>https://packages.drupal.org</code> Composer repository must be defined in <code>composer.json</code>.');
+      $message = $this->t('TUF is not enabled for the <code>@url</code> repository.', [
+        '@url' => $url,
+      ]);
       if (isset($help_url)) {
         $message = $this->t('@message See <a href=":url">the help page</a> for more information on how to set up this repository.', [
           '@message' => $message,
@@ -175,6 +164,32 @@ final class PhpTufValidator implements EventSubscriberInterface {
       $messages[] = $message;
     }
     return $messages;
+  }
+
+  /**
+   * Gets the TUF protection status of Composer repositories.
+   *
+   * @param string $dir
+   *   The directory in which to run Composer.
+   *
+   * @return bool[]
+   *   An array of booleans, keyed by repository URL, indicating whether TUF
+   *   protection is enabled for that repository.
+   */
+  private function getRepositoryStatus(string $dir): array {
+    $status = [];
+
+    $repositories = $this->composerInspector->getConfig('repositories', $dir);
+    $repositories = Json::decode($repositories);
+
+    foreach ($repositories as $repository) {
+      // Only Composer repositories can have TUF protection.
+      if ($repository['type'] === 'composer') {
+        $url = $repository['url'];
+        $status[$url] = !empty($repository['tuf']);
+      }
+    }
+    return array_intersect_key($status, array_flip($this->repositories));
   }
 
 }

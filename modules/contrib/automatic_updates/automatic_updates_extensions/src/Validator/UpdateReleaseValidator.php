@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates_extensions\Validator;
 
@@ -36,7 +36,7 @@ final class UpdateReleaseValidator implements EventSubscriberInterface {
    */
   public function __construct(
     private readonly ComposerInspector $composerInspector,
-    private readonly PathLocator $pathLocator
+    private readonly PathLocator $pathLocator,
   ) {}
 
   /**

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Unit\VersionPolicy;
 
@@ -23,7 +23,7 @@ class ForbidDowngradeTest extends UnitTestCase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerDowngradeForbidden(): array {
+  public static function providerDowngradeForbidden(): array {
     return [
       'unknown target version' => [
         '9.8.0',

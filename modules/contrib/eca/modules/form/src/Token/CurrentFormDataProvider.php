@@ -68,6 +68,7 @@ class CurrentFormDataProvider implements DataProviderInterface {
             'id' => $dto_values['id'],
             'base-id' => $dto_values['base-id'],
             'operation' => $dto_values['operation'],
+            'mode' => $dto_values['mode'],
             'triggered' => $dto_values['triggered'],
           ]);
           if (!empty($dto_values['dangerous_raw_values'])) {

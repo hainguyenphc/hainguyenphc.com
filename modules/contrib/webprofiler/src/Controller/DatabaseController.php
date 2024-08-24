@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Controller;
 
@@ -125,7 +125,7 @@ class DatabaseController extends ControllerBase {
     $profile = $this->profiler->loadProfile($token);
 
     if ($profile == NULL) {
-      throw new NotFoundHttpException(sprintf('Token %s does not exist.', $token));
+      throw new NotFoundHttpException(\sprintf('Token %s does not exist.', $token));
     }
 
     /** @var \Drupal\webprofiler\DataCollector\DatabaseDataCollector $databaseCollector */

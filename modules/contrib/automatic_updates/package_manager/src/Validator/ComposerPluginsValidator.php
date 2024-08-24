@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\Validator;
 
@@ -64,7 +64,7 @@ final class ComposerPluginsValidator implements EventSubscriberInterface {
   private const SUPPORTED_PLUGINS_THAT_DO_MODIFY = [
     // cSpell:disable
     // @see \Drupal\package_manager\Validator\ComposerPatchesValidator
-    'cweagans/composer-patches' => '^1.7.3',
+    'cweagans/composer-patches' => '^1.7.3 || ^2',
     // @see \Drupal\package_manager\PathExcluder\VendorHardeningExcluder
     'drupal/core-vendor-hardening' => '*',
     'php-http/discovery' => '*',

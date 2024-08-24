@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Csp;
 
@@ -20,7 +20,7 @@ class NonceGenerator {
    * @throws \Exception
    */
   public function generate(): string {
-    return bin2hex(random_bytes(16));
+    return \bin2hex(\random_bytes(16));
   }
 
 }

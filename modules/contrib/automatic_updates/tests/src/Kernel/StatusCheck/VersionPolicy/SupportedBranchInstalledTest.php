@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Kernel\StatusCheck\VersionPolicy;
 
@@ -25,7 +25,7 @@ class SupportedBranchInstalledTest extends AutomaticUpdatesKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerSupportedBranchInstalled(): array {
+  public static function providerSupportedBranchInstalled(): array {
     return [
       'supported minor installed' => [
         '9.8.0',

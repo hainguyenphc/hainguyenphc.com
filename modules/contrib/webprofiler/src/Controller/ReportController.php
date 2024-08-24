@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Controller;
 
@@ -27,7 +27,7 @@ class ReportController extends ControllerBase {
    */
   final public function __construct(
     private readonly Profiler $profiler,
-    private readonly DateFormatter $dateFormatter
+    private readonly DateFormatter $dateFormatter,
   ) {
   }
 
@@ -55,14 +55,14 @@ class ReportController extends ControllerBase {
 
     $ip = $request->query->get('ip');
     $url = $request->query->get('url');
-    $limit = intval($request->get('limit', 10));
+    $limit = \intval($request->get('limit', 10));
     $method = $request->query->get('method');
     $method = $method != '- any -' ? $method : NULL;
 
     $profiles = $this->profiler->find($ip, $url, $limit, $method, '', '');
 
     $rows = [];
-    if (count($profiles) > 0) {
+    if (\count($profiles) > 0) {
       foreach ($profiles as $profile) {
         $row = [];
         $row[] = Link::fromTextAndUrl($profile['token'], new Url('webprofiler.dashboard', ['token' => $profile['token']]))

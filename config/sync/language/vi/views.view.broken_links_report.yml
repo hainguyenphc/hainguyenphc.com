@@ -16,13 +16,7 @@ display:
             items_per_page_options_all_label: '- Tất cả -'
             offset_label: 'Độ dịch'
       fields:
-        url:
-          label: URL
         operations:
           label: 'Thao tác'
-      filters:
-        url:
-          expose:
-            label: URL
   page_1:
     display_title: Trang

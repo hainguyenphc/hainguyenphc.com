@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Functional;
 
@@ -15,7 +15,7 @@ use Drupal\package_manager_test_validation\EventSubscriber\TestSubscriber;
  * @group automatic_updates_extensions
  * @internal
  */
-class UpdateErrorTest extends UpdaterFormTestBase {
+final class UpdateErrorTest extends UpdaterFormTestBase {
 
   /**
    * Tests that an exception is thrown if a previous apply failed.
@@ -32,15 +32,15 @@ class UpdateErrorTest extends UpdaterFormTestBase {
     $assert_session->pageTextNotContains(static::$warningsExplanation);
 
     $this->assertTableShowsUpdates('Semver Test', '8.1.0', '8.1.1');
+    $this->getStageFixtureManipulator()->setVersion('drupal/semver_test_package_name', '8.1.1');
     $this->assertUpdatesCount(1);
     $page->checkField('projects[semver_test]');
     $page->pressButton('Update');
     $this->checkForMetaRefresh();
     $this->assertUpdateStagedTimes(1);
     $assert_session->pageTextNotContains('The following dependencies will also be updated:');
-    LoggingCommitter::setException(new \Exception('failed at committer'));
-    $page->pressButton('Continue');
-    $this->checkForMetaRefresh();
+    LoggingCommitter::setException(\Exception::class, 'failed at committer');
+    $this->acceptWarningAndUpdate();
     $failure_message = 'Automatic updates failed to apply, and the site is in an indeterminate state. Consider restoring the code and database from a backup.';
     $assert_session->pageTextContainsOnce('An error has occurred.');
     $assert_session->pageTextContains($failure_message);
@@ -78,7 +78,7 @@ class UpdateErrorTest extends UpdaterFormTestBase {
     $error = ValidationResult::createError([$message]);
     TestSubscriber1::setTestResult([$error], StatusCheckEvent::class);
     $this->getSession()->reload();
-    $assert->pageTextContains($message);
+    $assert->pageTextContains((string) $message);
     $assert->pageTextContains(static::$errorsExplanation);
     $assert->pageTextNotContains(static::$warningsExplanation);
     $assert->buttonNotExists('Update');
@@ -111,9 +111,9 @@ class UpdateErrorTest extends UpdaterFormTestBase {
     $this->checkForMetaRefresh();
     $assert->pageTextContains(static::$errorsExplanation);
     $assert->pageTextNotContains(static::$warningsExplanation);
-    $assert->pageTextContains($summary);
+    $assert->pageTextContains((string) $summary);
     foreach ($messages as $message) {
-      $assert->pageTextContains($message);
+      $assert->pageTextContains((string) $message);
     }
     $assert->buttonNotExists('Continue');
   }

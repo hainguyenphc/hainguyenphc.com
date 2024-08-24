@@ -47,4 +47,17 @@ abstract class ActiveThemeActionBase extends ConfigurableActionBase {
     return $instance;
   }
 
+  /**
+   * Helper callback that always returns FALSE.
+   *
+   * Some machine name fields cannot have a check whether they are already in
+   * use. For these elements, this method can be used.
+   *
+   * @return bool
+   *   Always returns FALSE.
+   */
+  public function alwaysFalse(): bool {
+    return FALSE;
+  }
+
 }

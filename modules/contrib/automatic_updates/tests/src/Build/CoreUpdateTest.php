@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Build;
 
@@ -43,7 +43,7 @@ class CoreUpdateTest extends UpdateTestBase {
   /**
    * {@inheritdoc}
    */
-  public function copyCodebase(\Iterator $iterator = NULL, $working_dir = NULL): void {
+  public function copyCodebase(?\Iterator $iterator = NULL, $working_dir = NULL): void {
     parent::copyCodebase($iterator, $working_dir);
 
     // Ensure that we will install Drupal 9.8.0 (a fake version that should
@@ -470,7 +470,7 @@ class CoreUpdateTest extends UpdateTestBase {
     $pattern = '/^Unused stage directory deleted: (.+)$/m';
     $matches = [];
     preg_match($pattern, $output, $matches);
-    $this->assertCount(2, $matches);
+    $this->assertCount(2, $matches, $output);
     $this->assertDirectoryDoesNotExist($matches[1]);
 
     // Rerunning the command should exit with a message that no newer version

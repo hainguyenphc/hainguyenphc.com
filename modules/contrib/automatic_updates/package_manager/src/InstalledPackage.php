@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
@@ -27,7 +27,7 @@ final class InstalledPackage {
     public readonly string $name,
     public readonly string $version,
     public readonly ?string $path,
-    public readonly string $type
+    public readonly string $type,
   ) {}
 
   /**

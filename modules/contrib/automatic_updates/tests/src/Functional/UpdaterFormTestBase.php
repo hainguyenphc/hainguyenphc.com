@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -45,7 +45,7 @@ abstract class UpdaterFormTestBase extends AutomaticUpdatesFunctionalTestBase {
     parent::setUp();
 
     $this->setReleaseMetadata(__DIR__ . '/../../../package_manager/tests/fixtures/release-history/drupal.9.8.1-security.xml');
-    $user = $this->createUser([
+    $permissions = [
       'administer site configuration',
       'administer software updates',
       'access administration pages',
@@ -53,8 +53,14 @@ abstract class UpdaterFormTestBase extends AutomaticUpdatesFunctionalTestBase {
       'administer modules',
       'access site reports',
       'view update notifications',
-      // CORE_MR_ONLY-11.x:'access help pages',
-    ]);
+      // CORE_MR_ONLY:'access help pages',
+    ];
+    // BEGIN: DELETE FROM CORE MERGE REQUEST
+    if (array_key_exists('access help pages', $this->container->get('user.permissions')->getPermissions())) {
+      $permissions[] = 'access help pages';
+    }
+    // END: DELETE FROM CORE MERGE REQUEST
+    $user = $this->createUser($permissions);
     $this->drupalLogin($user);
     $this->checkForUpdates();
   }

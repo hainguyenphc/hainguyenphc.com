@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Build;
 
@@ -14,7 +14,7 @@ use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
  * @group automatic_updates_extensions
  * @internal
  */
-class ModuleUpdateTest extends UpdateTestBase {
+final class ModuleUpdateTest extends UpdateTestBase {
 
   use FormTestTrait;
 
@@ -42,7 +42,7 @@ END;
     $this->writeSettings($code);
     $alpha_repo_path = $this->copyFixtureToTempDirectory(__DIR__ . '/../../../../package_manager/tests/fixtures/build_test_projects/alpha/1.0.0');
     $this->addRepository('alpha', $alpha_repo_path);
-    $this->runComposer('COMPOSER_MIRROR_PATH_REPOS=1 composer require drupal/alpha --update-with-all-dependencies', 'project');
+    $this->runComposer('composer require drupal/alpha --update-with-all-dependencies', 'project');
     $this->assertModuleVersion('alpha', '1.0.0');
     $fs = new SymfonyFilesystem();
     $fs->mirror($this->copyFixtureToTempDirectory(__DIR__ . '/../../fixtures/new_module'), $this->getWorkspaceDirectory() . '/project/web/modules');
@@ -132,6 +132,7 @@ END;
     $page->pressButton('Update');
     $this->waitForBatchJob();
     $assert_session->pageTextContains('Ready to update');
+    $page->checkField('backup');
     $page->pressButton('Continue');
     $this->waitForBatchJob();
     $assert_session->pageTextContains('Update complete!');
@@ -143,7 +144,7 @@ END;
   /**
    * {@inheritdoc}
    */
-  public function copyCodebase(\Iterator $iterator = NULL, $working_dir = NULL): void {
+  public function copyCodebase(?\Iterator $iterator = NULL, $working_dir = NULL): void {
     parent::copyCodebase($iterator, $working_dir);
 
     // Ensure that we will install Drupal 9.8.0 (a fake version that should

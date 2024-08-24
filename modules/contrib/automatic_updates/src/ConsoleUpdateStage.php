@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates;
 
@@ -280,11 +280,7 @@ class ConsoleUpdateStage extends UpdateStage {
    *   The ID of the current stage.
    */
   protected function triggerPostApply(string $stage_id): void {
-    // The stage ID needs to be quoted in order to prevent it from being parsed
-    // as a command-line option if it begins with -, which is a possibility
-    // because we use \Drupal\Component\Utility\Crypt::randomBytesBase64() to
-    // generate the stage ID, and the string it returns might begin with -.
-    $arguments = sprintf('post-apply "%s"', $stage_id);
+    $arguments = sprintf('post-apply %s', $stage_id);
     if ($this->isFromWeb) {
       $arguments .= ' --is-from-web';
     }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates\Form;
 
@@ -47,7 +47,7 @@ final class UpdateReady extends UpdateFormBase {
     private readonly StateInterface $state,
     private readonly RendererInterface $renderer,
     private readonly EventDispatcherInterface $eventDispatcher,
-    private readonly ComposerInspector $composerInspector
+    private readonly ComposerInspector $composerInspector,
   ) {}
 
   /**
@@ -73,7 +73,7 @@ final class UpdateReady extends UpdateFormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, string $stage_id = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?string $stage_id = NULL) {
     try {
       $this->stage->claim($stage_id);
     }

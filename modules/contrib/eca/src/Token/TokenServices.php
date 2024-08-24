@@ -146,6 +146,13 @@ class TokenServices implements TokenInterface {
   /**
    * {@inheritdoc}
    */
+  public function replacePlain(string $plain, array $data = [], array $options = [], ?BubbleableMetadata $bubbleable_metadata = NULL): string {
+    return $this->token->replacePlain($plain, $data, $options, $bubbleable_metadata);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getOrReplace($text, array $data = [], ?array $options = NULL, BubbleableMetadata $bubbleable_metadata = NULL) {
     return $this->decorator->getOrReplace($text, $data, $options, $bubbleable_metadata);
   }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -22,7 +22,7 @@ class PhpExtensionsValidatorTest extends PackageManagerKernelTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerPhpExtensionsValidation(): array {
+  public static function providerPhpExtensionsValidation(): array {
     $openssl_error = ValidationResult::createError([
       t('The OpenSSL extension is not enabled, which is a security risk. See <a href="https://www.php.net/manual/en/openssl.installation.php">the PHP documentation</a> for information on how to enable this extension.'),
     ]);

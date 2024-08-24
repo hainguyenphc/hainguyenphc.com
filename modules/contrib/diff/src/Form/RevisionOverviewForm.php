@@ -3,19 +3,19 @@
 namespace Drupal\diff\Form;
 
 use Drupal\Component\Utility\Xss;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
 use Drupal\diff\DiffEntityComparison;
 use Drupal\diff\DiffLayoutManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Form\FormBase;
-use Drupal\Core\Session\AccountInterface;
-use Drupal\Core\Datetime\DateFormatter;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
-use Drupal\Core\Render\RendererInterface;
 
 /**
  * Provides a form for revision overview page.
@@ -39,7 +39,7 @@ class RevisionOverviewForm extends FormBase {
   /**
    * The date service.
    *
-   * @var \Drupal\Core\Datetime\DateFormatter
+   * @var \Drupal\Core\Datetime\DateFormatterInterface
    */
   protected $date;
 
@@ -85,7 +85,7 @@ class RevisionOverviewForm extends FormBase {
    *   The entity type manager.
    * @param \Drupal\Core\Session\AccountInterface $current_user
    *   The current user.
-   * @param \Drupal\Core\Datetime\DateFormatter $date
+   * @param \Drupal\Core\Datetime\DateFormatterInterface $date
    *   The date service.
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer service.
@@ -96,7 +96,15 @@ class RevisionOverviewForm extends FormBase {
    * @param \Drupal\diff\DiffEntityComparison $entity_comparison
    *   The diff entity comparison service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, AccountInterface $current_user, DateFormatter $date, RendererInterface $renderer, LanguageManagerInterface $language_manager, DiffLayoutManager $diff_layout_manager, DiffEntityComparison $entity_comparison) {
+  public function __construct(
+    EntityTypeManagerInterface $entity_type_manager,
+    AccountInterface $current_user,
+    DateFormatterInterface $date,
+    RendererInterface $renderer,
+    LanguageManagerInterface $language_manager,
+    DiffLayoutManager $diff_layout_manager,
+    DiffEntityComparison $entity_comparison,
+  ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->currentUser = $current_user;
     $this->date = $date;
@@ -118,7 +126,7 @@ class RevisionOverviewForm extends FormBase {
       $container->get('renderer'),
       $container->get('language_manager'),
       $container->get('plugin.manager.diff.layout'),
-      $container->get('diff.entity_comparison')
+      $container->get('diff.entity_comparison'),
     );
   }
 
@@ -151,7 +159,7 @@ class RevisionOverviewForm extends FormBase {
       ->sort($node->getEntityType()->getKey('revision'), 'DESC')
       // Access to the content has already been verified. Disable query-level
       // access checking so that revisions for unpublished content still
-      //appear.
+      // appear.
       ->accessCheck(FALSE)
       ->execute();
     $vids = array_keys($query);
@@ -164,20 +172,20 @@ class RevisionOverviewForm extends FormBase {
     ]) : $this->t('Revisions for %title', [
       '%title' => $node->label(),
     ]);
-    $build['nid'] = array(
+    $build['nid'] = [
       '#type' => 'hidden',
       '#value' => $node->id(),
-    );
+    ];
 
     $table_header = [];
     $table_header['revision'] = $this->t('Revision');
 
     // Allow comparisons only if there are 2 or more revisions.
     if ($revision_count > 1) {
-      $table_header += array(
+      $table_header += [
         'select_column_one' => '',
         'select_column_two' => '',
-      );
+      ];
     }
     $table_header['operations'] = $this->t('Operations');
 
@@ -190,12 +198,29 @@ class RevisionOverviewForm extends FormBase {
     $revert_permission = $rev_revert_perm && $node->access('update');
     $delete_permission = $rev_delete_perm && $node->access('delete');
 
+    // Submit button for the form.
+    $compare_revision_submit = [
+      '#type' => 'submit',
+      '#button_type' => 'primary',
+      '#value' => t('Compare selected revisions'),
+      '#attributes' => [
+        'class' => [
+          'diff-button',
+        ],
+      ],
+    ];
+
+    // For more than 5 revisions, add a submit button on top of the screen.
+    if ($revision_count > 5) {
+      $build['submit_top'] = $compare_revision_submit;
+    }
+
     // Contains the table listing the revisions.
-    $build['node_revisions_table'] = array(
+    $build['node_revisions_table'] = [
       '#type' => 'table',
       '#header' => $table_header,
-      '#attributes' => array('class' => array('diff-revisions')),
-    );
+      '#attributes' => ['class' => ['diff-revisions']],
+    ];
 
     $build['node_revisions_table']['#attached']['library'][] = 'diff/diff.general';
     $build['node_revisions_table']['#attached']['drupalSettings']['diffRevisionRadios'] = $this->config->get('general_settings.radio_behavior');
@@ -210,10 +235,10 @@ class RevisionOverviewForm extends FormBase {
       /** @var \Drupal\Core\Entity\ContentEntityInterface $revision */
       if ($revision = $node_storage->loadRevision($vid)) {
         if ($revision->hasTranslation($langcode) && $revision->getTranslation($langcode)->isRevisionTranslationAffected()) {
-          $username = array(
+          $username = [
             '#theme' => 'username',
             '#account' => $revision->getRevisionUser(),
-          );
+          ];
           $revision_date = $this->date->format($revision->getRevisionCreationTime(), 'short');
           // Use revision link to link to revisions that are not active.
           if ($vid != $node->getRevisionId()) {
@@ -235,38 +260,38 @@ class RevisionOverviewForm extends FormBase {
                 'select_column_two' => $this->buildSelectColumn('radios_right', $vid, $vid),
               ];
             }
-            $row['operations'] = array(
+            $row['operations'] = [
               '#prefix' => '<em>',
               '#markup' => $this->t('Current revision'),
               '#suffix' => '</em>',
-              '#attributes' => array(
-                'class' => array('revision-current'),
-              ),
-            );
+              '#attributes' => [
+                'class' => ['revision-current'],
+              ],
+            ];
             $row['#attributes'] = [
               'class' => ['revision-current'],
             ];
           }
           else {
-            $route_params = array(
+            $route_params = [
               'node' => $node->id(),
               'node_revision' => $vid,
               'langcode' => $langcode,
-            );
-            $links = array();
+            ];
+            $links = [];
             if ($revert_permission) {
               $links['revert'] = [
                 'title' => $vid < $node->getRevisionId() ? $this->t('Revert') : $this->t('Set as current revision'),
                 'url' => $has_translations ?
-                  Url::fromRoute('node.revision_revert_translation_confirm', ['node' => $node->id(), 'node_revision' => $vid, 'langcode' => $langcode]) :
-                  Url::fromRoute('node.revision_revert_confirm', ['node' => $node->id(), 'node_revision' => $vid]),
+                Url::fromRoute('node.revision_revert_translation_confirm', ['node' => $node->id(), 'node_revision' => $vid, 'langcode' => $langcode]) :
+                Url::fromRoute('node.revision_revert_confirm', ['node' => $node->id(), 'node_revision' => $vid]),
               ];
             }
             if ($delete_permission) {
-              $links['delete'] = array(
+              $links['delete'] = [
                 'title' => $this->t('Delete'),
                 'url' => Url::fromRoute('node.revision_delete_confirm', $route_params),
-              );
+              ];
             }
 
             // Here we don't have to deal with 'only one revision' case because
@@ -275,7 +300,7 @@ class RevisionOverviewForm extends FormBase {
             $row = [
               'revision' => $this->buildRevision($link, $username, $revision, $previous_revision),
               'select_column_one' => $this->buildSelectColumn('radios_left', $vid,
-                isset($vids[1]) ? $vids[1] : FALSE),
+                $vids[1] ?? FALSE),
               'select_column_two' => $this->buildSelectColumn('radios_right', $vid, FALSE),
               'operations' => [
                 '#type' => 'operations',
@@ -291,20 +316,11 @@ class RevisionOverviewForm extends FormBase {
 
     // Allow comparisons only if there are 2 or more revisions.
     if ($revision_count > 1) {
-      $build['submit'] = array(
-        '#type' => 'submit',
-        '#button_type' => 'primary',
-        '#value' => t('Compare selected revisions'),
-        '#attributes' => array(
-          'class' => array(
-            'diff-button',
-          ),
-        ),
-      );
+      $build['submit'] = $compare_revision_submit;
     }
-    $build['pager'] = array(
+    $build['pager'] = [
       '#type' => 'pager',
-    );
+    ];
     $build['#attached']['library'][] = 'node/drupal.node.admin';
     return $build;
   }
@@ -354,7 +370,10 @@ class RevisionOverviewForm extends FormBase {
       '#template' => '{% trans %}{{ date }} by {{ username }}{% endtrans %}{% if message %}<p class="revision-log">{{ message }}</p>{% endif %}',
       '#context' => [
         'date' => $link->toString(),
-        'username' => $this->renderer->renderPlain($username),
+        // @see https://www.drupal.org/node/3407994
+        // Added a suggested method renderInIsolation().
+        // @phpstan-ignore-next-line
+        'username' => version_compare(\Drupal::VERSION, '10.3', '<') ? $this->renderer->renderPlain($username) : $this->renderer->renderInIsolation($username),
         'message' => [
           '#markup' => $this->entityComparison->getRevisionDescription($revision, $previous_revision),
           '#allowed_tags' => Xss::getAdminTagList(),
@@ -401,12 +420,12 @@ class RevisionOverviewForm extends FormBase {
     // Builds the redirect Url.
     $redirect_url = Url::fromRoute(
       'diff.revisions_diff',
-      array(
+      [
         'node' => $nid,
         'left_revision' => $vid_left,
         'right_revision' => $vid_right,
         'filter' => $this->diffLayoutManager->getDefaultLayout(),
-      )
+      ],
     );
     $form_state->setRedirectUrl($redirect_url);
   }

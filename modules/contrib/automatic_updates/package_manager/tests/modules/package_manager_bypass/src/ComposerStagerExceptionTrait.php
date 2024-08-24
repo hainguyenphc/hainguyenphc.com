@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager_bypass;
 
@@ -14,11 +14,18 @@ trait ComposerStagerExceptionTrait {
   /**
    * Sets an exception to be thrown.
    *
-   * @param \Throwable|null $exception
-   *   The exception to throw, or NULL to delete a stored exception.
+   * @param string|null $class
+   *   The class of exception to throw, or NULL to delete a stored exception.
+   * @param mixed ...$arguments
+   *   Arguments to pass to the exception constructor.
    */
-  public static function setException(?\Throwable $exception): void {
-    \Drupal::state()->set(static::class . '-exception', $exception);
+  public static function setException(?string $class = \Exception::class, mixed ...$arguments): void {
+    if ($class) {
+      \Drupal::state()->set(static::class . '-exception', func_get_args());
+    }
+    else {
+      \Drupal::state()->delete(static::class . '-exception');
+    }
   }
 
   /**
@@ -26,7 +33,8 @@ trait ComposerStagerExceptionTrait {
    */
   private function throwExceptionIfSet(): void {
     if ($exception = $this->state->get(static::class . '-exception')) {
-      throw $exception;
+      $class = array_shift($exception);
+      throw new $class(...$exception);
     }
   }
 

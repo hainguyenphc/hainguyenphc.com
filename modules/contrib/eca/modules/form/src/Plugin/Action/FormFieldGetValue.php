@@ -71,9 +71,15 @@ class FormFieldGetValue extends ConfigurableActionBase {
       return;
     }
 
+    $original_field_name = $this->configuration['field_name'];
+    $this->configuration['field_name'] = (string) $this->tokenServices->replace($original_field_name);
+
     $value = $this->getSubmittedValue();
     $this->filterFormFieldValue($value);
     $this->tokenServices->addTokenData($this->configuration['token_name'], $value);
+
+    // Restoring the original config entry.
+    $this->configuration['field_name'] = $original_field_name;
   }
 
 }

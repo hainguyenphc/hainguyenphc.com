@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Theme;
 
@@ -26,7 +26,7 @@ class ThemeNegotiatorWrapper extends ThemeNegotiator {
   public function determineActiveTheme(RouteMatchInterface $route_match) {
     foreach ($this->negotiators as $negotiator_id) {
       $negotiator = $this->classResolver->getInstanceFromDefinition($negotiator_id);
-      assert($negotiator instanceof ThemeNegotiatorInterface);
+      \assert($negotiator instanceof ThemeNegotiatorInterface);
 
       if ($negotiator->applies($route_match)) {
         $theme = $negotiator->determineActiveTheme($route_match);
@@ -44,11 +44,11 @@ class ThemeNegotiatorWrapper extends ThemeNegotiator {
   /**
    * Return the current theme negotiator.
    *
-   * @return \Drupal\Core\Theme\ThemeNegotiatorInterface
+   * @return \Drupal\Core\Theme\ThemeNegotiatorInterface|null
    *   The current theme negotiator.
    */
-  public function getNegotiator(): ThemeNegotiatorInterface {
-    return $this->negotiator;
+  public function getNegotiator(): ?ThemeNegotiatorInterface {
+    return $this->negotiator ?? NULL;
   }
 
 }

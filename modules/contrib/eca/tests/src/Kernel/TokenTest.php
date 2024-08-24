@@ -439,4 +439,31 @@ YAML;
     $this->assertEquals(Yaml::encode(['key1' => 'val1', 'key2' => 'val2']), $token_services->replace('[mydto]'));
   }
 
+  /**
+   * Tests plain text vs HTML markup replacement.
+   */
+  public function testPlainText(): void {
+    /** @var \Drupal\eca\Token\TokenInterface $token_services */
+    $token_services = \Drupal::service('eca.token_services');
+
+    // Create the Article content type with a standard body field.
+    /** @var \Drupal\node\NodeTypeInterface $node_type */
+    $node_type = NodeType::create(['type' => 'article', 'name' => 'Article']);
+    $node_type->save();
+
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = Node::create([
+      'type' => 'article',
+      'tnid' => 0,
+      'uid' => 0,
+      'status' => 1,
+      'title' => 'Terms & Conditions',
+    ]);
+    $node->save();
+
+    $token_services->addTokenData('node', $node);
+    $this->assertEquals('Prefix Terms &amp; Conditions Suffix', $token_services->replace('Prefix [node:title] Suffix'));
+    $this->assertEquals('Prefix Terms & Conditions Suffix', $token_services->replacePlain('Prefix [plain:node:title] Suffix'));
+  }
+
 }

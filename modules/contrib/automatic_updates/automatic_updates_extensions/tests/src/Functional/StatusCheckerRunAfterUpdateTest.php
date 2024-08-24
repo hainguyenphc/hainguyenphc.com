@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Functional;
 
@@ -13,7 +13,7 @@ use Drupal\package_manager\ValidationResult;
  * @group automatic_updates_extensions
  * @internal
  */
-class StatusCheckerRunAfterUpdateTest extends UpdaterFormTestBase {
+final class StatusCheckerRunAfterUpdateTest extends UpdaterFormTestBase {
 
   /**
    * Data provider for testStatusCheckerRunAfterUpdate().
@@ -21,7 +21,7 @@ class StatusCheckerRunAfterUpdateTest extends UpdaterFormTestBase {
    * @return bool[][]
    *   The test cases.
    */
-  public function providerStatusCheckerRunAfterUpdate(): array {
+  public static function providerStatusCheckerRunAfterUpdate(): array {
     return [
       'has database updates' => [TRUE],
       'does not have database updates' => [FALSE],
@@ -48,6 +48,7 @@ class StatusCheckerRunAfterUpdateTest extends UpdaterFormTestBase {
     $assert_session->pageTextNotContains(static::$warningsExplanation);
 
     $this->assertTableShowsUpdates('Semver Test', '8.1.0', '8.1.1');
+    $this->getStageFixtureManipulator()->setVersion('drupal/semver_test_package_name', '8.1.1');
     $this->assertUpdatesCount(1);
     $page->checkField('projects[semver_test]');
     $page->pressButton('Update');
@@ -62,8 +63,7 @@ class StatusCheckerRunAfterUpdateTest extends UpdaterFormTestBase {
       // We must do this after the update has started, because the pending
       // updates validator will prevent an update from starting.
       $this->container->get('state')->set('automatic_updates_test.new_update', TRUE);
-      $page->pressButton('Continue');
-      $this->checkForMetaRefresh();
+      $this->acceptWarningAndUpdate();
       $assert_session->pageTextContainsOnce('An error has occurred.');
       $assert_session->pageTextContainsOnce('Continue to the error page');
       $page->clickLink('the error page');
@@ -81,8 +81,7 @@ class StatusCheckerRunAfterUpdateTest extends UpdaterFormTestBase {
       $assert_session->pageTextContains('Updates were attempted.');
     }
     else {
-      $page->pressButton('Continue');
-      $this->checkForMetaRefresh();
+      $this->acceptWarningAndUpdate();
       $assert_session->addressEquals('/admin/reports/updates');
       $assert_session->pageTextContainsOnce('Update complete!');
     }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Functional;
 
@@ -13,6 +13,8 @@ use Drupal\Tests\automatic_updates\Functional\UpdaterFormTestBase as UpdaterForm
  * Base class for functional tests of updater form.
  *
  * @internal
+ *   This class is an internal part of the module's testing infrastructure and
+ *   should not be used by external code.
  */
 abstract class UpdaterFormTestBase extends UpdaterFormFunctionalTestBase {
 
@@ -48,11 +50,19 @@ abstract class UpdaterFormTestBase extends UpdaterFormFunctionalTestBase {
 
     $this->activeDir = $this->container->get(PathLocator::class)->getProjectRoot();
     (new ActiveFixtureManipulator())
-      ->addPackage([
-        'name' => 'drupal/semver_test',
-        'version' => '8.1.0',
-        'type' => 'drupal-module',
-      ])
+      // Add a package where the Composer package name,
+      // drupal/semver_test_package_name, does not match the project name,
+      // semver_test.
+      ->addPackage(
+        [
+          'name' => 'drupal/semver_test_package_name',
+          'version' => '8.1.0',
+          'type' => 'drupal-module',
+        ],
+        extra_files: [
+          'semver_test.info.yml' => '{name: "Semver Test", project: "semver_test", type: "module"}',
+        ]
+      )
       ->addPackage([
         'name' => 'drupal/aaa_update_test',
         'version' => '2.0.0',
@@ -126,6 +136,18 @@ abstract class UpdaterFormTestBase extends UpdaterFormFunctionalTestBase {
   protected function checkForUpdates(): void {
     $this->drupalGet('/admin/modules/automatic-update-extensions');
     $this->clickLink('Check manually');
+    $this->checkForMetaRefresh();
+  }
+
+  /**
+   * Continue the update after checking the backup warning checkbox.
+   */
+  protected function acceptWarningAndUpdate(): void {
+    $page = $this->getSession()->getPage();
+    $page->pressButton('Continue');
+    $this->assertSession()->statusMessageContains('Warning: Updating contributed modules or themes may leave your site inoperable or looking wrong. field is required.', 'error');
+    $page->checkField('backup');
+    $page->pressButton('Continue');
     $this->checkForMetaRefresh();
   }
 

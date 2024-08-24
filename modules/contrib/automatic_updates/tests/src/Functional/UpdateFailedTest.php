@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -31,7 +31,7 @@ class UpdateFailedTest extends UpdaterFormTestBase {
     $this->checkForMetaRefresh();
     $this->assertUpdateStagedTimes(1);
 
-    LoggingCommitter::setException(new \Exception('failed at committer'));
+    LoggingCommitter::setException(\Exception::class, 'failed at committer');
     $page->pressButton('Continue');
     $this->checkForMetaRefresh();
     $failure_message = 'Automatic updates failed to apply, and the site is in an indeterminate state. Consider restoring the code and database from a backup.';

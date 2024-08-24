@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\package_manager\Unit;
 
 use Drupal\package_manager\InstalledPackage;
@@ -39,7 +41,6 @@ class InstalledPackageTest extends UnitTestCase {
     // If we provide a path that cannot be resolved to a real path, it should
     // raise an error.
     $this->expectException(\TypeError::class);
-    $this->expectExceptionMessageMatches('/must be of type \?string, bool given/');
     InstalledPackage::createFromArray([
       'name' => 'vendor/test',
       'type' => 'library',

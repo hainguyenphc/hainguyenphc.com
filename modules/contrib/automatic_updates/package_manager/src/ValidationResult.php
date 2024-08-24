@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
@@ -37,7 +37,7 @@ final class ValidationResult {
     public readonly int $severity,
     private array $messages,
     public readonly ?TranslatableMarkup $summary,
-    bool $assert_translatable
+    bool $assert_translatable,
   ) {
     if ($assert_translatable) {
       assert(Inspector::assertAll(fn ($message) => $message instanceof TranslatableMarkup, $messages));

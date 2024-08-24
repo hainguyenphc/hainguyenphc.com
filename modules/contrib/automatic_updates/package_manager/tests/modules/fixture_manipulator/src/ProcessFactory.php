@@ -2,6 +2,7 @@
 
 namespace Drupal\fixture_manipulator;
 
+use PhpTuf\ComposerStager\API\Path\Value\PathInterface;
 use PhpTuf\ComposerStager\API\Process\Factory\ProcessFactoryInterface;
 use PhpTuf\ComposerStager\API\Process\Service\ProcessInterface;
 
@@ -30,12 +31,13 @@ final class ProcessFactory implements ProcessFactoryInterface {
   /**
    * {@inheritdoc}
    */
-  public function create(array $command): ProcessInterface {
-    $process = $this->decorated->create($command);
+  public function create(array $command, ?PathInterface $workingDir = NULL, array $env = []): ProcessInterface {
+    $process = $this->decorated->create($command, $workingDir, $env);
 
     $env = $process->getEnv();
     $env['COMPOSER_MIRROR_PATH_REPOS'] = '1';
-    return $process->setEnv($env);
+    $process->setEnv($env);
+    return $process;
   }
 
 }

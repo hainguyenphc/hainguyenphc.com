@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel\PathExcluder;
 
@@ -48,7 +48,7 @@ class SqliteDatabaseExcluderTest extends PackageManagerKernelTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerSqliteDatabaseFilesExcluded(): array {
+  public static function providerSqliteDatabaseFilesExcluded(): array {
     return [
       // If the database is at a relative path, it should be excluded relative
       // to the web root.

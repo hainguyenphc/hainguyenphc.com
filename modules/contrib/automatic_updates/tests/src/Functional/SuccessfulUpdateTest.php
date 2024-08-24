@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -19,7 +19,7 @@ class SuccessfulUpdateTest extends UpdaterFormTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerSuccessfulUpdate(): array {
+  public static function providerSuccessfulUpdate(): array {
     return [
       'Modules page, maintenance mode on' => [
         '/admin/modules/update',

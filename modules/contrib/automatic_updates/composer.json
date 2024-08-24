@@ -14,13 +14,16 @@
     },
     "require": {
         "ext-json": "*",
-        "php-tuf/composer-stager": "^2.0.0-beta3",
+        "php-tuf/composer-stager": "^2-rc5",
         "composer-runtime-api": "^2.1",
-        "symfony/console": "^6.2"
+        "symfony/console": "^6.2 || ^7"
     },
     "require-dev": {
         "colinodell/psr-testlogger": "^1.2",
-        "symfony/config": "^6.2"
+        "symfony/config": "^6.2 || ^7"
+    },
+    "conflict": {
+        "php-tuf/composer-integration": "<1-alpha11"
     },
     "scripts": {
         "phpcbf": "scripts/phpcbf.sh",

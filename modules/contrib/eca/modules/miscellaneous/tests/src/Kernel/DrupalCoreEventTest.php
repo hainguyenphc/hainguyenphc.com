@@ -45,6 +45,7 @@ class DrupalCoreEventTest extends KernelTestBase {
     'field',
     'block',
     'block_content',
+    'file',
     'jsonapi',
     'layout_builder',
     'layout_builder_test',

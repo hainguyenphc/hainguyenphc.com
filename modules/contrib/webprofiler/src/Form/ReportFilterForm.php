@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Form;
 
@@ -82,7 +82,7 @@ class ReportFilterForm extends FormBase {
     $form['limit'] = [
       '#type' => 'select',
       '#title' => $this->t('Limit'),
-      '#options' => array_combine($limits, $limits),
+      '#options' => \array_combine($limits, $limits),
       '#default_value' => $this->getRequest()->query->get('limit'),
     ];
 

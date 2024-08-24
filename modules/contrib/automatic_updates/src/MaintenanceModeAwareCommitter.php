@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates;
 
@@ -48,7 +48,7 @@ final class MaintenanceModeAwareCommitter implements CommitterInterface, EventSu
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     return [
       PostApplyEvent::class => ['restore', PHP_INT_MAX],
     ];

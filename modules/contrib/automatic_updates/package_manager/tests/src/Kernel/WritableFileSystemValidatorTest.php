@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -30,7 +30,7 @@ class WritableFileSystemValidatorTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerWritable(): array {
+  public static function providerWritable(): array {
     // @see \Drupal\Tests\package_manager\Traits\ValidationTestTrait::resolvePlaceholdersInArrayValuesWithRealPaths()
     $drupal_root_error = t('The Drupal directory "<PROJECT_ROOT>/web" is not writable.');
     $vendor_error = t('The vendor directory "<VENDOR_DIR>" is not writable.');
@@ -208,7 +208,7 @@ class WritableFileSystemValidatorTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerStagingRootPermissions(): array {
+  public static function providerStagingRootPermissions(): array {
     $writable_permission = 0777;
     $non_writable_permission = 0550;
     $summary = t('The file system is not writable.');

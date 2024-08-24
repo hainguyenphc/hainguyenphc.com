@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\tracer\Twig\Extension;
 
@@ -30,14 +30,14 @@ class TraceableProfilerExtension extends ProfilerExtension {
    */
   public function __construct(
     protected readonly Profile $profile,
-    protected readonly TracerInterface $tracer
+    protected readonly TracerInterface $tracer,
   ) {
     parent::__construct($profile);
     $this->events = new \SplObjectStorage();
   }
 
   /**
-   * {@inheritdoc}
+   * Start tracing a template.
    */
   public function enter(Profile $profile): void {
     if ($profile->isTemplate()) {
@@ -48,7 +48,7 @@ class TraceableProfilerExtension extends ProfilerExtension {
   }
 
   /**
-   * {@inheritdoc}
+   * Stop tracing a template.
    */
   public function leave(Profile $profile): void {
     parent::leave($profile);

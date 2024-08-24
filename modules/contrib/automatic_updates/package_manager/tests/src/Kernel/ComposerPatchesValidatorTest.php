@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -29,7 +29,7 @@ class ComposerPatchesValidatorTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerErrorDuringPreCreate(): array {
+  public static function providerErrorDuringPreCreate(): array {
     $summary = t('Problems detected related to the Composer plugin <code>cweagans/composer-patches</code>.');
     return [
       'INVALID: exit-on-patch-failure missing' => [
@@ -106,7 +106,7 @@ class ComposerPatchesValidatorTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerErrorDuringPreApply(): array {
+  public static function providerErrorDuringPreApply(): array {
     $summary = t('Problems detected related to the Composer plugin <code>cweagans/composer-patches</code>.');
 
     return [

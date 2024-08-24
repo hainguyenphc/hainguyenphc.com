@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Kernel\StatusCheck;
 
@@ -40,7 +40,7 @@ class WindowsValidatorTest extends AutomaticUpdatesKernelTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerBackgroundUpdatesDisallowedOnWindows(): array {
+  public static function providerBackgroundUpdatesDisallowedOnWindows(): array {
     return [
       'updates enabled via web, user has access to update form' => [
         ['administer software updates'],

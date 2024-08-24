@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates_extensions;
 
@@ -26,7 +26,7 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
  *   This class is an internal part of the module's update handling and
  *   should not be used by external code.
  */
-class ExtensionUpdateStage extends StageBase {
+final class ExtensionUpdateStage extends StageBase {
 
   /**
    * {@inheritdoc}

@@ -98,6 +98,16 @@ $color-borders: rgba($color-black, 0.2);
         &:focus {
           color: $color-accent;
         }
+
+        &.no-link {
+          color: inherit !important;
+          cursor: default;
+
+          &:hover,
+          &:focus {
+            cursor: default;
+          }
+        }
       }
     }
   }

@@ -104,6 +104,12 @@ class ListBuilder extends DraggableListBuilder {
       '#markup' => $eca->status() ? $this->t('yes') : $this->t('no'),
     ];
 
+    foreach (['model', 'events', 'version', 'status'] as $cell) {
+      $row[$cell]['#wrapper_attributes'] = [
+        'data-drupal-selector' => 'models-table-filter-text-source',
+      ];
+    }
+
     return $row + parent::buildRow($entity);
   }
 
@@ -139,6 +145,48 @@ class ListBuilder extends DraggableListBuilder {
     }
 
     return $operations;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function render(): array {
+
+    $list = parent::render();
+
+    $list['#attached']['library'][] = 'eca_ui/eca_ui.listing';
+
+    $list['filters'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => [
+          'table-filter',
+          'js-show',
+        ],
+      ],
+      '#weight' => -1,
+    ];
+
+    $list['filters']['text'] = [
+      '#type' => 'search',
+      '#title' => $this
+        ->t('Filter'),
+      '#title_display' => 'invisible',
+      '#size' => 60,
+      '#placeholder' => $this
+        ->t('Filter by model name, events or version'),
+      '#attributes' => [
+        'class' => [
+          'models-filter-text',
+        ],
+        'data-table' => '#edit-eca-entities',
+        'autocomplete' => 'off',
+        'title' => $this
+          ->t('Enter a part of the model name, event name or version to filter by.'),
+      ],
+    ];
+
+    return $list;
   }
 
   /**

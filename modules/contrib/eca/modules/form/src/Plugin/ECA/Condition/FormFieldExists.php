@@ -27,6 +27,11 @@ class FormFieldExists extends FormFieldConditionBase {
     if (!$this->getCurrentFormState()) {
       return FALSE;
     }
+    $field_name = trim((string) $this->tokenServices->replace($this->configuration['field_name']));
+    if ($field_name === '') {
+      throw new \InvalidArgumentException('Cannot use an empty string as field name');
+    }
+    $this->configuration['field_name'] = $field_name;
     return $this->negationCheck(!empty($this->getTargetElement()));
   }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\package_manager\Kernel;
 
 use Drupal\package_manager\Event\PreApplyEvent;
@@ -54,7 +56,7 @@ class BaseRequirementsFulfilledValidatorTest extends PackageManagerKernelTestBas
    * @return array[]
    *   The test cases.
    */
-  public function providerBaseRequirement(): array {
+  public static function providerBaseRequirement(): array {
     return [
       [PreCreateEvent::class],
       [PreRequireEvent::class],

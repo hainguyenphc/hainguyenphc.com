@@ -24,10 +24,22 @@ interface ProcessInterface
     public function getEnv(): array;
 
     /**
+     * Returns the current error output of the process (STDERR).
+     *
+     * @throws \PhpTuf\ComposerStager\API\Exception\LogicException
+     *   If the process is not started.
+     *
+     * @see \PhpTuf\ComposerStager\API\Process\Service\ProcessInterface::getOutput
+     */
+    public function getErrorOutput(): string;
+
+    /**
      * Returns the current output of the process (STDOUT).
      *
      * @throws \PhpTuf\ComposerStager\API\Exception\LogicException
      *   If the process is not started.
+     *
+     * @see \PhpTuf\ComposerStager\API\Process\Service\ProcessInterface::getErrorOutput
      */
     public function getOutput(): string;
 
@@ -41,7 +53,7 @@ interface ProcessInterface
      *
      * @see \PhpTuf\ComposerStager\API\Process\Service\ProcessInterface::run
      */
-    public function mustRun(?OutputCallbackInterface $callback = null): self;
+    public function mustRun(?OutputCallbackInterface $callback = null): void;
 
     /**
      * Runs the process.
@@ -65,11 +77,11 @@ interface ProcessInterface
      *   environment variables set on your system will be inherited. You can
      *   prevent this by setting to `false` variables you want to remove. Example:
      *   ```php
-     *     $process->setEnv(
-     *         'STRING_VAR' => 'a string',
-     *         'STRINGABLE_VAR' => new StringableObject(),
-     *         'REMOVE_ME' => false,
-     *     );
+     *   $process->setEnv(
+     *       'STRING_VAR' => 'a string',
+     *       'STRINGABLE_VAR' => new StringableObject(),
+     *       'REMOVE_ME' => false,
+     *   );
      *   ```
      *
      * @throws \PhpTuf\ComposerStager\API\Exception\InvalidArgumentException
@@ -77,7 +89,7 @@ interface ProcessInterface
      *
      * @see \PhpTuf\ComposerStager\API\Process\Service\ProcessInterface::getEnv
      */
-    public function setEnv(array $env): self;
+    public function setEnv(array $env): void;
 
     /**
      * Sets the process timeout (max. runtime) in seconds.
@@ -89,5 +101,5 @@ interface ProcessInterface
      * @throws \PhpTuf\ComposerStager\API\Exception\InvalidArgumentException
      *   If the given timeout is negative.
      */
-    public function setTimeout(int $timeout = self::DEFAULT_TIMEOUT): self;
+    public function setTimeout(int $timeout = self::DEFAULT_TIMEOUT): void;
 }

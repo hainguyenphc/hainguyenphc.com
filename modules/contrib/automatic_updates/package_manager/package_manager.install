@@ -5,7 +5,7 @@
  * Contains install and update functions for Package Manager.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 use Drupal\package_manager\ComposerInspector;
 use Drupal\package_manager\Exception\StageFailureMarkerException;
@@ -83,10 +83,20 @@ function package_manager_requirements(string $phase) {
 // BEGIN: DELETE FROM CORE MERGE REQUEST
 
 /**
+ * Deletes the `package_manager.settings:file_syncer` config key.
+ */
+function package_manager_update_9002(): void {
+  Drupal::configFactory()
+    ->getEditable('package_manager.settings')
+    ->clear('file_syncer')
+    ->save();
+}
+
+/**
  * Implements hook_update_last_removed().
  */
 function package_manager_update_last_removed(): int {
-  return 9001;
+  return 9002;
 }
 
 // END: DELETE FROM CORE MERGE REQUEST

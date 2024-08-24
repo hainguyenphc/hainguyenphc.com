@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Unit\VersionPolicy;
 
@@ -24,7 +24,7 @@ class TargetSecurityReleaseTest extends UnitTestCase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerTargetSecurityRelease(): array {
+  public static function providerTargetSecurityRelease(): array {
     return [
       'target security release' => [
         [

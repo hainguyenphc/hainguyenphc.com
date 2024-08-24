@@ -1,9 +1,10 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
+use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\KeyValueStore\KeyValueExpirableFactoryInterface;
 use Drupal\Core\KeyValueStore\KeyValueFactoryInterface;
@@ -48,18 +49,24 @@ final class PackageManagerUpdateProcessor extends UpdateProcessor {
    *   The key/value factory.
    * @param \Drupal\Core\KeyValueStore\KeyValueExpirableFactoryInterface $key_value_expirable_factory
    *   The expirable key/value factory.
+   * @param \Drupal\Component\Datetime\TimeInterface $time
+   *   The time service.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, QueueFactory $queue_factory, UpdateFetcherInterface $update_fetcher, StateInterface $state_store, PrivateKey $private_key, KeyValueFactoryInterface $key_value_factory, KeyValueExpirableFactoryInterface $key_value_expirable_factory) {
-    $this->updateFetcher = $update_fetcher;
-    $this->updateSettings = $config_factory->get('update.settings');
+  public function __construct(
+    ConfigFactoryInterface $config_factory,
+    QueueFactory $queue_factory,
+    UpdateFetcherInterface $update_fetcher,
+    StateInterface $state_store,
+    PrivateKey $private_key,
+    KeyValueFactoryInterface $key_value_factory,
+    KeyValueExpirableFactoryInterface $key_value_expirable_factory,
+    TimeInterface $time,
+  ) {
+    parent::__construct(...func_get_args());
     $this->fetchQueue = $queue_factory->get('package_manager.update_fetch_tasks');
     $this->tempStore = $key_value_expirable_factory->get('package_manager.update');
     $this->fetchTaskStore = $key_value_factory->get('package_manager.update_fetch_task');
     $this->availableReleasesTempStore = $key_value_expirable_factory->get('package_manager.update_available_releases');
-    $this->stateStore = $state_store;
-    $this->privateKey = $private_key;
-    $this->fetchTasks = [];
-    $this->failed = [];
   }
 
   /**

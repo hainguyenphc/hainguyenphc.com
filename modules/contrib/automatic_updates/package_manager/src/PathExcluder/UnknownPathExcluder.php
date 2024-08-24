@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\PathExcluder;
 
@@ -15,6 +15,8 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Filesystem\Exception\InvalidArgumentException;
+use Symfony\Component\Filesystem\Path;
 
 /**
  * Excludes unknown paths from stage operations.
@@ -120,6 +122,29 @@ final class UnknownPathExcluder implements EventSubscriberInterface, LoggerAware
         continue;
       }
       $always_include[] = ltrim($scaffold_file_path, '/');
+    }
+
+    // Find any path repositories located inside the project root. These need
+    // to be included or Composer will break in the staging area.
+    $repositories = $this->composerInspector->getConfig('repositories', $project_root);
+    $repositories = Json::decode($repositories);
+    foreach ($repositories as $repository) {
+      if ($repository['type'] !== 'path') {
+        continue;
+      }
+      try {
+        // Ensure $path is relative to the project root, even if it's written as
+        // an absolute path in `composer.json`.
+        $path = Path::makeRelative($repository['url'], $project_root);
+        // Strip off everything except the top-level directory name. For
+        // example, if the repository path is `custom/module/foo`, always
+        // include `custom`.
+        $always_include[] = dirname($path, substr_count($path, '/') ?: 1);
+      }
+      catch (InvalidArgumentException) {
+        // The repository path is not relative to the project root, so we don't
+        // need to worry about it.
+      }
     }
 
     // Search for all files (including hidden ones) in the project root. We need

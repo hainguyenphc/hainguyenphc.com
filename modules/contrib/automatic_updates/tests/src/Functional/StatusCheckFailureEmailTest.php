@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -59,14 +59,14 @@ class StatusCheckFailureEmailTest extends AutomaticUpdatesFunctionalTestBase {
       ->save();
     $this->setUpEmailRecipients();
 
-    // Allow stored available update data to live for a very, very long time.
-    // By default, the data expires after one day, but this test runs cron many
+    // Allow stored available update data to live for as long as possible. By
+    // default, the data expires after one day, but this test runs cron many
     // times, with a simulated two hour interval between each run (see
     // ::runCron()). Without this long grace period, all the cron runs in this
     // test would need to run on the same "day", to prevent certain validators
     // from breaking this test due to available update data being irretrievable.
     $this->config('update.settings')
-      ->set('check.interval_days', 30)
+      ->set('check.interval_days', 7)
       ->save();
   }
 

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Unit\VersionPolicy;
 
@@ -23,7 +23,7 @@ class MajorVersionMatchTest extends UnitTestCase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerMajorVersionMatch(): array {
+  public static function providerMajorVersionMatch(): array {
     return [
       'same versions' => [
         '9.8.0',

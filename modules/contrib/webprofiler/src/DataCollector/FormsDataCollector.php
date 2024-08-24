@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\DataCollector;
 
@@ -23,7 +23,9 @@ class FormsDataCollector extends DataCollector implements HasPanelInterface {
    * @param \Drupal\Core\Form\FormBuilderInterface $formBuilder
    *   The form builder.
    */
-  public function __construct(private readonly FormBuilderInterface $formBuilder) {
+  public function __construct(
+    private readonly FormBuilderInterface $formBuilder,
+  ) {
     $this->data['forms'] = [];
   }
 
@@ -69,7 +71,7 @@ class FormsDataCollector extends DataCollector implements HasPanelInterface {
    *   The number of forms in the page.
    */
   public function getFormsCount(): int {
-    return count($this->getForms());
+    return \count($this->getForms());
   }
 
   /**
@@ -79,7 +81,7 @@ class FormsDataCollector extends DataCollector implements HasPanelInterface {
     $build = [];
     $forms = $this->data['forms'];
 
-    if (count($forms) == 0) {
+    if (\count($forms) == 0) {
       return [
         '#markup' => '<p>' . $this->t('No forms collected') . '</p>',
       ];
@@ -108,7 +110,7 @@ class FormsDataCollector extends DataCollector implements HasPanelInterface {
 
     return [
       '#theme' => 'webprofiler_dashboard_section',
-      '#title' => sprintf('%s (%s:%s)', $form_id, $form['class']['class'], $form['class']['method']),
+      '#title' => \sprintf('%s (%s:%s)', $form_id, $form['class']['class'], $form['class']['method']),
       '#data' => [
         '#type' => 'table',
         '#header' => [
@@ -143,7 +145,7 @@ class FormsDataCollector extends DataCollector implements HasPanelInterface {
     $rows = [];
 
     foreach ($elements as $name => $element) {
-      $label = $parent == '' ? $name : implode(' > ', [$parent, $name]);
+      $label = $parent == '' ? $name : \implode(' > ', [$parent, $name]);
 
       $rows[] = [
         $label,
@@ -153,7 +155,7 @@ class FormsDataCollector extends DataCollector implements HasPanelInterface {
       ];
 
       if (isset($element['#children'])) {
-        $rows = array_merge($rows, $this->renderElement($element['#children'], $label));
+        $rows = \array_merge($rows, $this->renderElement($element['#children'], $label));
       }
     }
 

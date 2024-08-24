@@ -35,7 +35,7 @@ Contains metadata about the following (fake) releases of automatic_updates_exten
       <version>3.0.0</version>
       <tag>3.0.0</tag>
       <status>published</status>
-      <release_link>http://example.com/automatic_updates_extensions_test_theme/releases/3.0.0</release_link>
+      <release_link>http://example.com/automatic_updates_extensions_test_theme-3-0-0-release</release_link>
       <download_link>http://example.com/automatic_updates_extensions_test_theme-3.0.0.tar.gz</download_link>
       <date>1597793786</date>
       <files>
@@ -62,7 +62,7 @@ Contains metadata about the following (fake) releases of automatic_updates_exten
       <version>8.x-2.1</version>
       <tag>8.x-2.1</tag>
       <status>published</status>
-      <release_link>http://example.com/automatic_updates_extensions_test_theme/releases/8.x-2.1</release_link>
+      <release_link>http://example.com/automatic_updates_extensions_test_theme-8-x-2-1-release</release_link>
       <download_link>http://example.com/automatic_updates_extensions_test_theme-8.x-2.1.tar.gz</download_link>
       <date>1597793786</date>
       <files>
@@ -95,7 +95,7 @@ Contains metadata about the following (fake) releases of automatic_updates_exten
       <version>8.x-2.0</version>
       <tag>8.x-2.0</tag>
       <status>published</status>
-      <release_link>http://example.com/automatic_updates_extensions_test_theme/releases/8.x-2.0</release_link>
+      <release_link>http://example.com/automatic_updates_extensions_test_theme-8-x-2-0-release</release_link>
       <download_link>http://example.com/automatic_updates_extensions_test_theme-8.x-2.0.tar.gz</download_link>
       <date>1597793786</date>
       <files>

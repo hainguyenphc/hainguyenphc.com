@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates_extensions;
 
@@ -84,7 +84,11 @@ final class BatchProcessor {
       static::getStage()->claim($stage_id)->stage();
     }
     catch (\Throwable $e) {
-      static::clean($stage_id, $context);
+      // If the stage was not already destroyed because of this exception
+      // destroy it.
+      if (!static::getStage()->isAvailable()) {
+        static::clean($stage_id, $context);
+      }
       static::handleException($e, $context);
     }
   }

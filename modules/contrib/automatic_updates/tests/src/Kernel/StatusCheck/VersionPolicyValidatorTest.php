@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Kernel\StatusCheck;
 
@@ -32,7 +32,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerStatusCheckSpecific(): array {
+  public static function providerStatusCheckSpecific(): array {
     $metadata_dir = __DIR__ . '/../../../../package_manager/tests/fixtures/release-history';
 
     return [
@@ -92,7 +92,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerGeneric(): array {
+  public static function providerGeneric(): array {
     $metadata_dir = __DIR__ . '/../../../../package_manager/tests/fixtures/release-history';
 
     return [
@@ -208,7 +208,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         // If we're doing a status check, the stage isn't created, and the
         // requested package versions are not recorded during begin(), so the
         // error message won't contain the target version.
-        $expected_results[] = $this->createVersionPolicyValidationResult($installed_version, NULL, $expected_validation_messages);
+        $expected_results[] = static::createVersionPolicyValidationResult($installed_version, NULL, $expected_validation_messages);
       }
       $this->assertCheckerResultsFromManager($expected_results, TRUE);
     }
@@ -220,7 +220,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerCronPreCreateSpecific(): array {
+  public static function providerCronPreCreateSpecific(): array {
     $metadata_dir = __DIR__ . '/../../../../package_manager/tests/fixtures/release-history';
 
     return [
@@ -416,7 +416,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
 
     $expected_results = [];
     if ($expected_validation_messages) {
-      $expected_results[] = $this->createVersionPolicyValidationResult($installed_version, $target_version, $expected_validation_messages);
+      $expected_results[] = static::createVersionPolicyValidationResult($installed_version, $target_version, $expected_validation_messages);
     }
 
     foreach ($cron_modes as $cron_mode) {
@@ -446,7 +446,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerApi(): array {
+  public static function providerApi(): array {
     $metadata_dir = __DIR__ . '/../../../../package_manager/tests/fixtures/release-history';
 
     return [
@@ -455,7 +455,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.1-security.xml",
         ['drupal' => '9.8.1'],
         [
-          $this->createVersionPolicyValidationResult('9.8.0-dev', '9.8.1', [
+          static::createVersionPolicyValidationResult('9.8.0-dev', '9.8.1', [
             t('Drupal cannot be automatically updated from the installed version, 9.8.0-dev, because automatic updates from a dev version to any other version are not supported.'),
           ]),
         ],
@@ -465,7 +465,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.2-unsupported_unpublished.xml",
         ['drupal' => '9.8.1'],
         [
-          $this->createVersionPolicyValidationResult('9.7.1', '9.8.1', [
+          static::createVersionPolicyValidationResult('9.7.1', '9.8.1', [
             t('Drupal cannot be automatically updated from 9.7.1 to 9.8.1 because automatic updates from one minor version to another are not supported.'),
           ]),
         ],
@@ -475,7 +475,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.2-unsupported_unpublished.xml",
         ['drupal' => '9.8.1'],
         [
-          $this->createVersionPolicyValidationResult('8.9.1', '9.8.1', [
+          static::createVersionPolicyValidationResult('8.9.1', '9.8.1', [
             t('Drupal cannot be automatically updated from 8.9.1 to 9.8.1 because automatic updates from one major version to another are not supported.'),
           ]),
         ],
@@ -487,7 +487,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.1-security.xml",
         ['drupal' => '9.8.0'],
         [
-          $this->createVersionPolicyValidationResult('9.8.0-dev', '9.8.0', [
+          static::createVersionPolicyValidationResult('9.8.0-dev', '9.8.0', [
             t('Drupal cannot be automatically updated from the installed version, 9.8.0-dev, because automatic updates from a dev version to any other version are not supported.'),
             t('Cannot update Drupal core to 9.8.0 because it is not in the list of installable releases.'),
           ]),
@@ -498,7 +498,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.1-security.xml",
         ['drupal' => '8.7.1'],
         [
-          $this->createVersionPolicyValidationResult('9.8.0-dev', '8.7.1', [
+          static::createVersionPolicyValidationResult('9.8.0-dev', '8.7.1', [
             t('Drupal cannot be automatically updated from the installed version, 9.8.0-dev, because automatic updates from a dev version to any other version are not supported.'),
             t('Update version 8.7.1 is lower than 9.8.0-dev, downgrading is not supported.'),
           ]),
@@ -509,7 +509,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.1-security.xml",
         ['drupal' => '9.7.0'],
         [
-          $this->createVersionPolicyValidationResult('9.8.0-dev', '9.7.0', [
+          static::createVersionPolicyValidationResult('9.8.0-dev', '9.7.0', [
             t('Drupal cannot be automatically updated from the installed version, 9.8.0-dev, because automatic updates from a dev version to any other version are not supported.'),
             t('Update version 9.7.0 is lower than 9.8.0-dev, downgrading is not supported.'),
           ]),
@@ -520,7 +520,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.1-security.xml",
         ['drupal' => '9.8.0'],
         [
-          $this->createVersionPolicyValidationResult('9.8.1-dev', '9.8.0', [
+          static::createVersionPolicyValidationResult('9.8.1-dev', '9.8.0', [
             t('Drupal cannot be automatically updated from the installed version, 9.8.1-dev, because automatic updates from a dev version to any other version are not supported.'),
             t('Update version 9.8.0 is lower than 9.8.1-dev, downgrading is not supported.'),
           ]),
@@ -533,7 +533,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.2.xml",
         ['drupal' => '9.8.0'],
         [
-          $this->createVersionPolicyValidationResult('9.8.1', '9.8.0', [
+          static::createVersionPolicyValidationResult('9.8.1', '9.8.0', [
             t('Update version 9.8.0 is lower than 9.8.1, downgrading is not supported.'),
           ]),
         ],
@@ -543,7 +543,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.2.xml",
         ['drupal' => '9.8.2'],
         [
-          $this->createVersionPolicyValidationResult('8.9.1', '9.8.2', [
+          static::createVersionPolicyValidationResult('8.9.1', '9.8.2', [
             t('Drupal cannot be automatically updated from 8.9.1 to 9.8.2 because automatic updates from one major version to another are not supported.'),
           ]),
         ],
@@ -553,7 +553,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.2-unsupported_unpublished.xml",
         ['drupal' => '9.8.1'],
         [
-          $this->createVersionPolicyValidationResult('9.8.0', '9.8.1', [
+          static::createVersionPolicyValidationResult('9.8.0', '9.8.1', [
             t('Cannot update Drupal core to 9.8.1 because it is not in the list of installable releases.'),
           ]),
         ],
@@ -574,7 +574,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
         "$metadata_dir/drupal.9.8.2.xml",
         ['drupal' => '9.8.2'],
         [
-          $this->createVersionPolicyValidationResult('9.7.9', '9.8.2', [
+          static::createVersionPolicyValidationResult('9.7.9', '9.8.2', [
             t('Drupal cannot be automatically updated from 9.7.9 to 9.8.2 because automatic updates from one minor version to another are not supported.'),
           ]),
         ],
@@ -654,7 +654,7 @@ class VersionPolicyValidatorTest extends AutomaticUpdatesKernelTestBase {
    * @return \Drupal\package_manager\ValidationResult
    *   A validation error object with the appropriate summary.
    */
-  private function createVersionPolicyValidationResult(string $installed_version, ?string $target_version, array $messages): ValidationResult {
+  private static function createVersionPolicyValidationResult(string $installed_version, ?string $target_version, array $messages): ValidationResult {
     if ($target_version) {
       $summary = t('Updating from Drupal @installed_version to @target_version is not allowed.', [
         '@installed_version' => $installed_version,

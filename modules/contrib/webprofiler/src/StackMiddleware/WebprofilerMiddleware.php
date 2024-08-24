@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\StackMiddleware;
 
@@ -22,20 +22,22 @@ class WebprofilerMiddleware implements HttpKernelInterface {
    * @param \Symfony\Component\HttpKernel\HttpKernelInterface $httpKernel
    *   The decorated kernel.
    */
-  public function __construct(protected readonly HttpKernelInterface $httpKernel) {
+  public function __construct(
+    protected readonly HttpKernelInterface $httpKernel,
+  ) {
   }
 
   /**
    * {@inheritdoc}
    */
   public function handle(Request $request, int $type = self::MAIN_REQUEST, bool $catch = TRUE): Response {
-    array_map(function (string $key): void {
+    \array_map(static function (string $key): void {
       $connection = Database::getConnection($key);
       $connection->enableEvents([
         StatementExecutionStartEvent::class,
         StatementExecutionEndEvent::class,
       ]);
-    }, array_keys(Database::getAllConnectionInfo()));
+    }, \array_keys(Database::getAllConnectionInfo()));
 
     return $this->httpKernel->handle($request, $type, $catch);
   }

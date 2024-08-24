@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -46,75 +46,6 @@ class RsyncValidatorTest extends PackageManagerKernelTestBase {
 
     $container->getDefinition(RsyncValidator::class)
       ->setArgument('$executableFinder', $this->executableFinder->reveal());
-  }
-
-  /**
-   * Data provider for ::testConfiguredFileSyncer().
-   *
-   * @return array[]
-   *   The test cases.
-   */
-  public function providerConfiguredFileSyncer(): array {
-    return [
-      'using rsync' => [
-        'rsync',
-        [],
-        [],
-      ],
-      'not using rsync, help not installed' => [
-        'php',
-        [
-          ValidationResult::createWarning([
-            t('You are currently using the PHP file syncer, which has known problems and is not stable. It is strongly recommended to switch back to the default <em>rsync</em> file syncer instead.'),
-          ]),
-        ],
-        [],
-      ],
-      'not using rsync, help installed' => [
-        'php',
-        [
-          ValidationResult::createWarning([
-            t('You are currently using the PHP file syncer, which has known problems and is not stable. It is strongly recommended to switch back to the default <em>rsync</em> file syncer instead. See the <a href="/admin/help/package_manager#package-manager-faq-rsync">Package Manager help</a> for more information on how to resolve this.'),
-          ]),
-        ],
-        ['help'],
-      ],
-    ];
-  }
-
-  /**
-   * Tests that the file_syncer config option is validated.
-   *
-   * @param string $configured_syncer
-   *   The file_syncer value in package_manager.settings config.
-   * @param \Drupal\package_manager\ValidationResult[] $expected_results
-   *   The expected status check results.
-   * @param string[] $additional_modules
-   *   Any additional modules to enable.
-   *
-   * @dataProvider providerConfiguredFileSyncer
-   */
-  public function testConfiguredFileSyncer(string $configured_syncer, array $expected_results, array $additional_modules): void {
-    if ($additional_modules) {
-      $this->enableModules($additional_modules);
-    }
-
-    $this->config('package_manager.settings')
-      ->set('file_syncer', $configured_syncer)
-      ->save();
-
-    $this->assertStatusCheckResults($expected_results);
-  }
-
-  /**
-   * Tests that the stage is created even if the PHP file syncer is selected.
-   */
-  public function testPreCreateAllowsPhpSyncer(): void {
-    $this->config('package_manager.settings')
-      ->set('file_syncer', 'php')
-      ->save();
-
-    $this->assertResults([]);
   }
 
   /**

@@ -91,6 +91,10 @@ class FormFieldValue extends StringComparisonBase {
       // current form state available.
       return '_FORM_STATE_IS_MISSING_';
     }
+
+    $original_field_name = $this->configuration['field_name'];
+    $this->configuration['field_name'] = (string) $this->tokenServices->replace($original_field_name);
+
     $value = $this->getSubmittedValue();
     if (is_array($value)) {
       // When the field contains multiple values, we evaluate against
@@ -120,6 +124,10 @@ class FormFieldValue extends StringComparisonBase {
       $this->configuration['negate'] = $negated;
       $value = $matched_val ?? $first_val;
     }
+
+    // Restoring the original config entry.
+    $this->configuration['field_name'] = $original_field_name;
+
     if (is_scalar($value) || is_null($value)) {
       $value = trim((string) $value);
     }

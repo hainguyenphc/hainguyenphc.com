@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -20,7 +20,7 @@ class UpdateCompleteMessageTest extends UpdaterFormTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerUpdateCompleteMessage(): array {
+  public static function providerUpdateCompleteMessage(): array {
     return [
       'maintenance mode off' => [FALSE],
       'maintenance mode on' => [TRUE],

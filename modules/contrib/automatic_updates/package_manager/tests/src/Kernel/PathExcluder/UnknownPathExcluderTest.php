@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel\PathExcluder;
 
@@ -49,18 +49,19 @@ class UnknownPathExcluderTest extends PackageManagerKernelTestBase {
       $fs->mirror(__DIR__ . '/../../../fixtures/fake_site', $fake_site_with_nested_webroot);
 
       // Create a webroot directory in our new directory and copy all folders
-      // and files except composer.json, composer.lock and vendor into the
-      // webroot.
+      // and files into it, except for ones that should always be in the
+      // project root.
       $fs->mkdir($fake_site_with_nested_webroot . DIRECTORY_SEPARATOR . 'webroot');
       $paths_in_project_root = glob("$fake_site_with_nested_webroot/*");
-      $root_paths = [
+      $keep_in_project_root = [
         $fake_site_with_nested_webroot . '/vendor',
         $fake_site_with_nested_webroot . '/webroot',
         $fake_site_with_nested_webroot . '/composer.json',
         $fake_site_with_nested_webroot . '/composer.lock',
+        $fake_site_with_nested_webroot . '/custom',
       ];
       foreach ($paths_in_project_root as $path_in_project_root) {
-        if (!in_array($path_in_project_root, $root_paths, TRUE)) {
+        if (!in_array($path_in_project_root, $keep_in_project_root, TRUE)) {
           $fs->rename($path_in_project_root, $fake_site_with_nested_webroot . '/webroot' . str_replace($fake_site_with_nested_webroot, '', $path_in_project_root));
         }
       }
@@ -85,7 +86,7 @@ class UnknownPathExcluderTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerTestUnknownPath() {
+  public static function providerTestUnknownPath() {
     return [
       'unknown file where web and project root same' => [
         FALSE,
@@ -225,6 +226,21 @@ class UnknownPathExcluderTest extends PackageManagerKernelTestBase {
     $this->assertFileExists($project_root . '/unknown/file.txt');
     $stage->create();
     $this->assertFileDoesNotExist($stage->getStageDirectory() . '/unknown/file.txt');
+  }
+
+  public function testPathRepositoriesAreIncluded(): void {
+    $this->createTestProjectForTemplate(TRUE);
+
+    $project_root = $this->container->get(PathLocator::class)
+      ->getProjectRoot();
+    $this->assertDirectoryExists($project_root . '/custom');
+
+    $stage = $this->createStage();
+    $stage->create();
+    $this->assertDirectoryExists($stage->getStageDirectory() . '/custom');
+    $stage->require(['ext-json:*']);
+    $stage->apply();
+    $this->assertDirectoryExists($project_root . '/custom');
   }
 
 }
