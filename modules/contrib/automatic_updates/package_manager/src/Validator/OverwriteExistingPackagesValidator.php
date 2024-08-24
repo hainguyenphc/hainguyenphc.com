@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\Validator;
 
@@ -43,7 +43,7 @@ final class OverwriteExistingPackagesValidator implements EventSubscriberInterfa
    */
   public function __construct(
     private readonly PathLocator $pathLocator,
-    private readonly ComposerInspector $composerInspector
+    private readonly ComposerInspector $composerInspector,
   ) {}
 
   /**

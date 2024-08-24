@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Form;
 
@@ -39,7 +39,7 @@ class FormBuilderWrapper extends FormBuilder {
     $elements = $this->extractElement($form);
     $buildInfo = $form_state->getBuildInfo();
 
-    $class = get_class($buildInfo['callback_object']);
+    $class = \get_class($buildInfo['callback_object']);
     try {
       $method = new \ReflectionMethod($class, 'buildForm');
 

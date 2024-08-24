@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
@@ -24,18 +24,18 @@ trait StatusCheckTrait {
    *
    * @param \Drupal\package_manager\StageBase $stage
    *   The stage to run the status check for.
-   * @param \Symfony\Contracts\EventDispatcher\EventDispatcherInterface $event_dispatcher
+   * @param \Symfony\Contracts\EventDispatcher\EventDispatcherInterface|null $event_dispatcher
    *   (optional) The event dispatcher service.
-   * @param \Drupal\package_manager\PathLocator $path_locator
+   * @param \Drupal\package_manager\PathLocator|null $path_locator
    *   (optional) The path locator service.
-   * @param \PhpTuf\ComposerStager\API\Path\Factory\PathFactoryInterface $path_factory
+   * @param \PhpTuf\ComposerStager\API\Path\Factory\PathFactoryInterface|null $path_factory
    *   (optional) The path factory service.
    *
    * @return \Drupal\package_manager\ValidationResult[]
    *   The results of the status check. If a readiness check was also done,
    *   its results will be included.
    */
-  protected function runStatusCheck(StageBase $stage, EventDispatcherInterface $event_dispatcher = NULL, PathLocator $path_locator = NULL, PathFactoryInterface $path_factory = NULL): array {
+  protected function runStatusCheck(StageBase $stage, ?EventDispatcherInterface $event_dispatcher = NULL, ?PathLocator $path_locator = NULL, ?PathFactoryInterface $path_factory = NULL): array {
     $event_dispatcher ??= \Drupal::service('event_dispatcher');
     $path_locator ??= \Drupal::service(PathLocator::class);
     $path_factory ??= \Drupal::service(PathFactoryInterface::class);

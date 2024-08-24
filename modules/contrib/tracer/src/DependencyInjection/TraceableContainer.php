@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\tracer\DependencyInjection;
 
@@ -43,7 +43,7 @@ class TraceableContainer extends Container {
     if (
       $this->tracerFactory != NULL &&
       $this->has('tracer.tracer_factory') &&
-      !array_key_exists('tracer.tracer_factory', $this->loading)
+      !\array_key_exists('tracer.tracer_factory', $this->loading)
     ) {
       $this->tracerFactory = parent::get('tracer.tracer_factory');
       $this->tracer = $this->tracerFactory->getTracer();

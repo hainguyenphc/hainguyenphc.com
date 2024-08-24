@@ -11,7 +11,7 @@ use Drupal\fixture_manipulator\ActiveFixtureManipulator;
  * @group automatic_updates_extensions
  * @internal
  */
-class PreUpdateTest extends UpdaterFormTestBase {
+final class PreUpdateTest extends UpdaterFormTestBase {
 
   /**
    * Tests the form when modules requiring an update not installed via composer.
@@ -48,7 +48,7 @@ class PreUpdateTest extends UpdaterFormTestBase {
 
     // Both of the modules not installed through composer.
     (new ActiveFixtureManipulator())
-      ->removePackage('drupal/semver_test')
+      ->removePackage('drupal/semver_test_package_name')
       ->commitChanges();
     $this->getSession()->reload();
     $assert->pageTextContains('Updates were found, but they must be performed manually. See the list of available updates for more information.');

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Access;
 
@@ -27,11 +27,11 @@ class AccessManagerWrapper extends AccessManager {
    */
   protected function performCheck(
     $service_id,
-    ArgumentsResolverInterface $arguments_resolver
+    ArgumentsResolverInterface $arguments_resolver,
   ): AccessResultInterface {
     $callable = $this->checkProvider->loadCheck($service_id);
     $arguments = $arguments_resolver->getArguments($callable);
-    $service_access = call_user_func_array($callable, $arguments);
+    $service_access = \call_user_func_array($callable, $arguments);
 
     if (!$service_access instanceof AccessResultInterface) {
       throw new AccessException("Access error in $service_id. Access services must return an object that implements AccessResultInterface.");

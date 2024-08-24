@@ -32,6 +32,10 @@
       "type": "composer",
       "url": "./"
     },
+    "custom-package": {
+      "type": "path",
+      "url": "custom/package"
+    },
     "packagist.org": false
   },
   "minimum-stability": "stable",

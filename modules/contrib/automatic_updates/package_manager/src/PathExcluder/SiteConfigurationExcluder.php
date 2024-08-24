@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\PathExcluder;
 
@@ -35,7 +35,7 @@ class SiteConfigurationExcluder implements EventSubscriberInterface {
   public function __construct(
     protected string $sitePath,
     private readonly PathLocator $pathLocator,
-    private readonly FileSystemInterface $fileSystem
+    private readonly FileSystemInterface $fileSystem,
   ) {}
 
   /**
@@ -67,7 +67,7 @@ class SiteConfigurationExcluder implements EventSubscriberInterface {
   }
 
   /**
-   * Makes the staged `sites/default` directory world-writable.
+   * Makes the staged `sites/default` directory owner-writable.
    *
    * This is done to allow the core scaffold plugin to make changes in
    * `sites/default`, if necessary, without breaking if `sites/default` is not
@@ -89,7 +89,7 @@ class SiteConfigurationExcluder implements EventSubscriberInterface {
     if (!is_dir($dir)) {
       return;
     }
-    if (!$this->fileSystem->chmod($dir, 0777)) {
+    if (!$this->fileSystem->chmod($dir, 0700)) {
       throw new FileException("Could not change permissions on '$dir'.");
     }
   }

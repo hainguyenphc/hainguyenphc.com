@@ -98,9 +98,21 @@ class TBMegaMenuAdminController extends ControllerBase {
     $data = NULL;
     $action = '';
     $result = 'Invalid TB Megamenu Ajax request!';
+    $format = NULL;
+
+    // Check to see if the method, getContentTypeFormat(), exists.
+    // This check allows this branch to be backwards compatible with D8/9.
+    // Previously, the getContentTypeFormat() method only exists in D10 due to
+    // updated symfony versioning and getContentType() only existed in D8/9.
+    if (method_exists($request, 'getContentTypeFormat')) {
+      $format = $request->getContentTypeFormat();
+    }
+    else {
+      $format = $request->getContentType();
+    }
 
     // All ajax calls should use json data now.
-    if ($request->getContentTypeFormat() == 'json') {
+    if ($format == 'json') {
       $data = Json::decode($request->getContent());
       $action = $data['action'];
     }
@@ -381,7 +393,7 @@ class TBMegaMenuAdminController extends ControllerBase {
     $menu_name = !empty($tb_megamenu->menu) ? $tb_megamenu->menu : '';
     $url = Url::fromRoute('tb_megamenu.admin.save', ['tb_megamenu' => $menu_name]);
     $csrf_token = $this->csrfTokenGenerator->get($url->getInternalPath());
-    $url->setOptions(['absolute' => TRUE, 'query' => ['token' => $csrf_token]]);
+    $url->setOptions(['absolute' => FALSE, 'query' => ['token' => $csrf_token]]);
     $abs_url_config = $url->toString();
     $page['#attached']['drupalSettings']['TBMegaMenu']['saveConfigURL'] = $abs_url_config;
 

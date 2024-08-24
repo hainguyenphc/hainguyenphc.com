@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
@@ -60,10 +60,10 @@ final class FailureMarker implements EventSubscriberInterface {
    *   The stage.
    * @param \Drupal\Core\StringTranslation\TranslatableMarkup $message
    *   Failure message to be added.
-   * @param \Throwable $throwable
+   * @param \Throwable|null $throwable
    *   (optional) The throwable that caused the failure.
    */
-  public function write(StageBase $stage, TranslatableMarkup $message, \Throwable $throwable = NULL): void {
+  public function write(StageBase $stage, TranslatableMarkup $message, ?\Throwable $throwable = NULL): void {
     $data = [
       'stage_class' => get_class($stage),
       'stage_type' => $stage->getType(),

@@ -3,6 +3,7 @@
 namespace Drupal\eca_content\Plugin\ECA\Condition;
 
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\eca\Plugin\ECA\Condition\ConditionBase;
 use Drupal\eca\TypedData\PropertyPathTrait;
@@ -38,7 +39,7 @@ class EntityFieldValueChanged extends ConditionBase {
         return $this->negationCheck(TRUE);
       }
 
-      if (($dataDefinition = $property->getDataDefinition()) && $dataDefinition instanceof FieldConfig) {
+      if (($dataDefinition = $property->getDataDefinition()) && ($dataDefinition instanceof FieldConfig || $dataDefinition instanceof BaseFieldDefinition)) {
         $type = $dataDefinition->getFieldStorageDefinition()->getType();
         if (in_array($type, ['boolean', 'entity_reference'], TRUE)) {
           foreach ($value as $key => $item) {

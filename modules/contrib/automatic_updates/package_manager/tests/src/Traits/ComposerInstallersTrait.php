@@ -1,9 +1,10 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Traits;
 
+use Composer\InstalledVersions;
 use Drupal\fixture_manipulator\FixtureManipulator;
 use Drupal\package_manager\ComposerInspector;
 use Symfony\Component\Process\Process;
@@ -22,14 +23,12 @@ trait ComposerInstallersTrait {
    *   The fixture directory to install into.
    */
   private function installComposerInstallers(string $dir): void {
-    $package_list = $this->container->get(ComposerInspector::class)
-      ->getInstalledPackagesList($this->getDrupalRoot());
+    $package_name = 'composer/installers';
+    $this->assertTrue(InstalledVersions::isInstalled($package_name));
 
-    $this->assertArrayHasKey('composer/installers', $package_list);
-    $package_path = $package_list['composer/installers']->path;
     $repository = json_encode([
       'type' => 'path',
-      'url' => $package_path,
+      'url' => InstalledVersions::getInstallPath($package_name),
       'options' => [
         'symlink' => FALSE,
         'versions' => [
@@ -37,7 +36,7 @@ trait ComposerInstallersTrait {
           // otherwise Composer will infer the version based on the git clone or
           // fall back to `dev-master`.
           // @see https://getcomposer.org/doc/05-repositories.md#path
-          'composer/installers' => $package_list['composer/installers']->version,
+          'composer/installers' => InstalledVersions::getVersion($package_name),
         ],
       ],
     ], JSON_UNESCAPED_SLASHES);

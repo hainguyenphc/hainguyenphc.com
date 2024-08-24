@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -49,6 +49,18 @@ class SupportedReleaseValidatorTest extends PackageManagerKernelTestBase {
         'version' => '8.1.0',
         'type' => 'drupal-module',
       ])
+      ->addPackage(
+          [
+            'name' => "drupal/module_no_project",
+            'version' => '1.0.0',
+            'type' => 'drupal-module',
+          ],
+          FALSE,
+          FALSE,
+          [
+            'module_no_project.info.yml' => '{name: "Module No Project", type: "module"}',
+          ],
+      )
       ->commitChanges();
   }
 
@@ -58,7 +70,7 @@ class SupportedReleaseValidatorTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerException(): array {
+  public static function providerException(): array {
     $release_fixture_folder = __DIR__ . '/../../fixtures/release-history';
     $summary = t('Cannot update because the following project version is not in the list of installable releases.');
     return [
@@ -178,6 +190,18 @@ class SupportedReleaseValidatorTest extends PackageManagerKernelTestBase {
           'type' => 'drupal-module',
         ],
         [],
+      ],
+      'updating a module that does not have project info' => [
+        [],
+        TRUE,
+        [
+          'name' => "drupal/module_no_project",
+          'version' => '1.1.0',
+          'type' => 'drupal-module',
+        ],
+        [
+          ValidationResult::createError([t('Cannot update because the following new or updated Drupal package does not have project information: drupal/module_no_project')]),
+        ],
       ],
     ];
   }

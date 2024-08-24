@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -17,7 +17,7 @@ class NoUpdateButtonsTest extends UpdaterFormTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerUpdateFormReferringUrl(): array {
+  public static function providerUpdateFormReferringUrl(): array {
     return [
       'Modules page' => ['/admin/modules/update'],
       'Reports page' => ['/admin/reports/updates/update'],

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Traits;
 
@@ -11,6 +11,8 @@ use Drupal\Tests\BrowserTestBase;
  * Common methods for testing the update form.
  *
  * @internal
+ *   This class is an internal part of the module's testing infrastructure and
+ *   should not be used by external code.
  */
 trait FormTestTrait {
 
@@ -32,7 +34,10 @@ trait FormTestTrait {
     $row_selector = ".update-recommended tr:nth-of-type($row)";
     $assert->elementTextContains('css', $row_selector . ' td:nth-of-type(2)', $expected_project_title);
     $assert->elementTextContains('css', $row_selector . ' td:nth-of-type(3)', $expected_installed_version);
-    $assert->elementTextContains('css', $row_selector . ' td:nth-of-type(4)', $expected_target_version);
+    $target_selector = $row_selector . ' td:nth-of-type(4)';
+    $cell = $assert->elementExists('css', $target_selector);
+    $link_url = $assert->elementExists('named', ['link', 'Release notes'], $cell)->getAttribute('href');
+    $this->assertStringContainsString(str_replace('.', '-', $expected_target_version) . '-release', $link_url);
   }
 
   /**

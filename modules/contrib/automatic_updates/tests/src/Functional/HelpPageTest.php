@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -31,10 +31,16 @@ class HelpPageTest extends AutomaticUpdatesFunctionalTestBase {
    * Tests that the help page for Automatic Updates loads correctly.
    */
   public function testHelpPage(): void {
-    $user = $this->createUser([
+    $permissions = [
       'access administration pages',
-      // CORE_MR_ONLY-11.x:'access help pages',
-    ]);
+      // CORE_MR_ONLY:'access help pages',
+    ];
+    // BEGIN: DELETE FROM CORE MERGE REQUEST
+    if (array_key_exists('access help pages', $this->container->get('user.permissions')->getPermissions())) {
+      $permissions[] = 'access help pages';
+    }
+    // END: DELETE FROM CORE MERGE REQUEST
+    $user = $this->createUser($permissions);
     $this->drupalLogin($user);
     $this->drupalGet('/admin/help/automatic_updates');
 

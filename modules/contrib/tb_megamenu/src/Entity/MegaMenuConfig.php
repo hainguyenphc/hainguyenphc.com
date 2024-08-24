@@ -170,10 +170,20 @@ class MegaMenuConfig extends ConfigEntityBase implements MegaMenuConfigInterface
     // vulnerable to XSS attacks.
     foreach ($config as $key => $value) {
       $config[$key]['submenu_config']['class'] = isset($value['submenu_config']['class']) ? Html::escape($value['submenu_config']['class']) : '';
-      $config[$key]['item_config']['class'] =  isset($value['item_config']['class']) ? Html::escape($value['item_config']['class']) :'';
-      $config[$key]['item_config']['xicon'] =  isset($value['item_config']['xicon']) ? Html::escape($value['item_config']['xicon']) : '';
-      $config[$key]['item_config']['label'] =  isset($value['item_config']['label']) ? Html::escape($value['item_config']['label']) : '';
-      $config[$key]['item_config']['caption'] = isset($value['item_config']['caption']) ? Xss::filter($value['item_config']['caption']) : '';
+      $config[$key]['item_config']['class'] = isset($value['item_config']['class']) ? Html::escape($value['item_config']['class']) :'';
+      $config[$key]['item_config']['xicon'] = isset($value['item_config']['xicon']) ? Html::escape($value['item_config']['xicon']) : '';
+      $config[$key]['item_config']['label'] = isset($value['item_config']['label']) ? Html::escape($value['item_config']['label']) : '';
+
+      $caption = $value['item_config']['caption'] ?? NULL;
+      if (is_string($caption)) {
+        $config[$key]['item_config']['caption'] = Xss::filter($caption);
+      }
+      elseif (is_array($caption) && !empty($caption['#plain_text'])) {
+        $config[$key]['item_config']['caption'] = Xss::filter($caption['#plain_text']);
+      }
+      else {
+        $config[$key]['item_config']['caption'] = '';
+      }
     }
 
     if ($config === NULL) {
@@ -218,7 +228,7 @@ class MegaMenuConfig extends ConfigEntityBase implements MegaMenuConfigInterface
    */
   public function calculateDependencies() {
     parent::calculateDependencies();
-    $this->addDependency('menu', $this->menu);
+    $this->addDependency('config', \Drupal::entityTypeManager()->getStorage('menu')->load($this->menu)->getConfigDependencyName());
     $this->addDependency('theme', $this->theme);
     return $this;
   }

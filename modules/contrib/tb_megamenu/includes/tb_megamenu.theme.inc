@@ -299,6 +299,9 @@ function template_preprocess_tb_megamenu(array &$vars): void {
     $vars['css_style'] = $css;
   }
 
+  // Enforce hide mobile menu value.
+  $block_config['hide-mobile-menu'] = !empty($block_config['hide-mobile-menu']);
+
   // Add a11y attributes.
   $vars['attributes']['aria-label'] = t('@menu_name navigation', ['@menu_name' => $menu_name]);
 
@@ -440,12 +443,33 @@ function template_preprocess_tb_megamenu_nav(array &$vars): void {
  *
  * @param array $vars
  *   Variables are declared in theme.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
  */
 function template_preprocess_tb_megamenu_item(array &$vars): void {
   $level = $vars['level'];
   $item = $vars['item'];
   $vars['link'] = $item->link->getPluginDefinition();
   $vars['link']['url'] = $item->link->getUrlObject()->toString();
+  // Check if translatable_menu_link_uri module is enabled and if the menu link has a translation available to pull.
+  if (\Drupal::moduleHandler()->moduleExists('translatable_menu_link_uri') && isset($vars['link']['metadata']['entity_id'])) {
+    $languageManager = \Drupal::languageManager();
+    $langCode = $languageManager->getCurrentLanguage(\Drupal\Core\Language\LanguageInterface::TYPE_CONTENT)->getId();
+    $entityId = $item->link->getDerivativeId();
+    $menuLinkContent = \Drupal::entityTypeManager()->getStorage('menu_link_content')->loadByProperties(['uuid' => $entityId]);
+    $menuLinkContentEntity = reset($menuLinkContent);
+    if ($menuLinkContentEntity->hasTranslation($langCode)) {
+      $menuLinkTranslation = $menuLinkContentEntity->getTranslation($langCode);
+      if ($menuLinkTranslation->hasField('link_override') && !$menuLinkTranslation->get('link_override')->isEmpty()) {
+        $linkOverride = $menuLinkTranslation->get('link_override')->first()->getValue()['uri'];
+        if (!empty($linkOverride)) {
+          $vars['link']['url'] = $linkOverride;
+        }
+      }
+    }
+  }
+  // End of translatable_menu_link_uri module check.
   $plugin_id = $vars['link']['id'];
   $menu_config = $vars['menu_config'];
   $item_config = $menu_config[$plugin_id]['item_config'] ?? [];

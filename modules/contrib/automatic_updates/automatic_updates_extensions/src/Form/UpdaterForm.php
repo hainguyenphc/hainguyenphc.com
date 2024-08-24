@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates_extensions\Form;
 
@@ -20,6 +20,7 @@ use Drupal\package_manager\PathLocator;
 use Drupal\package_manager\ProjectInfo;
 use Drupal\package_manager\ValidationResult;
 use Drupal\system\SystemManager;
+use Drupal\update\ProjectRelease;
 use Drupal\update\UpdateManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -28,7 +29,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  * A form for selecting extension updates.
  *
  * @internal
- *   Form classes are internal.
+ *   Form classes are internal and should not be used by external code.
  */
 final class UpdaterForm extends UpdateFormBase {
 
@@ -110,10 +111,16 @@ final class UpdaterForm extends UpdateFormBase {
         default:
           $status_message = '';
       }
+      $project_release = ProjectRelease::createFromArray($update_project['releases'][$update_project['recommended']]);
       $options[$project_name] = [
         $update_project['title'] . $status_message,
         $update_project['existing_version'],
-        $update_project['recommended'],
+        $this->t(
+          '@version (<a href=":url">Release notes</a>)',
+          [
+            '@version' => $project_release->getVersion(),
+            ':url' => $project_release->getReleaseUrl(),
+          ]),
       ];
       $recommended_versions[$project_name] = $update_project['recommended'];
     }
@@ -236,13 +243,12 @@ final class UpdaterForm extends UpdateFormBase {
 
     $all_projects_data = update_calculate_project_data($available_updates);
     $outdated_modules = [];
-    $installed_packages = $this->composerInspector->getInstalledPackagesList($this->pathLocator->getProjectRoot())
-      ->getArrayCopy();
+    $installed_packages = $this->composerInspector->getInstalledPackagesList($this->pathLocator->getProjectRoot());
     $non_supported_update_statuses = [];
     foreach ($all_projects_data as $project_name => $project_data) {
       if (in_array($project_data['project_type'], $supported_project_types, TRUE)) {
         if ($project_data['status'] !== UpdateManagerInterface::CURRENT) {
-          if (!array_key_exists("drupal/$project_name", $installed_packages)) {
+          if ($installed_packages->getPackageByDrupalProjectName($project_name) === NULL) {
             $non_supported_update_statuses[] = $project_data['status'];
             continue;
           }

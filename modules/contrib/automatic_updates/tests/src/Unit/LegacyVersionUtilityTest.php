@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Unit;
 
@@ -34,7 +34,7 @@ class LegacyVersionUtilityTest extends UnitTestCase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerConvertToSemanticVersion(): array {
+  public static function providerConvertToSemanticVersion(): array {
     return [
       '8.x-1.2' => ['8.x-1.2', '1.2.0'],
       '8.x-1.2-alpha1' => ['8.x-1.2-alpha1', '1.2.0-alpha1'],
@@ -63,7 +63,7 @@ class LegacyVersionUtilityTest extends UnitTestCase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerConvertToLegacyVersion(): array {
+  public static function providerConvertToLegacyVersion(): array {
     return [
       '1.2.0' => ['1.2.0', '8.x-1.2'],
       '1.2.0-alpha1' => ['1.2.0-alpha1', '8.x-1.2-alpha1'],

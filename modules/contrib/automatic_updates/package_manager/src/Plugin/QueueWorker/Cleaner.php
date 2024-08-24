@@ -54,7 +54,7 @@ final class Cleaner extends QueueWorkerBase implements ContainerFactoryPluginInt
 
     if (file_exists($dir)) {
       $this->fileSystem->deleteRecursive($dir, function (string $path): void {
-        $this->fileSystem->chmod($path, 0777);
+        $this->fileSystem->chmod($path, is_dir($path) ? 0700 : 0600);
       });
     }
   }

@@ -33,6 +33,21 @@ function eca_token_info(): array {
     'nested' => TRUE,
     'dynamic' => TRUE,
   ];
+  $info['types']['plain'] = [
+    'name' => t('Plain value'),
+    'description' => t('Get the plain text value for any available token, without escaping HTML characters.'),
+  ];
+  // @see https://www.drupal.org/project/eca/issues/3306180
+  $info['tokens']['dto']['dummy'] = [
+    'name' => t('Just a dummy'),
+  ];
+  $info['tokens']['_eca_root_token']['dummy'] = [
+    'name' => t('Just a dummy'),
+  ];
+  $info['tokens']['plain']['?'] = [
+    'name' => '?',
+    'description' => t('Use any available token. Example: <b>[plain:node:title]</b>'),
+  ];
   return $info;
 }
 
@@ -156,6 +171,15 @@ function eca_tokens($type, $tokens, array $data, array $options, BubbleableMetad
         if ($replacement !== '') {
           $replacements[$original] = Markup::create($replacement);
         }
+      }
+    }
+  }
+
+  if ($type === 'plain') {
+    foreach ($tokens as $name => $original) {
+      $replacement = (string) \Drupal::token()->replacePlain('[' . $name . ']', $data, ['clear' => TRUE] + $options, $bubbleable_metadata);
+      if ($replacement !== '') {
+        $replacements[$original] = Markup::create($replacement);
       }
     }
   }

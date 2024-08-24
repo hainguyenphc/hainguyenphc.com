@@ -14,7 +14,7 @@ that combine Drupal menu items with rich media content. Your menu can include
 internal and external links, images, videos and anything else that can appear
 in a Drupal block.
 
-Version 2.x includes the following changes from the 8.x version:
+Version 3.x includes the following changes from the 8.x version:
 
 - Added source SCSS.
 - Removed dependencies on Bootstrap, Chosen and jQuery.

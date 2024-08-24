@@ -22,3 +22,6 @@ surgery
 
 *.zip
 *.tar.gz
+
+*.sql
+*.sql.gzip

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Controller;
 
@@ -44,7 +44,7 @@ class DashboardController extends ControllerBase {
    */
   final public function __construct(
     Profiler $profiler,
-    TemplateManager $templateManager
+    TemplateManager $templateManager,
   ) {
     $this->profiler = $profiler;
     $this->templateManager = $templateManager;
@@ -80,7 +80,7 @@ class DashboardController extends ControllerBase {
       return [];
     }
 
-    $collectors = array_filter($profile->getCollectors(), function (DataCollectorInterface $el) {
+    $collectors = \array_filter($profile->getCollectors(), static function (DataCollectorInterface $el) {
       return $el instanceof HasPanelInterface;
     });
 

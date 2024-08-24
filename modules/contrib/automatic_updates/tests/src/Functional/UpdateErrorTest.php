@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -95,12 +95,11 @@ class UpdateErrorTest extends UpdaterFormTestBase {
   public function testStatusCheckErrorDisplay(): void {
     $session = $this->getSession();
     $assert_session = $this->assertSession();
-    $page = $session->getPage();
 
     $cached_message = $this->setAndAssertCachedMessage();
     // Ensure that the fake error is cached.
     $session->reload();
-    $assert_session->pageTextContainsOnce($cached_message);
+    $assert_session->pageTextContainsOnce((string) $cached_message);
 
     $this->mockActiveCoreVersion('9.8.0');
     $this->checkForUpdates();
@@ -257,7 +256,7 @@ class UpdateErrorTest extends UpdaterFormTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerUpdateStoppedByEventSubscriber(): array {
+  public static function providerUpdateStoppedByEventSubscriber(): array {
     $events = [
       StatusCheckEvent::class,
       PreCreateEvent::class,

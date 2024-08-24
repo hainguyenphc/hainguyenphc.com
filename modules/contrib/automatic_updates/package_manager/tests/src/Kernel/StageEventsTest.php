@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -117,7 +117,7 @@ class StageEventsTest extends PackageManagerKernelTestBase implements EventSubsc
    * @return string[][]
    *   The test cases.
    */
-  public function providerValidationResults(): array {
+  public static function providerValidationResults(): array {
     return [
       'PreCreateEvent' => [PreCreateEvent::class],
       'PreRequireEvent' => [PreRequireEvent::class],

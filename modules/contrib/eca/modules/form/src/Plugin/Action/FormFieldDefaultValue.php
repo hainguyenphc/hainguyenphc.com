@@ -2,12 +2,14 @@
 
 namespace Drupal\eca_form\Plugin\Action;
 
+use Drupal\Component\Render\MarkupInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\EntityReferenceFieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
+use Drupal\eca\Plugin\DataType\DataTransferObject;
 
 /**
  * Set default value of a form field.
@@ -76,6 +78,19 @@ class FormFieldDefaultValue extends FormFieldActionBase {
           }
           elseif ((($element['#tags'] ?? NULL) !== TRUE) || (count($value) === 1)) {
             $value = reset($value);
+          }
+          break;
+
+        case 'checkboxes':
+          $value = $this->tokenServices->getOrReplace($value);
+          if (is_scalar($value) || $value instanceof MarkupInterface) {
+            $value = DataTransferObject::buildArrayFromUserInput($value);
+          }
+          elseif ($value instanceof DataTransferObject) {
+            $value = $value->toArray();
+          }
+          elseif (!is_array($value)) {
+            $value = (array) $value;
           }
           break;
 

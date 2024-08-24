@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Kernel;
 
@@ -14,7 +14,7 @@ use PhpTuf\ComposerStager\API\Core\StagerInterface;
  * @group automatic_updates_extensions
  * @internal
  */
-class ExtensionUpdateStageTest extends AutomaticUpdatesExtensionsKernelTestBase {
+final class ExtensionUpdateStageTest extends AutomaticUpdatesExtensionsKernelTestBase {
 
   use UserCreationTrait;
 
@@ -100,6 +100,7 @@ class ExtensionUpdateStageTest extends AutomaticUpdatesExtensionsKernelTestBase 
       [
         'update',
         '--with-all-dependencies',
+        '--optimize-autoloader',
         'drupal/my_module:9.8.1',
         'drupal/my_dev_module:1.2.0-alpha1@alpha',
       ],

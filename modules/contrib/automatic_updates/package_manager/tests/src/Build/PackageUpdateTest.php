@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Build;
 
@@ -29,7 +29,7 @@ class PackageUpdateTest extends TemplateProjectTestBase {
     $this->setReleaseMetadata([
       'updated_module' => __DIR__ . '/../../fixtures/release-history/updated_module.1.1.0.xml',
     ]);
-    $this->runComposer('COMPOSER_MIRROR_PATH_REPOS=1 composer require drupal/alpha drupal/updated_module --update-with-all-dependencies', 'project');
+    $this->runComposer('composer require drupal/alpha drupal/updated_module --update-with-all-dependencies', 'project');
 
     // The updated_module provides actual Drupal-facing functionality that we're
     // testing as well, so we need to install it.

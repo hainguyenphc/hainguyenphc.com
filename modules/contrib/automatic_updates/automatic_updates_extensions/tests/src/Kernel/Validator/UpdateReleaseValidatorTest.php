@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Kernel\Validator;
 
@@ -14,7 +14,7 @@ use Drupal\Tests\automatic_updates_extensions\Kernel\AutomaticUpdatesExtensionsK
  * @group automatic_updates_extensions
  * @internal
  */
-class UpdateReleaseValidatorTest extends AutomaticUpdatesExtensionsKernelTestBase {
+final class UpdateReleaseValidatorTest extends AutomaticUpdatesExtensionsKernelTestBase {
 
   /**
    * {@inheritdoc}
@@ -27,7 +27,7 @@ class UpdateReleaseValidatorTest extends AutomaticUpdatesExtensionsKernelTestBas
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerTestPreCreateException(): array {
+  public static function providerTestPreCreateException(): array {
     return [
       'semver, supported update' => ['semver_test', '8.1.0', '8.1.1', FALSE],
       'semver, update to unsupported branch' => ['semver_test', '8.1.0', '8.2.0', TRUE],
@@ -79,6 +79,9 @@ class UpdateReleaseValidatorTest extends AutomaticUpdatesExtensionsKernelTestBas
       ];
     }
     else {
+      // Ensure the correct version of the package is staged because the update
+      // is expected to succeed.
+      $this->getStageFixtureManipulator()->setVersion("drupal/$project", LegacyVersionUtility::convertToSemanticVersion($target_version));
       $expected_results = [];
     }
 

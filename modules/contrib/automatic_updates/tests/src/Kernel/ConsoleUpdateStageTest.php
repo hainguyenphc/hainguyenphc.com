@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Kernel;
 
@@ -135,7 +135,7 @@ END;
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerUpdateStageCalled(): array {
+  public static function providerUpdateStageCalled(): array {
     $fixture_dir = __DIR__ . '/../../../package_manager/tests/fixtures/release-history';
     return [
       'disabled, normal release' => [
@@ -222,7 +222,7 @@ END;
    * @return string[][]
    *   The test cases.
    */
-  public function providerStageDestroyedOnError(): array {
+  public static function providerStageDestroyedOnError(): array {
     return [
       'pre-create exception' => [
         PreCreateEvent::class,
@@ -459,7 +459,7 @@ END;
    * @return string[][]
    *   The test cases.
    */
-  public function providerEmailOnFailure(): array {
+  public static function providerEmailOnFailure(): array {
     return [
       'pre-create' => [
         PreCreateEvent::class,
@@ -568,14 +568,14 @@ END;
    */
   public function testApplyFailureEmail(): void {
     $this->getStageFixtureManipulator()->setCorePackageVersion('9.8.1');
-    $error = new \LogicException('I drink your milkshake!');
-    LoggingCommitter::setException($error);
+    $error_message = 'I drink your milkshake!';
+    LoggingCommitter::setException(\LogicException::class, $error_message);
 
     $this->runConsoleUpdateStage();
     $expected_body = <<<END
 Drupal core failed to update automatically from 9.8.0 to 9.8.1. The following error was logged:
 
-Automatic updates failed to apply, and the site is in an indeterminate state. Consider restoring the code and database from a backup. Caused by LogicException, with this message: {$error->getMessage()}
+Automatic updates failed to apply, and the site is in an indeterminate state. Consider restoring the code and database from a backup. Caused by LogicException, with this message: {$error_message}
 
 This email was sent by the Automatic Updates module. Unattended updates are not yet fully supported.
 
@@ -620,7 +620,7 @@ END;
    * @return array[]
    *   The test cases.
    */
-  public function providerMaintenanceModeAffectedByException(): array {
+  public static function providerMaintenanceModeAffectedByException(): array {
     return [
       [InvalidArgumentException::class, FALSE],
       [PreconditionException::class, FALSE],
@@ -642,13 +642,13 @@ END;
     $this->getStageFixtureManipulator()->setCorePackageVersion('9.8.1');
 
     $message = $this->createComposeStagerMessage('A fail whale upon your head!');
-    LoggingCommitter::setException(match ($exception_class) {
-      InvalidArgumentException::class =>
-      new InvalidArgumentException($message),
-      PreconditionException::class =>
-      new PreconditionException($this->createMock(PreconditionInterface::class), $message),
-      default =>
-      new $exception_class((string) $message),
+    LoggingCommitter::setException($exception_class, ...match ($exception_class) {
+      PreconditionException::class => [
+        $this->createMock(PreconditionInterface::class),
+        $message,
+      ],
+      InvalidArgumentException::class => [$message],
+      default => [(string) $message],
     });
 
     /** @var \Drupal\Core\State\StateInterface $state */

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\tracer\StackMiddleware;
 
@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 class TracesMiddleware implements HttpKernelInterface {
 
   /**
-   * Constructs a WebprofilerMiddleware object.
+   * TracesMiddleware constructor.
    *
    * @param \Symfony\Component\HttpKernel\HttpKernelInterface $httpKernel
    *   The decorated kernel.
@@ -24,12 +24,12 @@ class TracesMiddleware implements HttpKernelInterface {
    */
   public function __construct(
     protected readonly HttpKernelInterface $httpKernel,
-    protected readonly TracerInterface $tracer
+    protected readonly TracerInterface $tracer,
   ) {
   }
 
   /**
-   * {@inheritdoc}
+   * Wrap the HttpKernelInterface::handle() method to trace the request.
    */
   public function handle(Request $request, int $type = self::MAIN_REQUEST, bool $catch = TRUE): Response {
     $rootSpan = $this->tracer->start('root', 'root');

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -80,7 +80,7 @@ class ComposerStagerOperationFailureTest extends UpdaterFormTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerComposerOperationFailure(): array {
+  public static function providerComposerOperationFailure(): array {
     return [
       'LogicException from Beginner' => [LogicException::class, LoggingBeginner::class],
       'LogicException from Stager' => [LogicException::class, NoOpStager::class],

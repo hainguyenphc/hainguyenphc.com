@@ -20,5 +20,4 @@ return array(
     'Behat\\MinkExtension' => array($vendorDir . '/friends-of-behat/mink-extension/src'),
     'Behat\\Gherkin' => array($vendorDir . '/behat/gherkin/src'),
     'Archive_Tar' => array($vendorDir . '/pear/archive_tar'),
-    '' => array($vendorDir . '/pear/pear-core-minimal/src'),
 );

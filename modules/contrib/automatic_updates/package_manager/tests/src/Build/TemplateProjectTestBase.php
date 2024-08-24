@@ -1,17 +1,21 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Build;
 
+use Composer\Autoload\ClassLoader;
+use Composer\InstalledVersions;
 use Drupal\BuildTests\QuickStart\QuickStartTestBase;
 use Drupal\Component\Serialization\Yaml;
-use Drupal\Composer\Composer;
+// CORE_MR_ONLY:use Drupal\Composer\Composer;
 use Drupal\package_manager\Event\CollectPathsToExcludeEvent;
 use Drupal\package_manager_test_event_logger\EventSubscriber\EventLogSubscriber;
+use Drupal\sqlite\Driver\Database\sqlite\Install\Tasks;
 use Drupal\Tests\package_manager\Traits\AssertPreconditionsTrait;
 use Drupal\Tests\package_manager\Traits\FixtureUtilityTrait;
 use Drupal\Tests\RandomGeneratorTrait;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
 
@@ -36,14 +40,44 @@ abstract class TemplateProjectTestBase extends QuickStartTestBase {
    *
    * @var string
    */
-  private $webRoot;
+  private string $webRoot;
 
   /**
    * A secondary server instance, to serve XML metadata about available updates.
    *
    * @var \Symfony\Component\Process\Process
    */
-  private $metadataServer;
+  private Process $metadataServer;
+
+  /**
+   * All output that the PHP web server logs to the error buffer.
+   *
+   * @var string
+   */
+  private string $serverErrorLog = '';
+
+  /**
+   * The PHP web server's max_execution_time value.
+   *
+   * @var int
+   */
+  protected const MAX_EXECUTION_TIME = 20;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp(): void {
+    // Build tests cannot be run if SQLite minimum version is not met.
+    $minimum_version = Tasks::SQLITE_MINIMUM_VERSION;
+    $actual_version = (new \PDO('sqlite::memory:'))
+      ->query('select sqlite_version()')
+      ->fetch()[0];
+    if (version_compare($actual_version, $minimum_version, '<')) {
+      $this->markTestSkipped("SQLite version $minimum_version or later is required, but $actual_version was detected.");
+    }
+
+    parent::setUp();
+  }
 
   /**
    * {@inheritdoc}
@@ -61,21 +95,11 @@ abstract class TemplateProjectTestBase extends QuickStartTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerTemplate(): array {
+  public static function providerTemplate(): array {
     return [
       'RecommendedProject' => ['RecommendedProject'],
       'LegacyProject' => ['LegacyProject'],
     ];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getCodebaseFinder() {
-    // If core's npm dependencies are installed, we don't want them to be
-    // included in the upstream version of core that gets installed into the
-    // test site.
-    return parent::getCodebaseFinder()->notPath('#^core/node_modules#');
   }
 
   /**
@@ -85,21 +109,15 @@ abstract class TemplateProjectTestBase extends QuickStartTestBase {
    *   The Drupal core version to set.
    */
   protected function setUpstreamCoreVersion(string $version): void {
-    $workspace_dir = $this->getWorkspaceDirectory();
-
-    // Loop through core's metapackages and plugins, and alter them as needed.
-    $packages = str_replace("$workspace_dir/", '', $this->getCorePackages());
-    foreach ($packages as $path) {
-      // Assign the new upstream version.
-      $this->runComposer("composer config version $version", $path);
-
-      // If this package requires Drupal core (e.g., drupal/core-recommended),
-      // make it require the new upstream version.
-      $info = $this->runComposer('composer info --self --format json', $path, TRUE);
-      if (isset($info['requires']['drupal/core'])) {
-        $this->runComposer("composer require --no-update drupal/core:$version", $path);
-      }
-    }
+    $this->createVendorRepository([
+      'drupal/core' => $version,
+      'drupal/core-dev' => $version,
+      'drupal/core-dev-pinned' => $version,
+      'drupal/core-recommended' => $version,
+      'drupal/core-composer-scaffold' => $version,
+      'drupal/core-project-message' => $version,
+      'drupal/core-vendor-hardening' => $version,
+    ]);
 
     // Change the \Drupal::VERSION constant and put placeholder text in the
     // README so we can ensure that we really updated to the correct version. We
@@ -107,14 +125,22 @@ abstract class TemplateProjectTestBase extends QuickStartTestBase {
     // these are updated as well, despite `sites/default` being write-protected.
     // @see ::assertUpdateSuccessful()
     // @see ::createTestProject()
-    Composer::setDrupalVersion($workspace_dir, $version);
-    file_put_contents("$workspace_dir/core/README.txt", "Placeholder for Drupal core $version.");
+    $core_dir = $this->getWorkspaceDrupalRoot() . '/core';
+    // BEGIN: DELETE FROM CORE MERGE REQUEST
+    // These next lines are copied from
+    // \Drupal\Composer\Composer::setDrupalVersion(), because that class is only
+    // available if this test is being run in a Drupal core clone, which may not
+    // be the case. Considering that we only need these few lines of code, it's
+    // more trouble than it's worth to try and load that class.
+    $drupal_static_path = "$core_dir/lib/Drupal.php";
+    $drupal_static_source = preg_replace('#const VERSION = [^;]*#', "const VERSION = '$version'", file_get_contents($drupal_static_path));
+    file_put_contents($drupal_static_path, $drupal_static_source);
+    // END: DELETE FROM CORE MERGE REQUEST
+    // CORE_MR_ONLY:Composer::setDrupalVersion($this->getWorkspaceDrupalRoot(), $version);
+    file_put_contents("$core_dir/README.txt", "Placeholder for Drupal core $version.");
 
     foreach (['default.settings.php', 'default.services.yml'] as $file) {
-      $file = fopen("$workspace_dir/core/assets/scaffold/files/$file", 'a');
-      $this->assertIsResource($file);
-      fwrite($file, "# This is part of Drupal $version.\n");
-      fclose($file);
+      file_put_contents("$core_dir/assets/scaffold/files/$file", "# This is part of Drupal $version.\n", FILE_APPEND);
     }
   }
 
@@ -139,7 +165,7 @@ abstract class TemplateProjectTestBase extends QuickStartTestBase {
       $finder->find(),
       '-S',
       '127.0.0.1:' . $port,
-      '-d max_execution_time=10',
+      '-d max_execution_time=' . static::MAX_EXECUTION_TIME,
       '-d disable_functions=set_time_limit',
       '-t',
       $working_path,
@@ -150,7 +176,11 @@ abstract class TemplateProjectTestBase extends QuickStartTestBase {
     $ps = new Process($server, $working_path);
     $ps->setIdleTimeout(30)
       ->setTimeout(30)
-      ->start();
+      ->start(function ($output_type, $output): void {
+        if ($output_type === Process::ERR) {
+          $this->serverErrorLog .= $output;
+        }
+      });
     // Wait until the web server has started. It is started if the port is no
     // longer available.
     for ($i = 0; $i < 50; $i++) {
@@ -167,7 +197,7 @@ abstract class TemplateProjectTestBase extends QuickStartTestBase {
    * {@inheritdoc}
    */
   public function installQuickStart($profile, $working_dir = NULL) {
-    parent::installQuickStart($profile, $working_dir ?: $this->webRoot);
+    parent::installQuickStart("$profile --no-ansi", $working_dir ?: $this->webRoot);
 
     // Always allow test modules to be installed in the UI and, for easier
     // debugging, always display errors in their dubious glory.
@@ -190,28 +220,6 @@ END;
    */
   public function formLogin($username, $password, $working_dir = NULL) {
     parent::formLogin($username, $password, $working_dir ?: $this->webRoot);
-  }
-
-  /**
-   * Returns the paths of all core Composer packages.
-   *
-   * @return string[]
-   *   The paths of the core Composer packages, keyed by parent directory name.
-   */
-  protected function getCorePackages(): array {
-    $workspace_dir = $this->getWorkspaceDirectory();
-
-    $packages = [
-      'core' => "$workspace_dir/core",
-    ];
-    foreach (['Metapackage', 'Plugin'] as $type) {
-      foreach (Composer::composerSubprojectPaths($workspace_dir, $type) as $package) {
-        $path = $package->getPath();
-        $name = basename($path);
-        $packages[$name] = $path;
-      }
-    }
-    return $packages;
   }
 
   /**
@@ -265,71 +273,49 @@ END;
     $this->copyCodebase();
 
     $workspace_dir = $this->getWorkspaceDirectory();
-    $template_dir = "composer/Template/$template";
+    $project_dir = $workspace_dir . '/project';
+    mkdir($project_dir);
+
+    $data = file_get_contents("$workspace_dir/composer/Template/$template/composer.json");
+    $data = json_decode($data, TRUE, flags: JSON_THROW_ON_ERROR);
 
     // Allow pre-release versions of dependencies.
-    $this->runComposer('composer config minimum-stability dev', $template_dir);
+    $data['minimum-stability'] = 'dev';
 
-    // Remove the packages.drupal.org entry (and any other custom repository)
-    // from the template's repositories section. We have no reliable way of
-    // knowing the repositories' names in advance, so we get that information
-    // from `composer config`, and use `composer config --unset` to actually
-    // modify the template, to ensure it's done correctly.
-    $repositories = $this->runComposer('composer config repo', $template_dir, TRUE);
-
-    foreach (array_keys($repositories) as $name) {
-      $this->runComposer("composer config --unset repo.$name", $template_dir);
-    }
-
-    // Add all core plugins and metapackages as path repositories. To disable
-    // symlinking, we need to pass the JSON representations of the repositories
-    // to `composer config`.
-    foreach ($this->getCorePackages() as $name => $path) {
-      $this->addRepository($name, $path, $template_dir);
-    }
-
-    // Add a local Composer repository with all third-party dependencies.
-    $vendor = "$workspace_dir/vendor.json";
-    file_put_contents($vendor, json_encode($this->createVendorRepository(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-    $this->runComposer("composer config repo.vendor composer file://$vendor", $template_dir);
-
-    // Disable Packagist entirely so that we don't test the Internet.
-    $this->runComposer('composer config repo.packagist.org false', $template_dir);
+    // Remove all repositories and replace them with a single local one that
+    // provides all dependencies.
+    $data['repositories'] = [
+      'vendor' => [
+        'type' => 'composer',
+        'url' => 'file://' . $workspace_dir . '/vendor.json',
+      ],
+      // Disable Packagist entirely so that we don't test the Internet.
+      'packagist.org' => FALSE,
+    ];
 
     // Allow any version of the Drupal core packages in the template project.
-    $this->runComposer('composer require --no-update drupal/core-recommended:* drupal/core-project-message:* drupal/core-composer-scaffold:*', $template_dir);
-    $this->runComposer('composer require --no-update --dev drupal/core-dev:*', $template_dir);
-    if ($template === 'LegacyProject') {
-      $this->runComposer('composer require --no-update drupal/core-vendor-hardening:*', $template_dir);
-    }
+    self::unboundCoreConstraints($data['require']);
+    self::unboundCoreConstraints($data['require-dev']);
 
     // Do not run development Composer plugin, since it tries to run an
     // executable that might not exist while dependencies are being installed
     // and it adds no value to this test.
-    $this->runComposer("composer config allow-plugins.dealerdirect/phpcodesniffer-composer-installer false", $template_dir);
+    $data['config']['allow-plugins']['dealerdirect/phpcodesniffer-composer-installer'] = FALSE;
 
-    // Create the test project, defining its repository as part of the
-    // `composer create-project` command.
-    $repository = [
-      'type' => 'path',
-      'url' => $template_dir,
-    ];
-    // The COMPOSER_MIRROR_PATH_REPOS environment variable is necessary because
-    // the vendor packages are installed from a Composer-type repository, which
+    // Always force Composer to mirror path repositories. This is necessary
+    // because dependencies are installed from a Composer-type repository, which
     // will normally try to symlink packages which are installed from local
     // directories. This breaks Package Manager, because it does not support
-    // symlinks pointing outside the main code base. The
-    // COMPOSER_MIRROR_PATH_REPOS environment variable forces Composer to
-    // mirror, rather than symlink, local directories during during package
-    // installation.
-    $command = sprintf(
-      "COMPOSER_MIRROR_PATH_REPOS=1 composer create-project %s project --stability dev --repository '%s'",
-      $this->runComposer('composer config name', $template_dir),
-      json_encode($repository, JSON_UNESCAPED_SLASHES)
-    );
+    // symlinks pointing outside the main code base.
+    $script = '@putenv COMPOSER_MIRROR_PATH_REPOS=1';
+    $data['scripts']['pre-install-cmd'] = $script;
+    $data['scripts']['pre-update-cmd'] = $script;
+
+    file_put_contents($project_dir . '/composer.json', json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+
     // Because we set the COMPOSER_MIRROR_PATH_REPOS=1 environment variable when
     // creating the project, none of the dependencies should be symlinked.
-    $this->assertStringNotContainsString('Symlinking', $this->runComposer($command));
+    $this->assertStringNotContainsString('Symlinking', $this->runComposer('composer install', 'project'));
 
     // If using the drupal/recommended-project template, we don't expect there
     // to be an .htaccess file at the project root. One would normally be
@@ -349,7 +335,7 @@ END;
 
     // Now that we know the project was created successfully, we can set the
     // web root with confidence.
-    $this->webRoot = 'project/' . $this->runComposer('composer config extra.drupal-scaffold.locations.web-root', 'project');
+    $this->webRoot = 'project/' . $data['extra']['drupal-scaffold']['locations']['web-root'];
     // BEGIN: DELETE FROM CORE MERGE REQUEST
     // List the info files that need to be made compatible with our fake version
     // of Drupal core.
@@ -364,7 +350,7 @@ END;
     if (str_contains($automatic_updates_dir, 'automatic_updates')) {
       $dir = 'project';
       $this->runComposer("composer config repo.automatic_updates path $automatic_updates_dir", $dir);
-      $output = $this->runComposer('COMPOSER_MIRROR_PATH_REPOS=1 composer require --update-with-all-dependencies psr/http-message "drupal/automatic_updates:@dev"', $dir);
+      $output = $this->runComposer('composer require --update-with-all-dependencies psr/http-message "drupal/automatic_updates:@dev"', $dir);
       $this->assertStringNotContainsString('Symlinking', $output);
     }
     foreach ($info_files as $path) {
@@ -390,6 +376,24 @@ END;
     $code = <<<END
 \$config['update.settings']['fetch']['url'] = 'http://localhost:$port/test-release-history';
 END;
+
+    // Ensure Package Manager logs Composer Stager's process output to a file
+    // named for the current test.
+    $log = $this->getDrupalRoot() . '/sites/simpletest/browser_output';
+    @mkdir($log, recursive: TRUE);
+    $this->assertDirectoryIsWritable($log);
+    // CORE_MR_ONLY:$log .= '/' . str_replace('\\', '_', static::class) . '-' . $this->name();
+    // BEGIN: DELETE FROM CORE MERGE REQUEST
+    // Support PHPUnit 9 and 10.
+    $log .= '/' . str_replace('\\', '_', static::class) . '-' . (method_exists($this, 'name') ? $this->name() : $this->getName(FALSE));
+    // END: DELETE FROM CORE MERGE REQUEST
+    if ($this->usesDataProvider()) {
+      $log .= '-' . preg_replace('/[^a-z0-9]+/i', '_', $this->dataName());
+    }
+    $code .= <<<END
+\$config['package_manager.settings']['log'] = '$log-package_manager.log';
+END;
+
     $this->writeSettings($code);
 
     // Install helpful modules.
@@ -404,105 +408,131 @@ END;
     $this->visit('/package-manager-test-api/check-setup');
     $this->getMink()
       ->assertSession()
-      ->pageTextContains("max_execution_time=10:set_time_limit-exists=no");
+      ->pageTextContains("max_execution_time=" . static::MAX_EXECUTION_TIME . ":set_time_limit-exists=no");
   }
 
   /**
-   * Creates a Composer repository for all installed third-party dependencies.
+   * Changes constraints for core packages to `*`.
    *
-   * @return string[][]
-   *   The data that should be written to the repository file.
+   * @param string[] $constraints
+   *   A set of version constraints, like you'd find in the `require` or
+   *   `require-dev` sections of `composer.json`. This array is modified by
+   *   reference.
    */
-  protected function createVendorRepository(): array {
+  private static function unboundCoreConstraints(array &$constraints): void {
+    $names = preg_grep('/^drupal\/core-?/', array_keys($constraints));
+    foreach ($names as $name) {
+      $constraints[$name] = '*';
+    }
+  }
+
+  /**
+   * Creates a Composer repository for all dependencies of the test project.
+   *
+   * We always reference third-party dependencies (i.e., any package that isn't
+   * part of Drupal core) from the main project which is running this test.
+   *
+   * Packages that are part of Drupal core -- such as `drupal/core`,
+   * `drupal/core-composer-scaffold`, and so on -- are expected to have been
+   * copied into the workspace directory, so that we can modify them as needed.
+   *
+   * The file will be written to WORKSPACE_DIR/vendor.json.
+   *
+   * @param string[] $versions
+   *   (optional) The versions of specific packages, keyed by package name.
+   *   Versions of packages not in this array will be determined first by
+   *   looking for a `version` key in the package's composer.json, then by
+   *   calling \Composer\InstalledVersions::getPrettyVersion(). If none of that
+   *   works, `dev-main` will be used as the package's version.
+   */
+  protected function createVendorRepository(array $versions = []): void {
     $packages = [];
-    $drupal_root = $this->getDrupalRoot();
 
-    // @todo Add assertions that these packages never get added to vendor.json
-    //   and determine if this logic should removed in the core merge request in
-    //   https://drupal.org/i/3319679.
-    $core_packages = [
-      'drupal/core-vendor-hardening',
-      'drupal/core-project-message',
-    ];
+    $class_loaders = ClassLoader::getRegisteredLoaders();
 
-    $output = $this->runComposer("composer show --format=json --working-dir=$drupal_root", NULL, TRUE);
-    foreach ($output['installed'] as $installed_package) {
-      $name = $installed_package['name'];
-      if (in_array($name, $core_packages, TRUE)) {
-        continue;
+    $workspace_dir = $this->getWorkspaceDirectory();
+    $finder = Finder::create()
+      ->in([
+        $this->getWorkspaceDrupalRoot() . '/core',
+        "$workspace_dir/composer/Metapackage",
+        "$workspace_dir/composer/Plugin",
+        key($class_loaders),
+      ])
+      ->depth('< 3')
+      ->files()
+      ->name('composer.json');
+
+    /** @var \Symfony\Component\Finder\SplFileInfo $file */
+    foreach ($finder as $file) {
+      $package_info = json_decode($file->getContents(), TRUE, flags: JSON_THROW_ON_ERROR);
+      $name = $package_info['name'];
+
+      $requirements = $package_info['require'] ?? [];
+      // These polyfills are dependencies of some packages, but for reasons we
+      // don't understand, they are not installed in code bases built on PHP
+      // versions that are newer than the ones being polyfilled, which means we
+      // won't be able to build our test project because these polyfills aren't
+      // available in the local code base. Since we're guaranteed to be on PHP
+      // 8.3 or later, no package should need to polyfill older versions.
+      unset(
+        $requirements['symfony/polyfill-php72'],
+        $requirements['symfony/polyfill-php73'],
+        $requirements['symfony/polyfill-php74'],
+        $requirements['symfony/polyfill-php80'],
+        $requirements['symfony/polyfill-php81'],
+        // CORE_MR_ONLY:$requirements['symfony/polyfill-php82'],
+        // CORE_MR_ONLY:$requirements['symfony/polyfill-php83'],
+      );
+      // If this package requires any Drupal core packages, ensure it allows
+      // any version.
+      self::unboundCoreConstraints($requirements);
+      // In certain situations, like Drupal CI, automatic_updates might be
+      // required into the code base by Composer. This may cause it to be added to
+      // the drupal/core-recommended metapackage, which can prevent the test site
+      // from being built correctly, among other deleterious effects. To prevent
+      // such shenanigans, always remove drupal/automatic_updates from
+      // drupal/core-recommended.
+      if ($name === 'drupal/core-recommended') {
+        unset($requirements['drupal/automatic_updates']);
       }
-      $path = "$drupal_root/vendor/$name";
 
-      // We are building a set of path repositories to projects in the vendor
-      // directory, so we will skip any project that does not exist in vendor.
-      // Also skip the projects that are symlinked in vendor. These are in our
-      // metapackage and will be represented as path repositories in the test
-      // project's composer.json.
-      if (is_dir($path) && !is_link($path)) {
-        $package_info = $path . '/composer.json';
-        $this->assertFileIsReadable($package_info);
-        $package_info = file_get_contents($package_info);
-        $package_info = json_decode($package_info, TRUE, flags: JSON_THROW_ON_ERROR);
+      try {
+        $version = $versions[$name] ?? $package_info['version'] ?? InstalledVersions::getPrettyVersion($name);
+      }
+      catch (\OutOfBoundsException) {
+        $version = 'dev-main';
+      }
 
-        $version = $installed_package['version'];
-        // Create a pared-down package definition that has just enough
-        // information for Composer to install the package from the local copy:
-        // the name, version, package type, source path ("dist" in Composer
-        // terminology), and the autoload information, so that the classes
-        // provided by the package will actually be loadable in the test site
-        // we're building.
-        if (str_starts_with($version, 'dev-')) {
-          [$version, $reference] = explode(' ', $version, 2);
-        }
-        else {
-          $reference = $version;
-        }
-        $packages[$name][$version] = [
-          'name' => $name,
-          'version' => $version,
-          'type' => $package_info['type'] ?? 'library',
-          // Disabling symlinks in the transport options doesn't seem to have an
-          // effect, so we use the COMPOSER_MIRROR_PATH_REPOS environment
-          // variable to force mirroring in ::createTestProject().
-          'dist' => [
-            'type' => 'path',
-            'url' => $path,
-          ],
-          'source' => [
-            'type' => 'path',
-            'url' => $path,
-            'reference' => $reference,
-          ],
-          'autoload' => $package_info['autoload'] ?? [],
-          'provide' => $package_info['provide'] ?? [],
-        ];
-        // These polyfills are dependencies of some packages, but for reasons we
-        // don't understand, they are not installed in code bases built on PHP
-        // versions that are newer than the ones being polyfilled, which means
-        // we won't be able to build our test project because these polyfills
-        // are not available in the local code base. Since we're guaranteed to
-        // be on PHP 8.1 or later, ensure no package requires polyfills of older
-        // versions of PHP.
-        if (isset($package_info['require'])) {
-          unset(
-            $package_info['require']['symfony/polyfill-php72'],
-            $package_info['require']['symfony/polyfill-php73'],
-            $package_info['require']['symfony/polyfill-php74'],
-            $package_info['require']['symfony/polyfill-php80'],
-            $package_info['require']['symfony/polyfill-php81'],
-          );
-          $packages[$name][$version]['require'] = $package_info['require'];
-        }
+      // Create a pared-down package definition that has just enough information
+      // for Composer to install the package from the local copy: the name,
+      // version, package type, source path ("dist" in Composer terminology),
+      // and the autoload information, so that the classes provided by the
+      // package will actually be loadable in the test site we're building.
+      $path = $file->getPath();
+      $packages[$name][$version] = [
+        'name' => $name,
+        'version' => $version,
+        'type' => $package_info['type'] ?? 'library',
+        // Disabling symlinks in the transport options doesn't seem to have an
+        // effect, so we use the COMPOSER_MIRROR_PATH_REPOS environment
+        // variable to force mirroring in ::createTestProject().
+        'dist' => [
+          'type' => 'path',
+          'url' => $path,
+        ],
+        'require' => $requirements,
+        'autoload' => $package_info['autoload'] ?? [],
+        'provide' => $package_info['provide'] ?? [],
         // Composer plugins are loaded and activated as early as possible, and
         // they must have a `class` key defined in their `extra` section, along
         // with a dependency on `composer-plugin-api` (plus any other real
-        // runtime dependencies).
-        if ($packages[$name][$version]['type'] === 'composer-plugin') {
-          $packages[$name][$version]['extra'] = $package_info['extra'] ?? [];
-        }
-      }
+        // runtime dependencies). This is also necessary for packages that ship
+        // scaffold files, like Drupal core.
+        'extra' => $package_info['extra'] ?? [],
+      ];
     }
-    return ['packages' => $packages];
+    $data = json_encode(['packages' => $packages], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+    file_put_contents($workspace_dir . '/vendor.json', $data);
   }
 
   /**
@@ -512,7 +542,7 @@ END;
    *
    * @param string $command
    *   The command to execute, including the `composer` invocation.
-   * @param string $working_dir
+   * @param string|null $working_dir
    *   (optional) A working directory relative to the workspace, within which to
    *   execute the command. Defaults to the workspace directory.
    * @param bool $json
@@ -522,11 +552,11 @@ END;
    * @return mixed|string|null
    *   The command's output, optionally parsed as JSON.
    */
-  protected function runComposer(string $command, string $working_dir = NULL, bool $json = FALSE) {
-    $output = $this->executeCommand($command, $working_dir)->getOutput();
+  protected function runComposer(string $command, ?string $working_dir = NULL, bool $json = FALSE) {
+    $process = $this->executeCommand($command, $working_dir);
     $this->assertCommandSuccessful();
 
-    $output = trim($output);
+    $output = trim($process->getOutput());
     if ($json) {
       $output = json_decode($output, TRUE, flags: JSON_THROW_ON_ERROR);
     }
@@ -547,11 +577,7 @@ END;
     chmod(dirname($file), 0744);
     chmod($file, 0744);
     $this->assertFileIsWritable($file);
-
-    $stream = fopen($file, 'a');
-    $this->assertIsResource($stream);
-    $this->assertIsInt(fwrite($stream, $php));
-    $this->assertTrue(fclose($stream));
+    $this->assertIsInt(file_put_contents($file, $php, FILE_APPEND));
   }
 
   /**
@@ -723,40 +749,115 @@ END;
   protected function makePackageManagerTestApiRequest(string $url, array $query_data): void {
     $url .= '?' . http_build_query($query_data);
     $this->visit($url);
-    $mink = $this->getMink();
-    $session = $mink->getSession();
+    $session = $this->getMink()->getSession();
 
     // Ensure test failures provide helpful debug output when there's a fatal
     // PHP error: don't use \Behat\Mink\WebAssert::statusCodeEquals().
-    if ($session->getStatusCode() == 500) {
-      $this->assertEquals(200, 500, 'Error response: ' . $session->getPage()->getContent());
-    }
-    else {
-      $mink->assertSession()->statusCodeEquals(200);
-    }
+    $message = sprintf(
+      "Error response: %s\n\nHeaders: %s\n\nServer error log: %s",
+      $session->getPage()->getContent(),
+      var_export($session->getResponseHeaders(), TRUE),
+      $this->serverErrorLog,
+    );
+    $this->assertSame(200, $session->getStatusCode(), $message);
   }
-
-  // BEGIN: DELETE FROM CORE MERGE REQUEST.
 
   /**
    * {@inheritdoc}
    */
-  public function copyCodebase(\Iterator $iterator = NULL, $working_dir = NULL) {
-    parent::copyCodebase($iterator, $working_dir);
+  public function copyCodebase(?\Iterator $iterator = NULL, $working_dir = NULL) {
+    // BEGIN: DELETE FROM CORE MERGE REQUEST
+    // Remove this section when we drop support for Drupal 10.1.x.
+    $working_path = $this->getWorkingPath($working_dir);
 
-    // In certain situations, like Drupal CI, automatic_updates might be
-    // required into the code base by Composer. This may cause it to be added to
-    // the drupal/core-recommended metapackage, which can prevent the test site
-    // from being built correctly, among other deleterious effects. To prevent
-    // such shenanigans, always remove drupal/automatic_updates from
-    // drupal/core-recommended.
-    $file = $this->getWorkspaceDirectory() . '/composer/Metapackage/CoreRecommended/composer.json';
-    $this->assertFileIsWritable($file);
-    $data = file_get_contents($file);
-    $data = json_decode($data, TRUE, flags: JSON_THROW_ON_ERROR);
-    unset($data['require']['drupal/automatic_updates']);
-    file_put_contents($file, json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+    if ($iterator === NULL) {
+      $iterator = $this->getCodebaseFinder()->getIterator();
+    }
+
+    $options = ['override' => TRUE, 'delete' => FALSE];
+    // Directly instantiate the class, rather than using reflection, in
+    // https://drupal.org/i/3416818.
+    $reflector = new \ReflectionClass('\Symfony\Component\Filesystem\Filesystem');
+    $reflector->newInstance()
+      ->mirror($this->getComposerRoot(), $working_path, $iterator, $options);
+    // END: DELETE FROM CORE MERGE REQUEST
+    // CORE_MR_ONLY:parent::copyCodebase($iterator, $working_dir);
+
+    // Create a local Composer repository for all third-party dependencies and
+    // core packages.
+    $this->createVendorRepository();
   }
 
-  // END: DELETE FROM CORE MERGE REQUEST.
+  // BEGIN: DELETE FROM CORE MERGE REQUEST
+  // All of this stuff was added to BuildTestBase in Drupal 10.2.x, and is
+  // reproduced here so this test can be run on Drupal 10.1.x. We can remove
+  // all of this when we drop support for Drupal 10.1.x in
+  // https://drupal.org/i/3418427.
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCodebaseFinder() {
+    $drupal_root = $this->getWorkingPathDrupalRoot() ?? '';
+    $finder = new Finder();
+    $finder->files()
+      ->followLinks()
+      ->ignoreUnreadableDirs()
+      ->in($this->getComposerRoot())
+      ->notPath("#^{$drupal_root}sites/default/files#")
+      ->notPath("#^{$drupal_root}sites/simpletest#")
+      ->notPath("#^{$drupal_root}core/node_modules#")
+      ->notPath("#^{$drupal_root}sites/default/settings\..*php#")
+      ->ignoreDotFiles(FALSE)
+      ->ignoreVCS(FALSE);
+    return $finder;
+  }
+
+  /**
+   * Gets the path to the Composer root directory.
+   *
+   * @return string
+   *   The absolute path to the Composer root directory.
+   */
+  public function getComposerRoot(): string {
+    $root = InstalledVersions::getRootPackage();
+    return realpath($root['install_path']);
+  }
+
+  /**
+   * Gets the path to Drupal root in the workspace directory.
+   *
+   * @return string
+   *   The absolute path to the Drupal root directory in the workspace.
+   */
+  public function getWorkspaceDrupalRoot(): string {
+    $dir = $this->getWorkspaceDirectory();
+    $drupal_root = $this->getWorkingPathDrupalRoot();
+    if ($drupal_root !== NULL) {
+      $dir = $dir . DIRECTORY_SEPARATOR . $drupal_root;
+    }
+    return $dir;
+  }
+
+  /**
+   * Gets the working path for Drupal core.
+   *
+   * @return string|null
+   *   The relative path to Drupal's root directory or NULL if it is the same
+   *   as the composer root directory.
+   */
+  public function getWorkingPathDrupalRoot(): ?string {
+    $composer_root = $this->getComposerRoot();
+    $drupal_root = $this->getDrupalRoot();
+    if ($composer_root === $drupal_root) {
+      return NULL;
+    }
+    // Directly instantiate the class, rather than using reflection, in
+    // https://drupal.org/i/3416818.
+    $reflector = new \ReflectionClass('\Symfony\Component\Filesystem\Filesystem');
+    return $reflector->newInstance()
+      ->makePathRelative($drupal_root, $composer_root);
+  }
+
+  // END: DELETE FROM CORE MERGE REQUEST
 }

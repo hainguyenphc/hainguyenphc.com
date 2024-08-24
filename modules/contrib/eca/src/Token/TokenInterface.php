@@ -237,6 +237,23 @@ interface TokenInterface {
   public function replaceClear($text, array $data = [], array $options = [], BubbleableMetadata $bubbleable_metadata = NULL);
 
   /**
+   * Replaces all tokens in a given plain text string with appropriate values.
+   *
+   * @param string $plain
+   *   Plain text string.
+   * @param array $data
+   *   (optional) An array of keyed objects. See replace().
+   * @param array $options
+   *   (optional) A keyed array of options. See replace().
+   * @param \Drupal\Core\Render\BubbleableMetadata|null $bubbleable_metadata
+   *   (optional) Target for adding metadata. See replace().
+   *
+   * @return string
+   *   The entered plain text with tokens replaced.
+   */
+  public function replacePlain(string $plain, array $data = [], array $options = [], BubbleableMetadata $bubbleable_metadata = NULL): string;
+
+  /**
    * Returns data when text matches with a data key or runs string replacement.
    *
    * Some components may allow direct usage of data, if it is being addressed

@@ -19,36 +19,47 @@ export default class FullscreenUI extends Plugin {
     // This will register the fullscreen toolbar button.
     editor.ui.componentFactory.add('fullscreen', locale => {
       const buttonView = new ButtonView(locale);
+      const editorRegion = editor.sourceElement.nextElementSibling;
       let state = 0;
       let isStickyState = false;
       // Callback executed once the image is clicked.
       buttonView.set({
         label: 'Full screen',
         icon: icon,
-        tooltip: true
+        tooltip: true,
       });
       buttonView.on('execute', () => {
-        if (state === 1) {
-          editor.sourceElement.nextElementSibling.removeAttribute('data-fullscreen');
+        if (state == 1) {
+          let nextSiblingElement = document.querySelector('.toolbar-bar .toolbar-tab.home-toolbar-tab').nextElementSibling;
+          let anchorTag = nextSiblingElement.querySelector('a');
+
+          Drupal.toolbar.models.toolbarModel.set({
+            activeTab: anchorTag,
+          });
+          editorRegion.scrollIntoView({block: 'center'});
+          editorRegion.removeAttribute('data-fullscreen');
           document.body.removeAttribute('data-fullscreen');
           buttonView.set({
             label: 'Full screen',
             icon: icon,
-            tooltip: true
+            isOn: false,
           });
           state = 0;
-          editor.sourceElement.nextElementSibling.scrollIntoView({block: 'center'});
           editor.focus();
           editor.ui.view.stickyPanel.isSticky = isStickyState;
         } else {
-          editor.sourceElement.nextElementSibling.setAttribute('data-fullscreen', 'fullscreeneditor');
+          Drupal.toolbar.models.toolbarModel.set({activeTab: null});
+          // move editor into view before adding attributes
+          editorRegion.scrollIntoView({block: 'center'});
+          editorRegion.setAttribute('data-fullscreen', 'fullscreeneditor');
           document.body.setAttribute('data-fullscreen', 'fullscreenoverlay');
           buttonView.set({
             label: 'Mode Normal',
             icon: iconCancel,
-            tooltip: true
+            isOn: true,
           });
           state = 1;
+          editor.focus();
           isStickyState = editor.ui.view.stickyPanel.isSticky;
           editor.ui.view.stickyPanel.isSticky = !isStickyState;
         }

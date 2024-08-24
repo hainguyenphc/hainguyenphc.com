@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
 use Composer\Semver\VersionParser;
 use Drupal\Component\Datetime\TimeInterface;
-use Drupal\Component\Utility\Crypt;
+use Drupal\Component\Utility\Random;
 use Drupal\Core\Queue\QueueFactory;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -344,7 +344,13 @@ abstract class StageBase implements LoggerAwareInterface {
     // to create a stage directory at around the same time. If an error occurs
     // while the event is being processed, the stage is marked as available.
     // @see ::dispatch()
-    $id = Crypt::randomBytesBase64();
+    // We specifically generate a random 32-character alphanumeric name in order
+    // to guarantee that the the stage ID won't start with -, which could cause
+    // it to be interpreted as an option if it's used as a command-line
+    // argument. (For example,
+    // \Drupal\Component\Utility\Crypt::randomBytesBase64() would be vulnerable
+    // to this; the stage ID needs to be unique, but not cryptographically so.)
+    $id = (new Random())->name(32);
     // Re-acquire the tempstore to ensure that the lock is written by whoever is
     // actually logged in (or not) right now, since it's possible that the stage
     // was instantiated (i.e., __construct() was called) by a different session,
@@ -450,7 +456,7 @@ abstract class StageBase implements LoggerAwareInterface {
 
     // If constraints were changed, update those packages.
     if ($runtime || $dev) {
-      $command = array_merge(['update', '--with-all-dependencies'], $runtime, $dev);
+      $command = array_merge(['update', '--with-all-dependencies', '--optimize-autoloader'], $runtime, $dev);
       $do_stage($command);
     }
     $this->dispatch(new PostRequireEvent($this, $runtime, $dev));
@@ -600,14 +606,14 @@ abstract class StageBase implements LoggerAwareInterface {
    *
    * @param \Drupal\package_manager\Event\StageEvent $event
    *   The event object.
-   * @param callable $on_error
+   * @param callable|null $on_error
    *   (optional) A callback function to call if an error occurs, before any
    *   exceptions are thrown.
    *
    * @throws \Drupal\package_manager\Exception\StageEventException
    *   If the event collects any validation errors.
    */
-  protected function dispatch(StageEvent $event, callable $on_error = NULL): void {
+  protected function dispatch(StageEvent $event, ?callable $on_error = NULL): void {
     try {
       $this->eventDispatcher->dispatch($event);
 

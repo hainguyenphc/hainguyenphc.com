@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
@@ -69,7 +69,7 @@ class ComposerInspector implements LoggerAwareInterface {
   public function __construct(
     private readonly ComposerProcessRunnerInterface $runner,
     private readonly ComposerIsAvailableInterface $composerIsAvailable,
-    private readonly PathFactoryInterface $pathFactory
+    private readonly PathFactoryInterface $pathFactory,
   ) {
     $this->processCallback = new ProcessOutputCallback();
     $this->setLogger(new NullLogger());
@@ -248,7 +248,7 @@ class ComposerInspector implements LoggerAwareInterface {
       $command[] = "--working-dir={$context}";
     }
     try {
-      $this->runner->run($command, $this->processCallback->reset());
+      $this->runner->run($command, callback: $this->processCallback->reset());
     }
     catch (RuntimeException $e) {
       // Assume any error from `composer config` is about an undefined key-value
@@ -263,7 +263,7 @@ class ComposerInspector implements LoggerAwareInterface {
       }
     }
     $output = $this->processCallback->getOutput();
-    return isset($output) ? trim($output) : $output;
+    return $output ? trim(implode('', $output)) : NULL;
   }
 
   /**
@@ -276,7 +276,7 @@ class ComposerInspector implements LoggerAwareInterface {
    *   Thrown if the Composer version cannot be determined.
    */
   public function getVersion(): string {
-    $this->runner->run(['--format=json'], $this->processCallback->reset());
+    $this->runner->run(['--format=json'], callback: $this->processCallback->reset());
     $data = $this->processCallback->parseJsonOutput();
     if (isset($data['application']['name'])
       && isset($data['application']['version'])
@@ -393,7 +393,7 @@ class ComposerInspector implements LoggerAwareInterface {
   public function getRootPackageInfo(string $working_dir): array {
     $this->validate($working_dir);
 
-    $this->runner->run(['show', '--self', '--format=json', "--working-dir={$working_dir}"], $this->processCallback->reset());
+    $this->runner->run(['show', '--self', '--format=json', "--working-dir={$working_dir}"], callback: $this->processCallback->reset());
     return $this->processCallback->parseJsonOutput();
   }
 
@@ -416,7 +416,7 @@ class ComposerInspector implements LoggerAwareInterface {
     // about the installed packages. So, to work around this maddening quirk, we
     // call `composer show` once without the --path option, and once with it,
     // then merge the results together.
-    $this->runner->run($options, $this->processCallback->reset());
+    $this->runner->run($options, callback: $this->processCallback->reset());
     $output = $this->processCallback->parseJsonOutput();
     // $output['installed'] will not be set if no packages are installed.
     if (isset($output['installed'])) {
@@ -425,7 +425,7 @@ class ComposerInspector implements LoggerAwareInterface {
       }
 
       $options[] = '--path';
-      $this->runner->run($options, $this->processCallback->reset());
+      $this->runner->run($options, callback: $this->processCallback->reset());
       $output = $this->processCallback->parseJsonOutput();
       foreach ($output['installed'] as $installed_package) {
         $data[$installed_package['name']]['path'] = $installed_package['path'];
@@ -456,7 +456,7 @@ class ComposerInspector implements LoggerAwareInterface {
     foreach (['composer.json', 'composer.lock'] as $filename) {
       $known_hash = $known_hashes[$working_dir][$filename] ?? '';
       // If the file doesn't exist, hash_file() will return FALSE.
-      $current_hash = @hash_file('sha256', $working_dir . DIRECTORY_SEPARATOR . $filename);
+      $current_hash = @hash_file('xxh64', $working_dir . DIRECTORY_SEPARATOR . $filename);
 
       if ($known_hash && $current_hash && hash_equals($known_hash, $current_hash)) {
         continue;

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Unit\VersionPolicy;
 
@@ -24,7 +24,7 @@ class TargetVersionInstallableTest extends UnitTestCase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerTargetVersionInstallable(): array {
+  public static function providerTargetVersionInstallable(): array {
     return [
       'no available releases' => [
         [TRUE, FALSE],

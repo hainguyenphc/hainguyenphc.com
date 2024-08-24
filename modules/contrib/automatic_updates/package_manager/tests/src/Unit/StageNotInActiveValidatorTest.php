@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Unit;
 
@@ -55,7 +55,7 @@ class StageNotInActiveValidatorTest extends UnitTestCase {
    * @return mixed[]
    *   The test cases.
    */
-  public function providerTestCheckNotInActive(): array {
+  public static function providerTestCheckNotInActive(): array {
     $expected_symlink_validation_error = ValidationResult::createError([
       t('Stage directory is a subdirectory of the active directory.'),
     ]);

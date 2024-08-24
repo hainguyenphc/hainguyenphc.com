@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -17,7 +17,7 @@ class TableLooksCorrectTest extends UpdaterFormTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerTableLooksCorrect(): array {
+  public static function providerTableLooksCorrect(): array {
     return [
       'Modules page' => ['modules'],
       'Reports page' => ['reports'],

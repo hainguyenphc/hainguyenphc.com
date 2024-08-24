@@ -13,20 +13,23 @@ services:
   Drupal\package_manager\ExecutableFinder:
     public: false
     decorates: 'PhpTuf\ComposerStager\API\Finder\Service\ExecutableFinderInterface'
-  Drupal\package_manager\FileSyncerFactory:
-    public: false
-    decorates: 'PhpTuf\ComposerStager\API\FileSyncer\Factory\FileSyncerFactoryInterface'
   Drupal\package_manager\ProcessFactory:
     public: false
     decorates: 'PhpTuf\ComposerStager\API\Process\Factory\ProcessFactoryInterface'
   Drupal\package_manager\TranslatableStringFactory:
     public: false
     decorates: 'PhpTuf\ComposerStager\API\Translation\Factory\TranslatableFactoryInterface'
-  Drupal\package_manager\NoSymlinksPointToADirectory:
-    public: false
-    decorates: 'PhpTuf\ComposerStager\API\Precondition\Service\NoSymlinksPointToADirectoryInterface'
   PhpTuf\ComposerStager\API\FileSyncer\Service\FileSyncerInterface:
     factory: ['@PhpTuf\ComposerStager\API\FileSyncer\Factory\FileSyncerFactoryInterface', 'create']
+  Drupal\package_manager\LoggingBeginner:
+    public: false
+    decorates: 'PhpTuf\ComposerStager\API\Core\BeginnerInterface'
+  Drupal\package_manager\LoggingStager:
+    public: false
+    decorates: 'PhpTuf\ComposerStager\API\Core\StagerInterface'
+  Drupal\package_manager\LoggingCommitter:
+    public: false
+    decorates: 'PhpTuf\ComposerStager\API\Core\CommitterInterface'
   logger.channel.package_manager:
     parent: logger.channel_base
     arguments:
@@ -165,9 +168,12 @@ services:
   Drupal\package_manager\Validator\PhpExtensionsValidator:
     tags:
       - { name: event_subscriber }
-  # @todo Tag this service as an event subscriber in https://drupal.org/i/3358504,
-  #   once packages.drupal.org supports TUF.
-  Drupal\package_manager\Validator\PhpTufValidator: {}
+  Drupal\package_manager\Validator\PhpTufValidator:
+    arguments:
+      $repositories:
+        - 'https://packages.drupal.org/8'
+    tags:
+      - { name: event_subscriber }
   Drupal\package_manager\PackageManagerUpdateProcessor:
     arguments:
       # @todo Autowire $update_fetcher when https://drupal.org/i/3325557 lands.

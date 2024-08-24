@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\PathExcluder;
 
@@ -29,7 +29,7 @@ final class GitExcluder implements EventSubscriberInterface {
    */
   public function __construct(
     private readonly PathLocator $pathLocator,
-    private readonly ComposerInspector $composerInspector
+    private readonly ComposerInspector $composerInspector,
   ) {}
 
   /**

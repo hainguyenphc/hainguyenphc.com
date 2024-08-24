@@ -10,6 +10,6 @@
     "source": "http://cgit.drupalcode.org/filter_perms"
   },
   "require": {
-    "drupal/core": "^9.0 || ^10.0"
+    "drupal/core": "^9.0 || ^10.0 || ^11"
   }
 }

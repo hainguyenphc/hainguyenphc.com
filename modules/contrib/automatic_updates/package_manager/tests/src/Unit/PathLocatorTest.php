@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Unit;
 
@@ -41,7 +41,7 @@ class PathLocatorTest extends UnitTestCase {
    * @return string[][]
    *   Sets of arguments to pass to the test method.
    */
-  public function providerWebRoot(): array {
+  public static function providerWebRoot(): array {
     // In certain sites (like those created by drupal/recommended-project), the
     // web root is a subdirectory of the project, and exists next to the
     // vendor directory.

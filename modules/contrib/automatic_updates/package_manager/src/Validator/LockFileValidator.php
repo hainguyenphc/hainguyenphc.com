@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\Validator;
 
@@ -44,7 +44,7 @@ final class LockFileValidator implements EventSubscriberInterface {
    */
   public function __construct(
     private readonly StateInterface $state,
-    private readonly PathLocator $pathLocator
+    private readonly PathLocator $pathLocator,
   ) {}
 
   /**
@@ -65,9 +65,9 @@ final class LockFileValidator implements EventSubscriberInterface {
    *   The hash of the given file, or FALSE if the file doesn't exist or cannot
    *   be hashed.
    */
-  private function getHash(string $path) {
+  private function getHash(string $path): string|false {
     try {
-      return hash_file('sha256', $path);
+      return @hash_file('xxh64', $path);
     }
     catch (\Throwable) {
       return FALSE;

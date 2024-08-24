@@ -445,11 +445,39 @@ class FixtureManipulator {
         }
       }
 
+      /**
+       * {@inheritdoc}
+       */
+      public function clearErrorOutput(): void {
+        throw new \LogicException("Unexpected call to clearErrorOutput().");
+      }
+
+      /**
+       * {@inheritdoc}
+       */
+      public function clearOutput(): void {
+        throw new \LogicException("Unexpected call to clearOutput().");
+      }
+
+      /**
+       * {@inheritdoc}
+       */
+      public function getErrorOutput(): array {
+        throw new \LogicException("Unexpected call to getErrorOutput().");
+      }
+
+      /**
+       * {@inheritdoc}
+       */
+      public function getOutput(): array {
+        throw new \LogicException("Unexpected call to getOutput().");
+      }
+
     };
     /** @var \PhpTuf\ComposerStager\API\Process\Service\ComposerProcessRunnerInterface $runner */
     $runner = \Drupal::service(ComposerProcessRunnerInterface::class);
     $command_options[] = "--working-dir={$this->dir}";
-    $runner->run($command_options, $plain_output);
+    $runner->run($command_options, callback: $plain_output);
     return $plain_output;
   }
 

@@ -3,7 +3,7 @@ drupal.environment_indicator:
   js:
     js/environment_indicator.js: {}
     js/color.js: {}
-    js/tinycon.min.js: {}
+    js/tinycon.min.js: { minified: true }
   css:
     component:
       css/environment_indicator.css: {}

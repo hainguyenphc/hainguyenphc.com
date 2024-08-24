@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -32,10 +32,10 @@ class SymlinkValidatorTest extends PackageManagerKernelTestBase {
     // correctly evaluated.
     chdir($drush_dir . '/docs');
     symlink('../drush_logo-black.png', 'drush_logo-black.png');
-    // Switch back to the project root to ensure that the check isn't affected
-    // by which directory we happen to be in.
-    chdir($project_root);
 
+    // Switch back to the Drupal root to ensure that the check isn't affected
+    // by which directory we happen to be in.
+    chdir($this->getDrupalRoot());
     $this->assertStatusCheckResults([]);
   }
 
@@ -134,41 +134,9 @@ class SymlinkValidatorTest extends PackageManagerKernelTestBase {
   }
 
   /**
-   * Data provider for ::testSymlinkToDirectory().
-   *
-   * @return array[]
-   *   The test cases.
-   */
-  public function providerSymlinkToDirectory(): array {
-    return [
-      'php' => [
-        'php',
-        [
-          ValidationResult::createError([
-            t('The %which directory at <em class="placeholder"><PROJECT_ROOT></em> contains symlinks that point to a directory, which is not supported. The first one is <em class="placeholder"><PROJECT_ROOT>/modules/custom/example_module</em>.', [
-              '%which' => 'active',
-            ]),
-          ]),
-        ],
-      ],
-      'rsync' => [
-        'rsync',
-        [],
-      ],
-    ];
-  }
-
-  /**
    * Tests what happens when there is a symlink to a directory.
-   *
-   * @param string $file_syncer
-   *   The file syncer to use. Can be `php` or `rsync`.
-   * @param \Drupal\package_manager\ValidationResult[] $expected_results
-   *   The expected validation results.
-   *
-   * @dataProvider providerSymlinkToDirectory
    */
-  public function testSymlinkToDirectory(string $file_syncer, array $expected_results): void {
+  public function testSymlinkToDirectory(): void {
     $project_root = $this->container->get(PathLocator::class)
       ->getProjectRoot();
 
@@ -178,11 +146,10 @@ class SymlinkValidatorTest extends PackageManagerKernelTestBase {
     chdir($project_root . '/modules/custom');
     symlink('../example', 'example_module');
 
-    $this->config('package_manager.settings')
-      ->set('file_syncer', $file_syncer)
-      ->save();
-
-    $this->assertStatusCheckResults($expected_results);
+    // Switch back to the Drupal root to ensure that the check isn't affected
+    // by which directory we happen to be in.
+    chdir($this->getDrupalRoot());
+    $this->assertStatusCheckResults([]);
   }
 
   /**

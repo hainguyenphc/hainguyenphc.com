@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\webprofiler\FunctionalJavascript;
 
@@ -46,7 +46,11 @@ class ToolbarTest extends WebDriverTestBase {
     static::assertNotEmpty($assert_session->waitForElement('css', '.sf-toolbar-status'));
     static::assertNotEmpty($assert_session->waitForElement('css', '.sf-toolbar-status-green'));
 
-    $status = $this->getSession()->getPage()->find('css', '.sf-toolbar-status')->getText();
+    $status = $this
+      ->getSession()
+      ->getPage()
+      ->find('css', '.sf-toolbar-block-request')
+      ->find('css', '.sf-toolbar-status')->getText();
     static::assertEquals('200', $status);
   }
 
@@ -69,8 +73,37 @@ class ToolbarTest extends WebDriverTestBase {
     static::assertNotEmpty($assert_session->waitForElement('css', '.sf-toolbar-status'));
     static::assertNotEmpty($assert_session->waitForElement('css', '.sf-toolbar-status-red'));
 
-    $status = $this->getSession()->getPage()->find('css', '.sf-toolbar-status')->getText();
+    $status = $this
+      ->getSession()
+      ->getPage()
+      ->find('css', '.sf-toolbar-block-request')
+      ->find('css', '.sf-toolbar-status')->getText();
     static::assertEquals('404', $status);
+  }
+
+  /**
+   * Test that the controller link formatter works.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  public function testLinkFormatter(): void {
+    $account = $this->drupalCreateUser(['view webprofiler toolbar']);
+    $this->drupalLogin($account);
+
+    $this->drupalGet('<front>');
+
+    /** @var \Drupal\FunctionalJavascriptTests\WebDriverWebAssert $assert_session */
+    $assert_session = $this->assertSession();
+
+    $assert_session->waitForElement('css', '.sf-toolbar-block-request');
+    sleep(1);
+    $text = $this
+      ->getSession()
+      ->getPage()
+      ->find('css', '.sf-toolbar-block-request')
+      ->getHtml();
+    static::assertStringContainsString('EntityViewController :: view', $text);
+    static::assertStringContainsString('phpstorm://open?file=/builds/project/webprofiler/web/core/lib/Drupal/Core/Entity/Controller/EntityViewController.php&amp;line=131', $text);
   }
 
 }

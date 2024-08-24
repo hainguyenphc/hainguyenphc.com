@@ -7,5 +7,5 @@
     "email": "james.otoole@ubc.ca"
   }],
   "require": {
-    "drupal/core": "^9.3 || ^10"  }
+    "drupal/core": "^10"  }
 }

@@ -118,7 +118,7 @@ class AccessEvent extends EventBase {
       $form['field_name'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Restrict by field name'),
-        '#default_value' => $this->configuration['operation'],
+        '#default_value' => $this->configuration['field_name'],
         '#description' => $this->t('Example: <em>title, body, field_myfield</em>'),
         '#weight' => 40,
       ];

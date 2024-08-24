@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Unit\VersionPolicy;
 
@@ -23,7 +23,7 @@ class ForbidDevSnapshotTest extends UnitTestCase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerForbidDevSnapshot(): array {
+  public static function providerForbidDevSnapshot(): array {
     return [
       'stable version installed' => [
         '9.8.0',

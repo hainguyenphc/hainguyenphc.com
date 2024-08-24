@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\DataCollector;
 
@@ -27,7 +27,8 @@ class ViewsDataCollector extends DataCollector implements HasPanelInterface {
    */
   public function __construct(
     private readonly ViewExecutableFactoryWrapper $viewExecutableFactory,
-    private readonly EntityTypeManagerInterface $entityManager) {
+    private readonly EntityTypeManagerInterface $entityManager,
+  ) {
     $this->data['views'] = [];
   }
 
@@ -81,7 +82,7 @@ class ViewsDataCollector extends DataCollector implements HasPanelInterface {
    *   The number of rendered views.
    */
   public function getViewsCount(): int {
-    return count($this->data['views']);
+    return \count($this->data['views']);
   }
 
   /**
@@ -90,7 +91,7 @@ class ViewsDataCollector extends DataCollector implements HasPanelInterface {
   public function getPanel(): array {
     $views = $this->data['views'];
 
-    if (count($views) == 0) {
+    if (\count($views) == 0) {
       return [
         '#markup' => '<p>' . $this->t('No views collected') . '</p>',
       ];

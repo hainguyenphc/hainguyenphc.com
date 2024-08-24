@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\DataCollector;
 
@@ -22,7 +22,9 @@ class HttpDataCollector extends DataCollector implements HasPanelInterface {
    * @param \Drupal\webprofiler\Http\HttpClientMiddleware $middleware
    *   The http client middleware.
    */
-  public function __construct(private readonly HttpClientMiddleware $middleware) {
+  public function __construct(
+    private readonly HttpClientMiddleware $middleware,
+  ) {
     $this->data['completed'] = [];
     $this->data['failed'] = [];
   }
@@ -129,7 +131,7 @@ class HttpDataCollector extends DataCollector implements HasPanelInterface {
    *   The number of completed requests.
    */
   public function getCompletedRequestsCount(): int {
-    return count($this->getCompletedRequests());
+    return \count($this->getCompletedRequests());
   }
 
   /**
@@ -149,7 +151,7 @@ class HttpDataCollector extends DataCollector implements HasPanelInterface {
    *   The number of failed requests.
    */
   public function getFailedRequestsCount(): int {
-    return count($this->getFailedRequests());
+    return \count($this->getFailedRequests());
   }
 
   /**
@@ -166,7 +168,7 @@ class HttpDataCollector extends DataCollector implements HasPanelInterface {
    * {@inheritdoc}
    */
   public function getPanel(): array {
-    return array_merge(
+    return \array_merge(
       $this->renderHttpCalls($this->getCompletedRequests(), 'Completed'),
       $this->renderHttpCalls($this->getFailedRequests(), 'Failed'),
     );
@@ -184,7 +186,7 @@ class HttpDataCollector extends DataCollector implements HasPanelInterface {
    *   The render array of the list of blocks.
    */
   private function renderHttpCalls(array $calls, string $label): array {
-    if (count($calls) == 0) {
+    if (\count($calls) == 0) {
       return [
         $label => [
           '#markup' => '<p>' . $this->t('No @label HTTP calls collected',

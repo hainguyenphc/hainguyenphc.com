@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Functional;
 
@@ -9,7 +9,7 @@ namespace Drupal\Tests\automatic_updates_extensions\Functional;
  * @group automatic_updates_extensions
  * @internal
  */
-class DisplayUpdatesTest extends UpdaterFormTestBase {
+final class DisplayUpdatesTest extends UpdaterFormTestBase {
 
   /**
    * Data provider for testDisplayUpdates().
@@ -17,7 +17,7 @@ class DisplayUpdatesTest extends UpdaterFormTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerDisplayUpdates(): array {
+  public static function providerDisplayUpdates(): array {
     return [
       'with unrequested updates' => [TRUE],
       'without unrequested updates' => [FALSE],
@@ -67,7 +67,7 @@ class DisplayUpdatesTest extends UpdaterFormTestBase {
     $page->checkField('projects[semver_test]');
     $this->getStageFixtureManipulator()
       ->setVersion('drupal/aaa_update_test', '2.1.0')
-      ->setVersion('drupal/semver_test', '8.1.1');
+      ->setVersion('drupal/semver_test_package_name', '8.1.1');
     $page->pressButton('Update');
     $this->checkForMetaRefresh();
     $this->assertUpdateStagedTimes(1);

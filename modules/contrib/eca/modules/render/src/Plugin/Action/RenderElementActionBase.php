@@ -99,7 +99,7 @@ abstract class RenderElementActionBase extends RenderActionBase {
           NestedArray::setValue($target, $name, $build, TRUE);
         }
         else {
-          NestedArray::setValue($target, $name, NestedArray::mergeDeep($target[$name], $build));
+          NestedArray::setValue($target, $name, NestedArray::mergeDeep(NestedArray::getValue($target, $name), $build));
         }
         break;
 

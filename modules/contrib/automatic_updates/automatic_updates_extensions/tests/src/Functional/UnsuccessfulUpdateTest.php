@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Functional;
 
@@ -14,7 +14,7 @@ use Drupal\package_manager_test_validation\EventSubscriber\TestSubscriber;
  * @group automatic_updates_extensions
  * @internal
  */
-class UnsuccessfulUpdateTest extends UpdaterFormTestBase {
+final class UnsuccessfulUpdateTest extends UpdaterFormTestBase {
 
   /**
    * Test the form for warning messages.
@@ -31,6 +31,7 @@ class UnsuccessfulUpdateTest extends UpdaterFormTestBase {
     $this->drupalGet('/admin/reports/updates');
     $this->clickLink('Update Extensions');
     $this->assertTableShowsUpdates('Semver Test', '8.1.0', '8.1.1');
+    $this->getStageFixtureManipulator()->setVersion('drupal/semver_test_package_name', '8.1.1');
     $this->assertUpdatesCount(1);
     $this->checkForMetaRefresh();
     $assert->pageTextNotContains(static::$errorsExplanation);
@@ -52,9 +53,9 @@ class UnsuccessfulUpdateTest extends UpdaterFormTestBase {
     $this->getSession()->getPage()->pressButton('Update');
     $this->checkForMetaRefresh();
     $assert->buttonExists('Continue');
-    $assert->pageTextContains($summary_status_check_event);
+    $assert->pageTextContains((string) $summary_status_check_event);
     foreach ($messages_status_check_event as $message) {
-      $assert->pageTextContains($message);
+      $assert->pageTextContains((string) $message);
     }
   }
 

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -201,7 +201,7 @@ class LockFileValidatorTest extends PackageManagerKernelTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerValidateStageEvents(): array {
+  public static function providerValidateStageEvents(): array {
     return [
       'pre-require' => [
         PreRequireEvent::class,

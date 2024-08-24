@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\Tests\automatic_updates_extensions\Functional;
 
 use Drupal\package_manager\Event\PreApplyEvent;
+use Drupal\package_manager\LegacyVersionUtility;
 use Drupal\package_manager_test_validation\StagedDatabaseUpdateValidator;
 
 /**
@@ -12,7 +13,7 @@ use Drupal\package_manager_test_validation\StagedDatabaseUpdateValidator;
  * @group automatic_updates_extensions
  * @internal
  */
-class SuccessfulUpdateTest extends UpdaterFormTestBase {
+final class SuccessfulUpdateTest extends UpdaterFormTestBase {
 
   /**
    * Data provider for testSuccessfulUpdate().
@@ -20,16 +21,16 @@ class SuccessfulUpdateTest extends UpdaterFormTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerSuccessfulUpdate(): array {
+  public static function providerSuccessfulUpdate(): array {
     return [
       'maintenance mode on, semver module' => [
-        TRUE, 'semver_test', 'Semver Test', '8.1.0', '8.1.1',
+        TRUE, 'semver_test', 'drupal/semver_test_package_name', 'Semver Test', '8.1.0', '8.1.1',
       ],
       'maintenance mode off, legacy module' => [
-        FALSE, 'aaa_update_test', 'AAA Update test', '8.x-2.0', '8.x-2.1',
+        FALSE, 'aaa_update_test', 'drupal/aaa_update_test', 'AAA Update test', '8.x-2.0', '8.x-2.1',
       ],
       'maintenance mode off, legacy theme' => [
-        FALSE, 'automatic_updates_extensions_test_theme', 'Automatic Updates Extensions Test Theme', '8.x-2.0', '8.x-2.1',
+        FALSE, 'automatic_updates_extensions_test_theme', 'drupal/automatic_updates_extensions_test_theme', 'Automatic Updates Extensions Test Theme', '8.x-2.0', '8.x-2.1',
       ],
     ];
   }
@@ -41,6 +42,8 @@ class SuccessfulUpdateTest extends UpdaterFormTestBase {
    *   Whether maintenance should be on at the beginning of the update.
    * @param string $project_name
    *   The project name.
+   * @param string $package_name
+   *   The package name.
    * @param string $project_title
    *   The project title.
    * @param string $installed_version
@@ -50,7 +53,7 @@ class SuccessfulUpdateTest extends UpdaterFormTestBase {
    *
    * @dataProvider providerSuccessfulUpdate
    */
-  public function testSuccessfulUpdate(bool $maintenance_mode_on, string $project_name, string $project_title, string $installed_version, string $target_version): void {
+  public function testSuccessfulUpdate(bool $maintenance_mode_on, string $project_name, string $package_name, string $project_title, string $installed_version, string $target_version): void {
     $this->container->get('theme_installer')->install(['automatic_updates_theme_with_updates']);
     // By default, the Update module only checks for updates of installed
     // modules and themes. The two modules we're testing here (semver_test and
@@ -60,6 +63,7 @@ class SuccessfulUpdateTest extends UpdaterFormTestBase {
     $path_to_fixtures_folder = $project_name === 'aaa_update_test' ? '/../../../../package_manager/tests' : '/../..';
     $this->setReleaseMetadata(__DIR__ . $path_to_fixtures_folder . '/fixtures/release-history/' . $project_name . '.1.1.xml');
     $this->setProjectInstalledVersion([$project_name => $installed_version]);
+    $this->getStageFixtureManipulator()->setVersion($package_name, LegacyVersionUtility::convertToSemanticVersion($target_version));
     $this->checkForUpdates();
     $state = $this->container->get('state');
     $state->set('system.maintenance_mode', $maintenance_mode_on);
@@ -98,8 +102,7 @@ class SuccessfulUpdateTest extends UpdaterFormTestBase {
     $warning_messages = $assert_session->elementExists('xpath', '//div[@data-drupal-messages]//div[@aria-label="Warning message"]');
     $this->assertStringContainsString('Database updates have been detected in the following extensions.<ul><li>System</li><li>Automatic Updates Theme With Updates</li></ul>', $warning_messages->getHtml());
 
-    $page->pressButton('Continue');
-    $this->checkForMetaRefresh();
+    $this->acceptWarningAndUpdate();
     $assert_session->addressEquals('/admin/reports/updates');
     // Confirm that the site was in maintenance before the update was applied.
     // @see \Drupal\package_manager_test_validation\EventSubscriber\TestSubscriber::handleEvent()

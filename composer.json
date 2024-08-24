@@ -82,8 +82,10 @@
         "drupal/responsive_menu": "4.4.x-dev@dev",
         "drupal/rules": "3.x-dev@dev",
         "drupal/select2": "^1.15",
+        "drupal/schema_metatag": "^3.0",
         "drupal/simple_oauth": "^5.2",
         "drupal/simple_sitemap": "^4.1",
+        "drupal/simplesamlphp_auth": "^4.0",
         "drupal/sitewide_alert": "^2.2",
         "drupal/smart_trim": "^2.1",
         "drupal/stable": "^2.0",
@@ -100,7 +102,9 @@
         "drupal/webprofiler": "^10.1",
         "drush/drush": "^12",
         "npm-asset/select2": "^4.0",
-        "oomphinc/composer-installers-extender": "^2.0"
+        "oomphinc/composer-installers-extender": "^2.0",
+        "simplesamlphp/simplesamlphp-module-metarefresh": "^1.2",
+        "twig/intl-extra": "~3.8.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -117,7 +121,8 @@
             "cweagans/composer-patches": true,
             "phpstan/extension-installer": true,
             "php-http/discovery": true,
-            "oomphinc/composer-installers-extender": true
+            "oomphinc/composer-installers-extender": true,
+            "simplesamlphp/composer-module-installer": true
         },
         "sort-packages": true
     },
@@ -204,5 +209,18 @@
         "phpstan/extension-installer": "^1.2",
         "phpstan/phpstan": "^1.9",
         "phpstan/phpstan-deprecation-rules": "^1.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "if [ -e vendor/simplesamlphp/simplesamlphp/config ]; then rm -r vendor/simplesamlphp/simplesamlphp/config; fi",
+            "ln -s ../../../simplesamlphp vendor/simplesamlphp/simplesamlphp/config"
+        ],
+        "post-update-cmd": [
+            "if [ -e vendor/simplesamlphp/simplesamlphp/config ]; then rm -r vendor/simplesamlphp/simplesamlphp/config; fi",
+            "ln -s ../../../simplesamlphp vendor/simplesamlphp/simplesamlphp/config"
+        ],
+        "post-drupal-scaffold-cmd": [
+            "patch -p1 < patches/simplesamlphp-simplesaml-path-access.patch"
+        ]
     }
 }

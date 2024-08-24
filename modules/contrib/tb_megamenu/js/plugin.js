@@ -296,6 +296,13 @@ export class TBMegaMenu {
         });
     };
 
+    // Anytime there's a click outside a desktop menu that has arrows, close the menu.
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.tbm') && !this.isMobile && this.hasArrows) {
+        this.closeMenu();
+      }
+    });
+
     this.navParent.querySelectorAll('.tbm-item').forEach((element) => {
       if (element.classList.contains('tbm-group')) {
         // Mega menu item has mega class (it's a true mega menu)

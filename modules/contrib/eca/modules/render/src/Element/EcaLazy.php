@@ -23,7 +23,7 @@ class EcaLazy extends RenderElement {
       '#name' => '',
       '#argument' => NULL,
       '#pre_render' => [
-        get_class() . '::generatePlaceholder',
+        __CLASS__ . '::generatePlaceholder',
       ],
     ];
   }
@@ -39,7 +39,7 @@ class EcaLazy extends RenderElement {
    */
   public static function generatePlaceholder(array $element) {
     $build = [
-      '#lazy_builder' => [get_class() . '::buildElement', [$element['#name'], $element['#argument']]],
+      '#lazy_builder' => [__CLASS__ . '::buildElement', [$element['#name'], $element['#argument']]],
       '#create_placeholder' => TRUE,
     ];
 
