@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Entity;
 
@@ -23,7 +23,9 @@ class EntityViewBuilderDecorator extends EntityDecorator implements EntityHandle
    * @param \Drupal\Core\Entity\EntityViewBuilderInterface $config_entity_storage
    *   The config entity storage to decorate.
    */
-  final public function __construct(EntityViewBuilderInterface $config_entity_storage) {
+  final public function __construct(
+    EntityViewBuilderInterface $config_entity_storage,
+  ) {
     parent::__construct($config_entity_storage);
 
     $this->entities = [];
@@ -50,7 +52,7 @@ class EntityViewBuilderDecorator extends EntityDecorator implements EntityHandle
    * {@inheritdoc}
    */
   public function viewMultiple(array $entities = [], $view_mode = 'full', $langcode = NULL) {
-    $this->entities = array_merge($this->entities, $entities);
+    $this->entities = \array_merge($this->entities, $entities);
 
     return $this->getOriginalObject()
       ->viewMultiple($entities, $view_mode, $langcode);
@@ -88,7 +90,7 @@ class EntityViewBuilderDecorator extends EntityDecorator implements EntityHandle
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-    assert($entity_type instanceof EntityViewBuilderInterface);
+    \assert($entity_type instanceof EntityViewBuilderInterface);
 
     return new static(
       $entity_type,

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Unit;
 
@@ -49,7 +49,7 @@ class RequireEventTraitTest extends UnitTestCase {
    * @return mixed[]
    *   The test cases.
    */
-  public function providerGetPackages(): array {
+  public static function providerGetPackages(): array {
     return [
       'Package with constraint' => [
         ['drupal/new_package:^8.1'],

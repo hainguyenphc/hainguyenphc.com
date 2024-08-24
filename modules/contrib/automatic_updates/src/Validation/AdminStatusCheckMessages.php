@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates\Validation;
 
@@ -60,7 +60,7 @@ final class AdminStatusCheckMessages implements ContainerInjectionInterface {
     private readonly CurrentRouteMatch $currentRouteMatch,
     private readonly CronUpdateRunner $runner,
     private readonly RendererInterface $renderer,
-    private readonly ConfigFactoryInterface $configFactory
+    private readonly ConfigFactoryInterface $configFactory,
   ) {}
 
   /**

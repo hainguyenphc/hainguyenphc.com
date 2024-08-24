@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Profiler;
 
@@ -45,7 +45,11 @@ class TemplateManager {
    * @param array $templates
    *   Data collector templates retrieved by ProfilerPass class.
    */
-  public function __construct(Profiler $profiler, Environment $twig, array $templates) {
+  public function __construct(
+    Profiler $profiler,
+    Environment $twig,
+    array $templates,
+  ) {
     $this->profiler = $profiler;
     $this->twig = $twig;
     $this->templates = $templates;
@@ -68,7 +72,7 @@ class TemplateManager {
     $templates = $this->getNames($profile);
 
     if (!isset($templates[$panel])) {
-      throw new NotFoundHttpException(sprintf('Panel "%s" is not registered in profiler or is not present in viewed profile.', $panel));
+      throw new NotFoundHttpException(\sprintf('Panel "%s" is not registered in profiler or is not present in viewed profile.', $panel));
     }
 
     return $templates[$panel];
@@ -98,12 +102,12 @@ class TemplateManager {
         continue;
       }
 
-      if (str_ends_with($template, '.html.twig')) {
-        $template = substr($template, 0, -10);
+      if (\str_ends_with($template, '.html.twig')) {
+        $template = \substr($template, 0, -10);
       }
 
       if (!$loader->exists($template . '.html.twig')) {
-        throw new \UnexpectedValueException(sprintf('The profiler template "%s.html.twig" for data collector "%s" does not exist.', $template, $name));
+        throw new \UnexpectedValueException(\sprintf('The profiler template "%s.html.twig" for data collector "%s" does not exist.', $template, $name));
       }
 
       $templates[$name] = $template . '.html.twig';

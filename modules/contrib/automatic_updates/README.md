@@ -11,7 +11,7 @@ Follow and read more on the [Automatic Updates Initiative overview and roadmap](
 
 Automatic Updates includes a sub-module, Automatic Updates Extensions, which supports updating contributed modules and themes.
 
-⚠️ ☢️️ **Automatic Updates Extensions is still experimental and under heavy development.** We encourage you to test it in your local development environment, or another low-stakes testing situation, but it is emphatically NOT ready for use in a production environment. ☢️ ⚠️
+⚠️ ☢️️ Depending on the contributed module or theme, updates to these projects could make the site inoperable. If possible, it is highly recommended that you test these updates in a development environment first.☢️ ⚠️
 
 ### More info
 

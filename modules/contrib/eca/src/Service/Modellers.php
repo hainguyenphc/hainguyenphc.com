@@ -299,7 +299,11 @@ class Modellers {
     }
     $archiver = new ArchiveTar($archiveFileName, 'gz');
     foreach ($dependencies['config'] as $name) {
-      $archiver->addString("$name.yml", Yaml::encode($this->exportStorage->read($name)));
+      $config = $this->exportStorage->read($name);
+      if ($config) {
+        unset($config['uuid'], $config['_core']);
+        $archiver->addString("$name.yml", Yaml::encode($config));
+      }
     }
     $archiver->addString('dependencies.yml', Yaml::encode($dependencies));
 

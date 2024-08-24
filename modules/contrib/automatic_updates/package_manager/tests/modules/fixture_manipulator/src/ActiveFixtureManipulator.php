@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\fixture_manipulator;
 
@@ -14,7 +14,7 @@ final class ActiveFixtureManipulator extends FixtureManipulator {
   /**
    * {@inheritdoc}
    */
-  public function commitChanges(string $dir = NULL): void {
+  public function commitChanges(?string $dir = NULL): void {
     if ($dir) {
       throw new \UnexpectedValueException("$dir cannot be specific for a ActiveFixtureManipulator instance");
     }

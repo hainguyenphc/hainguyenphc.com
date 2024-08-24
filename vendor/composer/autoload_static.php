@@ -116,6 +116,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'Symfony\\Component\\Serializer\\' => 29,
             'Symfony\\Component\\Routing\\' => 26,
             'Symfony\\Component\\Process\\' => 26,
+            'Symfony\\Component\\PasswordHasher\\' => 33,
             'Symfony\\Component\\Mime\\' => 23,
             'Symfony\\Component\\Mailer\\' => 25,
             'Symfony\\Component\\Lock\\' => 23,
@@ -140,6 +141,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'SlevomatCodingStandard\\' => 23,
             'SimpleSAML\\XML\\' => 15,
+            'SimpleSAML\\XMLSecurity\\' => 23,
             'SimpleSAML\\Module\\saml\\' => 23,
             'SimpleSAML\\Module\\multiauth\\' => 28,
             'SimpleSAML\\Module\\metarefresh\\' => 30,
@@ -222,6 +224,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         array (
             'JsonSchema\\' => 11,
             'Jean85\\' => 7,
+            'JanGregor\\Prophecy\\' => 19,
         ),
         'H' => 
         array (
@@ -267,6 +270,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'Drupal\\' => 7,
             'DrupalRector\\' => 13,
             'DrupalPractice\\' => 15,
+            'DrupalFinder\\' => 13,
             'DrupalCodeGenerator\\' => 20,
             'DrupalCheck\\' => 12,
             'Doctrine\\Persistence\\' => 21,
@@ -475,6 +479,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
         ),
+        'Symfony\\Component\\PasswordHasher\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/password-hasher',
+        ),
         'Symfony\\Component\\Mime\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/mime',
@@ -570,6 +578,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'SimpleSAML\\XML\\' => 
         array (
             0 => __DIR__ . '/..' . '/simplesamlphp/xml-common/src',
+        ),
+        'SimpleSAML\\XMLSecurity\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/simplesamlphp/xml-security/src',
         ),
         'SimpleSAML\\Module\\saml\\' => 
         array (
@@ -706,8 +718,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'PHPStan\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
-            1 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
+            0 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
+            1 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -759,8 +771,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri',
-            1 => __DIR__ . '/..' . '/league/uri-interfaces',
+            0 => __DIR__ . '/..' . '/league/uri-interfaces',
+            1 => __DIR__ . '/..' . '/league/uri',
         ),
         'League\\OAuth2\\Server\\' => 
         array (
@@ -818,6 +830,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         array (
             0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
         ),
+        'JanGregor\\Prophecy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jangregor/phpstan-prophecy/src',
+        ),
         'Http\\Promise\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-http/promise/src',
@@ -868,8 +884,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Gettext\\' => 
         array (
-            0 => __DIR__ . '/..' . '/gettext/gettext/src',
-            1 => __DIR__ . '/..' . '/gettext/translator/src',
+            0 => __DIR__ . '/..' . '/gettext/translator/src',
+            1 => __DIR__ . '/..' . '/gettext/gettext/src',
         ),
         'GPBMetadata\\Opentelemetry\\' => 
         array (
@@ -938,6 +954,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'DrupalPractice\\' => 
         array (
             0 => __DIR__ . '/..' . '/drupal/coder/coder_sniffer/DrupalPractice',
+        ),
+        'DrupalFinder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webflo/drupal-finder/src',
         ),
         'DrupalCodeGenerator\\' => 
         array (
@@ -1188,7 +1208,6 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'DateObjectError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateObjectError.php',
         'DateRangeError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateRangeError.php',
         'Drupal' => __DIR__ . '/../..' . '/core/lib/Drupal.php',
-        'DrupalFinder\\DrupalFinder' => __DIR__ . '/..' . '/webflo/drupal-finder/src/DrupalFinder.php',
         'Drupal\\Component\\DependencyInjection\\Container' => __DIR__ . '/../..' . '/core/lib/Drupal/Component/DependencyInjection/Container.php',
         'Drupal\\Component\\DependencyInjection\\PhpArrayContainer' => __DIR__ . '/../..' . '/core/lib/Drupal/Component/DependencyInjection/PhpArrayContainer.php',
         'Drupal\\Component\\FileCache\\FileCacheFactory' => __DIR__ . '/../..' . '/core/lib/Drupal/Component/FileCache/FileCacheFactory.php',
@@ -1247,41 +1266,6 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'Nette\\NotImplementedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\NotSupportedException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
         'Nette\\OutOfRangeException' => __DIR__ . '/..' . '/nette/utils/src/exceptions.php',
-        'Nette\\PhpGenerator\\Attribute' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Attribute.php',
-        'Nette\\PhpGenerator\\ClassLike' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/ClassLike.php',
-        'Nette\\PhpGenerator\\ClassType' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/ClassType.php',
-        'Nette\\PhpGenerator\\Closure' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Closure.php',
-        'Nette\\PhpGenerator\\Constant' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Constant.php',
-        'Nette\\PhpGenerator\\Dumper' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Dumper.php',
-        'Nette\\PhpGenerator\\EnumCase' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/EnumCase.php',
-        'Nette\\PhpGenerator\\EnumType' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/EnumType.php',
-        'Nette\\PhpGenerator\\Extractor' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Extractor.php',
-        'Nette\\PhpGenerator\\Factory' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Factory.php',
-        'Nette\\PhpGenerator\\GlobalFunction' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/GlobalFunction.php',
-        'Nette\\PhpGenerator\\Helpers' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Helpers.php',
-        'Nette\\PhpGenerator\\InterfaceType' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/InterfaceType.php',
-        'Nette\\PhpGenerator\\Literal' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Literal.php',
-        'Nette\\PhpGenerator\\Method' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Method.php',
-        'Nette\\PhpGenerator\\Parameter' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Parameter.php',
-        'Nette\\PhpGenerator\\PhpFile' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/PhpFile.php',
-        'Nette\\PhpGenerator\\PhpLiteral' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/PhpLiteral.php',
-        'Nette\\PhpGenerator\\PhpNamespace' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/PhpNamespace.php',
-        'Nette\\PhpGenerator\\Printer' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Printer.php',
-        'Nette\\PhpGenerator\\PromotedParameter' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/PromotedParameter.php',
-        'Nette\\PhpGenerator\\Property' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Property.php',
-        'Nette\\PhpGenerator\\PsrPrinter' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/PsrPrinter.php',
-        'Nette\\PhpGenerator\\TraitType' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/TraitType.php',
-        'Nette\\PhpGenerator\\TraitUse' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/TraitUse.php',
-        'Nette\\PhpGenerator\\Traits\\AttributeAware' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/AttributeAware.php',
-        'Nette\\PhpGenerator\\Traits\\CommentAware' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/CommentAware.php',
-        'Nette\\PhpGenerator\\Traits\\ConstantsAware' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/ConstantsAware.php',
-        'Nette\\PhpGenerator\\Traits\\FunctionLike' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/FunctionLike.php',
-        'Nette\\PhpGenerator\\Traits\\MethodsAware' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/MethodsAware.php',
-        'Nette\\PhpGenerator\\Traits\\NameAware' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/NameAware.php',
-        'Nette\\PhpGenerator\\Traits\\PropertiesAware' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/PropertiesAware.php',
-        'Nette\\PhpGenerator\\Traits\\TraitsAware' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/TraitsAware.php',
-        'Nette\\PhpGenerator\\Traits\\VisibilityAware' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Traits/VisibilityAware.php',
-        'Nette\\PhpGenerator\\Type' => __DIR__ . '/..' . '/nette/php-generator/src/PhpGenerator/Type.php',
         'Nette\\Schema\\Context' => __DIR__ . '/..' . '/nette/schema/src/Schema/Context.php',
         'Nette\\Schema\\DynamicParameter' => __DIR__ . '/..' . '/nette/schema/src/Schema/DynamicParameter.php',
         'Nette\\Schema\\Elements\\AnyOf' => __DIR__ . '/..' . '/nette/schema/src/Schema/Elements/AnyOf.php',

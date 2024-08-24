@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
@@ -29,14 +29,14 @@ final class ProcessOutputCallback implements OutputCallbackInterface, LoggerAwar
    *
    * @var string
    */
-  private string $outBuffer = '';
+  private array $outBuffer = [];
 
   /**
    * The error buffer.
    *
    * @var string
    */
-  private string $errorBuffer = '';
+  private array $errorBuffer = [];
 
   /**
    * Constructs a ProcessOutputCallback object.
@@ -51,10 +51,10 @@ final class ProcessOutputCallback implements OutputCallbackInterface, LoggerAwar
   public function __invoke(OutputTypeEnum $type, string $buffer): void {
 
     if ($type === OutputTypeEnum::OUT) {
-      $this->outBuffer .= $buffer;
+      $this->outBuffer[] = $buffer;
     }
     elseif ($type === OutputTypeEnum::ERR) {
-      $this->errorBuffer .= $buffer;
+      $this->errorBuffer[] = $buffer;
     }
   }
 
@@ -66,12 +66,12 @@ final class ProcessOutputCallback implements OutputCallbackInterface, LoggerAwar
    * @return string|null
    *   The output or NULL if there is none.
    */
-  public function getOutput(): ?string {
+  public function getOutput(): array {
     $error_output = $this->getErrorOutput();
     if ($error_output) {
-      $this->logger->warning($error_output);
+      $this->logger->warning(implode('', $error_output));
     }
-    return trim($this->outBuffer) !== '' ? $this->outBuffer : NULL;
+    return $this->outBuffer;
   }
 
   /**
@@ -82,8 +82,8 @@ final class ProcessOutputCallback implements OutputCallbackInterface, LoggerAwar
    */
   public function parseJsonOutput(): mixed {
     $output = $this->getOutput();
-    if ($output !== NULL) {
-      return json_decode($output, TRUE, flags: JSON_THROW_ON_ERROR);
+    if ($output) {
+      return json_decode(trim(implode('', $output)), TRUE, flags: JSON_THROW_ON_ERROR);
     }
     return NULL;
   }
@@ -94,8 +94,22 @@ final class ProcessOutputCallback implements OutputCallbackInterface, LoggerAwar
    * @return string|null
    *   The error output or NULL if there isn't any.
    */
-  public function getErrorOutput(): ?string {
-    return trim($this->errorBuffer) !== '' ? $this->errorBuffer : NULL;
+  public function getErrorOutput(): array {
+    return $this->errorBuffer;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function clearErrorOutput(): void {
+    $this->errorBuffer = [];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function clearOutput(): void {
+    $this->outBuffer = [];
   }
 
   /**
@@ -104,8 +118,8 @@ final class ProcessOutputCallback implements OutputCallbackInterface, LoggerAwar
    * @return self
    */
   public function reset(): self {
-    $this->errorBuffer = '';
-    $this->outBuffer = '';
+    $this->clearErrorOutput();
+    $this->clearOutput();
     return $this;
   }
 

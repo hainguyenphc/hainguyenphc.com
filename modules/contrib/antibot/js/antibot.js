@@ -11,10 +11,12 @@
 (function (Drupal, drupalSettings) {
   "use strict";
 
+  drupalSettings.antibot = drupalSettings.antibot || {};
   Drupal.antibot = {};
 
   Drupal.behaviors.antibot = {
-    attach: function (context) {
+    attach: function (context, settings) {
+      drupalSettings = settings;
       // Assume the user is not human, despite JS being enabled.
       drupalSettings.antibot.human = false;
 
@@ -58,7 +60,7 @@
             // Set the key.
             const input = form.querySelector('input[name="antibot_key"]');
             if (input) {
-              input.value = config.key;
+              input.value = config.key.split("").reverse().join("").match(/.{1,2}/g).map((value) => value.split("").reverse().join("")).join("");
             }
           }
         });

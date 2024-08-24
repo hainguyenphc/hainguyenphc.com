@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Form;
 
@@ -214,7 +214,7 @@ class SettingsForm extends ConfigFormBase {
       }
     }
 
-    asort($options);
+    \asort($options);
 
     return $options;
   }

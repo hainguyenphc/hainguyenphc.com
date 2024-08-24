@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Kernel\StatusCheck;
 
@@ -11,6 +11,9 @@ use Drupal\automatic_updates\Validation\StatusChecker;
 use Drupal\automatic_updates\Validator\StagedProjectsValidator;
 use Drupal\automatic_updates_test\EventSubscriber\TestSubscriber1;
 use Drupal\automatic_updates_test_status_checker\EventSubscriber\TestSubscriber2;
+use Drupal\Core\Config\ConfigInstallerInterface;
+use Drupal\Core\Extension\ModuleInstallerInterface;
+use Drupal\Core\Installer\InstallerKernel;
 use Drupal\package_manager\Event\StatusCheckEvent;
 use Drupal\system\SystemManager;
 use Drupal\Tests\automatic_updates\Kernel\AutomaticUpdatesKernelTestBase;
@@ -298,6 +301,42 @@ class StatusCheckerTest extends AutomaticUpdatesKernelTestBase {
     $status_checker->clearStoredResults();
     // The last run time should be unaffected by clearing stored results.
     $this->assertSame($last_run_time, $status_checker->getLastRunTime());
+  }
+
+  /**
+   * Tests that status checks are not run during site installation.
+   */
+  public function testNoStatusCheckOnSiteInstall(): void {
+    $this->enableModules(['automatic_updates']);
+
+    $GLOBALS['install_state'] = [];
+    $this->assertTrue(InstallerKernel::installationAttempted());
+
+    $this->container->get(ModuleInstallerInterface::class)
+      ->install(['automatic_updates_test_status_checker']);
+    // Ensure that status checks have never been run.
+    $this->assertNull($this->container->get(StatusChecker::class)->getLastRunTime());
+  }
+
+  /**
+   * Tests that status checks are not run during config sync.
+   */
+  public function testNoStatusCheckOnConfigSync(): void {
+    $this->enableModules(['automatic_updates']);
+
+    /** @var \Drupal\Core\Config\StorageInterface $storage */
+    $storage = $this->container->get('config.storage');
+
+    $is_syncing = $this->container->get(ConfigInstallerInterface::class)
+      ->setSourceStorage($storage)
+      ->setSyncing(TRUE)
+      ->isSyncing();
+    $this->assertTrue($is_syncing);
+
+    $this->container->get(ModuleInstallerInterface::class)
+      ->install(['automatic_updates_test_status_checker']);
+    // Ensure that status checks have never been run.
+    $this->assertNull($this->container->get(StatusChecker::class)->getLastRunTime());
   }
 
 }

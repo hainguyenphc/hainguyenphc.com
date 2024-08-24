@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\tracer\Controller;
 
@@ -23,12 +23,12 @@ class TraceableControllerResolver implements ControllerResolverInterface {
    */
   public function __construct(
     protected readonly ControllerResolverInterface $resolver,
-    protected readonly TracerInterface $tracer
+    protected readonly TracerInterface $tracer,
   ) {
   }
 
   /**
-   * {@inheritdoc}
+   * Trace the time spent in the getController method.
    */
   public function getController(Request $request): callable|FALSE {
     $span = $this->tracer->start('get_controller', $request->getUri());

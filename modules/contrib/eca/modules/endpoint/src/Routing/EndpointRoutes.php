@@ -53,6 +53,11 @@ class EndpointRoutes implements ContainerInjectionInterface {
       ['_controller' => 'Drupal\eca_endpoint\Controller\EndpointController::handle'],
       ['_custom_access' => 'Drupal\eca_endpoint\Controller\EndpointController::access']
     ));
+    $routes->add('eca_endpoint.endpoint2', new Route(
+      '/' . $this->endpointBasePath . '/{eca_endpoint_argument_1}',
+      ['_controller' => 'Drupal\eca_endpoint\Controller\EndpointController::handle'],
+      ['_custom_access' => 'Drupal\eca_endpoint\Controller\EndpointController::access']
+    ));
 
     return $routes;
   }

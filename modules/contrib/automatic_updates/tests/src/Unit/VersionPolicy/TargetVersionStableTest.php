@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Unit\VersionPolicy;
 
@@ -23,7 +23,7 @@ class TargetVersionStableTest extends UnitTestCase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerTargetVersionStable(): array {
+  public static function providerTargetVersionStable(): array {
     return [
       'stable target version' => [
         '9.9.0',

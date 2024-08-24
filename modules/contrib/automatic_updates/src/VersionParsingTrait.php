@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates;
 
@@ -23,17 +23,16 @@ trait VersionParsingTrait {
    * @param string $version_string
    *   The version string.
    *
-   * @return string|null
-   *   The patch number if available, otherwise NULL.
+   * @return string
+   *   The patch number. If not known, defaults to '0'.
    */
-  private static function getPatchVersion(string $version_string): ?string {
+  private static function getPatchVersion(string $version_string): string {
     $version_extra = ExtensionVersion::createFromVersionString($version_string)
       ->getVersionExtra();
     if ($version_extra) {
       $version_string = str_replace("-$version_extra", '', $version_string);
     }
-    $version_parts = explode('.', $version_string);
-    return count($version_parts) === 3 ? $version_parts[2] : NULL;
+    return explode('.', $version_string)[2] ?? '0';
   }
 
   /**

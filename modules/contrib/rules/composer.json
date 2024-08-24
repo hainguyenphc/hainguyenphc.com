@@ -10,7 +10,10 @@
     },
     "require": {
         "drupal/core": "^9.1 || ^10",
-        "drupal/typed_data": "^1.0"
+        "drupal/typed_data": "^2.0"
+    },
+    "conflict": {
+        "drupal/core": ">=10.3"
     },
     "minimum-stability": "dev",
     "extra": {

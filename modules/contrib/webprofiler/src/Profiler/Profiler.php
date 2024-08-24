@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Profiler;
 
@@ -41,7 +41,11 @@ class Profiler extends SymfonyProfiler {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config
    *   The config factory service.
    */
-  public function __construct(FileProfilerStorage $storage, LoggerInterface $logger, private readonly ConfigFactoryInterface $config) {
+  public function __construct(
+    FileProfilerStorage $storage,
+    LoggerInterface $logger,
+    private readonly ConfigFactoryInterface $config,
+  ) {
     parent::__construct($storage, $logger);
 
     $this->localStorage = $storage;
@@ -62,7 +66,7 @@ class Profiler extends SymfonyProfiler {
       parent::add($collector);
     }
     else {
-      if (is_array($activeToolbarItems) && array_key_exists($collector->getName(), $activeToolbarItems) && $activeToolbarItems[$collector->getName()] !== '0') {
+      if (\is_array($activeToolbarItems) && \array_key_exists($collector->getName(), $activeToolbarItems) && $activeToolbarItems[$collector->getName()] !== '0') {
         parent::add($collector);
       }
     }

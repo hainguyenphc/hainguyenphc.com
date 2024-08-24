@@ -72,6 +72,10 @@ abstract class AutomaticUpdatesCommandBase extends Command {
    * {@inheritdoc}
    */
   protected function execute(InputInterface $input, OutputInterface $output): int {
+    if (function_exists('posix_getuid') && posix_getuid() === 0) {
+      throw new \DomainException('For security reasons, this command cannot be run as the superuser (root).');
+    }
+
     $this->io = new SymfonyStyle($input, $output);
 
     // Detect the Drupal application root based on the location of the \Drupal

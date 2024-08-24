@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\DataCollector;
 
@@ -60,8 +60,8 @@ class RequestDataCollector extends BaseRequestDataCollector implements HasPanelI
     $this->data['big_pipe'] = $response->headers->get('X-Drupal-BigPipe-Placeholder');
 
     if ($controller = $this->controllerResolver->getController($request)) {
-      if (is_object($controller)) {
-        $this->data['controller'] = get_class($controller);
+      if (\is_object($controller)) {
+        $this->data['controller'] = \get_class($controller);
       }
       else {
         $this->data['controller'] = $this->getMethodData(
@@ -184,7 +184,7 @@ class RequestDataCollector extends BaseRequestDataCollector implements HasPanelI
    */
   public function addAccessCheck(
     string $service_id,
-    array $callable
+    array $callable,
   ): void {
     $this->accessChecks[] = [
       self::SERVICE_ID => $service_id,
@@ -216,8 +216,8 @@ class RequestDataCollector extends BaseRequestDataCollector implements HasPanelI
       return [];
     }
 
-    $parts = explode('&', substr($big_pipe, strlen('callback=')));
-    $data = urldecode($parts[0]);
+    $parts = \explode('&', \substr($big_pipe, \strlen('callback=')));
+    $data = \urldecode($parts[0]);
 
     return [
       '#type' => 'inline_template',

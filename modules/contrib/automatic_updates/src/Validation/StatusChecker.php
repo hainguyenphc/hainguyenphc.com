@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates\Validation;
 
@@ -177,7 +177,7 @@ final class StatusChecker implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     return [
       PostApplyEvent::class => 'clearStoredResults',
       ConfigEvents::SAVE => 'onConfigSave',

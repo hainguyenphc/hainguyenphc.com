@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Kernel;
 
@@ -102,6 +102,7 @@ class UpdateStageTest extends AutomaticUpdatesKernelTestBase {
       [
         'update',
         '--with-all-dependencies',
+        '--optimize-autoloader',
         'drupal/core-recommended:9.8.1',
         'drupal/core-dev:9.8.1',
       ],
@@ -134,7 +135,7 @@ class UpdateStageTest extends AutomaticUpdatesKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerInvalidProjectVersions(): array {
+  public static function providerInvalidProjectVersions(): array {
     return [
       'only not drupal' => [['not_drupal' => '1.1.3']],
       'not drupal and drupal' => [['drupal' => '9.8.0', 'not_drupal' => '1.2.3']],
@@ -148,7 +149,7 @@ class UpdateStageTest extends AutomaticUpdatesKernelTestBase {
    * @return string[][]
    *   The test cases.
    */
-  public function providerCommitException(): array {
+  public static function providerCommitException(): array {
     return [
       'RuntimeException' => [
         \RuntimeException::class,
@@ -175,7 +176,7 @@ class UpdateStageTest extends AutomaticUpdatesKernelTestBase {
    *
    * @dataProvider providerCommitException
    */
-  public function testCommitException(string $thrown_class, string $expected_class = NULL): void {
+  public function testCommitException(string $thrown_class, ?string $expected_class = NULL): void {
     $this->getStageFixtureManipulator()->setCorePackageVersion('9.8.1');
 
     $stage = $this->container->get(UpdateStage::class);
@@ -189,7 +190,7 @@ class UpdateStageTest extends AutomaticUpdatesKernelTestBase {
     if (is_subclass_of($thrown_class, ExceptionInterface::class)) {
       $thrown_message = $this->createComposeStagerMessage($thrown_message);
     }
-    LoggingCommitter::setException(new $thrown_class($thrown_message, 123));
+    LoggingCommitter::setException($thrown_class, $thrown_message, 123);
     $this->expectException($expected_class);
     $expected_message = $expected_class === ApplyFailedException::class ?
       "Automatic updates failed to apply, and the site is in an indeterminate state. Consider restoring the code and database from a backup."

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\Validator;
 
@@ -40,7 +40,7 @@ final class EnabledExtensionsValidator implements EventSubscriberInterface {
     private readonly PathLocator $pathLocator,
     private readonly ModuleHandlerInterface $moduleHandler,
     private readonly ComposerInspector $composerInspector,
-    private readonly ThemeHandlerInterface $themeHandler
+    private readonly ThemeHandlerInterface $themeHandler,
   ) {}
 
   /**

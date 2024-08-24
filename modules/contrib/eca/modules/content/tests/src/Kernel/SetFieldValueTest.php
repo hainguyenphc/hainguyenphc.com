@@ -44,6 +44,11 @@ class SetFieldValueTest extends KernelTestBase {
     $this->installSchema('node', ['node_access']);
     $this->installConfig(static::$modules);
     User::create(['uid' => 1, 'name' => 'admin'])->save();
+
+    // Set state so that \Drupal\eca\Processor::isEcaContext returns TRUE for
+    // \Drupal\eca_content\Plugin\Action\FieldUpdateActionBase::save, even if
+    // ECA actions plugin "eca_set_field_value" gets executed without an event.
+    \Drupal::state()->set('_eca_internal_test_context', TRUE);
   }
 
   /**

@@ -770,11 +770,14 @@ abstract class ModellerBpmnBase extends ModellerBase {
             $fields[] = $this->checkbox($key, $label, $weight, $description, $value);
             continue 2;
 
-          case 'checkboxes':
-          case 'radios':
-          case 'select':
+        case 'checkboxes':
+        case 'radios':
+        case 'select':
+          if (!is_array($value)) {
             $fields[] = $this->optionsField($key, $label, $weight, $description, $definition['#options'], (string) $value, $required);
             continue 2;
+          }
+          break;
 
         }
       }

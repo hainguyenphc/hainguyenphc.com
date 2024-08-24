@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -61,7 +61,7 @@ class StagedDBUpdateValidatorTest extends PackageManagerKernelTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerStagedDatabaseUpdate(): array {
+  public static function providerStagedDatabaseUpdate(): array {
     $summary = t('Database updates have been detected in the following extensions.');
 
     return [

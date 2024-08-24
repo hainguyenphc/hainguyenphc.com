@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -44,7 +44,7 @@ class UpdaterFormNoRecommendedReleaseMessageTest extends AutomaticUpdatesFunctio
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerMessages(): array {
+  public static function providerMessages(): array {
     $dir = __DIR__ . '/../../../package_manager/tests/fixtures/release-history';
 
     return [

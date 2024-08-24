@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
@@ -27,7 +27,7 @@ final class ExecutableFinder implements ExecutableFinderInterface {
    */
   public function __construct(
     private readonly ExecutableFinderInterface $decorated,
-    private readonly ConfigFactoryInterface $configFactory
+    private readonly ConfigFactoryInterface $configFactory,
   ) {}
 
   /**

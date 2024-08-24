@@ -7,7 +7,7 @@
  * DELETE THIS FILE FROM CORE MERGE REQUEST.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
  * Implements hook_removed_post_updates().

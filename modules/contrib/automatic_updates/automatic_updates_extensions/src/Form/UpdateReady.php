@@ -1,12 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\automatic_updates_extensions\Form;
 
 use Drupal\automatic_updates\Form\UpdateFormBase;
 use Drupal\package_manager\ComposerInspector;
 use Drupal\package_manager\Exception\StageFailureMarkerException;
+use Drupal\package_manager\InstalledPackage;
 use Drupal\package_manager\PathLocator;
 use Drupal\package_manager\ProjectInfo;
 use Drupal\package_manager\ValidationResult;
@@ -30,7 +31,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  * Defines a form to commit staged updates.
  *
  * @internal
- *   Form classes are internal.
+ *   Form classes are internal and should not be used by external code.
  */
 final class UpdateReady extends UpdateFormBase {
 
@@ -93,7 +94,7 @@ final class UpdateReady extends UpdateFormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, string $stage_id = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?string $stage_id = NULL) {
     try {
       $this->stage->claim($stage_id);
     }
@@ -133,7 +134,11 @@ final class UpdateReady extends UpdateFormBase {
     $form['package_updates'] = $this->showUpdates();
     $form['backup'] = [
       '#prefix' => '<strong>',
-      '#markup' => $this->t('Back up your database and site before you continue. <a href=":backup_url">Learn how</a>.', [':backup_url' => 'https://www.drupal.org/node/22281']),
+      '#type' => 'checkbox',
+      '#title' => $this->t('Warning: Updating contributed modules or themes may leave your site inoperable or looking wrong.'),
+      '#description' => $this->t('Back up your database and site before you continue. <a href=":backup_url">Learn how</a>. Each contributed module or theme may follow different standards for backwards compatibility, may or may not have tests, and may add or remove features in any release. For these reasons, it is highly recommended that you test this update in a development environment first.', [':backup_url' => 'https://www.drupal.org/node/22281']),
+      '#required' => TRUE,
+      '#default_value' => FALSE,
       '#suffix' => '</strong>',
     ];
     $form['maintenance_mode'] = [
@@ -230,7 +235,7 @@ final class UpdateReady extends UpdateFormBase {
         continue;
       }
       $updated_project_info[$name] = [
-        'title' => $this->getProjectTitle($updated_package->name),
+        'title' => $this->getProjectTitleFromPackage($updated_package),
         'installed_version' => $installed_packages[$updated_package->name]->version,
         'updated_version' => $updated_package->version,
       ];
@@ -262,21 +267,25 @@ final class UpdateReady extends UpdateFormBase {
   /**
    * Gets the human-readable project title for a Composer package.
    *
-   * @param string $package_name
-   *   Package name.
+   * @param \Drupal\package_manager\InstalledPackage $package
+   *   The installed package.
    *
    * @return string
-   *   The human-readable title of the project.
+   *   The human-readable title of the project. If no project information is
+   *   available, the package name is returned.
    */
-  private function getProjectTitle(string $package_name): string {
-    $project_name = str_replace('drupal/', '', $package_name);
+  private function getProjectTitleFromPackage(InstalledPackage $package): string {
+    $project_name = $package->getProjectName();
+    if (!$project_name) {
+      return $package->name;
+    }
     $project_info = new ProjectInfo($project_name);
     $project_data = $project_info->getProjectInfo();
     if ($project_data) {
       return $project_data['title'];
     }
     else {
-      return $project_name;
+      return $package->name;
     }
   }
 

@@ -87,6 +87,16 @@ class Task implements DataProviderInterface {
   }
 
   /**
+   * Get the number of seconds for how long the task should be delayed.
+   *
+   * @return int
+   *   The delay in seconds.
+   */
+  public function getDelay(): int {
+    return $this->notBefore - \Drupal::time()->getCurrentTime();
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getData(string $key) {

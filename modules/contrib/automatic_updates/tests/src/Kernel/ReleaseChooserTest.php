@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Kernel;
 
@@ -38,7 +38,7 @@ class ReleaseChooserTest extends AutomaticUpdatesKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerReleases(): array {
+  public static function providerReleases(): array {
     return [
       'installed 9.8.0, no minor support' => [
         'stage' => UpdateStage::class,
@@ -130,7 +130,7 @@ class ReleaseChooserTest extends AutomaticUpdatesKernelTestBase {
   /**
    * Tests fetching the recommended release when an update is available.
    *
-   * @param string $stage_service
+   * @param string $stage
    *   The ID of the update stage service to use.
    * @param bool $minor_support
    *   Whether updates to the next minor will be allowed.
@@ -148,11 +148,11 @@ class ReleaseChooserTest extends AutomaticUpdatesKernelTestBase {
    * @covers ::getLatestInNextMinor
    * @covers ::getMostRecentReleaseInMinor
    */
-  public function testReleases(string $stage_service, bool $minor_support, string $installed_version, ?string $current_minor, ?string $next_minor): void {
+  public function testReleases(string $stage, bool $minor_support, string $installed_version, ?string $current_minor, ?string $next_minor): void {
     $this->setCoreVersion($installed_version);
     $this->config('automatic_updates.settings')->set('allow_core_minor_updates', $minor_support)->save();
     $chooser = $this->container->get(ReleaseChooser::class);
-    $stage = $this->container->get($stage_service);
+    $stage = $this->container->get($stage);
     $this->assertReleaseVersion($current_minor, $chooser->getLatestInInstalledMinor($stage));
     $this->assertReleaseVersion($next_minor, $chooser->getLatestInNextMinor($stage));
 

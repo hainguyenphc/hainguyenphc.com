@@ -1,9 +1,10 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\Validator;
 
+use Composer\Semver\Semver;
 use Drupal\Component\Serialization\Json;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -60,7 +61,7 @@ final class ComposerPatchesValidator implements EventSubscriberInterface {
   public function __construct(
     private readonly ModuleHandlerInterface $moduleHandler,
     private readonly ComposerInspector $composerInspector,
-    private readonly PathLocator $pathLocator
+    private readonly PathLocator $pathLocator,
   ) {}
 
   /**
@@ -155,15 +156,26 @@ final class ComposerPatchesValidator implements EventSubscriberInterface {
    */
   private function computePatcherStatus(string $working_dir): array {
     $list = $this->composerInspector->getInstalledPackagesList($working_dir);
-    $is_installed = isset($list[static::PLUGIN_NAME]);
+    $installed_version = $list[static::PLUGIN_NAME]?->version;
 
     $info = $this->composerInspector->getRootPackageInfo($working_dir);
     $is_root_requirement = array_key_exists(static::PLUGIN_NAME, $info['requires'] ?? []) || array_key_exists(static::PLUGIN_NAME, $info['devRequires'] ?? []);
 
-    $extra = Json::decode($this->composerInspector->getConfig('extra', $working_dir));
-    $exit_on_failure = $extra['composer-exit-on-patch-failure'] ?? FALSE;
+    // The 2.x version of the plugin always exits with an error if a patch can't
+    // be applied.
+    if ($installed_version && Semver::satisfies($installed_version, '^2')) {
+      $exit_on_failure = TRUE;
+    }
+    else {
+      $extra = Json::decode($this->composerInspector->getConfig('extra', $working_dir));
+      $exit_on_failure = $extra['composer-exit-on-patch-failure'] ?? FALSE;
+    }
 
-    return [$is_installed, $is_root_requirement, $exit_on_failure];
+    return [
+      is_string($installed_version),
+      $is_root_requirement,
+      $exit_on_failure,
+    ];
   }
 
   /**

@@ -70,6 +70,16 @@ class Processor {
   protected bool $recursionErrorLogged = FALSE;
 
   /**
+   * Get the service instance of this class.
+   *
+   * @return \Drupal\eca\Processor
+   *   The service instance.
+   */
+  public static function get(): Processor {
+    return \Drupal::service('eca.processor');
+  }
+
+  /**
    * Processor constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -86,6 +96,18 @@ class Processor {
     $this->logger = $logger;
     $this->eventDispatcher = $event_dispatcher;
     $this->recursionThreshold = $recursion_threshold;
+  }
+
+  /**
+   * Determines, if the current stack trace is within ECA processing an event.
+   *
+   * @return bool
+   *   TRUE, if the current stack trace is within ECA processing an event, FALSE
+   *   otherwise.
+   */
+  public function isEcaContext(): bool {
+    // Not using dependency injection here on purpose.
+    return (bool) $this->executionHistory || \Drupal::state()->get('_eca_internal_test_context');
   }
 
   /**

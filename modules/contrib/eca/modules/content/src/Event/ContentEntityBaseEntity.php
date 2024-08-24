@@ -39,7 +39,6 @@ abstract class ContentEntityBaseEntity extends ContentEntityBase implements Enti
    *   The entity type service.
    */
   public function __construct(ContentEntityInterface $entity, ContentEntityTypes $entity_types) {
-    $entity->eca_context = TRUE;
     $this->entity = $entity;
     $this->entityTypes = $entity_types;
   }

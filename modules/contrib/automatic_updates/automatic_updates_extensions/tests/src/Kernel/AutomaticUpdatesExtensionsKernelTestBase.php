@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates_extensions\Kernel;
 
@@ -15,6 +15,8 @@ use Drupal\Tests\automatic_updates\Kernel\AutomaticUpdatesKernelTestBase;
  * Base class for kernel tests of the Automatic Updates Extensions module.
  *
  * @internal
+ *   This class is an internal part of the module's testing infrastructure and
+ *   should not be used by external code.
  */
 abstract class AutomaticUpdatesExtensionsKernelTestBase extends AutomaticUpdatesKernelTestBase {
 
@@ -56,7 +58,7 @@ abstract class AutomaticUpdatesExtensionsKernelTestBase extends AutomaticUpdates
       ], TRUE)
       ->addPackage([
         "name" => "drupal/semver_test",
-        "version" => "1.0.0",
+        "version" => "8.1.0",
         "type" => "drupal-module",
       ])
       ->addPackage([
@@ -82,7 +84,7 @@ abstract class AutomaticUpdatesExtensionsKernelTestBase extends AutomaticUpdates
    *   (optional) The class of the event which should return the results. Must
    *   be passed if $expected_results is not empty.
    */
-  protected function assertUpdateResults(array $project_versions, array $expected_results, string $event_class = NULL): void {
+  protected function assertUpdateResults(array $project_versions, array $expected_results, ?string $event_class = NULL): void {
     $stage = $this->container->get(ExtensionUpdateStage::class);
 
     try {

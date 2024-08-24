@@ -1,11 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\File\FileSystemInterface;
+use PhpTuf\ComposerStager\API\Path\Value\PathInterface;
 use PhpTuf\ComposerStager\API\Process\Factory\ProcessFactoryInterface;
 use PhpTuf\ComposerStager\API\Process\Service\ProcessInterface;
 
@@ -56,8 +57,8 @@ final class ProcessFactory implements ProcessFactoryInterface {
   /**
    * {@inheritdoc}
    */
-  public function create(array $command): ProcessInterface {
-    $process = $this->decorated->create($command);
+  public function create(array $command, ?PathInterface $workingDir = NULL, array $env = []): ProcessInterface {
+    $process = $this->decorated->create($command, $workingDir, $env);
 
     $env = $process->getEnv();
     if ($command && $this->isComposerCommand($command)) {
@@ -66,7 +67,8 @@ final class ProcessFactory implements ProcessFactoryInterface {
     // Ensure that the current PHP installation is the first place that will be
     // searched when looking for the PHP interpreter.
     $env['PATH'] = static::getPhpDirectory() . ':' . $this->getEnv('PATH');
-    return $process->setEnv($env);
+    $process->setEnv($env);
+    return $process;
   }
 
   /**

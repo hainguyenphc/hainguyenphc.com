@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Debug;
 
@@ -17,13 +17,23 @@ class FileLinkFormatter {
   /**
    * FileLinkFormatter constructor.
    *
-   * @param string $fileLinkFormat
-   *   The file link format.
+   * @param string $ide
+   *   The IDE scheme.
+   * @param string $ide_remote_path
+   *   The remote path.
+   * @param string $ide_local_path
+   *   The local path.
    */
-  public function __construct(string $fileLinkFormat) {
-    $j = strpos($fileLinkFormat, '&', max(strrpos($fileLinkFormat, '%f'), strrpos($fileLinkFormat, '%l')));
-    $i = $j ? $j : \strlen($fileLinkFormat);
-    $this->fileLinkFormat = [substr($fileLinkFormat, 0, $i)] + preg_split('/&([^>]++)>/', substr($fileLinkFormat, $i), -1, \PREG_SPLIT_DELIM_CAPTURE);
+  public function __construct(
+    string $ide,
+    string $ide_remote_path,
+    string $ide_local_path,
+  ) {
+    $this->fileLinkFormat = [
+      $ide,
+      $ide_remote_path,
+      $ide_local_path,
+    ];
   }
 
   /**
@@ -33,41 +43,15 @@ class FileLinkFormatter {
    *   The formatted file link.
    */
   public function format(string $file, int $line): string {
-    if ($fmt = $this->getFileLinkFormat()) {
-      for ($i = 1; isset($fmt[$i]); ++$i) {
-        if (str_starts_with($file, $k = $fmt[$i++])) {
-          $file = substr_replace($file, $fmt[$i], 0, \strlen($k));
-          break;
-        }
+    $fmt = $this->fileLinkFormat;
+    for ($i = 1; isset($fmt[$i]); ++$i) {
+      if (\str_starts_with($file, $k = $fmt[$i++])) {
+        $file = \substr_replace($file, $fmt[$i], 0, \strlen($k));
+        break;
       }
-
-      return strtr($fmt[0], ['%f' => $file, '%l' => $line]);
     }
 
-    return '';
-  }
-
-  /**
-   * @internal
-   */
-  public function __sleep(): array {
-    $this->fileLinkFormat = $this->getFileLinkFormat();
-
-    return ['fileLinkFormat'];
-  }
-
-  /**
-   * Returns the file link format.
-   *
-   * @return string[]|false
-   *   The file link format.
-   */
-  private function getFileLinkFormat(): array|false {
-    if (count($this->fileLinkFormat) > 1) {
-      return $this->fileLinkFormat;
-    }
-
-    return FALSE;
+    return \strtr($fmt[0], ['%f' => $file, '%l' => $line]);
   }
 
 }

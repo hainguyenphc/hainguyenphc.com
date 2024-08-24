@@ -116,6 +116,16 @@ services:
     tags:
       - { name: plugin_manager_cache_clear }
 
+  webprofiler.debug.attachment.processor:
+    class: Drupal\webprofiler\Render\HtmlResponseAttachmentsProcessor
+    public: false
+    decorates: html_response.attachments_processor
+    arguments:
+      [
+        '@webprofiler.debug.attachment.processor.inner',
+        '@webprofiler.assets',
+      ]
+
   webprofiler.debug.asset.css.collection_renderer:
     class: Drupal\webprofiler\Asset\CssCollectionRendererWrapper
     public: false

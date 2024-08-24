@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\Validator;
 
@@ -33,7 +33,7 @@ final class SupportedReleaseValidator implements EventSubscriberInterface {
    */
   public function __construct(
     private readonly ComposerInspector $composerInspector,
-    private readonly PathLocator $pathLocator
+    private readonly PathLocator $pathLocator,
   ) {}
 
   /**
@@ -121,12 +121,16 @@ final class SupportedReleaseValidator implements EventSubscriberInterface {
       $event->addError($unsupported_packages, $summary);
     }
     if ($unknown_packages) {
-      $summary = $this->formatPlural(
-        count($unknown_packages),
-        'Cannot update because the following new or updated Drupal package does not have project information.',
-        'Cannot update because the following new or updated Drupal packages do not have project information.',
-      );
-      $event->addError($unknown_packages, $summary);
+      $event->addError([
+        $this->formatPlural(
+          count($unknown_packages),
+          'Cannot update because the following new or updated Drupal package does not have project information: @unknown_packages',
+          'Cannot update because the following new or updated Drupal packages do not have project information: @unknown_packages',
+          [
+            '@unknown_packages' => implode(', ', $unknown_packages),
+          ],
+        ),
+      ]);
     }
   }
 

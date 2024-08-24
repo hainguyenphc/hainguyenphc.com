@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager\PathExcluder;
 
@@ -30,7 +30,7 @@ final class SiteFilesExcluder implements EventSubscriberInterface {
    */
   public function __construct(
     private readonly StreamWrapperManagerInterface $streamWrapperManager,
-    private readonly Filesystem $fileSystem
+    private readonly Filesystem $fileSystem,
   ) {}
 
   /**
@@ -59,7 +59,9 @@ final class SiteFilesExcluder implements EventSubscriberInterface {
         $path = $wrapper->getDirectoryPath();
 
         if ($this->fileSystem->isAbsolutePath($path)) {
-          $event->addPathsRelativeToProjectRoot([realpath($path)]);
+          if ($path = realpath($path)) {
+            $event->addPathsRelativeToProjectRoot([$path]);
+          }
         }
         else {
           $event->addPathsRelativeToWebRoot([$path]);

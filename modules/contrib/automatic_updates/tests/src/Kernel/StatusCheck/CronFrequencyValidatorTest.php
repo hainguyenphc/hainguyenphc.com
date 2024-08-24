@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Kernel\StatusCheck;
 
@@ -76,7 +76,7 @@ class CronFrequencyValidatorTest extends AutomaticUpdatesKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerLastCronRunValidation(): array {
+  public static function providerLastCronRunValidation(): array {
     $error = ValidationResult::createError([
       t('Cron has not run recently. For more information, see the online handbook entry for <a href="https://www.drupal.org/cron">configuring cron jobs</a> to run at least every 3 hours.'),
     ]);

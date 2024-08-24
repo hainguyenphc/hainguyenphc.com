@@ -11,11 +11,11 @@ environment_indicator.switcher.*:
       type: text
       label: 'Description'
     name:
-      type: string
+      type: label
       label: 'Name'
     weight:
-      type: string
-      label: 'Name'
+      type: integer
+      label: 'Weight'
     url:
       type: uri
       label: 'URL'

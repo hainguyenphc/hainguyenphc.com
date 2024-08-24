@@ -115,6 +115,9 @@ class FormFieldSetValue extends ConfigurableActionBase {
     }
     $this->filterFormFieldValue($value);
 
+    $original_field_name = $this->configuration['field_name'];
+    $this->configuration['field_name'] = (string) $this->tokenServices->replace($original_field_name);
+
     $found = FALSE;
     $existing_value = &$this->getSubmittedValue($found);
     if ($found) {
@@ -132,6 +135,9 @@ class FormFieldSetValue extends ConfigurableActionBase {
       }
       NestedArray::setValue($values, $this->getFieldNameAsArray(), $value, TRUE);
     }
+
+    // Restoring the original config entry.
+    $this->configuration['field_name'] = $original_field_name;
   }
 
   /**

@@ -7,6 +7,7 @@ fullscreen:
     js/build/fullscreen.js: { preprocess: false, minified: true }
   dependencies:
     - core/ckeditor5
+    - core/drupal.displace
 
 fullscreen.admin:
   version: 1.x

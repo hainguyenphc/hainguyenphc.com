@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\webprofiler\Entity;
 
@@ -24,7 +24,9 @@ class ConfigEntityStorageDecorator extends EntityDecorator implements ConfigEnti
    * @param \Drupal\Core\Config\Entity\ConfigEntityStorageInterface $config_entity_storage
    *   The config entity storage to decorate.
    */
-  final public function __construct(ConfigEntityStorageInterface $config_entity_storage) {
+  final public function __construct(
+    ConfigEntityStorageInterface $config_entity_storage,
+  ) {
     parent::__construct($config_entity_storage);
 
     $this->entities = [];
@@ -43,7 +45,7 @@ class ConfigEntityStorageDecorator extends EntityDecorator implements ConfigEnti
   public function loadMultiple(array $ids = NULL) {
     $entities = $this->getOriginalObject()->loadMultiple($ids);
 
-    $this->entities = array_merge($this->entities, $entities);
+    $this->entities = \array_merge($this->entities, $entities);
 
     return $entities;
   }
@@ -86,7 +88,7 @@ class ConfigEntityStorageDecorator extends EntityDecorator implements ConfigEnti
   public function loadByProperties(array $values = []) {
     $entities = $this->getOriginalObject()->loadByProperties($values);
 
-    $this->entities = array_merge($this->entities, $entities);
+    $this->entities = \array_merge($this->entities, $entities);
 
     return $entities;
   }
@@ -146,7 +148,7 @@ class ConfigEntityStorageDecorator extends EntityDecorator implements ConfigEnti
    * phpcs:disable Drupal.NamingConventions.ValidFunctionName.ScopeNotCamelCaps
    */
   public static function getIDFromConfigName($config_name, $config_prefix) {
-    return substr($config_name, strlen($config_prefix . '.'));
+    return \substr($config_name, \strlen($config_prefix . '.'));
   }
 
   /**
@@ -217,7 +219,7 @@ class ConfigEntityStorageDecorator extends EntityDecorator implements ConfigEnti
    * {@inheritdoc}
    */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-    assert($entity_type instanceof ConfigEntityStorageInterface);
+    \assert($entity_type instanceof ConfigEntityStorageInterface);
 
     return new static(
       $entity_type,

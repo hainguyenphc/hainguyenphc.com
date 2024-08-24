@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -22,7 +22,7 @@ class ComposerValidatorTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerComposerSettingsValidation(): array {
+  public static function providerComposerSettingsValidation(): array {
     $summary = t("Composer settings don't satisfy Package Manager's requirements.");
 
     $secure_http_error = ValidationResult::createError([
@@ -124,7 +124,7 @@ class ComposerValidatorTest extends PackageManagerKernelTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerLinkToOnlineHelp(): array {
+  public static function providerLinkToOnlineHelp(): array {
     return [
       'TLS disabled' => [
         ['disable-tls' => TRUE],

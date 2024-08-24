@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\automatic_updates\Functional;
 
@@ -23,7 +23,7 @@ class StagedDatabaseUpdateTest extends UpdaterFormTestBase {
    * @return bool[][]
    *   The test cases.
    */
-  public function providerStagedDatabaseUpdates(): array {
+  public static function providerStagedDatabaseUpdates(): array {
     return [
       'maintenance mode on' => [TRUE],
       'maintenance mode off' => [FALSE],

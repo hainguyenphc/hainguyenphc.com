@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -207,7 +207,7 @@ abstract class PackageManagerKernelTestBase extends KernelTestBase {
    * @return \Drupal\package_manager\StageBase
    *   The stage that was used to collect the validation results.
    */
-  protected function assertResults(array $expected_results, string $event_class = NULL): StageBase {
+  protected function assertResults(array $expected_results, ?string $event_class = NULL): StageBase {
     $stage = $this->createStage();
 
     try {
@@ -237,7 +237,7 @@ abstract class PackageManagerKernelTestBase extends KernelTestBase {
    *   (optional) The test stage to use to create the status check event. If
    *   none is provided a new stage will be created.
    */
-  protected function assertStatusCheckResults(array $expected_results, StageBase $stage = NULL): void {
+  protected function assertStatusCheckResults(array $expected_results, ?StageBase $stage = NULL): void {
     $actual_results = $this->runStatusCheck($stage ?? $this->createStage(), $this->container->get('event_dispatcher'));
     $this->assertValidationResultsEqual($expected_results, $actual_results);
   }

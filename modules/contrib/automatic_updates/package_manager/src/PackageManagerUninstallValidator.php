@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\package_manager;
 
@@ -61,7 +61,7 @@ final class PackageManagerUninstallValidator implements ModuleUninstallValidator
     private readonly SharedTempStoreFactory $sharedTempStoreFactory,
     private readonly TimeInterface $time,
     private readonly PathFactoryInterface $pathFactory,
-    private readonly FailureMarker $failureMarker
+    private readonly FailureMarker $failureMarker,
   ) {}
 
   /**

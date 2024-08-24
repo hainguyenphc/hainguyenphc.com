@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Drupal\Tests\package_manager\Kernel;
 
@@ -64,7 +64,7 @@ class ProjectInfoTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerGetInstallableReleases(): array {
+  public static function providerGetInstallableReleases(): array {
     return [
       'core, no updates' => [
         'drupal.9.8.2.xml',
@@ -197,7 +197,7 @@ class ProjectInfoTest extends PackageManagerKernelTestBase {
    * @return array[]
    *   The test cases.
    */
-  public function providerInstalledVersionSafe(): array {
+  public static function providerInstalledVersionSafe(): array {
     $dir = __DIR__ . '/../../fixtures/release-history';
 
     return [
@@ -258,7 +258,7 @@ class ProjectInfoTest extends PackageManagerKernelTestBase {
    * @return mixed[][]
    *   The test cases.
    */
-  public function providerGetSupportedBranches(): array {
+  public static function providerGetSupportedBranches(): array {
     $dir = __DIR__ . '/../../fixtures/release-history/';
 
     return [

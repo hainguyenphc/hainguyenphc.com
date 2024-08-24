@@ -11,12 +11,15 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\RevisionableInterface;
 use Drupal\Core\Entity\TypedData\EntityDataDefinition;
+use Drupal\Core\Render\RenderContext;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\TypedData\ComplexDataInterface;
 use Drupal\Core\TypedData\DataDefinitionInterface;
 use Drupal\Core\TypedData\Plugin\DataType\Map;
 use Drupal\Core\TypedData\PrimitiveInterface;
 use Drupal\Core\TypedData\TraversableTypedDataInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
+use Drupal\Core\Url;
 use Drupal\eca\TypedData\DataTransferObjectDefinition;
 
 /**
@@ -295,8 +298,14 @@ class DataTransferObject extends Map {
             elseif ($value instanceof MarkupInterface) {
               $values[$name] = $this->wrapScalarValue($name, (string) $value);
             }
+            elseif ($value instanceof Url) {
+              $values[$name] = $this->wrapUrlValue($name, $value);
+            }
+            elseif (is_object($value) && method_exists($value, '__toString')) {
+              $values[$name] = $this->wrapAnyValue($name, $value);
+            }
             else {
-              throw new \InvalidArgumentException("Invalid values given. Values must be of scalar types, entities or typed data objects.");
+              throw new \InvalidArgumentException("Invalid values given. Values must be of scalar types, entities, stringable or typed data objects.");
             }
           }
         }
@@ -356,10 +365,26 @@ class DataTransferObject extends Map {
       return $this->stringRepresentation;
     }
 
+    if (isset($this->properties['#type']) || isset($this->properties['#theme'])) {
+      // Attached data is a renderable array, so render it.
+      $renderer = static::renderer();
+      $build = $this->toArray();
+      if ($renderer->hasRenderContext()) {
+        return $renderer->render($build);
+      }
+      return $renderer->executeInRenderContext(new RenderContext(), static function () use (&$build, $renderer) {
+        return $renderer->render($build);
+      });
+    }
+
     $values = [];
     $is_assoc = FALSE;
     foreach ($this->getProperties() as $name => $property) {
       $value = $property instanceof ComplexDataInterface ? $property->toArray() : $property->getValue();
+      if (is_object($value)) {
+        // Objects are not supported for being encoded to Yaml.
+        $value = $property->getString();
+      }
       if (($value === NULL) || ($value === '') || (is_iterable($value) && !count($value))) {
         // Skip empty items.
         continue;
@@ -837,6 +862,50 @@ class DataTransferObject extends Map {
   }
 
   /**
+   * Wraps a URL by a Typed Data object.
+   *
+   * @param int|string $name
+   *   The property name.
+   * @param \Drupal\Core\Url $value
+   *   The URL value.
+   *
+   * @return \Drupal\Core\TypedData\TypedDataInterface
+   *   The Typed Data object.
+   */
+  protected function wrapUrlValue(int|string $name, Url $value): TypedDataInterface {
+    $manager = $this->getTypedDataManager();
+    $instance = $manager->createInstance('eca_url', [
+      'data_definition' => $manager->createDataDefinition('eca_url'),
+      'name' => $name,
+      'parent' => $this,
+    ]);
+    $instance->setValue($value, FALSE);
+    return $instance;
+  }
+
+  /**
+   * Wraps any unspecified value by a non-specific ("any") Typed Data object.
+   *
+   * @param int|string $name
+   *   The property name.
+   * @param mixed $value
+   *   The unspecified value.
+   *
+   * @return \Drupal\Core\TypedData\TypedDataInterface
+   *   The Typed Data object.
+   */
+  protected function wrapAnyValue(int|string $name, mixed $value): TypedDataInterface {
+    $manager = $this->getTypedDataManager();
+    $instance = $manager->createInstance('any', [
+      'data_definition' => $manager->createDataDefinition('any'),
+      'name' => $name,
+      'parent' => $this,
+    ]);
+    $instance->setValue($value, FALSE);
+    return $instance;
+  }
+
+  /**
    * Renumbers the items in the property list.
    *
    * @param int $from_index
@@ -888,6 +957,16 @@ class DataTransferObject extends Map {
    */
   protected static function databaseConnection(): Connection {
     return \Drupal::database();
+  }
+
+  /**
+   * Get the renderer.
+   *
+   * @return \Drupal\Core\Render\RendererInterface
+   *   The renderer.
+   */
+  protected static function renderer(): RendererInterface {
+    return \Drupal::service('renderer');
   }
 
 }
