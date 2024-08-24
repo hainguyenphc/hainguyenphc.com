@@ -110,6 +110,7 @@ module:
   rules: 0
   schema_metatag: 0
   search: 0
+  select2: 0
   serialization: 0
   shortcut: 0
   simple_oauth: 0
