@@ -67,7 +67,12 @@ $config['logging.logfile'] = 'simplesamlphp-' . date('Ymd') . '.log';
  * Admin password, secret salt, base URL.
  */
 
-$config['auth.adminpassword'] = $admin_pass;
+// Plain-text passwords are NOT allowed anymore.
+// $config['auth.adminpassword'] = $admin_pass;
+// Shell:
+// - cd vendor/simplesamlphp/simplesamlphp
+// - bin/pwgen.php
+$config['auth.adminpassword'] = '$argon2id$v=19$m=64,t=4,p=1$NnhPdkp1MkdiZkljL1hXcQ$Nmb65tGRiycBFKsER2fD0v+PSsoNZPIPVdhkvoCc4H0';
 $config['secretsalt'] = $salt;
 $config['baseurlpath'] = $base_url;
 
