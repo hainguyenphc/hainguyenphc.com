@@ -18,6 +18,6 @@ display:
       arguments:
         provider_field:
           exception:
-            title: All
+            title: 'Tất cả'
   page:
     display_title: Trang
