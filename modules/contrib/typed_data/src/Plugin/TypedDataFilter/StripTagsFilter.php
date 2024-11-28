@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\typed_data\Plugin\TypedDataFilter;
 
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\TypedData\DataDefinition;
 use Drupal\Core\TypedData\DataDefinitionInterface;
 use Drupal\Core\TypedData\Type\StringInterface;
+use Drupal\typed_data\Attribute\DataFilter;
 use Drupal\typed_data\DataFilterBase;
 
 /**
@@ -16,12 +20,16 @@ use Drupal\typed_data\DataFilterBase;
  *   label = @Translation("The striptags filter strips SGML/XML tags and replace adjacent whitespace by one space."),
  * )
  */
+#[DataFilter(
+  id: "striptags",
+  label: new TranslatableMarkup("The striptags filter strips SGML/XML tags and replace adjacent whitespace by one space.")
+)]
 class StripTagsFilter extends DataFilterBase {
 
   /**
    * {@inheritdoc}
    */
-  public function filter(DataDefinitionInterface $definition, $value, array $arguments, BubbleableMetadata $bubbleable_metadata = NULL) {
+  public function filter(DataDefinitionInterface $definition, $value, array $arguments, ?BubbleableMetadata $bubbleable_metadata = NULL) {
     return strip_tags($value);
   }
 

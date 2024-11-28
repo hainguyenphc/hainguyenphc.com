@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\rules\Unit\Integration\Condition;
 
 use Drupal\Tests\rules\Unit\Integration\RulesEntityIntegrationTestBase;
@@ -33,7 +35,7 @@ class UserIsBlockedTest extends RulesEntityIntegrationTestBase {
    *
    * @covers ::evaluate
    */
-  public function testConditionEvaluation() {
+  public function testConditionEvaluation(): void {
     $blocked_user = $this->prophesizeEntity(UserInterface::class);
     $blocked_user->isBlocked()->willReturn(TRUE)->shouldBeCalledTimes(1);
 

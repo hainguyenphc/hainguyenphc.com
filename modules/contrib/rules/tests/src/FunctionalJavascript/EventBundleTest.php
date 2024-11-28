@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\rules\FunctionalJavascript;
 
 use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
@@ -44,7 +46,7 @@ class EventBundleTest extends WebDriverTestBase {
   /**
    * Tests that event bundle selection Ajax works.
    */
-  public function testEventBundleSelection() {
+  public function testEventBundleSelection(): void {
     // A user who can create rules in the UI.
     $account = $this->createUser(['administer rules']);
     $this->drupalLogin($account);

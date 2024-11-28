@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\rules\Unit\Integration;
 
 use Drupal\Component\DependencyInjection\ReverseContainer;
@@ -11,10 +13,12 @@ use Drupal\Core\Config\Entity\ConfigEntityStorageInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Extension\Discovery\RecursiveExtensionFilterIterator;
+use Drupal\Core\Extension\Discovery\RecursiveExtensionFilterCallback;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Field\FieldTypeCategoryManager;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\Context\LazyContextRepository;
+use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\Core\TypedData\TypedDataManager;
 use Drupal\rules\Core\ConditionManager;
 use Drupal\rules\Context\DataProcessorManager;
@@ -200,7 +204,7 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
     $this->conditionManager = new ConditionManager($this->namespaces, $this->cacheBackend, $this->moduleHandler->reveal());
 
     $uuid_service = new Php();
-    $this->rulesExpressionManager = new ExpressionManager($this->namespaces, $this->moduleHandler->reveal(), $uuid_service);
+    $this->rulesExpressionManager = new ExpressionManager($this->namespaces, $this->cacheBackend, $this->moduleHandler->reveal(), $uuid_service);
 
     $this->classResolver = $this->prophesize(ClassResolverInterface::class);
 
@@ -211,16 +215,13 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
       $this->classResolver->reveal()
     );
 
-    if (version_compare(\Drupal::VERSION, '10.2') >= 0) {
-      // @phpcs:ignore Drupal.Classes.FullyQualifiedNamespace.UseStatementMissing
-      $this->fieldTypeCategoryManager = new \Drupal\Core\Field\FieldTypeCategoryManager(
-        $this->root,
-        $this->moduleHandler->reveal(),
-        $this->cacheBackend,
-      );
-    }
+    $this->fieldTypeCategoryManager = new FieldTypeCategoryManager(
+      $this->root,
+      $this->moduleHandler->reveal(),
+      $this->cacheBackend,
+    );
 
-    $this->rulesDataProcessorManager = new DataProcessorManager($this->namespaces, $this->moduleHandler->reveal());
+    $this->rulesDataProcessorManager = new DataProcessorManager($this->namespaces, $this->cacheBackend, $this->moduleHandler->reveal());
 
     $this->entityTypeManager = $this->prophesize(EntityTypeManagerInterface::class);
     $this->entityTypeManager->getDefinitions()->willReturn([]);
@@ -255,10 +256,8 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
     $container->set('plugin.manager.rules_expression', $this->rulesExpressionManager);
     $container->set('plugin.manager.rules_data_processor', $this->rulesDataProcessorManager);
     $container->set('messenger', $this->messenger);
-    if (version_compare(\Drupal::VERSION, '10.2') >= 0) {
-      $container->set('plugin.manager.field.field_type_category', $this->fieldTypeCategoryManager);
-    }
     $container->set('typed_data_manager', $this->typedDataManager);
+    $container->set('plugin.manager.field.field_type_category', $this->fieldTypeCategoryManager);
     $container->set('string_translation', $this->getStringTranslationStub());
     $container->set('uuid', $uuid_service);
     $container->set('typed_data.data_fetcher', $this->dataFetcher);
@@ -283,7 +282,7 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
    * @param array $namespaces
    *   Map of the association between module's namespaces and filesystem paths.
    */
-  protected function enableModule($name, array $namespaces = []) {
+  protected function enableModule(string $name, array $namespaces = []): void {
     $this->enabledModules[$name] = TRUE;
 
     if (empty($namespaces)) {
@@ -297,16 +296,16 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
   /**
    * Determines the path to a module's class files.
    *
-   * Core modules and contributed modules are located in different places, and
-   * the testbot (DrupalCI) does not use same directory structure as most live
-   * Drupal sites, so we must discover the path instead of hardwiring it.
+   * Core modules and contributed modules are located in different places and
+   * the testbot (GitLabCI) does not use same directory structure as most live
+   * Drupal sites. Thus we must discover the path instead of hardwiring it.
    *
    * This method discovers modules the same way as Drupal core, so it should
    * work for core and contributed modules in all environments.
    *
    * @see \Drupal\Core\Extension\ExtensionDiscovery
    */
-  protected function constructModulePath($module) {
+  protected function constructModulePath(string $module) {
     // Use Unix paths regardless of platform, skip dot directories, follow
     // symlinks (to allow extensions to be linked from elsewhere), and return
     // the RecursiveDirectoryIterator instance to have access to getSubPath(),
@@ -318,12 +317,9 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
     $directory_iterator = new \RecursiveDirectoryIterator($this->root, $flags);
 
     // Filter the recursive scan to discover extensions only.
-    // Important: Without a RecursiveFilterIterator, RecursiveDirectoryIterator
-    // would recurse into the entire filesystem directory tree without any kind
-    // of limitations.
-    $filter = new RecursiveExtensionFilterIterator($directory_iterator);
     // Ensure we find testing modules too!
-    $filter->acceptTests(TRUE);
+    $callback = new RecursiveExtensionFilterCallback([], TRUE);
+    $filter = new \RecursiveCallbackFilterIterator($directory_iterator, [$callback, 'accept']);
 
     // The actual recursive filesystem scan is only invoked by instantiating the
     // RecursiveIteratorIterator.
@@ -354,7 +350,7 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
    * @return \Drupal\Core\TypedData\TypedDataInterface
    *   The created object.
    */
-  protected function getTypedData($data_type, $value) {
+  protected function getTypedData(string $data_type, mixed $value): TypedDataInterface {
     $definition = $this->typedDataManager->createDataDefinition($data_type);
     $data = $this->typedDataManager->create($definition);
     $data->setValue($value);
@@ -370,7 +366,7 @@ abstract class RulesIntegrationTestBase extends UnitTestCase {
    * @return \Drupal\Core\Entity\EntityInterface|\Prophecy\Prophecy\ProphecyInterface
    *   The mocked entity.
    */
-  protected function prophesizeEntity($interface) {
+  protected function prophesizeEntity(string $interface) {
     $entity = $this->prophesize($interface);
     // Cache methods are irrelevant for the tests but might be called.
     $entity->getCacheContexts()->willReturn([]);

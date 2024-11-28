@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\rules\Unit\Integration;
 
 use Drupal\Component\DependencyInjection\ReverseContainer;
@@ -11,6 +13,7 @@ use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\TypedData\TypedDataManagerInterface;
 use Drupal\rules\Context\ContextDefinition;
+use Drupal\rules\Context\ContextDefinitionInterface;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ProphecyInterface;
 
@@ -127,16 +130,9 @@ abstract class RulesEntityIntegrationTestBase extends RulesIntegrationTestBase {
     $this->entityTypeBundleInfo->getBundleInfo(Argument::any())
       ->willReturn(['test' => ['label' => 'Test']]);
 
-    if (version_compare(\Drupal::VERSION, '10.2') >= 0) {
-      $this->fieldTypeManager = new FieldTypePluginManager(
-        $this->namespaces, $this->cacheBackend, $this->moduleHandler->reveal(), $this->typedDataManager
-      );
-    }
-    else {
-      $this->fieldTypeManager = new FieldTypePluginManager(
-        $this->namespaces, $this->cacheBackend, $this->moduleHandler->reveal(), $this->typedDataManager, $this->fieldTypeCategoryManager
-      );
-    }
+    $this->fieldTypeManager = new FieldTypePluginManager(
+      $this->namespaces, $this->cacheBackend, $this->moduleHandler->reveal(), $this->typedDataManager, $this->fieldTypeCategoryManager
+    );
     $this->container->set('plugin.manager.field.field_type', $this->fieldTypeManager);
 
     // The new ReverseContainer service needs to be present to prevent massive
@@ -153,10 +149,10 @@ abstract class RulesEntityIntegrationTestBase extends RulesIntegrationTestBase {
    * @param \Prophecy\Prophecy\ProphecyInterface $data_definition
    *   A prophecy that represents a data definition object.
    *
-   * @return \Drupal\rules\Context\ContextDefinition
+   * @return \Drupal\rules\Context\ContextDefinitionInterface
    *   The context definition with the data definition prophecy in it.
    */
-  protected function getContextDefinitionFor($data_type, ProphecyInterface $data_definition) {
+  protected function getContextDefinitionFor(string $data_type, ProphecyInterface $data_definition): ContextDefinitionInterface {
     // Mock all the setter calls on the data definition that can be ignored.
     $data_definition->setLabel(Argument::any())->willReturn($data_definition->reveal());
     $data_definition->setDescription(Argument::any())->willReturn($data_definition->reveal());

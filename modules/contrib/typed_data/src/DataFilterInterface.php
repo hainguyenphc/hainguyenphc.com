@@ -8,9 +8,9 @@ use Drupal\Core\TypedData\DataDefinitionInterface;
 /**
  * Interface for data filters.
  *
- * Data filters allow filtering data values by a simple, possibly user inputted
- * string like default(0), or format_date('short'). Data filters are may be
- * used on placeholder replacement values.
+ * Data filters allow filtering data values by a simple, possibly user entered
+ * string like default(0), or format_date('short'). Data filters may be used
+ * on placeholder replacement values.
  *
  * @see \Drupal\typed_data\PlaceholderResolverInterface
  */
@@ -29,15 +29,15 @@ interface DataFilterInterface {
    *   (optional) An object to which required bubbleable metadata will be added.
    *
    * @return mixed
-   *   The resulting data value.
+   *   The resulting filtered value.
    */
-  public function filter(DataDefinitionInterface $definition, $value, array $arguments, BubbleableMetadata $bubbleable_metadata = NULL);
+  public function filter(DataDefinitionInterface $definition, $value, array $arguments, ?BubbleableMetadata $bubbleable_metadata = NULL);
 
   /**
    * Determines whether data based upon the given definition can be filtered.
    *
    * @param \Drupal\Core\TypedData\DataDefinitionInterface $definition
-   *   The definition of the filtered data.
+   *   The definition of the date to be filtered.
    *
    * @return bool
    *   Whether the data can be filtered.
@@ -81,7 +81,7 @@ interface DataFilterInterface {
    * @param \Drupal\Core\TypedData\DataDefinitionInterface $definition
    *   The definition of the filtered data.
    * @param array $arguments
-   *   The array of filter arguments, which have been already inputted.
+   *   The array of filter arguments, which have been already entered.
    * @param string $input
    *   (optional) The filter argument currently being input. Defaults to an
    *   empty string.
@@ -92,7 +92,7 @@ interface DataFilterInterface {
   public function suggestArgument(DataDefinitionInterface $definition, array $arguments, string $input = ''): array;
 
   /**
-   * Validates the inputted arguments.
+   * Validates the entered arguments.
    *
    * Determines whether the given arguments have a valid syntax and can be
    * applied to data of the given definition.

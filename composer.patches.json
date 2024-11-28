@@ -3,9 +3,6 @@
     "The issue 2961380 needs a patch so we can install drupal/sm. When we update to core 10.3, no need for it."
   ],
   "patches": {
-    "drupal/core": {
-      "2961380: Support IteratorArgument in \\Drupal\\Component\\DependencyInjection\\Dumper\\OptimizedPhpArrayDumper::dumpValue": "https://www.drupal.org/files/issues/2023-05-22/SupportIteratorArgument-2961380-29-interdiff.txt"
-    },
     "drupal/video_embed_field": {
       "3311063: Add support for Ckeditor 5": "https://www.drupal.org/files/issues/2023-11-02/3311063-42.patch"
     },

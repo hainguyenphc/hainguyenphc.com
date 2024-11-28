@@ -107,7 +107,7 @@ class RulesDebugLog implements LoggerInterface {
    */
   public function render() {
     $build = $this->build();
-    return \Drupal::service('renderer')->renderPlain($build);
+    return \Drupal::service('renderer')->renderInIsolation($build);
   }
 
   /**

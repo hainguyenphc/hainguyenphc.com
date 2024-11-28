@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\rules\Unit\Integration\Condition;
 
 use Drupal\node\NodeInterface;
@@ -35,7 +37,7 @@ class NodeIsPromotedTest extends RulesEntityIntegrationTestBase {
    *
    * @covers ::evaluate
    */
-  public function testConditionEvaluation() {
+  public function testConditionEvaluation(): void {
     $promoted_node = $this->prophesizeEntity(NodeInterface::class);
 
     $promoted_node->isPromoted()->willReturn(TRUE)->shouldBeCalledTimes(1);
