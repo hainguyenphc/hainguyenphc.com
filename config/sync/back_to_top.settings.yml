@@ -1,5 +1,6 @@
 _core:
   default_config_hash: i_z2pdVLbxvs6u1XQDttLYf7QP0u8sxd1DjV_Jwt1-Y
+langcode: en
 back_to_top_prevent_on_mobile: false
 back_to_top_prevent_in_admin: false
 back_to_top_prevent_in_front: false
