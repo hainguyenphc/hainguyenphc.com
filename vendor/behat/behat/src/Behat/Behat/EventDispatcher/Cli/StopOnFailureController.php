@@ -19,9 +19,11 @@ use Behat\Testwork\EventDispatcher\Event\AfterSuiteAborted;
 use Behat\Testwork\EventDispatcher\Event\ExerciseCompleted;
 use Behat\Testwork\EventDispatcher\Event\SuiteTested;
 use Behat\Testwork\EventDispatcher\TestworkEventDispatcher;
+use Behat\Testwork\Tester\Handler\StopOnFailureHandler;
 use Behat\Testwork\Tester\Result\Interpretation\ResultInterpretation;
 use Behat\Testwork\Tester\Result\Interpretation\SoftInterpretation;
 use Behat\Testwork\Tester\Result\Interpretation\StrictInterpretation;
+use Behat\Testwork\Tester\Result\ResultInterpreter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -30,20 +32,23 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Stops tests on first scenario failure.
+ * 
+ * TODO this should be moved in the Behat\Testwork\Tester\Cli namespace
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
 final class StopOnFailureController implements Controller
 {
-    /**
+     /**
+      * @deprecated events are now dispatched in the StopOnFailureHandler
      * @var EventDispatcherInterface
      */
     private $eventDispatcher;
 
     /**
-     * @var ResultInterpretation
+     * @var StopOnFailureHandler
      */
-    private $resultInterpretation;
+    private $stopOnFailureHandler;
 
     /**
      * Initializes controller.
@@ -53,7 +58,14 @@ final class StopOnFailureController implements Controller
     public function __construct(EventDispatcherInterface $eventDispatcher)
     {
         $this->eventDispatcher = $eventDispatcher;
-        $this->resultInterpretation = new SoftInterpretation();
+    }
+
+    /**
+     * @required
+     */
+    public function setStopOnFailureHandler(StopOnFailureHandler $stopOnFailureHandler)
+    {
+        $this->stopOnFailureHandler = $stopOnFailureHandler;
     }
 
     /**
@@ -82,28 +94,7 @@ final class StopOnFailureController implements Controller
             return null;
         }
 
-        if ($input->getOption('strict')) {
-            $this->resultInterpretation = new StrictInterpretation();
-        }
-
-        $this->eventDispatcher->addListener(ScenarioTested::AFTER, array($this, 'exitOnFailure'), -100);
-        $this->eventDispatcher->addListener(ExampleTested::AFTER, array($this, 'exitOnFailure'), -100);
+        $this->stopOnFailureHandler->registerListeners();
     }
 
-    /**
-     * Exits if scenario is a failure and if stopper is enabled.
-     *
-     * @param AfterScenarioTested $event
-     */
-    public function exitOnFailure(AfterScenarioTested $event)
-    {
-        if (!$this->resultInterpretation->isFailure($event->getTestResult())) {
-            return;
-        }
-
-        $this->eventDispatcher->dispatch(new AfterSuiteAborted($event->getEnvironment()), SuiteTested::AFTER);
-        $this->eventDispatcher->dispatch(new AfterExerciseAborted(), ExerciseCompleted::AFTER);
-
-        exit(1);
-    }
 }

@@ -4,7 +4,7 @@ description: Add <a href="https://github.com/JJJ/chosen">chosen</a> library defi
 package: User interface
 core_version_requirement: ^9.2 || ^10 || ^11
 
-# Information added by Drupal.org packaging script on 2024-05-16
-version: '4.0.1'
+# Information added by Drupal.org packaging script on 2024-09-02
+version: '4.0.3'
 project: 'chosen'
-datestamp: 1715856679
+datestamp: 1725307448

@@ -234,4 +234,6 @@
 
   DrupalCoffee.field = $('<input id="coffee-q" type="text" autocomplete="off" />');
 
+  Drupal.coffee = DrupalCoffee;
+
 })(jQuery, Drupal, drupalSettings);

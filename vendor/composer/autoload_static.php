@@ -13,7 +13,6 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -22,12 +21,13 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2f69d3914119f042cca9e44442d5ce95' => __DIR__ . '/../..' . '/core/includes/bootstrap.inc',
-        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         '5897ea0ac4cccf14d323035e65887801' => __DIR__ . '/..' . '/symfony/polyfill-php82/bootstrap.php',
         '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
         '8e92226780215d0ec758aa7b73e0ede9' => __DIR__ . '/..' . '/open-telemetry/context/fiber/initialize_fiber_handler.php',
+        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         'c7b4a5d8b94d270f0f9a84f81e1dd63d' => __DIR__ . '/..' . '/open-telemetry/api/Trace/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'c695cb998ba36e4bafc3d028efc7d113' => __DIR__ . '/..' . '/open-telemetry/sdk/Common/Util/functions.php',
@@ -93,7 +93,6 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php73\\' => 23,
-            'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
             'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
@@ -149,6 +148,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'SimpleSAML\\Module\\cron\\' => 23,
             'SimpleSAML\\Module\\core\\' => 23,
             'SimpleSAML\\Module\\admin\\' => 24,
+            'SimpleSAML\\Composer\\XMLProvider\\' => 32,
             'SimpleSAML\\Composer\\' => 20,
             'SimpleSAML\\Assert\\' => 18,
             'SimpleSAML\\' => 11,
@@ -163,6 +163,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'Robo\\' => 5,
             'RobRichards\\XMLSecLibs\\' => 23,
             'React\\Promise\\' => 14,
+            'Ramsey\\Uuid\\' => 12,
+            'Ramsey\\Collection\\' => 18,
         ),
         'P' => 
         array (
@@ -195,6 +197,11 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'OpenTelemetry\\API\\' => 18,
             'OpenIDConnectServer\\' => 20,
             'OomphInc\\ComposerInstallersExtender\\' => 36,
+        ),
+        'N' => 
+        array (
+            'Nyholm\\Psr7Server\\' => 18,
+            'Nevay\\SPI\\' => 10,
         ),
         'M' => 
         array (
@@ -307,6 +314,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'B' => 
         array (
+            'Brick\\Math\\' => 11,
             'Behat\\Transliterator\\' => 21,
             'Behat\\Testwork\\' => 15,
             'Behat\\Step\\' => 11,
@@ -329,8 +337,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'phootwork\\lang\\' => 
         array (
@@ -387,10 +395,6 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'Symfony\\Polyfill\\Php73\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
-        ),
-        'Symfony\\Polyfill\\Php72\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -612,6 +616,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         array (
             0 => __DIR__ . '/..' . '/simplesamlphp/simplesamlphp/modules/admin/src',
         ),
+        'SimpleSAML\\Composer\\XMLProvider\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/simplesamlphp/composer-xmlprovider-installer/src',
+        ),
         'SimpleSAML\\Composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/simplesamlphp/composer-module-installer/src',
@@ -655,6 +663,14 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'React\\Promise\\' => 
         array (
             0 => __DIR__ . '/..' . '/react/promise/src',
+        ),
+        'Ramsey\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/uuid/src',
+        ),
+        'Ramsey\\Collection\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
         'Psy\\' => 
         array (
@@ -719,8 +735,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'PHPStan\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
-            1 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
+            0 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
+            1 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -761,6 +777,14 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'OomphInc\\ComposerInstallersExtender\\' => 
         array (
             0 => __DIR__ . '/..' . '/oomphinc/composer-installers-extender/src',
+        ),
+        'Nyholm\\Psr7Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
+        ),
+        'Nevay\\SPI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tbachert/spi/src',
         ),
         'Mtownsend\\XmlToArray\\' => 
         array (
@@ -889,8 +913,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Gettext\\' => 
         array (
-            0 => __DIR__ . '/..' . '/gettext/gettext/src',
-            1 => __DIR__ . '/..' . '/gettext/translator/src',
+            0 => __DIR__ . '/..' . '/gettext/translator/src',
+            1 => __DIR__ . '/..' . '/gettext/gettext/src',
         ),
         'GPBMetadata\\Opentelemetry\\' => 
         array (
@@ -994,8 +1018,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/common/src',
-            1 => __DIR__ . '/..' . '/doctrine/event-manager/src',
+            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
+            1 => __DIR__ . '/..' . '/doctrine/common/src',
         ),
         'Dflydev\\DotAccessData\\' => 
         array (
@@ -1080,6 +1104,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'ColinODell\\PsrTestLogger\\' => 
         array (
             0 => __DIR__ . '/..' . '/colinodell/psr-testlogger/src',
+        ),
+        'Brick\\Math\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brick/math/src',
         ),
         'Behat\\Transliterator\\' => 
         array (
@@ -1316,6 +1344,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'Nette\\Utils\\Type' => __DIR__ . '/..' . '/nette/utils/src/Utils/Type.php',
         'Nette\\Utils\\UnknownImageFileException' => __DIR__ . '/..' . '/nette/utils/src/Utils/exceptions.php',
         'Nette\\Utils\\Validators' => __DIR__ . '/..' . '/nette/utils/src/Utils/Validators.php',
+        'Nevay\\SPI\\GeneratedServiceProviderData' => __DIR__ . '/..' . '/composer/GeneratedServiceProviderData.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NumberFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/NumberFormatter.php',
         'OS_Guess' => __DIR__ . '/..' . '/pear/pear-core-minimal/src/OS/Guess.php',

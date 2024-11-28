@@ -15,6 +15,7 @@ use Behat\Behat\EventDispatcher\Event\ScenarioTested;
 use Behat\Behat\Tester\ServiceContainer\TesterExtension;
 use Behat\Testwork\Cli\ServiceContainer\CliExtension;
 use Behat\Testwork\EventDispatcher\ServiceContainer\EventDispatcherExtension as BaseExtension;
+use Behat\Testwork\Tester\ServiceContainer\TesterExtension as TestworkTesterExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -53,6 +54,7 @@ class EventDispatcherExtension extends BaseExtension
         $definition = new Definition('Behat\Behat\EventDispatcher\Cli\StopOnFailureController', array(
             new Reference(EventDispatcherExtension::DISPATCHER_ID)
         ));
+        $definition->addMethodCall(('setStopOnFailureHandler'), array(new Reference(TestworkTesterExtension::STOP_ON_FAILURE_ID)));
         $definition->addTag(CliExtension::CONTROLLER_TAG, array('priority' => 100));
         $container->setDefinition(CliExtension::CONTROLLER_TAG . '.stop_on_failure', $definition);
     }

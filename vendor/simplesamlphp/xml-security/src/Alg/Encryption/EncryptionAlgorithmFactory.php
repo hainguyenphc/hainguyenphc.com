@@ -11,7 +11,6 @@ use SimpleSAML\XMLSecurity\Exception\UnsupportedAlgorithmException;
 use SimpleSAML\XMLSecurity\Key\KeyInterface;
 
 use function array_key_exists;
-use function in_array;
 use function sprintf;
 
 /**

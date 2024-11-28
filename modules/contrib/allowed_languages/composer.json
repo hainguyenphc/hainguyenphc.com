@@ -5,7 +5,7 @@
     "keywords": ["Drupal", "Language"],
     "license": "MIT",
     "homepage": "https://www.drupal.org/project/allowed_languages",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "support": {
         "issues": "https://www.drupal.org/project/issues/allowed_languages",
         "source": "http://cgit.drupalcode.org/allowed_languages"

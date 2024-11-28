@@ -55,6 +55,19 @@ class Platform
     }
 
     /**
+     * Infallible realpath version that falls back on the given $path if realpath is not working
+     */
+    public static function realpath(string $path): string
+    {
+        $realPath = realpath($path);
+        if ($realPath === false) {
+            return $path;
+        }
+
+        return $realPath;
+    }
+
+    /**
      * getenv() equivalent but reads from the runtime global variables first
      *
      * @param non-empty-string $name
@@ -193,11 +206,17 @@ class Platform
             '/proc/self/mountinfo', // cgroup v2
             '/proc/1/cgroup', // cgroup v1
         ];
-        foreach($cgroups as $cgroup) {
+        foreach ($cgroups as $cgroup) {
             if (!is_readable($cgroup)) {
                 continue;
             }
-            $data = file_get_contents($cgroup);
+            // suppress errors as some environments have these files as readable but system restrictions prevent the read from succeeding
+            // see https://github.com/composer/composer/issues/12095
+            try {
+                $data = @file_get_contents($cgroup);
+            } catch (\Throwable $e) {
+                break;
+            }
             if (is_string($data) && str_contains($data, '/var/lib/docker/')) {
                 return self::$isDocker = true;
             }
@@ -302,7 +321,7 @@ class Platform
             if (defined('PHP_OS_FAMILY') && PHP_OS_FAMILY === 'Linux') {
                 $process = new ProcessExecutor();
                 try {
-                    if (0 === $process->execute('lsmod | grep vboxguest', $ignoredOutput)) {
+                    if (0 === $process->execute(['lsmod'], $output) && str_contains($output, 'vboxguest')) {
                         return self::$isVirtualBoxGuest = true;
                     }
                 } catch (\Exception $e) {

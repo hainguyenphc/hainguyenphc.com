@@ -74,6 +74,11 @@ trait SignedElementTrait
      */
     protected function setSignature(Signature $signature): void
     {
+        /**
+         * By disabling formatting on signed objects, we prevent issues with invalid signatures later on
+         * at the cost of some whitespace taking up useless bytes in the outputted document.
+         */
+        $this->formatOutput = false;
         $this->signature = $signature;
     }
 
@@ -193,7 +198,8 @@ trait SignedElementTrait
         if (
             $verifier?->verify(
                 $c14nSignedInfo, // the canonicalized ds:SignedInfo element (plaintext)
-                base64_decode($this->getSignature()->getSignatureValue()->getRawContent(), true), // the actual signature
+                // the actual signature
+                base64_decode($this->getSignature()->getSignatureValue()->getRawContent(), true),
             )
         ) {
             /*

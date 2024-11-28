@@ -82,19 +82,9 @@ final class PregMatchTypeSpecifyingExtension implements StaticMethodTypeSpecifyi
         }
 
         if (
-            in_array($methodReflection->getName(), ['matchStrictGroups', 'isMatchStrictGroups'], true)
-            && count($matchedType->getConstantArrays()) === 1
+            in_array($methodReflection->getName(), ['matchStrictGroups', 'isMatchStrictGroups', 'matchAllStrictGroups', 'isMatchAllStrictGroups'], true)
         ) {
-            $matchedType = $matchedType->getConstantArrays()[0];
-            $matchedType = new ConstantArrayType(
-                $matchedType->getKeyTypes(),
-                array_map(static function (Type $valueType): Type {
-                    return TypeCombinator::removeNull($valueType);
-                }, $matchedType->getValueTypes()),
-                $matchedType->getNextAutoIndexes(),
-                [],
-                $matchedType->isList()
-            );
+            $matchedType = PregMatchFlags::removeNullFromMatches($matchedType);
         }
 
         $overwrite = false;
@@ -103,10 +93,24 @@ final class PregMatchTypeSpecifyingExtension implements StaticMethodTypeSpecifyi
             $context = $context->negate();
         }
 
+        // @phpstan-ignore function.alreadyNarrowedType
+        if (method_exists('PHPStan\Analyser\SpecifiedTypes', 'setRootExpr')) {
+            $typeSpecifier = $this->typeSpecifier->create(
+                $matchesArg->value,
+                $matchedType,
+                $context,
+                $scope
+            )->setRootExpr($node);
+
+            return $overwrite ? $typeSpecifier->setAlwaysOverwriteTypes() : $typeSpecifier;
+        }
+
+        // @phpstan-ignore arguments.count
         return $this->typeSpecifier->create(
             $matchesArg->value,
             $matchedType,
             $context,
+            // @phpstan-ignore argument.type
             $overwrite,
             $scope,
             $node

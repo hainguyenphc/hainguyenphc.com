@@ -12,7 +12,7 @@ final class GeneratedConfig
 	public const EXTENSIONS = array (
   'composer/composer' => 
   array (
-    'install_path' => '/Users/hainguyen/Sites/hainguyenphc.com/vendor/composer/composer',
+    'install_path' => '/var/www/html/vendor/composer/composer',
     'relative_install_path' => '../../../composer/composer',
     'extra' => 
     array (
@@ -21,12 +21,12 @@ final class GeneratedConfig
         0 => 'phpstan/rules.neon',
       ),
     ),
-    'version' => '2.7.8',
+    'version' => '2.8.3',
     'phpstanVersionConstraint' => NULL,
   ),
   'composer/pcre' => 
   array (
-    'install_path' => '/Users/hainguyen/Sites/hainguyenphc.com/vendor/composer/pcre',
+    'install_path' => '/var/www/html/vendor/composer/pcre',
     'relative_install_path' => '../../../composer/pcre',
     'extra' => 
     array (
@@ -35,12 +35,12 @@ final class GeneratedConfig
         0 => 'extension.neon',
       ),
     ),
-    'version' => '3.3.0',
+    'version' => '3.3.2',
     'phpstanVersionConstraint' => NULL,
   ),
   'jangregor/phpstan-prophecy' => 
   array (
-    'install_path' => '/Users/hainguyen/Sites/hainguyenphc.com/vendor/jangregor/phpstan-prophecy',
+    'install_path' => '/var/www/html/vendor/jangregor/phpstan-prophecy',
     'relative_install_path' => '../../../jangregor/phpstan-prophecy',
     'extra' => 
     array (
@@ -54,7 +54,7 @@ final class GeneratedConfig
   ),
   'mglaman/phpstan-drupal' => 
   array (
-    'install_path' => '/Users/hainguyen/Sites/hainguyenphc.com/vendor/mglaman/phpstan-drupal',
+    'install_path' => '/var/www/html/vendor/mglaman/phpstan-drupal',
     'relative_install_path' => '../../../mglaman/phpstan-drupal',
     'extra' => 
     array (
@@ -64,12 +64,12 @@ final class GeneratedConfig
         1 => 'rules.neon',
       ),
     ),
-    'version' => '1.2.12',
+    'version' => '1.3.1',
     'phpstanVersionConstraint' => '>=1.10.56.0-dev, <2.0.0.0-dev',
   ),
   'phpstan/phpstan-deprecation-rules' => 
   array (
-    'install_path' => '/Users/hainguyen/Sites/hainguyenphc.com/vendor/phpstan/phpstan-deprecation-rules',
+    'install_path' => '/var/www/html/vendor/phpstan/phpstan-deprecation-rules',
     'relative_install_path' => '../../phpstan-deprecation-rules',
     'extra' => 
     array (
@@ -78,12 +78,12 @@ final class GeneratedConfig
         0 => 'rules.neon',
       ),
     ),
-    'version' => '1.2.0',
-    'phpstanVersionConstraint' => '>=1.11.0.0-dev, <2.0.0.0-dev',
+    'version' => '1.2.1',
+    'phpstanVersionConstraint' => '>=1.12.0.0-dev, <2.0.0.0-dev',
   ),
   'phpstan/phpstan-phpunit' => 
   array (
-    'install_path' => '/Users/hainguyen/Sites/hainguyenphc.com/vendor/phpstan/phpstan-phpunit',
+    'install_path' => '/var/www/html/vendor/phpstan/phpstan-phpunit',
     'relative_install_path' => '../../phpstan-phpunit',
     'extra' => 
     array (
@@ -93,8 +93,8 @@ final class GeneratedConfig
         1 => 'rules.neon',
       ),
     ),
-    'version' => '1.4.0',
-    'phpstanVersionConstraint' => '>=1.11.0.0-dev, <2.0.0.0-dev',
+    'version' => '1.4.1',
+    'phpstanVersionConstraint' => '>=1.12.0.0-dev, <2.0.0.0-dev',
   ),
 );
 
@@ -102,7 +102,7 @@ final class GeneratedConfig
 );
 
 	/** @var string|null */
-	public const PHPSTAN_VERSION_CONSTRAINT = '>=1.11.0.0-dev, <2.0.0.0-dev';
+	public const PHPSTAN_VERSION_CONSTRAINT = '>=1.12.0.0-dev, <2.0.0.0-dev';
 
 	private function __construct()
 	{

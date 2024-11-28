@@ -15,7 +15,6 @@ export default class FullscreenUI extends Plugin {
 
   init() {
     const editor = this.editor;
-
     // This will register the fullscreen toolbar button.
     editor.ui.componentFactory.add('fullscreen', locale => {
       const buttonView = new ButtonView(locale);
@@ -30,17 +29,21 @@ export default class FullscreenUI extends Plugin {
       });
       buttonView.on('execute', () => {
         if (state == 1) {
-          let nextSiblingElement = document.querySelector('.toolbar-bar .toolbar-tab.home-toolbar-tab').nextElementSibling;
-          let anchorTag = nextSiblingElement.querySelector('a');
-
-          Drupal.toolbar.models.toolbarModel.set({
-            activeTab: anchorTag,
-          });
-          editorRegion.scrollIntoView({block: 'center'});
-          editorRegion.removeAttribute('data-fullscreen');
-          document.body.removeAttribute('data-fullscreen');
+          // check if the toolbar module is active
+          if (document.getElementById("toolbar-administration") != null) {
+            let nextSiblingElement = document.querySelector(
+              ".toolbar-bar .toolbar-tab.home-toolbar-tab"
+            ).nextElementSibling;
+            let anchorTag = nextSiblingElement.querySelector("a");
+            Drupal.toolbar.models.toolbarModel.set({
+              activeTab: anchorTag,
+            });
+          }
+          editorRegion.scrollIntoView({ block: "center" });
+          editorRegion.removeAttribute("data-fullscreen");
+          document.body.removeAttribute("data-fullscreen");
           buttonView.set({
-            label: 'Full screen',
+            label: "Full screen",
             icon: icon,
             isOn: false,
           });
@@ -48,7 +51,10 @@ export default class FullscreenUI extends Plugin {
           editor.focus();
           editor.ui.view.stickyPanel.isSticky = isStickyState;
         } else {
-          Drupal.toolbar.models.toolbarModel.set({activeTab: null});
+          // check if the toolbar module is active
+          if (document.getElementById("toolbar-administration") != null) {
+            Drupal.toolbar.models.toolbarModel.set({ activeTab: null });
+          }
           // move editor into view before adding attributes
           editorRegion.scrollIntoView({block: 'center'});
           editorRegion.setAttribute('data-fullscreen', 'fullscreeneditor');

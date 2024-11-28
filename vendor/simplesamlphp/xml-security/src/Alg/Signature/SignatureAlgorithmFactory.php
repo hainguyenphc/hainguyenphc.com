@@ -11,7 +11,6 @@ use SimpleSAML\XMLSecurity\Exception\UnsupportedAlgorithmException;
 use SimpleSAML\XMLSecurity\Key\KeyInterface;
 
 use function array_key_exists;
-use function in_array;
 use function sprintf;
 
 /**
@@ -62,7 +61,7 @@ final class SignatureAlgorithmFactory
     /**
      * Build a factory that creates algorithms.
      *
-     * @param string[]|null $blacklist A list of algorithms forbidden for their use.
+     * @param string[] $blacklist A list of algorithms forbidden for their use.
      */
     public function __construct(
         protected array $blacklist = self::DEFAULT_BLACKLIST,

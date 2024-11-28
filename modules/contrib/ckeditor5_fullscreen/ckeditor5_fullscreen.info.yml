@@ -3,11 +3,11 @@ name: CKEditor5 Fullscreen
 type: module
 description: "Adds a Fullscreen / Maximize button for CKEditor5"
 package: CKEditor 5
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 dependencies:
   - drupal:ckeditor5
 
-# Information added by Drupal.org packaging script on 2024-07-24
-version: '1.0.0-beta9'
+# Information added by Drupal.org packaging script on 2024-09-10
+version: '1.0.0-beta10'
 project: 'ckeditor5_fullscreen'
-datestamp: 1721840267
+datestamp: 1725989349

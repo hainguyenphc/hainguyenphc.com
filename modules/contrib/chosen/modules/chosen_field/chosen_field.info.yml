@@ -7,7 +7,7 @@ type: module
 dependencies:
   - chosen:chosen
 
-# Information added by Drupal.org packaging script on 2024-05-16
-version: '4.0.1'
+# Information added by Drupal.org packaging script on 2024-09-02
+version: '4.0.3'
 project: 'chosen'
-datestamp: 1715856679
+datestamp: 1725307448

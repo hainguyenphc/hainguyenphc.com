@@ -52,7 +52,7 @@ class Api {
    * Function to test the results.
    *
    * @throws \Drupal\editoria11y\Exception\Editoria11yApiException
-   *    Oopsie.
+   *    Invalid data.
    */
   public function testResults($results) {
     $now = time();
@@ -206,10 +206,10 @@ class Api {
    * The Purge page function.
    *
    * @throws \Drupal\editoria11y\Exception\Editoria11yApiException
-   *   Oopsie.
+   *   Invalid data.
    */
   public function purgePage($page) {
-    $this->validatePath($page["page_path"]);
+    $this->validateNotNull($page["page_path"]);
 
     $this->connection->delete("editoria11y_dismissals")
       ->condition('page_path', $page["page_path"])
@@ -218,12 +218,9 @@ class Api {
       ->condition('page_path', $page["page_path"])
       ->execute();
     // Clear cache for the referring page and dashboard.
+    $invalidate = preg_replace('/[^a-zA-Z0-9]/', '', substr($page["page_path"], -80));
     Cache::invalidateTags(
-          ['editoria11y:dismissals_' . preg_replace(
-              '/[^a-zA-Z0-9]/', '',
-              $page["page_path"]
-            ), 'editoria11y:dashboard',
-          ]
+        ['editoria11y:dismissals_' . $invalidate, 'editoria11y:dashboard']
       );
   }
 
@@ -231,10 +228,10 @@ class Api {
    * The purge dismissal function.
    *
    * @throws \Drupal\editoria11y\Exception\Editoria11yApiException
-   *   Oopsie.
+   *   Invalid data.
    */
   public function purgeDismissal($data) {
-    $this->validatePath($data["page_path"]);
+    $this->validateNotNull($data["page_path"]);
     $this->validateNotNull($data["result_name"]);
 
     $this->connection->delete("editoria11y_dismissals")
@@ -244,20 +241,17 @@ class Api {
       ->condition('uid', str_replace(",", "", $data["by"]))
       ->execute();
     // Clear cache for the referring page and dashboard.
+    $invalidate = preg_replace('/[^a-zA-Z0-9]/', '', substr($data["page_path"], -80));
     Cache::invalidateTags(
-          ['editoria11y:dismissals_' . preg_replace(
-              '/[^a-zA-Z0-9]/', '',
-              $data["page_path"]
-            ), 'editoria11y:dashboard',
-          ]
-      );
+      ['editoria11y:dismissals_' . $invalidate, 'editoria11y:dashboard']
+    );
   }
 
   /**
    * The dismiss function.
    *
    * @throws \Drupal\editoria11y\Exception\Editoria11yApiException
-   *   Oopsie.
+   *   Invalid data.
    */
   public function dismiss(string $operation, $dismissal) {
     $this->validatePath($dismissal["page_path"]);
@@ -333,12 +327,9 @@ class Api {
         ->execute();
     }
     // Clear cache for the referring page and dashboard.
+    $invalidate = preg_replace('/[^a-zA-Z0-9]/', '', substr($dismissal["page_path"], -80));
     Cache::invalidateTags(
-          ['editoria11y:dismissals_' . preg_replace(
-              '/[^a-zA-Z0-9]/', '',
-              $dismissal["page_path"]
-            ), 'editoria11y:dashboard',
-          ]
+          ['editoria11y:dismissals_' . $invalidate, 'editoria11y:dashboard']
       );
   }
 
@@ -346,7 +337,7 @@ class Api {
    * This function to do validate of the elements.
    *
    * @throws \Drupal\editoria11y\Exception\Editoria11yApiException
-   *   Oopsie.
+   *   Invalid data.
    */
   private function validateNotNull($user_input) {
     if (empty($user_input)) {
@@ -358,11 +349,33 @@ class Api {
    * This function is used to validate the requested path.
    *
    * @throws \Drupal\editoria11y\Exception\Editoria11yApiException
-   *   Oopsie.
+   *   Invalid data.
    */
   private function validatePath($user_input) {
-    if (strpos($user_input, '/') !== 0) {
-      throw new Editoria11yApiException("Invalid page path: $user_input");
+    // @phpstan-ignore-next-line service call
+    $config = \Drupal::config('editoria11y.settings');
+    $prefix = $config->get('redundant_prefix');
+    if (!empty($prefix) && strlen($prefix) < strlen($user_input) && strpos($user_input, $prefix) === 0) {
+      // Replace ignorable subfolders.
+      $altPath = substr_replace($user_input, "", 0, strlen($prefix));
+      if (
+        !(
+          // @phpstan-ignore-next-line service call
+          \Drupal::service('path.validator')->getUrlIfValid($altPath) ||
+          // @phpstan-ignore-next-line service call
+          \Drupal::service('path.validator')->getUrlIfValid($user_input)
+        )
+      ) {
+        throw new Editoria11yApiException('Invalid page path on API report: "' . $user_input . '". If site is installed in subfolder, check Editoria11y config item "Syncing results to reports
+--> Remove redundant base url from URLs"');
+      }
+    }
+    else {
+      // @phpstan-ignore-next-line (Why have services if you don't use them)
+      if (!\Drupal::service('path.validator')->getUrlIfValid($user_input)) {
+        throw new Editoria11yApiException('Invalid page path on API report: "' . $user_input . '". If site is installed in subfolder, check Editoria11y config item "Syncing results to reports
+--> Remove redundant base url from URLs"');
+      }
     }
   }
 
@@ -370,7 +383,7 @@ class Api {
    * Validate dismissal status function.
    *
    * @throws \Drupal\editoria11y\Exception\Editoria11yApiException
-   *   Oopsie.
+   *   Invalid data.
    */
   private function validateDismissalStatus($user_input) {
     if (!($user_input === 'ok' || $user_input === 'hide' || $user_input === 'reset')) {
@@ -382,7 +395,7 @@ class Api {
    * Validate number function.
    *
    * @throws \Drupal\editoria11y\Exception\Editoria11yApiException
-   *   Oopsie.
+   *   Invalid data.
    */
   private function validateNumber($user_input) {
     if (!(is_numeric($user_input))) {
