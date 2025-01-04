@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '7f77795381386fe0dd9d4704f3988f079afe7d19',
+        'reference' => 'f4b5dfdce20396e54fc5bcd713b6053f360d9180',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1128,7 +1128,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '7f77795381386fe0dd9d4704f3988f079afe7d19',
+            'reference' => 'f4b5dfdce20396e54fc5bcd713b6053f360d9180',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1857,6 +1857,15 @@
             'install_path' => __DIR__ . '/../micheh/phpcs-gitlab',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'microsoft/microsoft-graph' => array(
+            'pretty_version' => '1.110.0',
+            'version' => '1.110.0.0',
+            'reference' => 'da45ea4a5d5dda97549313129748bd10fdb2930c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../microsoft/microsoft-graph',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'mikey179/vfsstream' => array(
             'pretty_version' => 'v1.6.12',

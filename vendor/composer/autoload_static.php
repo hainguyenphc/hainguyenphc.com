@@ -211,6 +211,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'M' => 
         array (
             'Mtownsend\\XmlToArray\\' => 21,
+            'Microsoft\\Graph\\' => 16,
             'Micheh\\PhpCodeSniffer\\' => 22,
             'Masterminds\\' => 12,
         ),
@@ -321,6 +322,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'Beta\\Microsoft\\Graph\\' => 21,
             'Behat\\Transliterator\\' => 21,
             'Behat\\Testwork\\' => 15,
             'Behat\\Step\\' => 11,
@@ -800,6 +802,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         array (
             0 => __DIR__ . '/..' . '/mtownsend/xml-to-array/src',
         ),
+        'Microsoft\\Graph\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/microsoft/microsoft-graph/src',
+        ),
         'Micheh\\PhpCodeSniffer\\' => 
         array (
             0 => __DIR__ . '/..' . '/micheh/phpcs-gitlab/src',
@@ -1122,6 +1128,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'Beta\\Microsoft\\Graph\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/microsoft/microsoft-graph/src/Beta/Microsoft/Graph',
         ),
         'Behat\\Transliterator\\' => 
         array (

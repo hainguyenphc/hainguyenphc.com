@@ -103,6 +103,7 @@
         "drupal/webform": "^6.2@RC",
         "drupal/webprofiler": "^10.1",
         "drush/drush": "^12",
+        "microsoft/microsoft-graph": "^1.56",
         "npm-asset/select2": "^4.0",
         "oomphinc/composer-installers-extender": "^2.0",
         "simplesamlphp/simplesamlphp-module-metarefresh": "^1.2",
