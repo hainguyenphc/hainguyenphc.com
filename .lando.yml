@@ -1,0 +1,82 @@
+name: hainguyenphc
+recipe: drupal10
+config:
+  php: '8.3'
+  # xdebug: Method 1
+  # When using a recipe e.g "drupal10", "pantheon", xdebug can be enabled by setting
+  # @code
+  # config: xdebug: "develop,debug"
+  # @endcode
+  # xdebug: 'develop,debug'
+env_file:
+  - .lando/.env
+
+services:
+  appserver:
+    webroot: .
+    # xdebug: Method 2
+    # Override the php service, usually named `appserver` in Lando
+    xdebug: 'develop,debug'
+    overrides:
+      environment:
+        # xdebug: debugging console tooling (Drush/Symfony or CLI command)
+        # by setting `PHP_IDE_CONFIG` and `XDEBUG_SESSION_START`.
+        # Feel free to assign any name to "serverName" as long as it matches the server defined in the IDE settings.
+        PHP_IDE_CONFIG: "serverName=appserver"
+        XDEBUG_SESSION_START: lando
+        DRUSH_OPTIONS_URI: 'https://hainguyenphc.lndo.site'
+    config:
+      php: .lando/php.ini
+    build_as_root:
+      - apt-get update -y && apt-get install vim -y && apt-get install clamav -y
+    run:
+      - 'eval "echo \"$(cat .lando/auth.json)\"" > /var/www/.composer/auth.json'
+
+  database:
+    config:
+      database: .lando/my-custom.cnf
+  memcached:
+    type: memcached
+  solr:
+    type: solr:7
+    portforward: true
+    core: lando
+    config:
+      dir: .lando/solr_conf
+  node:
+    type: node:10
+
+tooling:
+  npm:
+    service: node
+    description: Run `npm` within the theme folder
+    cmd:
+      - cd /app/docroot/themes/custom/de_theme
+      - npm
+  gulp:
+    service: node
+    description: 'Run `gulp` within the theme folder'
+    cmd:
+      - cd /app/docroot/themes/custom/de_theme
+      - ./node_modules/.bin/gulp
+  # This activates CLI debugging with Lando's default xdebug configuration
+  # instead of making xdebug always start.
+  drushdebug:
+    service: appserver
+    description: ''
+    cmd:
+      - "/app/vendor/bin/drush"
+    env:
+      XDEBUG_TRIGGER: 1
+  behat:
+    service: appserver
+    description: Run behat tests locally.
+    cmd:
+      - /app/vendor/bin/behat
+  behatdebug:
+    service: appserver
+    description: Run behat tests locally with xdebug.
+    cmd:
+      - /app/vendor/bin/behat
+    env:
+      XDEBUG_TRIGGER: 1
