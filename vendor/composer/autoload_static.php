@@ -89,6 +89,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         array (
             'Twig\\Extra\\Intl\\' => 16,
             'Twig\\' => 5,
+            'TijsVerkoyen\\CssToInlineStyles\\' => 31,
         ),
         'S' => 
         array (
@@ -244,6 +245,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'Http\\Discovery\\' => 15,
             'Http\\Client\\' => 12,
             'Http\\Adapter\\Guzzle7\\' => 21,
+            'Html2Text\\' => 10,
         ),
         'G' => 
         array (
@@ -379,6 +381,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'TijsVerkoyen\\CssToInlineStyles\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
         ),
         'Symfony\\Polyfill\\Php83\\' => 
         array (
@@ -882,6 +888,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'Http\\Adapter\\Guzzle7\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-http/guzzle7-adapter/src',
+        ),
+        'Html2Text\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/html2text/html2text/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
