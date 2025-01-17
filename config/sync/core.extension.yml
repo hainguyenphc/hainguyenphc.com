@@ -142,6 +142,7 @@ module:
   views_templates: 0
   views_ui: 0
   webform: 0
+  webprofiler: 0
   fontyourface: 1
   pathauto: 1
   content_translation: 10
