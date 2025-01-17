@@ -98,7 +98,7 @@ $config['module.enable'] = [
  * @note DDEV needs this.
  */
 
-if ($_ENV['IS_DDEV_PROJECT']) {
+if (isset($_ENV['IS_DDEV_PROJECT'])) {
   $protocol = 'http://';
   $port = ':80';
   if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {

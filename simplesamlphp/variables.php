@@ -21,7 +21,7 @@ if (getenv('LANDO_INFO')) {
 /**
  * Local: DDEV
  */
-if ($_ENV['IS_DDEV_PROJECT']) {
+if (isset($_ENV['IS_DDEV_PROJECT'])) {
   $db_host = 'db';
   $db_port = '3306';
   $db_name = 'db';
