@@ -1,0 +1,17 @@
+uuid: b665cd8c-786d-45fe-8697-1fc73f2ded90
+langcode: en
+status: true
+dependencies:
+  module:
+    - surgery
+title: 'Default cron handler'
+id: surgery_cron
+weight: 0
+module: surgery
+callback: surgery_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database
