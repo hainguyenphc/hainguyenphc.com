@@ -18,11 +18,18 @@ display:
       fields:
         url:
           label: URL
+        method:
+          label: 'Phương thức'
         operations:
           label: 'Thao tác'
       filters:
         url:
           expose:
             label: URL
+        code_1:
+          group_info:
+            group_items:
+              1:
+                title: 'Thất bại'
   page_1:
     display_title: Trang
