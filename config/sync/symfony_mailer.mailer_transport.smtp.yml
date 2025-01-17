@@ -1,0 +1,18 @@
+uuid: 09b1025e-4b58-4bd1-bd3a-cbec5516744b
+langcode: en
+status: true
+dependencies: {  }
+id: smtp
+label: SMTP
+plugin: smtp
+configuration:
+  user: hailearnbuddhism@gmail.com
+  pass: tapzhrvakbovriwe
+  host: smtp.gmail.com
+  port: 465
+  query:
+    verify_peer: true
+    local_domain: ''
+    restart_threshold: null
+    restart_threshold_sleep: null
+    ping_threshold: null
