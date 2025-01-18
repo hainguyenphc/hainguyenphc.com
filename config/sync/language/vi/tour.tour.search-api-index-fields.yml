@@ -1,0 +1,13 @@
+tips:
+  search-api-index-fields-label:
+    label: Nhãn
+  search-api-index-fields-machine-name:
+    label: 'Tên nội bộ'
+  search-api-index-fields-type:
+    label: Kiểu
+  search-api-index-fields-edit:
+    label: 'Chỉnh sửa trường dữ liệu'
+  search-api-index-fields-remove:
+    label: 'Gỡ bỏ trường'
+  search-api-index-fields-submit:
+    label: 'Lưu các thay đổi'
