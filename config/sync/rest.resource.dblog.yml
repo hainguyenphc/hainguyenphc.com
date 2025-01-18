@@ -1,0 +1,25 @@
+uuid: 167de64e-0f33-4058-be84-c5d9c235588d
+langcode: en
+status: true
+dependencies:
+  module:
+    - csv_serialization
+    - dblog
+    - rest_api_authentication
+    - serialization
+    - simple_oauth
+    - user
+id: dblog
+plugin_id: dblog
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - csv
+    - json
+    - xml
+  authentication:
+    - rest_api_authentication
+    - oauth2
+    - cookie
