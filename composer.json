@@ -81,6 +81,8 @@
         "drupal/rabbit_hole": "^2.0@alpha",
         "drupal/rdf": "^2.0",
         "drupal/responsive_menu": "4.4.x-dev@dev",
+        "drupal/rest_api_authentication": "^2.0",
+        "drupal/restui": "^1.22",
         "drupal/rules": "^4.0",
         "drupal/schema_metatag": "^3.0",
         "drupal/select2": "^1.15",

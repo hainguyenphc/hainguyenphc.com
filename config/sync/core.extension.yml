@@ -108,6 +108,8 @@ module:
   rabbit_hole: 0
   responsive_menu: 0
   rest: 0
+  rest_api_authentication: 0
+  restui: 0
   rules: 0
   schema_metatag: 0
   search: 0

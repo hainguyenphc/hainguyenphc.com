@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '1037552fc8539d360995e6f7287469bf15f46ac9',
+        'reference' => '7e6202c1e028ff4318fb11183c5c4aae0576abb0',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1128,7 +1128,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '1037552fc8539d360995e6f7287469bf15f46ac9',
+            'reference' => '7e6202c1e028ff4318fb11183c5c4aae0576abb0',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1244,6 +1244,24 @@
             'aliases' => array(
                 0 => '4.4.x-dev',
             ),
+            'dev_requirement' => false,
+        ),
+        'drupal/rest_api_authentication' => array(
+            'pretty_version' => '2.0.17',
+            'version' => '2.0.17.0',
+            'reference' => '2.0.17',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/rest_api_authentication',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'drupal/restui' => array(
+            'pretty_version' => '1.22.0',
+            'version' => '1.22.0.0',
+            'reference' => '8.x-1.22',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/restui',
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'drupal/rules' => array(
