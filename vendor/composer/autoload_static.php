@@ -43,6 +43,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         '88e3b63cfb48eb8ea316a8a85a5f5c5f' => __DIR__ . '/..' . '/open-telemetry/sdk/_autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        'ace6d88241f812b4accb2d847454aef6' => __DIR__ . '/..' . '/halaxa/json-machine/src/functions.php',
         '9e4824c5afbdc1482b6025ce3d4dfde8' => __DIR__ . '/..' . '/league/csv/src/functions_include.php',
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
         '334983c1b64a31de3c73827b7a6a1e88' => __DIR__ . '/..' . '/simplesamlphp/simplesamlphp/src/_autoload_modules.php',
@@ -76,6 +77,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'c' => 
         array (
             'cweagans\\Composer\\' => 18,
+        ),
+        'Z' => 
+        array (
+            'ZipStream\\' => 10,
         ),
         'W' => 
         array (
@@ -143,6 +148,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
             'Symfony\\Bridge\\Twig\\' => 20,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'Symfony\\Bridge\\PhpUnit\\' => 23,
+            'Solarium\\' => 9,
             'SlevomatCodingStandard\\' => 23,
             'SimpleSAML\\XML\\' => 15,
             'SimpleSAML\\XMLSecurity\\' => 23,
@@ -237,6 +243,7 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'J' => 
         array (
             'JsonSchema\\' => 11,
+            'JsonMachine\\' => 12,
             'Jean85\\' => 7,
             'JanGregor\\Prophecy\\' => 19,
         ),
@@ -367,6 +374,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'cweagans\\Composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/cweagans/composer-patches/src',
+        ),
+        'ZipStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -587,6 +598,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'Symfony\\Bridge\\PhpUnit\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/phpunit-bridge',
+        ),
+        'Solarium\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/solarium/solarium/src',
         ),
         'SlevomatCodingStandard\\' => 
         array (
@@ -870,6 +885,10 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         'JsonSchema\\' => 
         array (
             0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
+        ),
+        'JsonMachine\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/halaxa/json-machine/src',
         ),
         'Jean85\\' => 
         array (

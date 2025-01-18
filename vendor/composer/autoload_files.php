@@ -42,6 +42,7 @@ return array(
     '88e3b63cfb48eb8ea316a8a85a5f5c5f' => $vendorDir . '/open-telemetry/sdk/_autoload.php',
     'ec07570ca5a812141189b1fa81503674' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     '6a47392539ca2329373e0d33e1dba053' => $vendorDir . '/symfony/polyfill-intl-icu/bootstrap.php',
+    'ace6d88241f812b4accb2d847454aef6' => $vendorDir . '/halaxa/json-machine/src/functions.php',
     '9e4824c5afbdc1482b6025ce3d4dfde8' => $vendorDir . '/league/csv/src/functions_include.php',
     'ad155f8f1cf0d418fe49e248db8c661b' => $vendorDir . '/react/promise/src/functions_include.php',
     '334983c1b64a31de3c73827b7a6a1e88' => $vendorDir . '/simplesamlphp/simplesamlphp/src/_autoload_modules.php',
