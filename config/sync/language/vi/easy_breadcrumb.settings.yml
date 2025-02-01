@@ -1,5 +1,4 @@
 home_segment_title: Nhà
 capitalizator_ignored_words:
-  0: trên
-  1: và
-  7: a
+  - trên
+  - và

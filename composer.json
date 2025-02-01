@@ -71,6 +71,7 @@
         "drupal/imagemagick": "^3.7",
         "drupal/key": "^1.19",
         "drupal/languageicons": "^2.0@beta",
+        "drupal/layout_paragraphs": "^2.1",
         "drupal/link_attributes": "^2.1",
         "drupal/linkchecker": "^2.0@alpha",
         "drupal/linkit": "^6.1",

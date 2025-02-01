@@ -1,7 +1,5 @@
 tips:
   search-api-index-status:
     label: 'Trạng thái'
-  search-api-index-tracker:
-    label: Tracker
   search-api-index-server:
     label: 'Máy chủ'
