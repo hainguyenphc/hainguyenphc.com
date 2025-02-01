@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Entity Reports install file.
+ */
+
+/**
+ * Installs default config if not already installed.
+ */
+function entity_reports_update_8101(&$sandbox) {
+  $config = \Drupal::config('entity_reports.settings');
+  if (empty($config->get('report_fields'))) {
+    \Drupal::service('config.installer')->installDefaultConfig('module', 'entity_reports');
+  }
+}

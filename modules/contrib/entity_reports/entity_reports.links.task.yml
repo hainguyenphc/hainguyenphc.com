@@ -1,0 +1,3 @@
+entity_reports.entity_types:
+  class: \Drupal\Core\Menu\LocalTaskDefault
+  deriver: \Drupal\entity_reports\Plugin\Derivative\EntityReportsLocalTasks

@@ -1,0 +1,16 @@
+entity_reports.entity_types:
+  title: 'Entity reports'
+  parent: system.admin_reports
+  description: 'View the structure of the available entity types'
+  route_name: entity_reports.entity_types
+  weight: -10
+
+entity_reports.settings_form:
+  title: 'Entity Reports Settings'
+  parent: system.admin_config_development
+  description: 'Configure Entity Reports settings.'
+  route_name: entity_reports.settings_form
+
+entity_reports.entity_reports:
+  deriver: \Drupal\entity_reports\Plugin\Derivative\EntityReportsMenuLinks
+  class: \Drupal\Core\Menu\MenuLinkDefault

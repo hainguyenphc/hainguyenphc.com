@@ -1,0 +1,41 @@
+report_fields:
+  -
+    label: Field name
+    machine_name: label
+    weight: 0
+    status: true
+  -
+    label: Machine Name
+    machine_name: machine_name
+    weight: 1
+    status: true
+  -
+    label: Description
+    machine_name: description
+    weight: 2
+    status: true
+  -
+    label: Data type
+    machine_name: type
+    weight: 3
+    status: true
+  -
+    label: Required
+    machine_name: required
+    weight: 4
+    status: true
+  -
+    label: Translatable
+    machine_name: translatable
+    weight: 5
+    status: true
+  -
+    label: Target
+    machine_name: target
+    weight: 6
+    status: true
+  -
+    label: Cardinality
+    machine_name: cardinality
+    weight: 7
+    status: true

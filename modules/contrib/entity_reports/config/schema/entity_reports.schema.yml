@@ -1,0 +1,22 @@
+entity_reports.settings:
+  type: config_object
+  mapping:
+    reported_entity_types:
+      label: Reported entity types
+      type: sequence
+      sequence:
+        type: string
+    report_fields:
+      label: Report fields
+      type: sequence
+      sequence:
+        type: mapping
+        mapping:
+          machine_name:
+            type: string
+          label:
+            type: string
+          weight:
+            type: integer
+          status:
+            type: boolean

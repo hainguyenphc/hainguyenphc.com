@@ -49,6 +49,7 @@ module:
   editoria11y: 0
   entity: 0
   entity_reference_revisions: 0
+  entity_reports: 0
   entitygroupfield: 0
   environment_indicator: 0
   feeds: 0

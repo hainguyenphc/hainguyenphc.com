@@ -1,0 +1,15 @@
+name: 'Entity Reports'
+description: Provides reports about the entity type structure of a Drupal installation such as node, terms, files, paragraphs, media and other entity types. Also downloadable as JSON, XML or CSV format for data processing.
+type: module
+core_version_requirement: ^9.4 || ^10.0
+package: Reports
+dependencies:
+  - drupal:field
+  - drupal:node
+  - drupal:taxonomy
+configure: entity_reports.settings_form
+
+# Information added by Drupal.org packaging script on 2023-08-13
+version: '2.0.1'
+project: 'entity_reports'
+datestamp: 1691904678

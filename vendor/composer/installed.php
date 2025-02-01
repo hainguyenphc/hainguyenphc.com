@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '087f1f96e8123cebe3538409ecf64fda12a53353',
+        'reference' => '85aba75cc188ac5eedebc848f8bc142ae31c0625',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -925,6 +925,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/entity_reports' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'reference' => '2.0.1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/entity_reports',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/entitygroupfield' => array(
             'pretty_version' => '2.0.0-alpha1',
             'version' => '2.0.0.0-alpha1',
@@ -1128,7 +1137,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '087f1f96e8123cebe3538409ecf64fda12a53353',
+            'reference' => '85aba75cc188ac5eedebc848f8bc142ae31c0625',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

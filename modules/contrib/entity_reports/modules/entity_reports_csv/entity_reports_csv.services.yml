@@ -1,0 +1,10 @@
+services:
+  entity_reports_csv.export_formats_event_subscriber:
+    class: Drupal\entity_reports_csv\EventSubscriber\EntityReportsCsvFormatsSubscriber
+    tags:
+      - { name: event_subscriber }
+  entity_reports_csv.export_processors_event_subscriber:
+    class: Drupal\entity_reports_csv\EventSubscriber\EntityReportsCsvProcessorsSubscriber
+    arguments: ['@serializer']
+    tags:
+      - { name: event_subscriber }

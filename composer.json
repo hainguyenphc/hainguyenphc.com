@@ -54,6 +54,7 @@
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/eca": "^1.1",
         "drupal/editoria11y": "^2.1",
+        "drupal/entity_reports": "^2.0",
         "drupal/entitygroupfield": "^2.0@alpha",
         "drupal/environment_indicator": "^4.0",
         "drupal/feeds": "^3.0@beta",

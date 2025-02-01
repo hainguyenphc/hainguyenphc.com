@@ -1,0 +1,18 @@
+entity_reports.entity_types:
+  path: '/admin/reports/entity'
+  defaults:
+    _title: 'Entity reports'
+    _controller: '\Drupal\entity_reports\Controller\EntityReportsController::availableEntityTypes'
+  requirements:
+    _permission: 'view entity reports'
+
+entity_reports.settings_form:
+  path: '/admin/config/development/entity-reports'
+  defaults:
+    _form: '\Drupal\entity_reports\Form\EntityReportsSettingsForm'
+    _title: 'Entity Reports Settings'
+  requirements:
+    _permission: 'administer entity reports'
+
+route_callbacks:
+- '\Drupal\entity_reports\Routing\EntityReportsRoutes::getRoutes'

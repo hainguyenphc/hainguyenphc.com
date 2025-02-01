@@ -1,0 +1,5 @@
+view entity reports:
+  title: 'Access the entity reports'
+
+administer entity reports:
+  title: 'Administer entity reports'
