@@ -258,6 +258,9 @@ class Container implements ContainerInterface, ResetInterface {
     }
     else {
       $class = $this->frozen ? $definition['class'] : current($this->resolveServicesAndParameters([$definition['class']]));
+      if ($class === 'Drupal\surgery\Service\SurgeryEntityReportGenerator') {
+        $a = 1;
+      }
       $service = new $class(...$arguments);
     }
 
