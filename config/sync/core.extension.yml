@@ -107,7 +107,6 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
-  project_browser: 0
   rabbit_hole: 0
   responsive_menu: 0
   rest: 0
@@ -128,7 +127,6 @@ module:
   sitewide_alert: 0
   smart_trim: 0
   sophron: 0
-  surgery: 0
   surgery_test: 0
   symfony_mailer: 0
   system: 0
