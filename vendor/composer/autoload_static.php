@@ -351,9 +351,9 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
         ),
         'phootwork\\lang\\' => 
         array (
@@ -762,8 +762,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'PHPStan\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
-            1 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
+            0 => __DIR__ . '/..' . '/phpstan/phpstan-phpunit/src',
+            1 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
@@ -952,8 +952,8 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Gettext\\' => 
         array (
-            0 => __DIR__ . '/..' . '/gettext/gettext/src',
-            1 => __DIR__ . '/..' . '/gettext/translator/src',
+            0 => __DIR__ . '/..' . '/gettext/translator/src',
+            1 => __DIR__ . '/..' . '/gettext/gettext/src',
         ),
         'GPBMetadata\\Opentelemetry\\' => 
         array (
@@ -1166,9 +1166,9 @@ class ComposerStaticInitba985f0f603baa2ed994b91cc70a8109
         ),
         'Behat\\Mink\\Driver\\' => 
         array (
-            0 => __DIR__ . '/..' . '/behat/mink-browserkit-driver/src',
-            1 => __DIR__ . '/..' . '/behat/mink-goutte-driver/src',
-            2 => __DIR__ . '/..' . '/behat/mink-selenium2-driver/src',
+            0 => __DIR__ . '/..' . '/behat/mink-goutte-driver/src',
+            1 => __DIR__ . '/..' . '/behat/mink-selenium2-driver/src',
+            2 => __DIR__ . '/..' . '/behat/mink-browserkit-driver/src',
         ),
         'Behat\\Mink\\' => 
         array (

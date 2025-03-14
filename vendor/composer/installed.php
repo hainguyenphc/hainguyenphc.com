@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '2604ecc046307b414e78b13634a086716f2b9589',
+        'reference' => '1f100592e952026fbdcb4824b4bec4b0fc312ee2',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1146,7 +1146,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '2604ecc046307b414e78b13634a086716f2b9589',
+            'reference' => '1f100592e952026fbdcb4824b4bec4b0fc312ee2',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1225,14 +1225,12 @@
             'dev_requirement' => false,
         ),
         'drupal/project_browser' => array(
-            'pretty_version' => 'dev-1.0.x',
-            'version' => 'dev-1.0.x',
-            'reference' => '983eec687c33b1d0fb010c2e600d574ab29e5ff9',
+            'pretty_version' => '2.0.0-alpha9',
+            'version' => '2.0.0.0-alpha9',
+            'reference' => '2.0.0-alpha9',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../modules/contrib/project_browser',
-            'aliases' => array(
-                0 => '1.0.x-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'drupal/rabbit_hole' => array(

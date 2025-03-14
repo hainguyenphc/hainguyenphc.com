@@ -128,6 +128,8 @@ module:
   sitewide_alert: 0
   smart_trim: 0
   sophron: 0
+  surgery: 0
+  surgery_test: 0
   symfony_mailer: 0
   system: 0
   taxonomy: 0
