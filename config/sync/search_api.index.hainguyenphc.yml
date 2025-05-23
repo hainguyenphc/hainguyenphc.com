@@ -3,9 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.media.field_media_document
+    - field.storage.node.body
+    - field.storage.node.field_support_files
     - search_api.server.lando_solr
   module:
+    - file
+    - media
     - node
+    - search_api_attachments
     - search_api_solr
     - surgery
 third_party_settings:
@@ -60,16 +66,76 @@ id: hainguyenphc
 name: hainguyenphc
 description: ''
 read_only: false
-field_settings: {  }
+field_settings:
+  fid:
+    label: 'Support Files » Media » Document » File » File ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_support_files:entity:field_media_document:entity:fid'
+    type: integer
+    dependencies:
+      config:
+        - field.storage.media.field_media_document
+        - field.storage.node.field_support_files
+      module:
+        - file
+        - media
+  filename:
+    label: 'Support Files » Media » Document » File » Filename'
+    datasource_id: 'entity:node'
+    property_path: 'field_support_files:entity:field_media_document:entity:filename'
+    type: string
+    dependencies:
+      config:
+        - field.storage.media.field_media_document
+        - field.storage.node.field_support_files
+      module:
+        - file
+        - media
+  name:
+    label: 'Support Files » Media » Name'
+    datasource_id: 'entity:node'
+    property_path: 'field_support_files:entity:name'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_support_files
+      module:
+        - media
+  processed:
+    label: 'Body » Processed text'
+    datasource_id: 'entity:node'
+    property_path: 'body:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  saa_field_support_files:
+    label: 'Search api attachments: Support Files'
+    property_path: saa_field_support_files
+    type: text
+  summary_processed:
+    label: 'Body » Processed summary'
+    datasource_id: 'entity:node'
+    property_path: 'body:summary_processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
 datasource_settings:
+  'entity:file': {  }
+  'entity:media':
+    bundles:
+      default: false
+      selected:
+        - document
+    languages:
+      default: true
+      selected: {  }
   'entity:node':
     bundles:
-      default: true
+      default: false
       selected:
         - article
-        - page
-        - project
-        - project_build_step
     languages:
       default: true
       selected: {  }
@@ -80,9 +146,45 @@ processor_settings:
   auto_aggregated_fulltext_field: {  }
   custom_value: {  }
   entity_type: {  }
+  file_attachments:
+    excluded_extensions: 'aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv jpg jpeg'
+    number_indexed: 0
+    number_first_bytes: '20 MB'
+    max_filesize: '0'
+    excluded_private: 1
+    excluded_mimes: 'audio/x-aiff image/x-jg video/x-msvideo image/x-ms-bmp image/gif image/vnd.microsoft.icon video/quicktime audio/ogg video/ogg image/png image/x-photoshop audio/x-realaudio audio/x-pn-realaudio image/x-rgb video/x-flv image/jpeg'
+  highlight:
+    weights:
+      postprocess_query: 0
+    prefix: '<strong>'
+    suffix: '</strong>'
+    excerpt: true
+    excerpt_always: false
+    excerpt_length: 256
+    exclude_fields: {  }
+    highlight: always
+    highlight_partial: false
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields: {  }
+    title: true
+    alt: true
+    tags:
+      b: 2
+      em: 1
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+      u: 1
   language_with_fallback: {  }
   rendered_item: {  }
-  solr_date_range: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
 tracker_settings:
   default:
     indexing_order: fifo

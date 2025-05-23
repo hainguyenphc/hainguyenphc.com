@@ -905,3 +905,11 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
+
+/**
+ * File system
+ */
+// Remember to create those directories in your (local) project if they do not exist.
+$settings['file_private_path'] = 'sites/default/private';
+$settings['file_public_path'] = 'sites/default/files';
+$settings['file_temp_path'] = 'sites/default/temp';
