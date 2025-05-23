@@ -28,7 +28,11 @@ services:
     config:
       php: .lando/php.ini
     build_as_root:
-      - apt-get update -y && apt-get install vim -y && apt-get install clamav -y
+      - apt-get update -y
+      - apt-get install vim -y
+      - apt-get install clamav -y
+      - apt-get install default-jdk -y
+      - apt-get install wget -y
     run:
       - 'eval "echo \"$(cat .lando/auth.json)\"" > /var/www/.composer/auth.json'
 
@@ -38,11 +42,11 @@ services:
   memcached:
     type: memcached
   solr:
-    type: solr:7
+    type: solr:8
     portforward: true
     core: lando
     config:
-      dir: .lando/solr_conf
+      dir: .lando/solr_config/8
   node:
     type: node:10
 
@@ -80,3 +84,7 @@ tooling:
       - /app/vendor/bin/behat
     env:
       XDEBUG_TRIGGER: 1
+
+proxy:
+  solr:
+    - solr.hainguyenphc.lndo.site:8983

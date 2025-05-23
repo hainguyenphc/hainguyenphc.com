@@ -9060,6 +9060,55 @@
             "install-path": "../../modules/contrib/search_api"
         },
         {
+            "name": "drupal/search_api_attachments",
+            "version": "10.0.3",
+            "version_normalized": "10.0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/search_api_attachments.git",
+                "reference": "10.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/search_api_attachments-10.0.3.zip",
+                "reference": "10.0.3",
+                "shasum": "bf0e74b41ec02849ae6d815c1682a389798a9dcc"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/search_api": "^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "10.0.3",
+                    "datestamp": "1739871811",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "izus",
+                    "homepage": "https://www.drupal.org/user/514568"
+                }
+            ],
+            "description": "Search API Attachments.",
+            "homepage": "https://drupal.org/project/search_api_attachments",
+            "support": {
+                "source": "https://git.drupalcode.org/project/search_api_attachments",
+                "issues": "https://www.drupal.org/project/issues/search_api_attachments"
+            },
+            "install-path": "../../modules/contrib/search_api_attachments"
+        },
+        {
             "name": "drupal/search_api_solr",
             "version": "4.3.7",
             "version_normalized": "4.3.7.0",

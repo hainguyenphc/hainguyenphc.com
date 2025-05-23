@@ -16,16 +16,11 @@ display:
             items_per_page_options_all_label: '- Tất cả -'
             offset_label: 'Độ dịch'
       fields:
-        url:
-          label: URL
         method:
           label: 'Phương thức'
         operations:
           label: 'Thao tác'
       filters:
-        url:
-          expose:
-            label: URL
         code_1:
           group_info:
             group_items:

@@ -88,6 +88,7 @@
         "drupal/rules": "^4.0",
         "drupal/schema_metatag": "^3.0",
         "drupal/search_api": "^1.37",
+        "drupal/search_api_attachments": "^10.0",
         "drupal/search_api_solr": "^4.3",
         "drupal/select2": "^1.15",
         "drupal/simple_oauth": "^5.2",
