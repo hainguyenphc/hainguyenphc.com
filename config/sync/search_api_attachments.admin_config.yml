@@ -1,11 +1,11 @@
 _core:
   default_config_hash: CcTvq9NJh4YY_ZOjrq8rE1874HTyr-m5aQKrr3D9zwI
-extraction_method: solr_extractor
+extraction_method: tika_extractor
 cache_backend: search_api_attachments.cache_keyvalue
 cache_file_scheme: private
 tika_extractor_configuration:
   java_path: java
-  tika_path: ''
+  tika_path: /opt/tika/tika-app-1.25.jar
   debug_mode: false
 tika_server_extractor_configuration:
   scheme: http

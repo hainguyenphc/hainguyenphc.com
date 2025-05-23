@@ -33,6 +33,8 @@ services:
       - apt-get install clamav -y
       - apt-get install default-jdk -y
       - apt-get install wget -y
+      - mkdir -p /opt/tika
+      - wget -O /opt/tika/tika-app-1.25.jar https://archive.apache.org/dist/tika/tika-app-1.25.jar
     run:
       - 'eval "echo \"$(cat .lando/auth.json)\"" > /var/www/.composer/auth.json'
 

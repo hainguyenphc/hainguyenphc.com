@@ -1,0 +1,11 @@
+uuid: 4930239e-e585-4d2c-9daf-ad861011b32f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.search_result
+label: 'Search Result'
+description: ''
+targetEntityType: media
+cache: true

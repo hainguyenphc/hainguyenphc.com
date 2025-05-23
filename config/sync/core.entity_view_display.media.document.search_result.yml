@@ -1,0 +1,35 @@
+uuid: e83fbb8e-6ed6-41eb-9766-04d7ea9c7ab5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.search_result
+    - field.field.media.document.field_media_document
+    - media.type.document
+  module:
+    - search_api_attachments
+_core:
+  default_config_hash: XxUyhaTuM0OUUZpr8G6jdrFBEh5eag7auWxBKhm6cvY
+id: media.document.search_result
+targetEntityType: media
+bundle: document
+mode: search_result
+content:
+  field_media_document:
+    type: file_extracted_text
+    label: hidden
+    settings:
+      excluded_extensions: 'aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv jpg jpeg'
+      max_filesize: '0'
+      excluded_private: 1
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_attachments: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true
