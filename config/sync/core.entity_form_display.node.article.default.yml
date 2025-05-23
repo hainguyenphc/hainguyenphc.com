@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_external_resources
     - field.field.node.article.field_images
     - field.field.node.article.field_parent
+    - field.field.node.article.field_support_files
     - field.field.node.article.field_tags
     - field.field.node.article.rabbit_hole__settings
     - node.type.article
@@ -92,6 +93,13 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_support_files:
+    type: media_library_widget
+    weight: 26
+    region: content
+    settings:
+      media_types: {  }
     third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete

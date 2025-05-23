@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_external_resources
     - field.field.node.article.field_images
     - field.field.node.article.field_parent
+    - field.field.node.article.field_support_files
     - field.field.node.article.field_tags
     - field.field.node.article.rabbit_hole__settings
     - node.type.article
@@ -58,6 +59,15 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
+  field_support_files:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_tags:
     type: entity_reference_label
     label: hidden
@@ -76,3 +86,5 @@ hidden:
   entitygroupfield: true
   langcode: true
   rabbit_hole__settings: true
+  search_api_attachments: true
+  search_api_excerpt: true

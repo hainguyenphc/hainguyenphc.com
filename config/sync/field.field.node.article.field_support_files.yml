@@ -1,0 +1,29 @@
+uuid: d7dfcf1a-1388-4536-8ae1-04e4fdc43e57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_support_files
+    - media.type.document
+    - node.type.article
+id: node.article.field_support_files
+field_name: field_support_files
+entity_type: node
+bundle: article
+label: 'Support Files'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
