@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.media.field_media_document
     - field.storage.node.body
+    - field.storage.node.field_raw_files
     - field.storage.node.field_support_files
     - search_api.server.lando_solr
   module:
@@ -153,6 +154,16 @@ field_settings:
     dependencies:
       module:
         - node
+  field_raw_files:
+    label: 'Raw Files » File » File ID'
+    datasource_id: 'entity:node'
+    property_path: 'field_raw_files:entity:fid'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_raw_files
+      module:
+        - file
   file_fid_3:
     label: 'File > File ID'
     datasource_id: 'entity:file'
@@ -189,6 +200,10 @@ field_settings:
   saa_field_media_document:
     label: 'Search api attachments: Document'
     property_path: saa_field_media_document
+    type: text
+  saa_field_raw_files:
+    label: 'Search api attachments: Raw Files'
+    property_path: saa_field_raw_files
     type: text
   saa_field_support_files:
     label: 'Search api attachments: Support Files'

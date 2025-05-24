@@ -43,7 +43,7 @@ services:
       database: .lando/my-custom.cnf
   memcached:
     type: memcached
-  solr:
+  solr_hainguyenphc:
     type: solr:8
     portforward: true
     core: lando
@@ -88,5 +88,5 @@ tooling:
       XDEBUG_TRIGGER: 1
 
 proxy:
-  solr:
+  solr_hainguyenphc:
     - solr.hainguyenphc.lndo.site:8983

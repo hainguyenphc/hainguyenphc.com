@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_external_resources
     - field.field.node.article.field_images
     - field.field.node.article.field_parent
+    - field.field.node.article.field_raw_files
     - field.field.node.article.field_support_files
     - field.field.node.article.field_tags
     - field.field.node.article.rabbit_hole__settings
@@ -62,6 +63,7 @@ hidden:
   field_external_resources: true
   field_images: true
   field_parent: true
+  field_raw_files: true
   field_support_files: true
   langcode: true
   links: true

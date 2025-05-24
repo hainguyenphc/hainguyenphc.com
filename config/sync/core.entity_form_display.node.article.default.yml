@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_external_resources
     - field.field.node.article.field_images
     - field.field.node.article.field_parent
+    - field.field.node.article.field_raw_files
     - field.field.node.article.field_support_files
     - field.field.node.article.field_tags
     - field.field.node.article.rabbit_hole__settings
@@ -16,6 +17,7 @@ dependencies:
     - comment
     - entitygroupfield
     - field_group
+    - file
     - link
     - media_library
     - path
@@ -93,6 +95,13 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_raw_files:
+    type: file_generic
+    weight: 27
+    region: content
+    settings:
+      progress_indicator: throbber
     third_party_settings: {  }
   field_support_files:
     type: media_library_widget
