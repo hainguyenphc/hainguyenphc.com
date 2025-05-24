@@ -1,0 +1,27 @@
+uuid: 3620bec5-5065-462e-b58a-e3badd11166c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_raw_files
+    - node.type.article
+  module:
+    - file
+id: node.article.field_raw_files
+field_name: field_raw_files
+entity_type: node
+bundle: article
+label: 'Raw Files'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt rtf doc docx ppt pptx xls xlsx pdf odf odg odp ods odt fodt fods fodp fodg key numbers pages jpg jpeg png dotx gpx shp shx dbf csv xml'
+  max_filesize: ''
+  description_field: false
+field_type: file
